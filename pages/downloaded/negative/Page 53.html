@@ -37,8 +37,8 @@ var subsFulfillmentFrequencyAttrName = "fulfillmentFrequency";
 var subsPaymentFrequencyAttrName = "paymentFrequency";
 var subsTimePeriodAttrName = "timePeriod";
 var storeNLS = null;
-var storeUserType = "G";
-var ios = false;
+var storeUserType = "R";
+var ios = true;
 var android = false;
 var multiSessionEnabled = false;
 var inactivityTimeout = 1800000;
@@ -156,7 +156,7 @@ cmSetClientID("60394143",false,"testdata.coremetrics.com","canon.com");
 </script> 
   <script type="text/javascript">
 dojo.addOnLoad(function() {
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 if (isChrome || isSafari) {
@@ -176,7 +176,7 @@ dojo.attr(dojo.body(),"data-wc-device","mobile");
   <script type="text/javascript" charset="windows-1252" src="/wcsstore/CanonB2BStoreFrontAssetStore/javascript/onlineopinionV5/oo_conf.js"></script> 
   <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 });
 </script> 
   <script type="text/javascript" src="//e.invodo.com/4.0/s/canon.com.js"></script> 
@@ -432,7 +432,7 @@ dojo.require("wc.analytics.CoremetricsEventListener");
 (new wc.analytics.CoremetricsEventListener()).load(true);
 });
 </script> 
-     <script>var isGuest = true;</script> 
+     <script>var isGuest = false;</script> 
      <script>var miniCartEspot = {
 "marketingSpotData": [
 {
@@ -503,7 +503,7 @@ dojo.require("wc.analytics.CoremetricsEventListener");
 "userData": null
 }
 ],
-"baseMarketingSpotActivityDataGroup": "[_mkt:baseMarketingSpotActivityData=com.ibm.commerce.marketing.facade.datatypes.impl.MarketingSpotActivityMarketingContentDataTypeImpl@4a434a43 (name: MiniShopCartNoItemsContent, dataType: MarketingContent, uniqueID: 537755, campaignName: null, activityFormat: web, activityPriority: 0)]",
+"baseMarketingSpotActivityDataGroup": "[_mkt:baseMarketingSpotActivityData=com.ibm.commerce.marketing.facade.datatypes.impl.MarketingSpotActivityMarketingContentDataTypeImpl@21f421f4 (name: MiniShopCartNoItemsContent, dataType: MarketingContent, uniqueID: 537755, campaignName: null, activityFormat: web, activityPriority: 0)]",
 "behavior": "0",
 "defaultContentDisplaySequence": [
 ],
@@ -535,9 +535,9 @@ dojo.require("wc.analytics.CoremetricsEventListener");
 "schemeName": null,
 "schemeURI": null,
 "schemeVersionID": null,
-"value": "d8dc3ff0-23c2-11e7-8aef-88b658f3dcad"
+"value": "0ae55a00-23c2-11e7-9d35-88b455933a71"
 },
-"creationDateTime": "2017-04-17T23:09:03.504Z",
+"creationDateTime": "2017-04-17T23:03:17.193Z",
 "sender": null,
 "signature": null,
 "userArea": null
@@ -577,14 +577,14 @@ checkCookieHome(storeId, logonURL, logOffURL, myAccountURL, wishListURL, showWis
            </section> 
           </div> 
          </div> 
-         <!-- END ContentRecommendation_UI.jspf --> 
+         <!-- END ContentRecommendation_UI.jspf -->
          <!-- BEGIN ContentRecommendation_UI.jspf --> 
          <div id="contentRecommendationWidget_HEADER3_ESPOT2" class="contentRecommendationWidget"> 
           <div class="left_espot"> 
            <section style="width: 31%;" id="global_espot_one" class="links"></section> 
           </div> 
          </div> 
-         <!-- END ContentRecommendation_UI.jspf --> 
+         <!-- END ContentRecommendation_UI.jspf -->
          <!-- BEGIN ContentRecommendation_UI.jspf --> 
          <div id="contentRecommendationWidget_HEADER3_ESPOT3" class="contentRecommendationWidget"> 
           <div class="left_espot"> 
@@ -1560,7 +1560,7 @@ window.show_vsr_button ? show_vsr_button() : '';
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
 if(typeof productDisplayJS != 'undefined'){
-productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
+productDisplayJS.setCommonParameters('-1','10051','10051','R','$');
 dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProductImage);
 dojo.topic.subscribe('DefiningAttributes_Changed', productDisplayJS.updateProductImage);	
 }	
@@ -1644,7 +1644,7 @@ if (typeof bazarVoiceReviews == "number") clearInterval(bazarVoiceReviews);
          <script type="text/javascript">
 dojo.addOnLoad(function() {
 if(typeof productDisplayJS != 'undefined'){
-productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
+productDisplayJS.setCommonParameters('-1','10051','10051','R','$');
 dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProductShortDescription);	
 }	
 });
@@ -1692,7 +1692,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
          <!-- BEGIN CatalogEntryRecommendation.jsp --> 
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -1745,7 +1745,7 @@ dojo.publish("CMPageRefreshEvent");
          <!-- BEGIN CatalogEntryRecommendation.jsp --> 
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -1849,7 +1849,7 @@ productDisplayJS.setSKUImageId('productMainImage');
           <script type="text/javascript">
 dojo.addOnLoad(function() { 
 if(typeof productDisplayJS != 'undefined'){
-productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
+productDisplayJS.setCommonParameters('-1','10051','10051','R','$');
 }	
 });
 </script> 
@@ -1887,7 +1887,7 @@ parseWidget("servicePakTerms");
           <script type="text/javascript">
 dojo.addOnLoad(function() { 
 if(typeof productDisplayJS != 'undefined'){
-productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
+productDisplayJS.setCommonParameters('-1','10051','10051','R','$');
 }	
 });
 </script> 
@@ -2196,7 +2196,7 @@ s.parentNode.insertBefore(n, s);
           <!-- BEGIN CatalogEntryRecommendation.jsp --> 
           <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -2283,7 +2283,7 @@ box-sizing: border-box;
          <!-- BEGIN CatalogEntryRecommendation.jsp --> 
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -2467,7 +2467,7 @@ padding-left: 0;
         </div> 
         <div class="col12 acol12 ccol4 left slot7 slots" data-slot-id="7"> 
          <!-- BEGIN ContentRecommendation_UI.jspf --> 
-         <div id="contentRecommendationWidget_7_-1012_87852" class="contentRecommendationWidget"> 
+         <div id="contentRecommendationWidget_PDP_Espot_Slot7" class="contentRecommendationWidget"> 
           <div class="left_espot"> 
            <style>
 #container_10655 > div.row.product_pageDesign_pageGroup.pdp_pageGroup > div.e-spot-row {
@@ -2497,7 +2497,7 @@ box-sizing: border-box;
          <!-- BEGIN CatalogEntryRecommendation.jsp --> 
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -2599,7 +2599,7 @@ text-align: left !important;
          <!-- BEGIN CatalogEntryRecommendation.jsp --> 
          <script type="text/javascript">
 dojo.addOnLoad(function() { 
-shoppingActionsJS.setCommonParameters('-1','10051','10051','G','$');
+shoppingActionsJS.setCommonParameters('-1','10051','10051','R','$');
 shoppingActionsServicesDeclarationJS.setCommonParameters('-1','10051','10051');
 });
 //Declare refresh controller which are used in pagination controls of SearchBasedNavigationDisplay -- both products and articles+videos	
@@ -2995,7 +2995,7 @@ searchTabContentCountDiv.innerHTML = totalContentCount;
             <script type="text/javascript">
 dojo.addOnLoad(function() { 
 if(typeof productDisplayJS != 'undefined'){
-productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
+productDisplayJS.setCommonParameters('-1','10051','10051','R','$');
 dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProductLongDescription);	
 }	
 });

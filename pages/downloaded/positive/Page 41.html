@@ -11,12 +11,12 @@
   <!-- FAQ End --> 
   <script type="text/javascript">jQuery.noConflict();</script> 
   <script src="/components/com_eshop/assets/bootstrap/js/jquery.min.js" type="text/javascript"></script> 
-  <base href="http://us.ricoh-imaging.com/index.php/cameras/pentax-k-70"> 
+  <base href="http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"> 
   <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
-  <meta name="keywords" content="PENTAX K-70"> 
-  <meta name="description" content="A Compact and lightweight weather-resistant DSLR"> 
+  <meta name="keywords" content="Pentax K-3II"> 
+  <meta name="description" content="This exceptional field camera allows you to get closer to the action in the most extreme conditions. "> 
   <meta name="generator" content="Joomla! - Open Source Content Management"> 
-  <title>PENTAX K-70</title> 
+  <title>PENTAX K-3 II</title> 
   <link href="/templates/protostar/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"> 
   <link rel="stylesheet" href="/components/com_eshop/themes/ricoh/css/style.css" type="text/css"> 
   <link rel="stylesheet" href="/components/com_eshop/themes/default/css/custom.css" type="text/css"> 
@@ -428,11 +428,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
    <script src="/components/com_eshop/assets/js/slick.js" type="text/javascript"></script> 
    <script src="/components/com_eshop/assets/js/eshop-pagination.js" type="text/javascript"></script> 
    <script type="text/javascript">
-	jQuery(document).ready(function(){
-		jQuery(".product-image").colorbox({rel:'colorbox'});
-	});
+  jQuery(document).ready(function(){
+    jQuery(".product-image").colorbox({rel:'colorbox'});
+  });
 </script> 
-   <!--<script src="http://us.ricoh-imaging.com/components/com_eshop/assets/colorbox/jquery.colorbox.js" type="text/javascript"></script>--> 
+   <link href="/templates/protostar/css/jquery.bxslider.css" rel="stylesheet"> 
    <!-- Main Slider open --> 
    <section class="v2"> 
     <header class="v2_header"> 
@@ -451,6 +451,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
          <li><span></span></li> 
          <li><a href="#tab-4">Specifications</a></li> 
          <li><span></span></li> 
+         <!--<li><a href="#tab-5">Gallery</a></li>
+		<li><span></span></li>--> 
          <li><a href="#tab-3">Accessories</a></li> 
          <li><span></span></li> 
          <li><a href="#tab-6">What's in the Box</a></li> 
@@ -461,290 +463,291 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
       <!-- /.container-fluid --> 
      </nav> 
     </header> 
-    <input type="hidden" id="activated-sliders"> 
     <style type="text/css">
 
-	.tabslider {
-		/*width: 615%; 
-		position: relative; 
-		transition-duration: 0s; 
-		transform: translate3d(-576px, 0px, 0px);*/
-	}
+    .tabslider {
+        /*width: 615%; 
+        position: relative; 
+        transition-duration: 0s; 
+        transform: translate3d(-576px, 0px, 0px);*/
+    }
 
-	.bx-pager {
+    .bx-pager {
 
-	}
+    }
 
-	.bx-pager-section {
-		width: 100%;
-		text-align: center;
-	}
+    .bx-pager-section {
+        width: 100%;
+        text-align: center;
+    }
 
-	.bx-pager .colors {
-		border-radius: 50%;
-	    width: 20px;
-	    height: 20px;
-	    background: #666;
-	    text-indent: -9999px;
-	    float: left;
-	    margin: 0 5px;
-	    outline: 0;
-	}
+    .bx-pager .colors {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background: #666;
+        text-indent: -9999px;
+        float: left;
+        margin: 0 5px;
+        outline: 0;
+    }
 
-	.bx-pager .black {
-		background: radial-gradient(#484848, black);
-	}
+    .bx-pager .black {
+        background: radial-gradient(#484848, black);
+    }
 
-	.bx-pager .white {
-		background: radial-gradient(#e6e3e4, #cacaca);
-	}
+    .bx-pager .white {
+        background: radial-gradient(#e6e3e4, #cacaca);
+    }
 
-	.bx-pager .silver {
-		background: radial-gradient(#cbaf77, #94815c);
-	}
+    .bx-pager .silver {
+        background: radial-gradient(#cbaf77, #94815c);
+    }
 
-	.bx-pager .red {
-		background: radial-gradient(#d71835, #96172a);
-	}
-	.bx-pager .pink {
-		background: radial-gradient(#ff0099, #cc0066);
-	}
-	.bx-pager .blue {
-		background: radial-gradient(#0066ff, #0033cc);
-	}
-	.bx-pager .yellow {
-		background: radial-gradient(#ffff00, #cccc00);
-	}
+    .bx-pager .red {
+        background: radial-gradient(#d71835, #96172a);
+    }
+    .bx-pager .pink {
+        background: radial-gradient(#ff0099, #cc0066);
+    }
+    .bx-pager .blue {
+        background: radial-gradient(#0066ff, #0033cc);
+    }
+    .bx-pager .yellow {
+        background: radial-gradient(#ffff00, #cccc00);
+    }
 
 
-	.show-color-slider {
-		cursor: pointer;
-	}
+    .show-color-slider {
+        cursor: pointer;
+    }
 
-	.active-slider  {
-		border-bottom: 4px solid black;
-	}
+    .active-slider  {
+        border-bottom: 4px solid black;
+    }
 
-	.color-sliders {
-	}
+    .color-sliders {
+    }
 
-	.color-sliders .hidden {
-		display: none;
-	}
-	#tab-4 .img_slider img {
+    .color-sliders .hidden {
+        display: none;
+    }
+
+
+
+    .c_pager span.pull-left {
+        font-size:24px;
+        padding-top: 4px;
+    }
+
+    .c_header2{
+        margin-right: -25px;
+    }
+
+    .orageGradient{
+        font-size: 64px;
+        padding: 180px 0 90px 35px;
+        bottom: -280px;
+    }
+
+    .k3-2 {
+        max-width: 120%;
+        margin-left: -50px;
+    }
+
+    .pb100 {
+        padding-bottom: 100px;
+    }
+
+    #tab-4 .v2_slider .img_slider img {
+        height:150px;
+
+    }
+
+	.wgmg2RightImg img{ height:auto !important}
+    .pentaxSecond {
+    margin-top: 300px;
+    margin-bottom: 100px;
+    }
+
+    .mt60 {
+        margin-top:60px;
+    }
+    .mr15 {
+        margin-right: 15px;
+    }
+    .pb40 {
+        padding-bottom: 40px;
+    }
+
+    .c_pager h2 {
+        margin-top: 0px;
+    }
+
+    .no_margin_left .btn {
+        margin-top: 16px;
+    }
+    #tab-2 .v2_slider .c_header3 p{
+        padding-top: 10px;
+    }
+    #tab-4 .img_slider img {
         margin-top: -50px;
-        max-width: 80%;
+        max-width: 70%;
         margin-bottom: -50px;
     }
-    .product-info .product-options {
-    	border-bottom: 0px;
-    	padding-left: 0px;
+	@media(max-width:420px){
+		.orageGradient {padding: 120px 0 50px 45px; font-size:28px; line-height:36px; bottom:-200px;}
+		.mt100{margin-top:15px !important;}
+		.navbar-inverse .navbar-toggle{ border-color: #fff !important;}
+		.navbar-inverse .navbar-toggle .icon-bar{border: #fff solid 1px; min-width: 15px;}
 	}
-
-	#tab-1 .c_pager .product-info:first-child {
-		    padding-top: 30px;
-	}
-	#tab-1 .c_pager div:nth-child(2) {
-		    padding-top: 3px;
-	}
-	#tab-1 .col-sm-7.col-xs-12.text-center img {
-		margin-top: -15px;
-	}
-	#tab-1 .col-sm-7.col-xs-12.text-center {
-		overflow: hidden;
-	}
-	#tab-1 .c_header2 {
-		margin-top: 10px;
-	}
-
-	#tab-2 .product-info, #tab-4 .product-info {
-		margin-left: 0px;
-	}
-
-	#tab-2 .product-options {
-		padding:0px;
-	}
-
-	#tab-2 .c_pager div {
-    	margin-left: 45%;
-	}
-	.pb40 {
-		padding-bottom: 40px;
-	}
-	#tab-1 .no_margin_left .btn {
-		margin-left:40%;
-	}
-
-	.product-info select {
-	    max-width: 300px;
-	    width: 300px;
-	}
-	.pt3{
-	padding-top: 3px;
-	}
-	.c_pager .product-price h2 {
-		margin:0 auto;
-		padding-top: 3px;
-		font-size: 28px;
-		font-family: 'abelregular' !important;
-		margin-right: -6px;
-	}
-	.c_pager .product-price h2 span{
-		font-size: 28px;
-		line-height: 35px;
-	}
-	.mr35 {
-		margin-right: 35px;
-	}
-	#eshop_product_nav {
-    	text-align: center;
-    	padding: 0 20px 20px 20px;
-	} 
-	#eshop_product_nav a:hover, #eshop_product_nav a:active, #eshop_product_nav a.active {
-    	text-decoration: none;
-	} 
-
 </style> 
+    <input type="hidden" id="activated-sliders"> 
     <div id="tab-1" class="v2_slider v2_overview tab-content"> 
-     <div class="container"> 
-      <div class="row padding-top45"> 
+     <section class="v2_slider pentaxk3II"> 
+      <div class="container"> 
        <div class="col-sm-5 col-xs-12"> 
-        <div class="img_text"> 
+        <div class="img_text whiteColor"> 
          <div class="c_header"> 
-          <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+          <img src="/media/com_eshop/manufacturers/k-3-white.png" class="img-responsive"> 
          </div> 
-         <!--<div class="c_header2">
-						<p>PENTAX K-70</p>
-					</div>--> 
          <div class="c_header2"> 
           <p></p>
-          <p><span style="font-size: 12.16px;">• 24 Megapixel APS-C AA Filter-less CMOS Sensor</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• AA Filter Simulator PRIME MII processor w/ accelerator</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• Pixel Shift Resolution with motion correction</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• PENTAX SR In-body shake reduction</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• Dustproof and weather-resistant</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• Night vision red light LCD display</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• 6 Frames per second continuous shooting</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• Built-in Wi-Fi</span><br style="font-size: 12.16px;"><span style="font-size: 12.16px;">• 14-bit RAW</span></p>
+          <p><span style="font-size: 12.16px;">This exceptional field camera allows you to get closer to the action in the most extreme conditions.</span></p>
           <p></p> 
          </div> 
          <div class="row"> 
          </div> 
          <div class="c_pager"> 
-          <div class="product-info"> 
-           <div> 
-            <div class="product-options"> 
-             <!-- <h2>
-                                Available Options                            </h2> --> 
-             <div id="option-1333"> 
-              <div> 
-               <span class="required">*</span> 
-               <strong>Collection:</strong> 
-               <br> 
-               <select id="options1333" name="options[1333]" class="inputbox" onchange="updatePrice();"> <option value="" selected>--- Please Select ---</option> <option value="2825">Black Body Only</option> <option value="2826">Silky Silver Body Only</option> <option value="2827">Black w/ DR 18-135mm WR Kit (+$250.00)</option> <option value="2828">Silky Silver w/ DR 18-135mm WR Kit (+$250.00)</option> </select> 
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-          </div> 
-          <span class="abelregularfont pull-left mr35 pt3"> 
-           <div class="mr30"> 
+          <span class="abelregularfont pull-left mt15 mr15"> <span class="mt15 pull-left mr30"> 
             <div> 
              <div class="product-price" id="product-price"> 
-              <div class="clear"> 
-               <div class="mt15 clearfix mr30">
-                $649.95
-               </div> 
-               <br> 
-              </div> 
+              <h2> <strong> <span class="price">$999.95</span> </strong><br> </h2> 
              </div> 
-            </div> 
-           </div> </span> 
+            </div> </span> </span> 
           <div class="product-info"> 
            <div> 
             <div class="row-fluid"> 
              <div class="product-cart clearfix"> 
               <div class="span8 no_margin_left"> 
-               <input type="hidden" name="id" value="6"> 
-               <div class="input-append input-prepend" style="display: hidden;"> 
-                <label style="display: none;" class="btn">Qty:</label> 
-                <span class="eshop-quantity" style="display: none;"> <a class="btn btn-default button-minus spin-down" id="6" data="down">-</a> <input type="text" class="eshop-quantity-value" id="quantity_6" name="quantity" value="1"> <a class="btn btn-default button-plus spin-up" id="6" data="up">+</a> </span> 
-               </div> 
-               <button class="add-to-cart btn btn-primary i_sr_link" type="button">Add to Cart</button> 
+               <input type="hidden" name="id" value="4"> 
+               <button id="add-to-cart" class="btn btn-primary i_sr_link" type="button">Add to Cart</button> 
               </div> 
              </div> 
             </div> 
            </div> 
           </div> 
+          <!--<a class="i_sr_link" href="#">Add to Cart</a>--> 
          </div> 
         </div> 
        </div> 
        <div class="col-sm-7 col-xs-12"> 
-        <!-- Color Slider --> 
-        <ul id="eshop_product" data-slider="eshop_product" class="eshop_product"> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_black_gallery_2-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_black_gallery_3-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_black_gallery_4-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_black_gallery_5-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_black_gallery_6-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_2-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_3-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_4-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_5-500x500.png" class="img-responsive"> 
-          </div> </li> 
-         <li> 
-          <div class="img_slider"> 
-           <img src="/media/com_eshop/products/resized/K70_silver_gallery_6-500x500.png" class="img-responsive"> 
-          </div> </li> 
-        </ul> 
-        <!-- Color Slider Thumbs --> 
-        <div id="eshop_product_nav"> 
-         <a data-slide-index="0" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-70x70.png"> </a> 
-         <a data-slide-index="1" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_2-70x70.png"> </a> 
-         <a data-slide-index="2" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_3-70x70.png"> </a> 
-         <a data-slide-index="3" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_4-70x70.png"> </a> 
-         <a data-slide-index="4" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_5-70x70.png"> </a> 
-         <a data-slide-index="5" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_6-70x70.png"> </a> 
-         <a data-slide-index="6" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-70x70.png"> </a> 
-         <a data-slide-index="7" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_2-70x70.png"> </a> 
-         <a data-slide-index="8" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_3-70x70.png"> </a> 
-         <a data-slide-index="9" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_4-70x70.png"> </a> 
-         <a data-slide-index="10" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_5-70x70.png"> </a> 
-         <a data-slide-index="11" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_6-70x70.png"> </a> 
+        <img src="/media/com_eshop/products/Pentax-K-3II.png" class="img-responsive k3-2" style="position:relative; z-index:1"> 
+        <div class="orageGradient">
+          BUILDING ON
+         <br>EXCEPTIONAL
+         <br>PERFORMANCE 
         </div> 
-        <!-- Color Slider --> 
        </div> 
       </div> 
-     </div> 
+     </section> 
+     <section class="pentaxSecond"> 
+      <div class="container-fluid"> 
+       <div class="col-md-5 col-md-offset-1">
+        <img src="/images/PentaxK-img.png" class="img-responsive">
+       </div> 
+       <div class="col-md-6 fontAbel"> 
+        <h1 style="text-transform:uppercase; font-size:40px;">READY TO MEET A<br> PHOTOGrapher's<br> greatest demands</h1> 
+        <div class="bigUnderLine"></div> 
+        <h3 class="col-sm-6 nopadding-left">It features an impressive 24.35 effective megapixel AA Filter-less APS-C CMOS sensor, along with a high-performance 27-point AF system and 8.3 frames per second of continuous shooting.</h3> 
+       </div> 
+      </div> 
+     </section> 
+     <section class="banner"> 
+      <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+       <!-- Indicators --> 
+       <!-- Wrapper for slides --> 
+       <div class="carousel-inner" role="listbox"> 
+        <div class="item active "> 
+         <img src="/images/pentaxK3ii-img1.png" alt="Chania"> 
+         <div class="carousel-caption container fontAbel"> 
+          <h1 class="whiteColor">BUILT FOR EXTREME CONDITIONS</h1> 
+          <div class="bigUnderLine whiteBG"></div> 
+          <h4 class="whiteColor fontAbel">With a weather-resistant and dust proof magnesium alloy body, this exceptional field<br> camera allows you to get closer to the action in the most extreme conditions.</h4>
+         </div> 
+        </div> 
+        <div class="item"> 
+         <img src="/images/pentaxK3ii-img2.png" alt="Chania"> 
+         <div class="carousel-caption container fontAbel"> 
+          <h1 class="whiteColor">BUILT FOR EXTREME CONDITIONS</h1> 
+          <div class="bigUnderLine whiteBG"></div> 
+          <h4 class="whiteColor fontAbel">With a weather-resistant and dust proof magnesium alloy body, this exceptional field<br> camera allows you to get closer to the action in the most extreme conditions.</h4>
+         </div> 
+        </div> 
+        <div class="item"> 
+         <img src="/images/pentaxK3ii-img3.png" alt="Chania"> 
+         <div class="carousel-caption container fontAbel"> 
+          <h1 class="whiteColor">BUILT FOR EXTREME CONDITIONS</h1> 
+          <div class="bigUnderLine whiteBG"></div> 
+          <h4 class="whiteColor fontAbel">With a weather-resistant and dust proof magnesium alloy body, this exceptional field<br> camera allows you to get closer to the action in the most extreme conditions.</h4>
+         </div> 
+        </div> 
+       </div> 
+       <!-- Left and right controls --> 
+       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <img src="/images/larrow.png"> <span class="sr-only">Previous</span> </a> 
+       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><img src="/images/rarrow.png"> <span class="sr-only">Next</span> </a> 
+      </div> 
+     </section> 
+     <section class="pentaxSecond mt100"> 
+      <div class="container-fluid"> 
+       <div class="col-md-5 col-md-offset-1">
+        <img src="/images/pentaxK-img2.png" class="img-responsive">
+       </div> 
+       <div class="col-md-6 fontAbel"> 
+        <h1 style="text-transform:uppercase; font-size:40px;">IMPROVED IN-BODY<br> SHAKE REDUCTION</h1> 
+        <div class="bigUnderLine"></div> 
+        <h3 class="col-sm-6 nopadding-left">The K-3 II's in-body shake reduction (SR) mechanism effectively compensates for camera shake up to 4.5EV steps regardless of the lens type mounted.</h3> 
+       </div> 
+       <div class="clearfix"></div> 
+       <div class="col-md-8 col-md-offset-2 mt60"> 
+        <h1 style="text-transform:uppercase; font-size:40px;">DESIGNED FOR THE DEMANDING PHOTOGRAPHER</h1> 
+        <div class="bigUnderLine"></div> 
+        <h3 class="fontAbel">The K-3 II features a 24.35 effective megapixel AA Filter-less APS-C sized CMOS sensor for outstanding image quality. </h3> 
+       </div> 
+      </div> 
+     </section> 
+     <section class="banner container-fluid mt50 pb100"> 
+      <div class="col-md-10 col-md-offset-1"> 
+       <div id="myCarousel1" class="carousel slide" data-ride="carousel"> 
+        <!-- Indicators --> 
+        <!-- Wrapper for slides --> 
+        <div class="carousel-inner" role="listbox"> 
+         <div class="item active">
+          <img src="/images/pentax_gallery.png" alt="Chania">
+         </div> 
+         <div class="item">
+          <img src="/images/pentax_gallery1.png" alt="Chania">
+         </div> 
+         <div class="item">
+          <img src="/images/pentax_gallery2.png" alt="Chania">
+         </div> 
+         <div class="item">
+          <img src="/images/pentax_gallery3.png" alt="Chania">
+         </div> 
+         <div class="item">
+          <img src="/images/pentax_gallery4.png" alt="Chania">
+         </div> 
+         <div class="item">
+          <img src="/images/pentax_gallery5.png" alt="Chania">
+         </div> 
+        </div> 
+        <!-- Left and right controls --> 
+        <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <img src="/images/larrow.png"> <span class="sr-only">Previous</span> </a> 
+        <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"><img src="/images/rarrow.png"> <span class="sr-only">Next</span> </a> 
+       </div> 
+      </div> 
+     </section> 
     </div> 
-    <!--TAB 1 ends here--> 
     <!--TAB 1 ends here--> 
     <!--TAB 2 starts here--> 
     <div id="tab-2" class="tab-content" style="display:none;"> 
@@ -754,65 +757,53 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
         <div class="col-sm-5 col-xs-12"> 
          <div class="img_text"> 
           <div class="c_header"> 
-           <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+           <img title="PENTAX K-3 II" alt="PENTAX K-3 II" src="/media/com_eshop/manufacturers/K-3II_logo.svg" class="img-responsive"> 
           </div> 
           <div class="c_header2"> 
-           <p>Get top performance even under extreme conditions with this compact, lightweight, DSLR camera.</p> 
+           <p>Building on Performance</p> 
           </div> 
           <div class="c_header3"> 
            <p></p>
-           <p>Never let the extreme conditions stop you with the PENTAX K-70. This compact, lightweight, DSLR features the PRIME MII engine with a newly designed Accelerator Unit and a 24.24 megapixel AA-filter-less APS-C CMOS sensor for high definition images. Enjoy faster readout performance with 6 frames per second shooting of 14-bit RAW image data. Minimize camera shake with in-body SR (shake reduction) to assure sharp, blur-free images, even in demanding situations. Built for the toughest of shooters, this dustproof and weather-resistant camera is constructed with 100 different weather seals of protection, guarding it from the harsh environments of travel, landscape and nature photography. Built with the active photographer in mind, the PENTAX K-70 offers a vari-angle LCD feature to facilitate creative compositions. Astronomy photographers will appreciate the addition of a Night Vision Red Light LCD feature to enhance those low light situations. It’s equipped with built-in Wi-Fi, for easy mobile transfer and social media sharing of your adventures.</p>
+           <p>Building upon the legacy of the award-winning K-3, the PENTAX K-3 II offers outstanding image quality and operability to meet a photographer’s greatest demands. It features an impressive 24.35 effective megapixel AA Filter-less APS-C CMOS sensor, along with a high-performance 27-point AF system and 8.3 frames per second of continuous shooting. The addition of the newly developed Pixel Shift Resolution System delivers more truthful colour reproduction and finer details while significantly lowering the level of high-sensitivity noise. With the updated PENTAX Real-time Scene Analysis System, supported by the 86K-pixel RGB light-metering sensor, the K-3 II has more responsive subject tracking. Thanks to its new high-precision gyro-sensor, the K-3 II assures more effective camera-shake compensation up to 4.5EV steps. The K-3 II’s newly integrated, built-in GPS and Electronic Compass extends the range of your photo shooting expedition, while the built-in ASTROTRACER function simplifies astrophotography by eliminating the need of an extra accessory to capture celestial objects such as stars, nebulas and planets. With a weather-resistant and dust proof magnesium alloy body, this exceptional field camera allows you to get closer to the action in the most extreme conditions.</p>
            <p></p> 
-           <p><b> Available in Black, Silver</b></p> 
           </div> 
-          <div class="product-info"> 
-           <div> 
-            <div class="product-options"> 
-             <!-- <h2>
-                                Available Options                            </h2> --> 
-             <div id="option-1333"> 
-              <div> 
-               <span class="required">*</span> 
-               <strong>Collection:</strong> 
-               <br> 
-               <select id="options1333" name="options[1333]" class="inputbox" onchange="updatePrice();"> <option value="" selected>--- Please Select ---</option> <option value="2825">Black Body Only</option> <option value="2826">Silky Silver Body Only</option> <option value="2827">Black w/ DR 18-135mm WR Kit (+$250.00)</option> <option value="2828">Silky Silver w/ DR 18-135mm WR Kit (+$250.00)</option> </select> 
+          <div class="c_pager"> 
+           <span class="abelregularfont pull-left mt15 mr15"> <span class="mt15 pull-left mr30"> 
+             <div> 
+              <div class="product-price" id="product-price"> 
+               <h2> <strong> <span class="price">$999.95</span> </strong><br> </h2> 
+              </div> 
+             </div> </span> </span> 
+           <div class="product-info"> 
+            <div> 
+             <div class="row-fluid"> 
+              <div class="product-cart clearfix"> 
+               <div class="span8 no_margin_left"> 
+                <input type="hidden" name="id" value="4"> 
+                <button id="add-to-cart_f" class="btn btn-primary i_sr_link" type="button">Add to Cart</button> 
+               </div> 
               </div> 
              </div> 
             </div> 
            </div> 
           </div> 
-          <div class="c_pager mt10 clearfix"> 
-           <span class="mt15 pull-left mr30">$649.95</span> 
-           <div class=""> 
-            <input type="hidden" name="id" value="6"> 
-            <div class="input-append input-prepend" style="display: hidden;"> 
-             <label style="display: none;" class="btn">Qty:</label> 
-             <span class="eshop-quantity" style="display: none;"> <a class="btn btn-default button-minus spin-down" id="6" data="down">-</a> <input type="text" class="eshop-quantity-value" id="quantity_6" name="quantity" value="1"> <a class="btn btn-default button-plus spin-up" id="6" data="up">+</a> </span> 
-            </div> 
-            <button class="add-to-cart btn btn-primary i_sr_link" type="button">Add to Cart</button> 
-           </div> 
-          </div> 
          </div> 
         </div> 
+        <input type="hidden" id="feature-slider-count" value="1"> 
         <div class="col-sm-7 col-xs-12"> 
          <div> 
           <ul class="bxslider7"> 
-           <li> 
+           <li style="list-style:none"> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-500x500.png"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-500x500.png"> 
+             <img src="/media/com_eshop/products/resized/image_580786facfa6e_K-S3II_gallery_1-500x500.png"> 
             </div> </li> 
           </ul> 
           <!--<div class="pull-right bx-pager bx-pager7 padt25">
 															<a data-slide-index="0" href="javascript:void(0)" class="colors black"></a>			
-															<a data-slide-index="1" href="javascript:void(0)" class="colors silver"></a>			
-											
+													
 						</div>
 						
-						<p class="i_sr_options padt25"><b> Available in Black, Silver</b></p>--> 
+						<p class="i_sr_options padt25"><b> Available in Black</b></p>--> 
          </div> 
         </div> 
        </div> 
@@ -821,65 +812,52 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
      <section class="v2_items mt50 pb40"> 
       <article class="container"> 
        <section class="v2_img_items fontAdjustMain"> 
+        <p style="font-size: 12.16px;">&nbsp;</p> 
         <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K70-1.png" alt=""> 
+         <img class="img-responsive" src="/images/k3ii-feature_01.jpg"> 
          <figcaption> 
-          <p class="h4">Super-high-resolution images captured with 24.24 effective megapixels and a top sensitivity of ISO 102400</p> 
-          <p>The K-70 features a state-of-the-art 24.24 effective megapixel AA Filter-less APS-C sized CMOS sensor for outstanding image quality. By coupling a newly developed accelerator unit with the high-speed PRIME MII imaging engine, the K-70 effectively minimizes noise at all sensitivity levels, and captures richly gradated, finely detailed images even in super-high-sensitivity shooting at a top sensitivity of ISO 102400.</p> 
+          <p class="h4">24 effective megapixels in an APS-C sized CMOS sensor</p> 
+          <p>Designed for the demanding photographer, the K-3 II features a 24.35 effective megapixel AA Filter-less APS-C sized CMOS sensor for outstanding image quality. The Prime III image-processing engine assures high quality image output up to ISO 51200.</p> 
          </figcaption> 
         </figure> 
-        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item">
+         <img class="img-responsive" src="/images/k3ii-feature_02.jpg" alt=""> 
          <figcaption> 
-          <p class="h4">Hybrid AF system for high-speed AF operation during Live View shooting</p> 
-          <p>The K-70 employs PENTAX’s first Hybrid AF system during Live View autofocus operation. By positioning a contrast-detection AF sensor with superior focusing accuracy and a phase-matching AF sensor on the image sensor’s surface, this innovative hybrid system optimizes the benefits of both AF systems to assure high-speed, pinpoint AF focusing on the subject.</p> 
+          <p class="h4">Built-in GPS functionality and Electronic Compass</p> 
+          <p>The built-in GPS module extends the range of your photo shooting expedition. Use the Electronic compass to help find your way while GPS Log lets you keep track of where the trails have taken you. With the addition of ASTROTRACER, eliminate the need of an extra accessory with this functionality built directly into the camera to capture celestial objects such as stars, nebulas and planets.</p> 
          </figcaption> 
         </figure> 
         <div class="clearfix">
          &nbsp;
         </div> 
         <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K-70-2.png" alt=""> 
+         <img class="img-responsive" src="/images/k3ii-feature_03.jpg" alt=""> 
          <figcaption> 
-          <p class="h4">Dustproof, weather-resistant body perfect for outdoor photography</p> 
-          <p>The K-70 boasts a fully weather and cold proof design to resist water, fog, snow, sand and dust, for top performance in extreme field conditions. It has been designed for active outdoor shooting through a complete design review of the mode dial and control buttons as well as new grip design that provides a firm hold of the camera body even with a gloved hand. The outdoor-friendly LCD monitor features a brightness level that can be instantly adjusted to the lighting level of any shooting location, as well as a red-lighted monitor display function, which is easier on the photographer’s eye when shooting in dark locations such as during astronomical photography.</p> 
+          <p class="h4">Improved In-body Shake Reduction (SR)</p> 
+          <p>The K-3 II’s in-body shake reduction (SR) mechanism effectively compensates for camera shake up to 4.5EV steps regardless of the lens type mounted.</p> 
          </figcaption> 
         </figure> 
         <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K-70-3.png" alt=""> 
+         <img class="img-responsive" src="/images/k3ii-feature_05.jpg" alt=""> 
          <figcaption> 
-          <p class="h4">PENTAX-original shake-reduction system featuring the Pixel Shift Resolution System</p> 
-          <p><b>In-body SR mechanism</b> The K-70’s in-body shake reduction (SR) mechanism effectively compensates for camera shake up to 4.5EV steps. The K-70’s SR unit has a flexible design that shifts the image sensor unit in all directions, providing a host of handy shooting functions, including ASTRO TRACER, which simplifies advanced astronomical photography when used in combination with the optional O-GPS1 Unit.</p> 
-         </figcaption> 
-        </figure> 
-        <div class="clearfix">
-         &nbsp;
-        </div> 
-        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
-         <figcaption> 
-          <p class="h4">Pixel Shift Resolution System with motion correction function</p> 
-          <p>The Pixel Shift Resolution System captures 4 images of the same scene by shifting the image sensor by a single pixel for each image, and then synthesizes them into a single composite image. The result is exceptional detail and true-to-life colourcolor accurate images. This system also has a motion correction function which automatically detects a moving object during the synthesizing process to accommodate a wider range of scenes and subjects.</p> 
-         </figcaption> 
-        </figure> 
-        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
-         <figcaption> 
-          <p class="h4">Innovative AA filter simulator to minimize moiré</p> 
-          <p>By applying microscopic vibrations to the image sensor unit at the sub-pixel level during image exposure, the K-70's AA (anti-aliasing) filter simulator provides the same level of moiré reduction as an optical AA filter. This innovative simulator lets the user switch the AA filter effect on and off, and adjust the level of the effect.</p> 
+          <p class="h4">Fully Weather Sealed</p> 
+          <p>With 92 seals, the K-3 II boasts a fully weather and cold proof design to resist water, fog, snow, sand and dust, for top performance in extreme field conditions.</p> 
          </figcaption> 
         </figure> 
         <div class="clearfix">
          &nbsp;
         </div> 
         <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K-70-6.png" alt="" width="450px"> 
+         <img class="img-responsive" src="/images/k3ii-feature_04.jpg" alt=""> 
          <figcaption> 
-          <p class="h4">Optical viewfinder with nearly 100-percent field of view</p> 
-          <p>The K-70 incorporates a glass prism finder featuring the same optics and coatings as those used in higher-level models. With a nearly 100-percent field of view and a magnification of approximately 0.95 times, it provides a wide, bright image field for easy focusing and framing</p> 
+          <p class="h4">Pentaprism Viewfinder for 100% Field of View</p> 
+          <p>What you see is what you get with the K-3 II. Experience magnification at approximately 0.95x.</p> 
          </figcaption> 
         </figure> 
         <figure class="col-sm-6 col-xs-12 v2_c_item"> 
          <figcaption> 
-          <p class="h4">High-speed shutter to capture fast-moving subjects in crisp focus</p> 
-          <p>With a top shutter speed of 1/6000 second, the K-70 captures sharply focused images, even with fast-moving subjects. Coupled with its high-speed continuous shooting function with a top speed of approximately six images per second, making it ideal for capturing fast moving subjects at sporting events or wildlife photography.</p> 
+          <p class="h4">Fast, continuous shooting at 8.3FPS</p> 
+          <p>Never miss the perfect shot with an incredibly fast frame rate of 8.3FPS, for extreme action capture and demanding high performance shooting.</p> 
          </figcaption> 
         </figure> 
         <div class="clearfix">
@@ -887,25 +865,68 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
         </div> 
         <figure class="col-sm-6 col-xs-12 v2_c_item"> 
          <figcaption> 
-          <p class="h4">Upgraded Full HD movie recording</p> 
-          <p>The K-70 captures high-resolution, Full HD movie clips (1920 x 1080 pixels; 60i/30p frame rate) in the H.264 recording format. In combination with compatible lenses, it allows the user to use the Continuous AF (AF-C) mode* to keep accurate focus on a moving subject, or take advantage of a new aperture control function** to automatically assure a proper exposure level even in fluctuating lighting conditions during movie recording. It also provides a host of distinctive visual effects for movie production, including the 4K Interval Movie mode that connects a series of 4K-resolution still images at a fixed interval to create a single movie file, and a Star Stream mode to fade in and out the traces of stars to recorded movies. <em>* During movie recording, the Continuous AF (AF-C) mode can be used in combination with the HD PENTAX-DA 55-300mm F4.5-6.3ED PLM WR RE or smc PENTAX-DA 18-135mm F3.5-5.6ED AL[IF] DC WR lens.<br> ** During movie recording, the aperture control function is available only in combination with the HD PENTAX-DA 55-300mm F4.5-6.3ED PLM WR RE lens.</em></p> 
+          <p class="h4">SAFOX 11 27-point AF System</p> 
+          <p>The SAFOX 11 autofocus module maximizes 27 AF sensors and a vast light sensitivity range of –3EV to +18EV. This focus module includes 25 cross sensors and three AF sensors designed to detect the light flux of an F2.8 lens, making it easy to obtain pinpoint focus on the subject when using a large-aperture lens. The Expanded AF area allows for accurate focusing, even on moving subjects.</p> 
          </figcaption> 
         </figure> 
-        <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K-70-4.png" alt=""> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
          <figcaption> 
-          <p class="h4">Vari-angle LCD monitor for easy image viewing from all angles</p> 
-          <p>The vari-angle LCD monitor extends the freedom of shooting position from high angle to ground level view. The 3.0 inch, 921K dot Air Gapless LCD construction ensures good visibility of displayed images, even outdoors.</p> 
+          <p class="h4">Panning Detection</p> 
+          <p>When the SR unit detects the panning motion of the camera, it controls the SR mechanism movement to help produce the best image possible under the given conditions.</p> 
          </figcaption> 
         </figure> 
         <div class="clearfix">
          &nbsp;
         </div> 
-        <figure class="col-sm-6 col-xs-12 v2_c_item">
-         <img class="img-responsive" src="/images/K-70-5.png" alt=""> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
          <figcaption> 
-          <p class="h4">Wireless LAN connection to support smartphone operation</p> 
-          <p>The PENTAX K-70 provides a host of wireless LAN (Wi-Fi) functions to support operations using smartphones and tablets. By installing the dedicated Image Sync application, the user can remotely check the Live View image, capture still images, and adjust such camera settings as aperture, shutter speed and ISO sensitivity to the desired level through the mobile device. It is even possible to download captured images onto the mobile device, upload them social networking websites.</p> 
+          <p class="h4">Pixel Shift Resolution System</p> 
+          <p>The Pixel Shift Resolution System captures 4 images of the same scene by shifting the image sensor by a single pixel for each image, and then synthesizes them into a single composite image. The result is exceptional detail and true-to-life colour accurate images as this innovative system obtains full RGB information from every pixel. The composite process also effectively reduces image noise in high ISO settings.</p> 
+         </figcaption> 
+        </figure> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">Diffraction Correction</p> 
+          <p>Diffraction Correction helps to suppress aberrations that degrade the definition of the image, which often occurs when shooting with a larger F-stop.</p> 
+         </figcaption> 
+        </figure> 
+        <div class="clearfix">
+         &nbsp;
+        </div> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">Improved AF Tracking Performance</p> 
+          <p>The K-3 II assures the most responsive subject tracking in all PENTAX DSLRs thanks to the combination of a state-of-the-art AF algorithm and the advanced PENTAX Real-Time Scene Analysis System. Enjoy improved AF tracking performance in AF Continuous mode, while providing an extra-wide measurable luminance range (–3EV to +18EV).</p> 
+         </figcaption> 
+        </figure> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">Faster focusing at AF.S</p> 
+          <p>When used with our new PENTAX lenses*, the AF.S focusing speed on the K-3 II is even faster since the lens activation method is optimized to eliminate redundant movement at the last moment’s “fine adjustment” step. <em>*New lenses: HD PENTAX-DA 18-50mm WR RE/ HD PENTAX-D FA 150-450mm/HD PENTAX-D FA* 70-200mm</em></p> 
+         </figcaption> 
+        </figure> 
+        <div class="clearfix">
+         &nbsp;
+        </div> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">Professional H.264 video</p> 
+          <p>Enhance your video recording experience with full HD movie capture in the H.264 format (1920x1080 pixels; 60i/30p). Interval movie mode captures a series of 4K-resolution movie clips at a fixed interval.</p> 
+         </figcaption> 
+        </figure> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">Large, easy-to-view 3.2-inch LCD monitor</p> 
+          <p>The 3.2-inch high-resolution LCD monitor with approximately 1,037,000 dots (in a 3:2 aspect ratio) features a protective tempered-glass front panel for added durability. The unique air-gapless construction effectively reduces the reflection and dispersion of the light to improve visibility during outdoor shooting.</p> 
+         </figcaption> 
+        </figure> 
+        <div class="clearfix">
+         &nbsp;
+        </div> 
+        <figure class="col-sm-6 col-xs-12 v2_c_item"> 
+         <figcaption> 
+          <p class="h4">FLUCARD For PENTAX Connectivity</p> 
+          <p>Wirelessly connect with your smartphone using the FLUCARD for PENTAX. Enjoy wireless image browsing, live viewing and operate functions such as shutter release, tough operation for AF point and exposure settings.</p> 
          </figcaption> 
         </figure> 
        </section> 
@@ -919,7 +940,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
       <div class="container"> 
        <div class="img_text"> 
         <div class="c_header"> 
-         <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+         <img title="PENTAX K-3 II" alt="PENTAX K-3 II" src="/media/com_eshop/manufacturers/K-3II_logo.svg" class="img-responsive"> 
         </div> 
        </div> 
       </div> 
@@ -927,13 +948,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
        <div class="container"> 
         <div class="row"> 
          <section class="v2_text col-xs-12"> 
-          <p class="h1 bt_bottom mt10">Accessories:</p> 
+          <p class="h1 bt_bottom">Accessories:</p> 
          </section> 
          <section class="v2_acc_items"> 
           <div class="col-xs-12 col-sm-6 col-md-4"> 
            <figure> 
             <div class="categoryThumb accessories-box">
-             <a href="/index.php/accessories/flashes-22/af360fgz-ii-w-case"><img src="/media/com_eshop/products/Accessories_0037_AF360FGZ-II.png" style="max-height: 90%"> </a> 
+             <a href="/index.php/accessories/flashes-22/af360fgz-ii-w-case"><img src="/media/com_eshop/products/Accessories_0037_AF360FGZ-II.png"> </a> 
             </div> 
             <figcaption> 
              <p class="h3">AF360FGZ II (w/ case)</p> 
@@ -944,10 +965,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
           <div class="col-xs-12 col-sm-6 col-md-4"> 
            <figure> 
             <div class="categoryThumb accessories-box">
-             <a href="/index.php/accessories/batteries-chargers-22/rechargeable-li-ion-battery-d-li109"><img src="/media/com_eshop/products/Accessories_0031_D-LI109.png" style="max-height: 90%"> </a> 
+             <a href="/index.php/accessories/flashes-22/af540fgz-ii-w-case"><img src="/media/com_eshop/products/Accessories_0036_AF540FGZ-II.png"> </a> 
             </div> 
             <figcaption> 
-             <p class="h3">Rechargeable Li-Ion Battery D-LI109</p> 
+             <p class="h3">AF540FGZ II (w case)</p> 
              <p class="h5">Model No. 389261</p> 
             </figcaption> 
            </figure> 
@@ -955,10 +976,10 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
           <div class="col-xs-12 col-sm-6 col-md-4"> 
            <figure> 
             <div class="categoryThumb accessories-box">
-             <a href="/index.php/accessories/remote-controls-22/remote-control-wp"><img src="/media/com_eshop/products/Accessories_0026_Remote-Control-WP.png" style="max-height: 90%"> </a> 
+             <a href="/index.php/accessories/grips-22/battery-grip-d-bg5"><img src="/media/com_eshop/products/Accessories_0035_D-BG5.png"> </a> 
             </div> 
             <figcaption> 
-             <p class="h3">Remote Control WP</p> 
+             <p class="h3">Battery Grip D-BG5</p> 
              <p class="h5">Model No. 389362</p> 
             </figcaption> 
            </figure> 
@@ -966,11 +987,33 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
           <div class="col-xs-12 col-sm-6 col-md-4"> 
            <figure> 
             <div class="categoryThumb accessories-box">
-             <a href="/index.php/accessories/remote-controls-22/remote-control-e"><img src="/media/com_eshop/products/Accessories_0025_Remote-Control-E.png" style="max-height: 90%"> </a> 
+             <a href="/index.php/accessories/batteries-chargers-22/rechargeable-li-ion-battery-d-li90-e"><img src="/media/com_eshop/products/Accessories_0030_D-LI90-E.png"> </a> 
+            </div> 
+            <figcaption> 
+             <p class="h3">Rechargeable Li-Ion Battery D-LI90 E</p> 
+             <p class="h5">Model No. 389463</p> 
+            </figcaption> 
+           </figure> 
+          </div> 
+          <div class="col-xs-12 col-sm-6 col-md-4"> 
+           <figure> 
+            <div class="categoryThumb accessories-box">
+             <a href="/index.php/accessories/remote-controls-22/remote-control-wp"><img src="/media/com_eshop/products/Accessories_0026_Remote-Control-WP.png"> </a> 
+            </div> 
+            <figcaption> 
+             <p class="h3">Remote Control WP</p> 
+             <p class="h5">Model No. 389564</p> 
+            </figcaption> 
+           </figure> 
+          </div> 
+          <div class="col-xs-12 col-sm-6 col-md-4"> 
+           <figure> 
+            <div class="categoryThumb accessories-box">
+             <a href="/index.php/accessories/remote-controls-22/remote-control-e"><img src="/media/com_eshop/products/Accessories_0025_Remote-Control-E.png"> </a> 
             </div> 
             <figcaption> 
              <p class="h3">Remote Control E</p> 
-             <p class="h5">Model No. 389463</p> 
+             <p class="h5">Model No. 389665</p> 
             </figcaption> 
            </figure> 
           </div> 
@@ -982,61 +1025,54 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
     </div> 
     <!--TAB 3 ends here--> 
     <!--TAB 4 starts here--> 
-    <div id="tab-4" class="tab-content pb40" style="display:none;"> 
+    <div id="tab-4" class="tab-content" style="display:none;"> 
      <section class="v2_slider v2_specific"> 
       <div class="container"> 
        <div class="row"> 
         <div class="col-sm-5 col-xs-12"> 
          <div class="img_text"> 
           <div class="c_header"> 
-           <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+           <img title="PENTAX K-3 II" alt="PENTAX K-3 II" src="/media/com_eshop/manufacturers/K-3II_logo.svg" class="img-responsive"> 
           </div> 
-          <div class="c_header2"> 
-           <p>Indisputable style and performance</p> 
-          </div> 
-          <div class="c_header3"> 
-           <p>Available in Black, Silver</p> 
-          </div> 
-          <div class="product-info"> 
-           <div> 
-            <div class="product-options"> 
-             <!-- <h2>
-                                Available Options                            </h2> --> 
-             <div id="option-1333"> 
-              <div> 
-               <span class="required">*</span> 
-               <strong>Collection:</strong> 
-               <br> 
-               <select id="options1333" name="options[1333]" class="inputbox" onchange="updatePrice();"> <option value="" selected>--- Please Select ---</option> <option value="2825">Black Body Only</option> <option value="2826">Silky Silver Body Only</option> <option value="2827">Black w/ DR 18-135mm WR Kit (+$250.00)</option> <option value="2828">Silky Silver w/ DR 18-135mm WR Kit (+$250.00)</option> </select> 
+          <div class="c_pager"> 
+           <span class="abelregularfont pull-left mt15 mr15"> <span class="mt15 pull-left mr30"> 
+             <div> 
+              <div class="product-price" id="product-price"> 
+               <h2> <strong> <span class="price">$999.95</span> </strong><br> </h2> 
+              </div> 
+             </div> </span> </span> 
+           <div class="product-info"> 
+            <div> 
+             <div class="row-fluid"> 
+              <div class="product-cart clearfix"> 
+               <div class="span8 no_margin_left"> 
+                <input type="hidden" name="id" value="4"> 
+                <button id="add-to-cart_f3" class="btn btn-primary i_sr_link" type="button">Add to Cart</button> 
+               </div> 
               </div> 
              </div> 
             </div> 
            </div> 
           </div> 
-          <div class="c_pager mt10 clearfix"> 
-           <span class="mt15 pull-left mr30">$649.95</span> 
-           <div class=""> 
-            <input type="hidden" name="id" value="6"> 
-            <div class="input-append input-prepend" style="display: hidden;"> 
-             <label style="display: none;" class="btn">Qty:</label> 
-             <span class="eshop-quantity" style="display: none;"> <a class="btn btn-default button-minus spin-down" id="6" data="down">-</a> <input type="text" class="eshop-quantity-value" id="quantity_6" name="quantity" value="1"> <a class="btn btn-default button-plus spin-up" id="6" data="up">+</a> </span> 
-            </div> 
-            <button class="add-to-cart btn btn-primary i_sr_link" type="button">Add to Cart</button> 
-           </div> 
-          </div> 
+          <!--<div class="c_header2">
+							<p>Indisputable style and performance</p>
+						</div>
+						<div class="c_header3">						
+														<p>Available in Black</p>
+													</div>--> 
           <!--<div class="c_pager">
-							<a class="i_sr_link" href="http://23.238.143.211/ricoh/index.php/shop">Go To Store</a>
+                            <button id="add-to-cart" class="btn btn-primary i_sr_link" type="button">Add to Cart</button>
 						</div>--> 
          </div> 
         </div> 
-        <div class="col-sm-7 col-xs-12"> 
-         <div class="img_slider"> 
-          <img src="/media/com_eshop/products/_0006_K-70.png" class="img-responsive"> 
+        <div class="col-sm-7 col-xs-12 "> 
+         <div class="img_slider wgmg2RightImg"> 
+          <img src="/media/com_eshop/products/_0008_K-3-II.png" class="img-responsive"> 
          </div> 
         </div> 
        </div> 
       </div> 
-      <div class="v2_sp_content"> 
+      <div class="v2_sp_content pb40"> 
        <div class="container"> 
         <div class="newtable"> 
          <div class="table-responsive"> 
@@ -1048,7 +1084,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
             </tr> 
             <tr> 
              <td width="30%">Sensor</td> 
-             <td width="70%">Type: CMOS with primary colour filter Size: APS-C (23.5 x 15.6mm) Effective Pixels: 24.24 megapixels Total Pixels: 24.78 megapixels Image Stabilization (Shake Reduction): Sensor-shift Shake Reduction system AA Filter Simulator: Moiré reduction using SR u</td> 
+             <td width="70%">Type: CMOS with primary colourcolor filter, integrated Shake/Dust Reduction sensor-movement system Size: 23.5 x 15.6mm Effective Pixels: 24.35 megapixels Total Pixels: 24.71 megapixels Image Stabilization: Sensor-Shift Shake Reduction with rotational comp</td> 
             </tr> 
             <tr> 
              <td width="30%">Lens Mount</td> 
@@ -1056,25 +1092,33 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
             </tr> 
             <tr> 
              <td width="30%">Usable Lens</td> 
-             <td width="70%">PENTAX KAF4, KAF3, KAF2 (power zoom not compatible), KAF, and KA mount lenses</td> 
+             <td width="70%">PENTAX KAF3, KAF2, KAF, and KA (K mount, 35mm screw mount, 645/67 med format lenses useable w/adapter and/or restrictions) SDM function: Yes Power zoom function: Yes (power zoom only)</td> 
             </tr> 
             <tr> 
              <td width="30%">Sensitivity</td> 
-             <td width="70%">ISO AUTO/100 to 102400 (EV steps can be set to 1EV, 1/2EV, or 1/3EV)</td> 
+             <td width="70%">Auto: ISO 100-51200 (1, 1/2, 1/3 steps), Auto ISO range selectable Bulb mode: Auto ISO n/a Manual: 100-51200 (1, 1/2, 1/3 steps)</td> 
+            </tr> 
+            <tr> 
+             <td width="30%">Metering System</td> 
+             <td width="70%">TTL open aperture metering using 86K pixel RGB sensor, Multi-segment, center-weighted and spot metering</td> 
+            </tr> 
+            <tr> 
+             <td width="30%">Weight (g) </td> 
+             <td width="70%">Without battery or removable memory: 715g (1lb, 9oz) Loaded and ready: 800g (1b, 12oz) w/dedicated battery &amp; SD memory card</td> 
             </tr> 
            </tbody> 
            <tbody> 
             <tr> 
              <td width="30%">Image Sizes</td> 
-             <td width="70%">JPEG：L(24M:6000x4000), M(14M:4608x3072), S(6M:3072x2048), XS(2M:1920x1280) RAW：(24M:6000x4000)</td> 
+             <td width="70%">JPEG：L (24M：6016x4000), M (14M: 4608x3072), S (6M: 3072x2048), XS (2M: 1920x1280) RAW：L (24M：6016x4000)</td> 
             </tr> 
             <tr> 
              <td width="30%">File Formats</td> 
-             <td width="70%">Still: RAW (PEF/DNG), JPEG (Exif 2.3), DCF2.0 compliant</td> 
+             <td width="70%">RAW (PEF, DNG), JPEG (EXIF 2.30), DCF 2.0 compliant</td> 
             </tr> 
             <tr> 
              <td width="30%">Quality Level</td> 
-             <td width="70%">RAW: (14-bit) PEF, DNG JPEG: ★★★ Best, ★★ Better, ★Good, RAW + JPEG simultaneous capturing available</td> 
+             <td width="70%">RAW (14bit): PEF, DNG JPEG: ★★★ Best, ★★ Better, ★Good RAW + JPEG: simultaneous capture available</td> 
             </tr> 
             <tr> 
              <td width="30%">Color Space</td> 
@@ -1082,25 +1126,25 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
             </tr> 
             <tr> 
              <td width="30%">Storage Media</td> 
-             <td width="70%">SD, SDHC and SDXC Memory Card (conforms to USH-I standards)</td> 
+             <td width="70%">SD, SDHC and SDXC Memory Card (Conforms to USH-1 standards), Eye-Fi card, FLU card.</td> 
             </tr> 
            </tbody> 
            <tbody> 
             <tr> 
              <td width="30%">Type</td> 
-             <td width="70%">Type: TTL: phase-matching autofocus, SAFOX X, 11 point (9 cross type focus points in the center)</td> 
+             <td width="70%">SAFOX 11 TTL phase-matching - 27 point (25 cross type focus points in the center)</td> 
             </tr> 
             <tr> 
              <td width="30%">Brightness Range</td> 
-             <td width="70%">EV-3 to 18 (ISO 100/ at normal temperature)</td> 
+             <td width="70%">EV-3 to 18 (ISO 100 / at normal temperature, 25 cross sensors, 2 vertical sensors)</td> 
             </tr> 
             <tr> 
              <td width="30%">AF Modes</td> 
-             <td width="70%">Single AF (AF.S), Continuous AF (AF.C), Auto select AF (AF.A)</td> 
+             <td width="70%">AF Single (w/focus lock, focus/shutter priority selectable), AF Continuous (w/ focus/FPS priority selectable), Manual</td> 
             </tr> 
             <tr> 
              <td width="30%">Focus Point Adjustment</td> 
-             <td width="70%">Auto: 5 points, Auto: 11 points, Select, Expanded Area Select, Spot</td> 
+             <td width="70%">Spot, Select, Expanded Area (S, M, L), Zone select, Auto (27 AF points)</td> 
             </tr> 
             <tr> 
              <td width="30%">AF assist</td> 
@@ -1110,133 +1154,97 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
            <tbody> 
             <tr> 
              <td width="30%">Metering Range</td> 
-             <td width="70%">EV 0 to 22 (ISO 100, 50mm F1.4)</td> 
+             <td width="70%">EV-3 to 20 (ISO100 at 50mm F1.4)</td> 
             </tr> 
             <tr> 
              <td width="30%">Exposure Compensation</td> 
-             <td width="70%">±5EV (1/3 and 1/2 steps)</td> 
+             <td width="70%">±5EV (1/2EV steps or 1/3EV steps can be selected)</td> 
             </tr> 
             <tr> 
              <td width="30%">Exposure Bracketing</td> 
-             <td width="70%">3 frames, up to ± 3 EV in 1/3 or 1/2 steps</td> 
+             <td width="70%">2, 3, or 5 frames, up to +/- 2 EV in 1/3 or 1/2 steps)</td> 
             </tr> 
             <tr> 
              <td width="30%">AE Lock</td> 
-             <td width="70%">Can be assigned to the AF/AE-L button</td> 
+             <td width="70%">Button type (timer type: two times the meter operating time set in Custom Setting); Continuous as long as the shutter button is halfway pressed</td> 
             </tr> 
             <tr> 
              <td width="30%">Capture Modes</td> 
-             <td width="70%">Exposure Modes: Auto Picture mode (Standard, Portrait, Landscape, Macro, Moving Object, Night Scene Portrait, Sunset, Blue Sky, Forest), Scene Mode (Portrait, Landscape, Macro, Moving Object, Night Scene Portrait, Sunset, Blue Sky, Forest, Night Scene, Ni</td> 
+             <td width="70%">Mode selection: Green, Hyper Program (P), Sensitivity Priority (Sv), Shutter Priority (Tv), Aperture Priority (Av), Shutter &amp; Aperture Priority (TAv), Metered Manual, Bulb, X-Speed, USER (3 presets). Custom Image Modes: Bright, Natural, Portrait, Landscap</td> 
             </tr> 
             <tr> 
              <td width="30%">Playback Modes</td> 
-             <td width="70%">Mode Selection: Single frame, Multi-image display (6,12, 20, 35, 80 segmentation), Display magnification (up to 16x, Quick Zoom view available), Grid display (4x4 Grid, Golden Section, Scale display, Square 1, Square 2, Grid Colour: Black/White ), Rotatin</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Metering System</td> 
-             <td width="70%">TTL open aperture, 77 segmented metering, center-weighted and spot metering</td> 
+             <td width="70%">Date stamp: n/a Digital filters (capture): Extract ColourColor, Toy Camera, Retro, High Contrast, Shading, Invert ColourColor, Unicolor Bold, Bold Monochrome Data record: Folder name (standard, date), file name (standard, customizable), embed copyright</td> 
             </tr> 
            </tbody> 
            <tbody> 
             <tr> 
              <td width="30%">File Format</td> 
-             <td width="70%">MPEG-4 AVC/H.264 (MOV)</td> 
+             <td width="70%">MPEG-4 AVC/H.264（MOV) - JPEG(AVI) for internal movie record</td> 
             </tr> 
             <tr> 
              <td width="30%">Recorded Pixels</td> 
-             <td width="70%">Full HD (1920 x 1080, 60i/50i/30p/25p/24p), HD (1280 x 720, 60p/50p)</td> 
+             <td width="70%">Full HD (1920x1080, 60i/50i/30p/25p/24p) HD (1280x720, 60p/50p/30p/25p/24p)</td> 
             </tr> 
             <tr> 
              <td width="30%">Sound</td> 
-             <td width="70%">Built-in stereo microphone, external microphone input Recording sound level adjustable</td> 
+             <td width="70%">Built-in monaural microphone, external microphone (Stereo recording compatible) Recording Sound Level adjustable.</td> 
             </tr> 
             <tr> 
              <td width="30%">Recording time</td> 
-             <td width="70%">Up to 25 minutes or 4 GB; automatically stops recording if the internal temperature of the camera becomes high.</td> 
+             <td width="70%">Up to 25 minutes; automatically stops recording if the internal temperature of the camera becomes high.</td> 
             </tr> 
             <tr> 
              <td width="30%">Capture Modes</td> 
-             <td width="70%">Custom Image modes: Auto Select, Bright, Natural, Portrait, Landscape, Vibrant, Radiant, Muted, Flat, Bleach Bypass, Reversal Film, Monochrome, Cross Processing Digital filters (capture): Extract Colour, Replace Colour, Toy Camera, Retro, High Contrast, </td> 
+             <td width="70%">Custom Image modes: Bright, Natural, Portrait, Landscape, Vibrant, Radiant, Muted, Bleach Bypass, Reversal Film, Monochrome, Cross Processing Cross Processing: Random, Preset 1-3, Favorite 1-3. Digital Filter: Extract Colour, Toy Camera, Retro, High Contr</td> 
             </tr> 
             <tr> 
              <td width="30%">White Balance</td> 
-             <td width="70%">Type: TTL method using CMOS image sensor White Balance: AUTO WB, Multi Auto WB, Daylight, Shade, Cloudy, Fluorescent Light (D: Daylight Colour, N: Daylight White, W: Cool White, L: Warm White), Tungsten Light, Flash, CTE, Manual (up to 3 settings), Colour</td> 
+             <td width="70%">AUTO WB, Multi Auto WB Daylight, Shade, Cloudy, Fluorescent Light (D: Daylight ColourColor, N:Daylight White, W:Cool White, L:Warm White), Tungsten Light, Flash, CTE Manual mode(s): Yes, Manual WB (up to 3 settings), ColourColor Temperature Configuration </td> 
             </tr> 
             <tr> 
              <td width="30%">Shutter</td> 
-             <td width="70%">Type: Electronically controlled vertical-run focal plane shutter *Electronic shutter when using Pixel Shift Resolution) Shutter Speed: Auto: 1/6000 to 30 sec., Manual: 1/6000 to 30 sec. (1/3EV steps or 1/2EV steps), Bulb (10 sec to 20 min)</td> 
+             <td width="70%">Type: Electronically controlled vertical-run focal plane shutter Shutter Speed: 1/8000 to 30 sec (1/3 or 1/2 EV steps), Bulb</td> 
             </tr> 
             <tr> 
              <td width="30%">Drive Modes</td> 
-             <td width="70%">Mode selection: Still Image: Single Frame, Continuous (H, L), Self-timer (12s, 2s, Continuous), Remote Control (0s, 3s, continuous), Bracketing (2,3, or 5 frames), Mirror-up, Multi-Exposure, Interval Shooting, Interval Composite, Interval Movie Record, S</td> 
+             <td width="70%">Mode selection: Single, Continuous (H,M,L), Self-Timer (12s, 2s), Remote (0s, 3s, continuous), Exp. Bracketing (standard, timer, remote), Mirror up (standard, remote), HDR Capture (3 shots at 1EV, 2EV, or 3EV, 3 blend settings plus Auto, pixel alignment)</td> 
             </tr> 
             <tr> 
              <td width="30%">Viewfinder</td> 
-             <td width="70%">Type: Pentaprism Coverage (field of view): 100% Magnification: 0.95X (w 50mm F1.4 at infinity) Eye Relief: Approx. 20.5mm (from the view window), Approx. 22.3mm (from the center of lens) Diopter adjustment: -2.5m to 1.5m-1 Standard focusing screen: Natura</td> 
+             <td width="70%">Type: Pentaprism Coverage (field of view): 100% Magnification: 0.95X (w 50mm F1.4 at infinity) Standard focusing screen: Natural-Bright-Matte III (interchangeable) Diopter adjustment: -2.5m to 1.5m Depth of field preview: Optical (diaphragm stop-down), di</td> 
             </tr> 
             <tr> 
              <td width="30%">LCD Monitor</td> 
-             <td width="70%">Type: 3.0</td> 
+             <td width="70%">Type: 3.2” TFT colourcolor LCD with brightness/saturation/colourcolor adjustment AR coating and air-gapless glass. Resolution: 1037K dots Wide angle viewable: Yes</td> 
             </tr> 
             <tr> 
              <td width="30%">Live View</td> 
-             <td width="70%">Type: TTL method using image sensor Autofocus: Hybrid AF (image plane phase-matching and contrast detection) AF area: Face Detection, Tracking, Multiple AF points, Select, Spot Focus Peaking: On/Off Display: Field of view approx. 100%, magnified view (up </td> 
+             <td width="70%">Type: TTL by CMOS image sensor Field Of View: 100% Display Modes: Magnification (2-6X AF, 2-10X MF), Grid Overlay (4x4, Golden Ratio, Scale), Bright/Dark Indication, Histogram Autofocus: Contrast + Face Detection, Contrast Detection, Phase Difference</td> 
             </tr> 
             <tr> 
              <td width="30%">Built-in Flash</td> 
-             <td width="70%">Type: Retractable P-TTL pop-up flash Guide number: 12m (ISO 100) Coverage: 28mm wide angle (equiv 35mm) Flash modes: Auto Flash Discharge, Auto Flash + Red-Eye Reduction (Auto Picture, Scene) Flash On, Flash On + Red-Eye Reduction, Slow-speed Sync, Trail</td> 
+             <td width="70%">Type: Retractable P-TTL auto/manual pop-up flash Guide number: 13m (ISO 100) Coverage: 28mm wide angle (equiv 35mm) Flash modes: On, Redeye, Slow Sync, Slow Sync + Redeye, Trailing Curtain Sync, Wireless Flash exposure compensation: -2 to 1 EV (1/2 steps)</td> 
             </tr> 
             <tr> 
              <td width="30%">External Flash Synchronization</td> 
-             <td width="70%">Type: P-TTL, Leading Curtain Sync, Trailing Curtain Sync, Contrast-control-sync, Wireless sync*, High-speed sync*, Wireless Sync * Contrast-control-sync and High-speed sync requires two or more dedicated external flash Synchronization speed: 1/180 sec.</td> 
+             <td width="70%">Hot shoe (P-TTL), high speed sync and wireless w/PENTAX dedicated flash, X-Sync Socket Synchronization speed: 1/180 sec</td> 
             </tr> 
             <tr> 
              <td width="30%">Custom Function</td> 
-             <td width="70%">24 custom-programmable functions available</td> 
+             <td width="70%">27 custom-programmable functions available</td> 
             </tr> 
             <tr> 
              <td width="30%">Interfaces</td> 
-             <td width="70%">Ports: USB 2.0 (micro B), HDMI output(type D), Stereo mic input/cable switch input, (both 3.5mm) USB Connection: MSC/PTP</td> 
+             <td width="70%">Ports: USB3.0 (micro B), external power supply terminal, external release controller terminal, X-synch socket, HDMI output terminal (Type D) , stereo microphone input terminal, Headphone terminal Video out: HD (via HDMI), NTSC, PAL</td> 
             </tr> 
             <tr> 
              <td width="30%">Power Sources</td> 
-             <td width="70%">Power source: Rechargeable Li-Ion battery D-LI109 (included) Recordable images: approx 480 (410 w /50% flash, CIPA Playback time: Li-Ion approx 270 min* Movie recording time: 25 min max time (4GB) per clip*, thermal cutoff AC adapter available: Yes (sold </td> 
+             <td width="70%">Power source: Rechargeable Li-Ion battery D-LI90 Recordable images: Approx. 720 (approx 560. w/50% flash, CIPA)* Playback time: Approx. 370 min.* Movie recording time: Approx. 25 min (automatic overheat shutdown protection)* AC adapter available: Yes (so</td> 
             </tr> 
             <tr> 
              <td width="30%">Dimensions</td> 
-             <td width="70%">(W x H x D): 125.5 mm x 93.0 mm x 74.0 mm</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Weight</td> 
-             <td width="70%">Without battery or removable memory: 628g Loaded and ready: 688g w/dedicated battery &amp; SD memory card</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Primary Construction material(s)</td> 
-             <td width="70%">~</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Weather Resistant</td> 
-             <td width="70%">Yes</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Operating temperature</td> 
-             <td width="70%">-10°C to 40°C</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Time</td> 
-             <td width="70%">World Time: 75 cities (28 time zones)</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Language</td> 
-             <td width="70%">English, French, German, Spanish, Portuguese, Italian, Dutch, Danish, Swedish, Finnish, Polish, Czech, Hungarian, Turkish, Greek, Russian Korean, Chinese (Simplified), Chinese (Traditional), Japanese</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Wi-Fi</td> 
-             <td width="70%">Standard: IEEE 802.11b/g/n (Standard wireless LAN protocol) Center Frequency: 2412MHz～2462MHz (1ch～11ch) Authentication: WPA2, Encryption: AES</td> 
-            </tr> 
-            <tr> 
-             <td width="30%">Autofocus</td> 
-             <td width="70%">Hybrid AF (Image plane phase-matching and contrast detection) AF mode: Single AF (AF, S), Continuous AF (AF, C) *Continuous AF (AF.C) is available with the dedicated lens AF area: Multiple AF points, Select, Spot Focus Peaking: ON/OFF</td> 
+             <td width="70%">(W x H x D): 131.5 x 100 x 77.5 mm (5.16 x 3.94 x 3.04 inches)</td> 
             </tr> 
            </tbody> 
           </table> 
@@ -1254,7 +1262,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
        <div class="col-xs-12"> 
         <div class="img_text"> 
          <div class="c_header"> 
-          <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+          <img title="PENTAX K-3 II" alt="PENTAX K-3 II" src="/media/com_eshop/manufacturers/K-3II_logo.svg" class="img-responsive"> 
          </div> 
         </div> 
        </div> 
@@ -1262,83 +1270,39 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
         <div id="tabs"> 
          <!-- Slider Colors menu --> 
          <ul> 
-          <li> <a class="show-color-slider active-slider" data-color="black"> <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-70x70.png" class="img-responsive"> <span>Black</span> </a> </li> 
-          <li> <a class="show-color-slider " data-color="silver"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-70x70.png" class="img-responsive"> <span>Silver</span> </a> </li> 
+          <li> <a class="show-color-slider active-slider" data-color="black"> <img src="/media/com_eshop/products/resized/image_580786facfa6e_K-S3II_gallery_1-70x70.png" class="img-responsive"> <span>Black</span> </a> </li> 
          </ul> 
          <!-- Color Slider --> 
          <div id="black-slider" class="color-sliders "> 
           <ul data-slider="black" class="bxslider_black gallery-color-sliders"> 
            <li> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-500x500.png" class="img-responsive"> 
+             <img src="/media/com_eshop/products/resized/image_580786facfa6e_K-S3II_gallery_1-500x500.png" class="img-responsive"> 
             </div> </li> 
            <li> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_black_gallery_2-500x500.png" class="img-responsive"> 
+             <img src="/media/com_eshop/products/resized/K-S3II_gallery_2-500x500.png" class="img-responsive"> 
             </div> </li> 
            <li> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_black_gallery_3-500x500.png" class="img-responsive"> 
+             <img src="/media/com_eshop/products/resized/K-S3II_gallery_3-500x500.png" class="img-responsive"> 
             </div> </li> 
            <li> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_black_gallery_4-500x500.png" class="img-responsive"> 
+             <img src="/media/com_eshop/products/resized/K-S3II_gallery_4-500x500.png" class="img-responsive"> 
             </div> </li> 
            <li> 
             <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_black_gallery_5-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_black_gallery_6-500x500.png" class="img-responsive"> 
+             <img src="/media/com_eshop/products/resized/K-S3II_gallery_5-500x500.png" class="img-responsive"> 
             </div> </li> 
           </ul> 
           <!-- Color Slider Thumbs --> 
           <div class="bx-pager-section bx-pager_black"> 
-           <a data-slide-index="0" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/image_580678b7f1fbf_K70_black_gallery_1-70x70.png"> </a> 
-           <a data-slide-index="1" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_2-70x70.png"> </a> 
-           <a data-slide-index="2" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_3-70x70.png"> </a> 
-           <a data-slide-index="3" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_4-70x70.png"> </a> 
-           <a data-slide-index="4" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_5-70x70.png"> </a> 
-           <a data-slide-index="5" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_black_gallery_6-70x70.png"> </a> 
-          </div> 
-         </div> 
-         <!-- Color Slider --> 
-         <div id="silver-slider" class="color-sliders hidden"> 
-          <ul data-slider="silver" class="bxslider_silver gallery-color-sliders"> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_2-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_3-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_4-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_5-500x500.png" class="img-responsive"> 
-            </div> </li> 
-           <li> 
-            <div class="img_slider"> 
-             <img src="/media/com_eshop/products/resized/K70_silver_gallery_6-500x500.png" class="img-responsive"> 
-            </div> </li> 
-          </ul> 
-          <!-- Color Slider Thumbs --> 
-          <div class="bx-pager-section bx-pager_silver"> 
-           <a data-slide-index="0" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_1-70x70.png"> </a> 
-           <a data-slide-index="1" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_2-70x70.png"> </a> 
-           <a data-slide-index="2" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_3-70x70.png"> </a> 
-           <a data-slide-index="3" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_4-70x70.png"> </a> 
-           <a data-slide-index="4" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_5-70x70.png"> </a> 
-           <a data-slide-index="5" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K70_silver_gallery_6-70x70.png"> </a> 
+           <a data-slide-index="0" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/image_580786facfa6e_K-S3II_gallery_1-70x70.png"> </a> 
+           <a data-slide-index="1" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K-S3II_gallery_2-70x70.png"> </a> 
+           <a data-slide-index="2" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K-S3II_gallery_3-70x70.png"> </a> 
+           <a data-slide-index="3" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K-S3II_gallery_4-70x70.png"> </a> 
+           <a data-slide-index="4" href="javascript:void(0)"> <img src="/media/com_eshop/products/resized/K-S3II_gallery_5-70x70.png"> </a> 
           </div> 
          </div> 
         </div> 
@@ -1353,7 +1317,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
       <div class="container"> 
        <div class="img_text"> 
         <div class="c_header"> 
-         <img title="PENTAX K-70" alt="PENTAX K-70" src="/media/com_eshop/manufacturers/K-70_logo.svg" class="img-responsive"> 
+         <img title="PENTAX K-3 II" alt="PENTAX K-3 II" src="/media/com_eshop/manufacturers/K-3II_logo.svg" class="img-responsive"> 
         </div> 
        </div> 
       </div> 
@@ -1370,28 +1334,37 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
             <table class="table table-striped2"> 
              <tbody> 
               <tr> 
-               <td>K-70 Body</td> 
+               <td>K-3 II Body</td> 
               </tr> 
               <tr> 
-               <td>Battery Charger Kit K-BC109</td> 
+               <td>Li-Ion Battery D-LI90E</td> 
               </tr> 
               <tr> 
-               <td>Li-Ion Battery D-LI109</td> 
+               <td>Battery Charger Kit K-BC90U</td> 
               </tr> 
               <tr> 
                <td>Strap O-ST132</td> 
               </tr> 
               <tr> 
-               <td>Hotshoe Cover FK (on camera)</td> 
+               <td>Eyecup FS</td> 
               </tr> 
               <tr> 
-               <td>Body Mount Cover (on camera)</td> 
+               <td>Finder Cap ME</td> 
               </tr> 
               <tr> 
-               <td>Eyecup FR (on camera)</td> 
+               <td>PC Socket Cap</td> 
               </tr> 
               <tr> 
-               <td>Software CD-ROM</td> 
+               <td>Hotshoe Cover FK</td> 
+              </tr> 
+              <tr> 
+               <td>Body Mount Cover</td> 
+              </tr> 
+              <tr> 
+               <td>Focusing Screen MF-60 Frame Matte</td> 
+              </tr> 
+              <tr> 
+               <td>Software CD-ROM S-SW160</td> 
               </tr> 
              </tbody> 
             </table> 
@@ -1404,30 +1377,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oi
      </section> 
     </div> 
     <!--TAB 6 / What’s in the Box ends here--> 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-    <script src="/js/jquery.bxslider.min.js"></script> 
-    <link href="/css/jquery.bxslider.css" rel="stylesheet"> 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> 
-    <script>
-// jQuery.noConflict();
-jQuery(window).load(function(){
-	jQuery('.bxslider6').bxSlider({
-		pagerCustom: '.bx-pager6',
-		auto: true
-	});
-	jQuery('#activated-sliders').addClass('bxslider6-on');
-	//console.info(jQuery('#activated-sliders').attr('class'));
-});
-
-jQuery(function(){
- jQuery('.eshop_product').bxSlider({
-	   pagerCustom: '#eshop_product_nav',
-	   auto: false
-	  });	  
-});
-
-
-</script> 
     <script type="text/javascript">
 jQuery(document).on('click', '.tabs-menu li a', function(event) {
 	    event.preventDefault();
@@ -1443,16 +1392,17 @@ jQuery(document).on('click', '.tabs-menu li a', function(event) {
 	    // Activate Feature Slider
 	    if(tab == '#tab-2') {
 	    	//console.info('Tab 2');
-	    	if(!jQuery('#activated-sliders').hasClass('bxslider7-on')) {
+	    	var featureSliderCount = jQuery('#feature-slider-count').val();
+            if(featureSliderCount > 1 && !jQuery('#activated-sliders').hasClass('bxslider7-on')) {
 		    	jQuery('ul.bxslider7').bxSlider({
 					pagerCustom: 'div.bx-pager7',
 					auto: true
 				});
 				jQuery('ul.bxslider7').addClass('activated-slider');
 				jQuery('#activated-sliders').addClass('bxslider7-on');
-				//console.info('Slider Executed: bxslider7');
+				console.info('Slider Executed: bxslider7');
 			} else {
-				//console.info('Already Activated');
+				console.info('Already Activated');
 			}
 	    }
 
@@ -1469,16 +1419,14 @@ jQuery(document).on('click', '.tabs-menu li a', function(event) {
 					});
 					jQuery('ul.bxslider_'+firstSliderColor).addClass('activated-slider');
 					jQuery('#activated-sliders').addClass('bxslider_'+firstSliderColor+'-on');
-					//console.info('Slider Executed: bxslider_'+firstSliderColor);
+					console.info('Slider Executed: bxslider_'+firstSliderColor);
 				} else {
-					//console.info('Already Activated');
+					console.info('Already Activated');
 				}
 			}
 	    }
-
-	   
-		// var activeSliders = jQuery('#activated-sliders').attr('class');
-		// console.info(activeSliders);
+		var activeSliders = jQuery('#activated-sliders').attr('class');
+		console.info(activeSliders);
 
 });
 	
@@ -1504,8 +1452,8 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 	} else {
 		console.info('Already Activated');
 	}
-	 var activeSliders = jQuery('#activated-sliders').attr('class');
-	 console.info(activeSliders);
+	var activeSliders = jQuery('#activated-sliders').attr('class');
+	console.info(activeSliders);
 });
 </script> 
     <script type="text/javascript">
@@ -1527,23 +1475,8 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 				 perPage: 5,
 			 });
 		})
-		
 
-		// removing duplicate selects
-		//$('.product-info select').not(':first').remove();
-
-		 $(document).on('change', '.product-info select', function(){            
-            var thisName    = $(this).attr('name');
-            var thisVal     = $(this).val();
-            $('.product-info select').each(function(index, selection){
-                if(thisName == $(selection).attr('name')) {
-                    $('*[name="'+thisName+'"]').val(thisVal);
-                }
-            });
-        });
-		 
-		jQuery('.add-to-cart').bind('click', function(e) {
-			e.stopImmediatePropagation();
+		jQuery('#add-to-cart').bind('click', function() {
 			var siteUrl = 'http://us.ricoh-imaging.com/';
 			$.ajax({
 				type: 'POST',
@@ -1551,11 +1484,11 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 				data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
 				dataType: 'json',
 				beforeSend: function() {
-					$('.add-to-cart').attr('disabled', true);
-					$('.add-to-cart').after('<span class="wait">&nbsp;<img src="/components/com_eshop/assets/images/loading.gif" alt="" /></span>');
+					$('#add-to-cart').attr('disabled', true);
+					$('#add-to-cart').after('<span class="wait">&nbsp;<img src="/components/com_eshop/assets/images/loading.gif" alt="" /></span>');
 				},
 				complete: function() {
-					$('.add-to-cart').attr('disabled', false);
+					$('#add-to-cart').attr('disabled', false);
 					$('.wait').remove();
 				},
 				success: function(json) {
@@ -1601,6 +1534,126 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 				}
 			});
 		});
+		<!----tab-2--start here-->
+		jQuery('#add-to-cart_f').bind('click', function() {
+			var siteUrl = 'http://us.ricoh-imaging.com/';
+			$.ajax({
+				type: 'POST',
+				url: siteUrl + 'index.php?option=com_eshop&task=cart.add',
+				data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+				dataType: 'json',
+				beforeSend: function() {
+					$('#add-to-cart').attr('disabled', true);
+					$('#add-to-cart').after('<span class="wait">&nbsp;<img src="/components/com_eshop/assets/images/loading.gif" alt="" /></span>');
+				},
+				complete: function() {
+					$('#add-to-cart').attr('disabled', false);
+					$('.wait').remove();
+				},
+				success: function(json) {
+					$('.error').remove();
+					if (json['error']) {
+						if (json['error']['option']) {
+							for (i in json['error']['option']) {
+								$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+							}
+						}
+					}
+					if (json['success']) {
+						$.ajax({
+							url: siteUrl + 'index.php?option=com_eshop&view=cart&layout=popout&format=raw',
+							dataType: 'html',
+							success: function(html) {
+								$.colorbox({
+									overlayClose: true,
+									opacity: 0.5,
+									href: false,
+									html: html
+								});
+								$.ajax({
+									url: siteUrl + 'index.php?option=com_eshop&view=cart&layout=mini&format=raw',
+									dataType: 'html',
+									success: function(html) {
+										$('#eshop-cart').html(html);
+										$('.eshop-content').hide();
+									},
+									error: function(xhr, ajaxOptions, thrownError) {
+										alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+									}
+								});
+							},
+							error: function(xhr, ajaxOptions, thrownError) {
+								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							}
+						});
+					}
+			  	},
+			  	error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		});
+		<!---tab2 ---down here--->
+		<!----tab-3--start here-->
+		jQuery('#add-to-cart_f3').bind('click', function() {
+			var siteUrl = 'http://us.ricoh-imaging.com/';
+			$.ajax({
+				type: 'POST',
+				url: siteUrl + 'index.php?option=com_eshop&task=cart.add',
+				data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+				dataType: 'json',
+				beforeSend: function() {
+					$('#add-to-cart').attr('disabled', true);
+					$('#add-to-cart').after('<span class="wait">&nbsp;<img src="/components/com_eshop/assets/images/loading.gif" alt="" /></span>');
+				},
+				complete: function() {
+					$('#add-to-cart').attr('disabled', false);
+					$('.wait').remove();
+				},
+				success: function(json) {
+					$('.error').remove();
+					if (json['error']) {
+						if (json['error']['option']) {
+							for (i in json['error']['option']) {
+								$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+							}
+						}
+					}
+					if (json['success']) {
+						$.ajax({
+							url: siteUrl + 'index.php?option=com_eshop&view=cart&layout=popout&format=raw',
+							dataType: 'html',
+							success: function(html) {
+								$.colorbox({
+									overlayClose: true,
+									opacity: 0.5,
+									href: false,
+									html: html
+								});
+								$.ajax({
+									url: siteUrl + 'index.php?option=com_eshop&view=cart&layout=mini&format=raw',
+									dataType: 'html',
+									success: function(html) {
+										$('#eshop-cart').html(html);
+										$('.eshop-content').hide();
+									},
+									error: function(xhr, ajaxOptions, thrownError) {
+										alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+									}
+								});
+							},
+							error: function(xhr, ajaxOptions, thrownError) {
+								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+							}
+						});
+					}
+			  	},
+			  	error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		});
+		<!---tab3 ---down here--->
 		jQuery('#add-to-quote').bind('click', function() {
 			var siteUrl = 'http://us.ricoh-imaging.com/';
 			$.ajax({
@@ -1696,7 +1749,7 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 				var siteUrl = 'http://us.ricoh-imaging.com/';
 				$.ajax({
 					type: 'POST',
-					url: siteUrl + 'index.php?option=com_eshop&view=product&id=6&layout=price&format=raw',
+					url: siteUrl + 'index.php?option=com_eshop&view=product&id=4&layout=price&format=raw',
 					data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
 					dataType: 'html',
 					success: function(html) {
@@ -1717,7 +1770,7 @@ jQuery(document).on('click', '.show-color-slider', function(e){
 		
 	})
 </script> 
-    <script type="text/javascript" src="/components/com_eshop/assets/js/ajaxupload.js"></script> 
+    <script src="/templates/protostar/js/jquery.bxslider.min.js"></script> 
    </section>
   </div> 
   <!-- Footer Open --> 
@@ -1769,23 +1822,23 @@ jQuery(document).on('click', '.show-color-slider', function(e){
       E-Newsletter Sign-Up
      </div> 
      <div class="col-md-8"> 
-      <div class="acymailing_module" id="acymailing_module_formAcymailing45181"> 
-       <div class="acymailing_fulldiv" id="acymailing_fulldiv_formAcymailing45181"> 
-        <form id="formAcymailing45181" action="/index.php/cameras" onsubmit="return submitacymailingform('optin','formAcymailing45181')" method="post" name="formAcymailing45181"> 
+      <div class="acymailing_module" id="acymailing_module_formAcymailing15131"> 
+       <div class="acymailing_fulldiv" id="acymailing_fulldiv_formAcymailing15131"> 
+        <form id="formAcymailing15131" action="/index.php/cameras" onsubmit="return submitacymailingform('optin','formAcymailing15131')" method="post" name="formAcymailing15131"> 
          <div class="acymailing_module_form"> 
           <div class="acymailing_form"> 
-           <p style="width:50%; float:left;" class="onefield fieldacyemail" id="field_email_formAcymailing45181"> <span class="acyfield_email acy_requiredField"><input id="user_email_formAcymailing45181" onfocus="if(this.value == 'E-Mail') this.value = '';" onblur="if(this.value=='') this.value='E-Mail';" class="form-control bottomInput" type="text" name="user[email]" style="width:100%" value="E-Mail" title="E-Mail"></span> </p> 
-           <p class="acysubbuttons"> <input class="btn btn-danger btn-block redButton" type="submit" value="Subscribe" name="Submit" onclick="try{ return submitacymailingform('optin','formAcymailing45181'); }catch(err){alert('The form could not be submitted '+err);return false;}"> </p> 
+           <p style="width:50%; float:left;" class="onefield fieldacyemail" id="field_email_formAcymailing15131"> <span class="acyfield_email acy_requiredField"><input id="user_email_formAcymailing15131" onfocus="if(this.value == 'E-Mail') this.value = '';" onblur="if(this.value=='') this.value='E-Mail';" class="form-control bottomInput" type="text" name="user[email]" style="width:100%" value="E-Mail" title="E-Mail"></span> </p> 
+           <p class="acysubbuttons"> <input class="btn btn-danger btn-block redButton" type="submit" value="Subscribe" name="Submit" onclick="try{ return submitacymailingform('optin','formAcymailing15131'); }catch(err){alert('The form could not be submitted '+err);return false;}"> </p> 
           </div> 
           <input type="hidden" name="ajax" value="1"> 
           <input type="hidden" name="acy_source" value="module_109"> 
           <input type="hidden" name="ctrl" value="sub"> 
           <input type="hidden" name="task" value="notask"> 
-          <input type="hidden" name="redirect" value="http%3A%2F%2Fus.ricoh-imaging.com%2Findex.php%2Fcameras%2Fpentax-k-70"> 
-          <input type="hidden" name="redirectunsub" value="http%3A%2F%2Fus.ricoh-imaging.com%2Findex.php%2Fcameras%2Fpentax-k-70"> 
+          <input type="hidden" name="redirect" value="http%3A%2F%2Fus.ricoh-imaging.com%2Findex.php%2Fcameras%2Fpentax-k-3-ii"> 
+          <input type="hidden" name="redirectunsub" value="http%3A%2F%2Fus.ricoh-imaging.com%2Findex.php%2Fcameras%2Fpentax-k-3-ii"> 
           <input type="hidden" name="option" value="com_acymailing"> 
           <input type="hidden" name="hiddenlists" value="1"> 
-          <input type="hidden" name="acyformname" value="formAcymailing45181"> 
+          <input type="hidden" name="acyformname" value="formAcymailing15131"> 
          </div> 
         </form> 
        </div> 

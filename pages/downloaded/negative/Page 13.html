@@ -37,7 +37,7 @@ var subsPaymentFrequencyAttrName = "paymentFrequency";
 var subsTimePeriodAttrName = "timePeriod";
 var storeNLS = null;
 var storeUserType = "G";
-var ios = true;
+var ios = false;
 var android = false;
 var multiSessionEnabled = false;
 var inactivityTimeout = 1800000;
@@ -491,7 +491,7 @@ dojo.require("wc.analytics.CoremetricsEventListener");
 "userData": null
 }
 ],
-"baseMarketingSpotActivityDataGroup": "[_mkt:baseMarketingSpotActivityData=com.ibm.commerce.marketing.facade.datatypes.impl.MarketingSpotActivityMarketingContentDataTypeImpl@38033803 (name: MiniShopCartNoItemsContent, dataType: MarketingContent, uniqueID: 537755, campaignName: null, activityFormat: web, activityPriority: 0)]",
+"baseMarketingSpotActivityDataGroup": "[_mkt:baseMarketingSpotActivityData=com.ibm.commerce.marketing.facade.datatypes.impl.MarketingSpotActivityMarketingContentDataTypeImpl@1a431a43 (name: MiniShopCartNoItemsContent, dataType: MarketingContent, uniqueID: 537755, campaignName: null, activityFormat: web, activityPriority: 0)]",
 "behavior": "0",
 "defaultContentDisplaySequence": [
 ],
@@ -523,9 +523,9 @@ dojo.require("wc.analytics.CoremetricsEventListener");
 "schemeName": null,
 "schemeURI": null,
 "schemeVersionID": null,
-"value": "4db17290-23bf-11e7-86c3-88b658f3dd01"
+"value": "87ea9ba0-23bd-11e7-9d35-88b455933a71"
 },
-"creationDateTime": "2017-04-17T22:43:40.919Z",
+"creationDateTime": "2017-04-17T22:30:59.459Z",
 "sender": null,
 "signature": null,
 "userArea": null
@@ -2258,7 +2258,7 @@ dojo.subscribe("showResultsForPageNumber",SearchBasedNavigationDisplayJS,"showRe
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.2.gif" alt="4.2"> (5) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2295,7 +2295,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_700706" class="compare_target"> 
                   <input id="comparebox_700706" type="checkbox" name="comparebox_700706" value="700706" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('700706',this.checked)"> 
                   <label for="comparebox_700706">Compare</label> 
-                  <a id="compareButton_700706" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_700706" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_700706").checked){
@@ -2358,7 +2358,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.8.gif" alt="4.8"> (44) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2396,7 +2396,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_188357" class="compare_target"> 
                   <input id="comparebox_188357" type="checkbox" name="comparebox_188357" value="188357" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('188357',this.checked)"> 
                   <label for="comparebox_188357">Compare</label> 
-                  <a id="compareButton_188357" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_188357" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_188357").checked){
@@ -2455,7 +2455,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.6.gif" alt="4.6"> (13) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2493,7 +2493,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_426739" class="compare_target"> 
                   <input id="comparebox_426739" type="checkbox" name="comparebox_426739" value="426739" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('426739',this.checked)"> 
                   <label for="comparebox_426739">Compare</label> 
-                  <a id="compareButton_426739" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_426739" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_426739").checked){
@@ -2552,7 +2552,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.9.gif" alt="4.9"> (105) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2589,7 +2589,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_227563" class="compare_target"> 
                   <input id="comparebox_227563" type="checkbox" name="comparebox_227563" value="227563" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('227563',this.checked)"> 
                   <label for="comparebox_227563">Compare</label> 
-                  <a id="compareButton_227563" href="javascript:shoppingActionsJS.compareProducts({top_category: '', parent_category_rn: '', categoryId: '551258'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_227563" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_227563").checked){
@@ -2651,7 +2651,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.5.gif" alt="4.5"> (27) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2688,7 +2688,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_171760" class="compare_target"> 
                   <input id="comparebox_171760" type="checkbox" name="comparebox_171760" value="171760" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('171760',this.checked)"> 
                   <label for="comparebox_171760">Compare</label> 
-                  <a id="compareButton_171760" href="javascript:shoppingActionsJS.compareProducts({top_category: '', parent_category_rn: '', categoryId: '551258'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_171760" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_171760").checked){
@@ -2750,7 +2750,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.9.gif" alt="4.9"> (46) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2787,7 +2787,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_164476" class="compare_target"> 
                   <input id="comparebox_164476" type="checkbox" name="comparebox_164476" value="164476" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('164476',this.checked)"> 
                   <label for="comparebox_164476">Compare</label> 
-                  <a id="compareButton_164476" href="javascript:shoppingActionsJS.compareProducts({top_category: '', parent_category_rn: '', categoryId: '551258'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_164476" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_164476").checked){
@@ -2849,7 +2849,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.9.gif" alt="4.9"> (40) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2886,7 +2886,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_171804" class="compare_target"> 
                   <input id="comparebox_171804" type="checkbox" name="comparebox_171804" value="171804" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('171804',this.checked)"> 
                   <label for="comparebox_171804">Compare</label> 
-                  <a id="compareButton_171804" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_171804" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_171804").checked){
@@ -2948,7 +2948,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.1.gif" alt="4.1"> (15) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -2986,7 +2986,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_188354" class="compare_target"> 
                   <input id="comparebox_188354" type="checkbox" name="comparebox_188354" value="188354" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('188354',this.checked)"> 
                   <label for="comparebox_188354">Compare</label> 
-                  <a id="compareButton_188354" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_188354" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_188354").checked){
@@ -3045,7 +3045,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.6.gif" alt="4.6"> (40) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3083,7 +3083,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_263601" class="compare_target"> 
                   <input id="comparebox_263601" type="checkbox" name="comparebox_263601" value="263601" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('263601',this.checked)"> 
                   <label for="comparebox_263601">Compare</label> 
-                  <a id="compareButton_263601" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_263601" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_263601").checked){
@@ -3142,7 +3142,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.4.gif" alt="4.4"> (61) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3179,7 +3179,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_158210" class="compare_target"> 
                   <input id="comparebox_158210" type="checkbox" name="comparebox_158210" value="158210" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('158210',this.checked)"> 
                   <label for="comparebox_158210">Compare</label> 
-                  <a id="compareButton_158210" href="javascript:shoppingActionsJS.compareProducts({top_category: '', parent_category_rn: '', categoryId: '551258'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_158210" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_158210").checked){
@@ -3241,7 +3241,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.2.gif" alt="4.2"> (20) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3279,7 +3279,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_180636" class="compare_target"> 
                   <input id="comparebox_180636" type="checkbox" name="comparebox_180636" value="180636" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('180636',this.checked)"> 
                   <label for="comparebox_180636">Compare</label> 
-                  <a id="compareButton_180636" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_180636" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_180636").checked){
@@ -3338,7 +3338,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-3.9.gif" alt="3.9"> (49) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3376,7 +3376,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_180640" class="compare_target"> 
                   <input id="comparebox_180640" type="checkbox" name="comparebox_180640" value="180640" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('180640',this.checked)"> 
                   <label for="comparebox_180640">Compare</label> 
-                  <a id="compareButton_180640" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_180640" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_180640").checked){
@@ -3435,7 +3435,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.9.gif" alt="4.9"> (18) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3472,7 +3472,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_536219" class="compare_target"> 
                   <input id="comparebox_536219" type="checkbox" name="comparebox_536219" value="536219" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('536219',this.checked)"> 
                   <label for="comparebox_536219">Compare</label> 
-                  <a id="compareButton_536219" href="javascript:shoppingActionsJS.compareProducts({top_category: '', parent_category_rn: '', categoryId: '551258'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_536219" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_536219").checked){
@@ -3534,7 +3534,7 @@ dojo.topic.subscribe('DefiningAttributes_Resolved', productDisplayJS.updateProdu
                 <!--END RatingDisplay_Data.jspf --> 
                 <!--BEGIN RatingDisplay_UI.jspf --> 
                 <div class="product_rating"> 
-                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-4.6.gif" alt="4.6"> (71) 
+                 <img src="/wcsstore/CanonB2BStoreFrontAssetStore/images/rating-0.0.gif" alt="0.0"> (0) 
                 </div> 
                 <!--END RatingDisplay_UI.jspf --> 
                 <!-- BEGIN RatingDisplay.jspf --> 
@@ -3572,7 +3572,7 @@ productDisplayJS.setCommonParameters('-1','10051','10051','G','$');
                  <div id="compare_171798" class="compare_target"> 
                   <input id="comparebox_171798" type="checkbox" name="comparebox_171798" value="171798" onchange="javascript:shoppingActionsJS.addOrRemoveFromCompare('171798',this.checked)"> 
                   <label for="comparebox_171798">Compare</label> 
-                  <a id="compareButton_171798" href="javascript:shoppingActionsJS.compareProducts({top_category: '29751', parent_category_rn: '29751', categoryId: '29754'});" role="button" aria-label="Compare">Compare</a> 
+                  <a id="compareButton_171798" href="javascript:shoppingActionsJS.compareProducts();" role="button" aria-label="Compare">Compare</a> 
                  </div> 
                  <script>
 if(dojo.byId("comparebox_171798").checked){
