@@ -24,7 +24,7 @@
 	    	}
         }());
         </script> 
-  <script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4FV1VUGwEBXVdbAgQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(12),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(c){try{i("ierr",[c,s.now(),!0])}catch(u){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,s.now()])}var i=t("handle"),a=t(13),c=t("ee"),s=t("loader"),f=window.onerror,u=!1,d=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(5),t(4),"addEventListener"in window&&t(3),s.xhrWrappable&&t(6),u=!0)}c.on("fn-start",function(t,e,n){u&&(d+=1)}),c.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),c.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),c.on("internal-error",function(t){i("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(15)(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,e,n){var r=t("ee").get("raf"),o=t(15)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],5:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(15)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],6:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",c)}function i(t){y.push(t),h&&(g=-g,x.data=g)}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t(15)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var w=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,w),w.prototype=p.prototype,d.inPlace(w.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,x=document.createTextNode(g);new h(a).observe(x,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],7:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(8),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(11),h=t(10),m=window.XMLHttpRequest;a.features.xhr=!0,t(6),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<d;c++)e.addEventListener(u[c],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],8:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],9:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(12),c=t(13),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=o(l+e,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(p+"tracer",[f.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{s.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(p+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],10:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],11:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],12:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],13:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],14:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],15:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(13),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,o],c])}u(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+o:o,i,c))}function u(n,r,o){if(!s||e){var i=s;s=!0;try{t.emit(n,r,o,e)}catch(a){l([a,n,r,o])}s=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,c,i):i()}function n(n,r,o,i){if(!l.aborted||i){t&&t(n,r,o);for(var a=e(o),c=h(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[w[n]];return d&&d.push([g,n,r,a]),a}}function p(t,e){y[t]=h(t).concat(e)}function h(t){return y[t]||[]}function m(t){return d[t]=d[t]||o(n)}function v(t,e){f(t,function(t,n){e=e||"feature",w[n]=e,e in u||(u[e]=[])})}var y={},w={},g={on:p,emit:n,get:m,listeners:h,context:e,buffer:v,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var c="nr@context",s=t("gos"),f=t(12),u={},d={},l=e.exports=o();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!b++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(w,function(e,n){t[e]||(t[e]=n)}),s("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){s("mark",["domContent",a()+x.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-x.offset}var c=(new Date).getTime(),s=t("handle"),f=t(12),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,v=m&&m.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},g=m&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:c,now:a,origin:y,features:{},xhrWrappable:g};t(9),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),s("mark",["firstbyte",c],null,"api");var b=0,E=t(14)},{}]},{},["loader",2,7]);</script>
   <!--PRFInjection-->
   <!--ls:begin[head_injection]-->
   <meta content="" name="page-type">
@@ -32,28 +32,30 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
   <style>
 .pdp-bg:before
-{background: url("//cdn-7.nikon-cdn.com/Images/Background/bubbles_250.jpg") no-repeat center top,
-url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top;}
+{background: url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top;}
 </style>
   <!--ls:end[head_injection]--> 
-  <meta name="ProductSynonyms" content="AF,SB-300 AF Speedlight,Speedlight,SB 300,SB300,SB-300"> 
-  <meta name="ProductName" content="SB-300 AF Speedlight"> 
-  <meta name="ProductRatingVL" content="4.6"> 
-  <meta name="ProductImageHigh" content="/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/353_4810_SB-300_front.png"> 
-  <meta name="ProductNameSubstrings" content="S,SB,SB-,SB-3,SB-30,SB-300,A,AF,S,Sp,Spe,Spee,Speed,Speedl,Speedli,Speedlig,Speedligh,Speedlight,"> 
-  <meta name="ProductRatingCt" content="5"> 
-  <meta name="ProductNumber" content="4810"> 
-  <meta property="og:image" content="//cdn-4.nikon-cdn.com/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_front.png"> 
   <meta property="og:type" content="png"> 
-  <meta name="SearchableCommerceType" content="true"> 
-  <meta name="ProductPrice" content="$149.95"> 
-  <meta property="og:description" content="The Nikon SB-300 AF Speedlight is a compact Speedlight flash for D-SLR and hot-shoe equipped COOLPIX cameras."> 
-  <meta property="og:title" content="Nikon SB-300 AF Speedlight | Speedlight Flash for Nikon D-SLRs and Hot-Shoe Equipped COOLPIX Cameras"> 
+  <meta property="og:image" content="//cdn-4.nikon-cdn.com/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_front.png"> 
   <meta name="ProductPriceSuffix" content="NONE"> 
+  <meta name="IsAvailable" content="true"> 
+  <meta name="ProductPrice" content="$149.95"> 
+  <meta name="ProductAllNumbers" content="4810"> 
+  <meta property="og:description" content="The Nikon SB-300 AF Speedlight is a compact Speedlight flash for D-SLR and hot-shoe equipped COOLPIX cameras."> 
   <meta name="sitemap" content="Products"> 
-  <meta name="ProductIsNew" content="false"> 
+  <meta name="ProductImageHigh" content="/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/353_4810_SB-300_front.png"> 
   <meta name="ProductStatus" content="ACTIVE"> 
-  <meta name="IsAvailable" content="true">
+  <meta name="ProductNameSubstrings" content="S,SB,SB-,SB-3,SB-30,SB-300,A,AF,S,Sp,Spe,Spee,Speed,Speedl,Speedli,Speedlig,Speedligh,Speedlight,"> 
+  <meta name="ProductRatingVL" content="4.6"> 
+  <meta name="ProductNumber" content="4810"> 
+  <meta name="ProductIsNew" content="false"> 
+  <meta name="ProductRatingCt" content="5"> 
+  <meta name="ProductName" content="SB-300 AF Speedlight"> 
+  <meta name="ProductVariationNumber" content="4810"> 
+  <meta property="og:title" content="Nikon SB-300 AF Speedlight | Speedlight Flash for Nikon D-SLRs and Hot-Shoe Equipped COOLPIX Cameras"> 
+  <meta name="SearchableCommerceType" content="true"> 
+  <meta name="ProductSynonyms" content="AF,SB-300 AF Speedlight,Speedlight,SB 300,SB300,SB-300"> 
+  <meta name="ProductPriceStartingAt" content="false">
   <link href="//cdn-1.nikon-cdn.com/iwov-resources/fixed-layout/full-width.css" type="text/css" rel="stylesheet">
   <meta content="flash, external flash, hot-shoe equipped COOLPIX digital cameras, flash for Nikon D-SLRs, flash for Nikon HD-SLRs, flash photography, equipment for flash photography" name="keywords">
   <meta content="The Nikon SB-300 AF Speedlight is a compact Speedlight flash for D-SLR and hot-shoe equipped COOLPIX cameras." name="description">
@@ -79,9 +81,9 @@ url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top
 @import url("//cdn-1.nikon-cdn.com/static/fonts/MobileNavIcons/nav-icons.v1797081172.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/responsive/style-guide/global-styles.v1312769352.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/carousels/slick.v294431487.css");
-@import url("//cdn-1.nikon-cdn.com/static/css/responsive/block/global-navigation/global-navigation-responsive.v4120295537.css");
+@import url("//cdn-1.nikon-cdn.com/static/css/responsive/block/global-navigation/global-navigation-responsive.v3925059497.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/responsive/block/footer/footer-responsive.v398561123.css");
-@import url("//cdn-1.nikon-cdn.com/static/css/responsive/search/nikon-search.v2522113597.css");
+@import url("//cdn-1.nikon-cdn.com/static/css/responsive/search/nikon-search.v850547362.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/responsive/widgets/responsive-lightbox/responsive-lightbox.v760857694.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/lightbox/photoswipe/photoswipe.v2297587554.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/lightbox/photoswipe/default-skin/default-skin.v3655479618.css");
@@ -96,7 +98,7 @@ url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top
 @import url("//cdn-1.nikon-cdn.com/static/css/google/markers.v2945379070.css");
 </style><![endif]-->
   <!--[if !IE]><!--> 
-  <link href="//cdn-1.nikon-cdn.com/static/css/compressed/responsive/global-css.v596526931.css" type="text/css" rel="stylesheet" property="">
+  <link href="//cdn-1.nikon-cdn.com/static/css/compressed/responsive/global-css.v2546789824.css" type="text/css" rel="stylesheet" property="">
   <!--<![endif]--> 
   <!--end resources: static/bundle-css.config.js/global-css--> 
   <!--start resources: static/bundle-css.config.js/product-details--> 
@@ -109,11 +111,13 @@ url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top
   <!--end resources: static/bundle-css.config.js/product-details--> 
   <!--start resources: static/bundle-css.config.js/pdp-tabs--> 
   <!--[if IE]><style type="text/css">
-@import url("//cdn-1.nikon-cdn.com/static/css/responsive/pdp/pdp-tabs.v1304134207.css");
+@import url("//cdn-1.nikon-cdn.com/static/fonts/open-sans/open-sans.v182258176.css");
+@import url("//cdn-1.nikon-cdn.com/static/css/responsive/pdp/pdp-tabs.v1549786300.css");
+@import url("//cdn-1.nikon-cdn.com/static/css/responsive/pdp/pdp-custom-message.v210064437.css");
 @import url("//cdn-1.nikon-cdn.com/static/css/responsive/widgets/video-controller.v747297299.css");
 </style><![endif]-->
   <!--[if !IE]><!--> 
-  <link href="//cdn-1.nikon-cdn.com/static/css/compressed/responsive/pdp-tabs.v1681955497.css" type="text/css" rel="stylesheet" property="">
+  <link href="//cdn-1.nikon-cdn.com/static/css/compressed/responsive/pdp-tabs.v84935534.css" type="text/css" rel="stylesheet" property="">
   <!--<![endif]--> 
   <!--end resources: static/bundle-css.config.js/pdp-tabs--> 
   <!-- END CSS -->
@@ -122,13 +126,13 @@ url("//cdn-7.nikon-cdn.com/Images/Background/PDP_flashes.jpg") repeat center top
   <script type="text/javascript">
         
 // Analytics Data Layer object 
-var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","siteEvents":{"pageLoad":true,"pageComplete":false},"locale":"en_US","products":[{"id":"4810","category":"Flashes","sku":"4810","name":"SB-300 AF Speedlight","averageRating":"4.6","isAvailable":"true","isClass":"false","price":"149.95","regularPrice":"149.95","totalReviews":"5.0"}]};dataLayer.ipAddress='191.187.137.175';dataLayer.timestamp='1492475672000';
+var dataLayer = {"pageType":"product detail","locale":"en_US","products":[{"id":"4810","category":"Flashes","sku":"4810","name":"SB-300 AF Speedlight","averageRating":"4.6","isAvailable":"true","isClass":"false","price":"149.95","regularPrice":"149.95","totalReviews":"5.0"}],"siteName":"IMG","language":"en"};dataLayer.ipAddress='150.161.2.202';dataLayer.timestamp='1493913086000';
     </script>
   <script type="text/javascript" src="//nexus.ensighten.com/nikon/prod/Bootstrap.js"></script>
   <!-- END ANALYTICS -->
   <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/test_and_target/mbox.v3940248531.js"></script>
   <script src="//www.google.com/jsapi"></script>
-  <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script>
+  <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script>
   <script type="text/javascript"> var prod_types_gender={"LENSCARESSRO":"","IMGSOFT":"","PWRBKT":"","DOCKINS":"","DIGSLR":"","SLCOAPT":"","RMTTRANS":"","RMTCORD":"","CAPCOV":"","CABLAV":"","VIEWFNDR":"","WIRELESS":"","PWRAPT":"","OTHCORDS":"","LENSCASE":"","LENSFILT":"","FLSHCOUPL":"","NIKON1":"","FLSHAPT":"","STERMIC":"","FILMHOLD":"","DATAREAD":"","FLSHOTH":"","LENSCAP":"","CAMCASE":"","BATTCLPS":"","DIGCAM":"","PWRCHG":"","LENSAPT":"","LENSCLO":"","FLSHCASE":"","CABLCOMP":"","TETHERSSRO":"","LENSOTH":"","VIDEO":"","FOCSCN":"","EXTSER":"","BATTHOLD":"","LENSCONV":"","FLSHDIF":"","FLSHFILT":"","PLATESMOUNTSSRO":"","PWRCRDS":"","CASESSRO":"","FLSH":"","STRAPS":"","BATTERY":"","LENS":"","GRIPS":"","LCDMONCOV":"","RIFLESCOPERINGSSRO":"","STRAPSSRO":"","KITS":"","FLSHBKT":"","FLSHCRD":"","MANUALS":"","NIKON1FLSH":"","DVD":"","PWRPAC":"","EYEPIE":"","LENSHOOD":"","MISC":"","TRIPODADAPTORSRO":"","BATTCHCO":"","STYLUSPEN":"","LENSBEL":"","GPS":"","SPDSTAND":""} </script> 
   <!--start resources: en/ajax/static/terms.page--> 
   <!--[if IE]>
@@ -229,18 +233,18 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/product.v1058442303.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/shopping/base.v1415880672.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/shopping/plugins/cart.v340779877.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/shopping/plugins/wishlist.v594024080.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/shopping/plugins/wishlist.v1838809266.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/promos/deprecated/ecom-promos.v1528146628.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/promos/resp-promos.v639044276.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/addthis/V1/addthis.v2584777885.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/bv/V4/bvassets.v2711336825.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/bv/V4/plugins/product.v1496469632.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/bv/V4/plugins/articles.v3332035622.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/bv/V4/plugins/articles.v1588225877.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/video/mediaelement-and-player.v3978685004.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/V3/c71-text-carousel.v1164952646.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/search/nikon-search.v2280930967.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/live_search.v3628314953.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/analytics/ensighten/data-layer.v2624488112.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/analytics/ensighten/data-layer.v1612105844.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/analytics/ensighten/modules/user.v2467828212.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/analytics/ensighten/modules/search.v1983545892.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/accessible_rotator_plugin.v3574236579.js"></script>
@@ -258,12 +262,12 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/utils/brightcove-event-dispatcher.v547179828.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/widgets/browser_message.v2583650559.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/scroll_indicator.v3962523244.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/lightbox-controller.v3824750922.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/utils/lightbox-data.v111069798.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/lightbox-controller.v2083729760.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/utils/lightbox-data.v1974602547.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/photoswipe/photoswipe.v685953495.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/lightbox/photoswipe/photoswipe-ui-default.v1349554999.js"></script><![endif]-->
   <!--[if !IE]><!--> 
-  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/nikon-base.v686886828.js"></script>
+  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/nikon-base.v1510906726.js"></script>
   <!--<![endif]--> 
   <!--end resources: static/bundle-js.config.js/nikon-base--> 
   <!--start resources: static/bundle-js.config.js/product-details--> 
@@ -282,10 +286,11 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/collapse_to_tabs.v3491525181.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-tabs.v1367075737.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/video/base_controller.v3831163202.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/video/brightcove_controller.v2066294049.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/video/youtube_controller.v1770094631.js"></script><![endif]-->
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/video/brightcove_controller.v820760210.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/widgets/video/youtube_controller.v3559768843.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-custom-message.v2969944795.js"></script><![endif]-->
   <!--[if !IE]><!--> 
-  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/pdp-tabs.v3411865729.js"></script>
+  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/pdp-tabs.v4163819513.js"></script>
   <!--<![endif]--> 
   <!--end resources: static/bundle-js.config.js/pdp-tabs--> 
   <script type="text/javascript">
@@ -399,7 +404,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
        <script type="text/javascript" src="//www.nikonusa.com/en/ajax/static/terms.page"></script>
        <!--<![endif]--> 
        <!--end resources: en/ajax/static/terms.page--> 
-       <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script>
+       <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script>
        <!-- END JS -->
       </div>
       <div data-layout="base-container" class="iw_component full-width body-component" id="1425080259869"> 
@@ -461,7 +466,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
            <form class="navbar-form clearfix" role="search" method="get" action="/en/about-nikon/search.page" data-action="/en/about-nikon/search.page">
             <div class="form-group">
              <input type="hidden" name="searchCollection" value="SEARCH_ALL">
-             <input type="text" name="q" class="form-control search-text evt-search-field" placeholder="Search" data-value="Search" aria-haspopup="true" autocomplete="off" data-recommendation-enabled="true" data-suggestions-enabled="true">
+             <input type="text" name="q" class="form-control search-text evt-search-field" placeholder="Search" data-value="Search" title="Search" aria-haspopup="true" autocomplete="off" data-recommendation-enabled="true" data-suggestions-enabled="true">
             </div>
             <button type="reset" class="clear-search"><span class="sr-only">Clear Search</span><span class="ss-delete"></span></button>
             <button type="submit" class="submit-search pull-right"><span class="sr-only">Search</span><span aria-hidden="true" class="mbl-icon-search"></span></button>
@@ -483,7 +488,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                 <ol id="secondary-menu-gepa0epk" class="row secondary-level">
                  <li class="panel  col-xs-12 col-sm-2"><span class="thumbnail hidden"></span><span class="secondary-level-link collapsed" role="button" data-parent="#secondary-menu-gepa0epk" data-toggle="collapse" data-target="#third-menu-in63en13" aria-expanded="false"><span aria-hidden="false" class="sr-only expand-msg">Expand </span><span aria-hidden="true" class="sr-only collapse-msg">Collapse </span><span>Learn About Our Products</span><span class="visible-xs collapse-icons" aria-hidden="true"><span class="ss-plus"></span><span class="ss-hyphen"></span></span></span>
                   <ol id="third-menu-in63en13" class="third-level collapse" data-collapse-xs="true">
-                   <li id="igwi8a1g"><a class="third-level-link" aria-label="" href="/en/nikon-products/dslr-cameras/entry-level-dslrs.page"><span>DSLR</span></a></li>
+                   <li id="j0dygkjk"><a class="third-level-link" aria-label="" href="/en/nikon-products/dslr-cameras/overview.page"><span>DSLR</span></a></li>
                    <li id="itf8x3g5"><a class="third-level-link" aria-label="" href="/en/nikon-products/camera-lenses/overview.page"><span>NIKKOR Lenses</span></a></li>
                    <li id="iiue83rc"><a class="third-level-link" aria-label="" href="/en/nikon-products/action-cameras/index.page"><span>Action</span></a></li>
                    <li id="igwi8a2z"><a class="third-level-link" aria-label="" href="/en/nikon-products/nikon-1-cameras/everyday-cameras.page"><span>Nikon 1</span></a></li>
@@ -576,12 +581,11 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                 <ol id="secondary-menu-h402e75z" class="row secondary-level">
                  <li class="panel  col-xs-12 col-sm-2"><a href="/en/learn-and-explore/index.page" class="hidden thumbnail" aria-hidden="true"></a><span class="secondary-level-link collapsed" role="button" data-parent="#secondary-menu-h402e75z" data-toggle="collapse" data-target="#third-menu-idt9kjmr" aria-expanded="false"><span aria-hidden="false" class="sr-only expand-msg">Expand </span><span aria-hidden="true" class="sr-only collapse-msg">Collapse </span><span>Educational Articles</span><span class="visible-xs collapse-icons" aria-hidden="true"><span class="ss-plus"></span><span class="ss-hyphen"></span></span></span>
                   <ol id="third-menu-idt9kjmr" class="third-level collapse" data-collapse-xs="true">
+                   <li id="izoo8bdt"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/index.page"><span>L&amp;E Home</span></a></li>
                    <li id="iyxix3o9"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/tips-and-techniques.page"><span>Tips &amp; Techniques</span></a></li>
                    <li id="iyxix3o7"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/ideas-and-inspiration.page"><span>Ideas &amp; Inspiration</span></a></li>
                    <li id="iyxix3o5"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/products-and-innovation.page"><span>Products &amp; Innovation</span></a></li>
                    <li id="iyxix3o3"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/videos.page"><span>Videos</span></a></li>
-                   <li id="iyxix3o2"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/search.page"><span>Search Articles</span></a></li>
-                   <li id="izoo8bdt"><a class="third-level-link" aria-label="" href="/en/learn-and-explore/index.page"><span>L&amp;E Home</span></a></li>
                   </ol></li>
                  <li class="panel  col-xs-12 col-sm-2"><a href="/en/learn-and-explore/nikon-school/index.page" class="hidden thumbnail" aria-hidden="true"></a><span class="secondary-level-link collapsed" role="button" data-parent="#secondary-menu-h402e75z" data-toggle="collapse" data-target="#third-menu-idc9in53" aria-expanded="false"><span aria-hidden="false" class="sr-only expand-msg">Expand </span><span aria-hidden="true" class="sr-only collapse-msg">Collapse </span><span>Classes &amp; Workshops</span><span class="visible-xs collapse-icons" aria-hidden="true"><span class="ss-plus"></span><span class="ss-hyphen"></span></span></span>
                   <ol id="third-menu-idc9in53" class="third-level collapse" data-collapse-xs="true">
@@ -751,6 +755,9 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
              <div class="out-of-stock notification hidden">
               <span>Temporarily out of inventory</span>
              </div>
+             <div class="not-active notification hidden">
+              <span>This product is currently unavailable for individual sale.</span>
+             </div>
              <div class="no-individual-sale notification hidden">
               <span>This product is currently unavailable for individual sale.</span>
              </div>
@@ -769,7 +776,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
            </div>
           </div>
           <fieldset class="nkn-resp-hero-primary-cta-area nkn-resp-inline-v-center">
-           <samp style="display: none">default (defaultOption): false<br>active(available for sale)): true<br>available(inStock/inventory): true <br>commerce_enabled: true<br>whereToBuyEnabled (wtb.enabled): true<br>backorder: false<br>comingSoon: false<br>preorderable: false<br>refurbished: false<br>archived: false<br>secondaryCtas: <br>show_add_to_cart: true<br>(show_add_to_cart = true &amp;&amp; (true || false) )<br>show_where_to_buy: false<br>(show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true)</samp>
+           <samp style="display: none">default (defaultOption): false<br>active (available for sale): true<br>activeForIndividualSale (available for individual sale): true<br>available(in stock/has available inventory): true<br>commerceEnabled: true<br>whereToBuyEnabled (wtb.enabled): true<br>backorder: false<br>comingSoon: false<br>preorderable: false<br>refurbished: false<br>archived: false<br>aRegularProduct (a product with no variants): true<br>secondaryCtas: <br>show_add_to_cart: true<br>(show_add_to_cart = true &amp;&amp; ((true &amp;&amp; true) || false) )<br>show_where_to_buy: false<br>(show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true)<br>set_button_state: false<br>unavailable: false<br>(unavailable = true &amp;&amp; true &amp;&amp; !true)</samp>
            <a class="btn primary-cta  brow-bar-cta evt-shopping-add" href="javascript:void(0);" rel="nofollow" data-is-accessory="false" data-shopping-pid="4810" data-btn-type="atc" data-role="button"><span class="btn-label ss-cart">Add to Cart</span><span class="sr-only"><span class="base-name"> </span><span class="option-name">SB-300 AF Speedlight </span><span class="variant-name hidden"></span></span></a>
           </fieldset>
          </div>
@@ -778,7 +785,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
       </aside>
       <div class="content-wrapper bg-sm pdp-bg">
        <div class="container nkn-resp-pdp-hero-container">
-        <div class="row nkn-resp-pdp-hero" data-model="{&quot;variationPool&quot;:{&quot;4810&quot;:{&quot;product_views&quot;:[{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_front.png&quot;,&quot;altText&quot;:&quot;&quot;},{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_right.png&quot;,&quot;altText&quot;:&quot;&quot;},{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_back.png&quot;,&quot;altText&quot;:&quot;&quot;}],&quot;flags&quot;:{&quot;available&quot;:true,&quot;active&quot;:true,&quot;backorderable&quot;:false,&quot;preorderable&quot;:false,&quot;refurbished&quot;:false,&quot;archived&quot;:false,&quot;has_variants&quot;:false,&quot;has_colors&quot;:false,&quot;has_custom_variants&quot;:false,&quot;has_classes&quot;:false,&quot;has_configurations&quot;:false,&quot;is_regular&quot;:true,&quot;is_bundle&quot;:false,&quot;is_kit&quot;:false,&quot;is_class&quot;:false,&quot;is_color&quot;:false,&quot;is_custom_variant&quot;:false,&quot;is_accessory&quot;:false,&quot;wtb_enabled&quot;:true,&quot;discounted&quot;:false,&quot;is_body_only&quot;:true,&quot;has_body_only_image&quot;:false,&quot;body_only_suffix&quot;:&quot;ProductDetail.FLSH.standalone&quot;},&quot;product_call_to_action_buttons&quot;:[],&quot;price&quot;:{&quot;has_starting_at_price&quot;:false,&quot;has_installments&quot;:false,&quot;price_suffix&quot;:&quot;NONE&quot;,&quot;full_price&quot;:&quot;$149.95&quot;,&quot;discounted_price&quot;:&quot;$149.95&quot;,&quot;installment_price_details&quot;:{&quot;installment_amount&quot;:&quot;&quot;,&quot;number_of_installments&quot;:0}},&quot;includes&quot;:[{&quot;code&quot;:&quot;4810&quot;,&quot;name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;has_quick_view&quot;:true,&quot;body_only&quot;:true,&quot;cat_code&quot;:&quot;FLSH&quot;}],&quot;code&quot;:&quot;4810&quot;,&quot;upc&quot;:&quot;4810&quot;,&quot;bullets&quot;:&quot;\u003cul\u003e\n\u003cli\u003eCompact, versatile i-TTL Speedlight for D-SLRs and accessory-shoe equipped COOLPIX Cameras\u003c/li\u003e\n\u003cli\u003eThe brightness of each flash is tailored to your shot; get exactly the right lighting for your situation\u003c/li\u003e\n\u003cli\u003e120\u0026deg; tilting head lets you project light exactly where you want it\u0026mdash;bounce your flash off the ceiling or nearby walls (bounce technique) or directly at your subject to eliminate unwanted shadows (fill-flash)\u003c/li\u003e\n\u003cli\u003ePowered by readily available AAA batteries\u003c/li\u003e\n\u003c/ul\u003e&quot;,&quot;where_to_buy_URL&quot;:&quot;/en/nikon-products/wheretobuy.page?pnbr\u003d4810&quot;,&quot;product_category_code&quot;:&quot;FLSH&quot;,&quot;url&quot;:&quot;/flashes/4810/sb-300-af-speedlight.html&quot;,&quot;compare_image_url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/87_4810_SB-300_front.png&quot;,&quot;name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;supplied_accessories&quot;:&quot;\u003cul\u003e\n\u003cli\u003eSS-DC1 Polyester Soft Case\u003c/li\u003e\n\u003c/ul\u003e&quot;}},&quot;details&quot;:{&quot;curr_variant&quot;:&quot;4810&quot;,&quot;curr_variation&quot;:&quot;4810&quot;,&quot;has_colors&quot;:false,&quot;has_variants&quot;:false,&quot;has_custom_variants&quot;:false,&quot;has_classes&quot;:false,&quot;has_variations&quot;:false,&quot;active&quot;:false,&quot;available&quot;:true,&quot;compare_enabled&quot;:true,&quot;default_name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;default_code&quot;:&quot;4810&quot;,&quot;ratings_sku&quot;:&quot;4810&quot;,&quot;default&quot;:false,&quot;has_variations_with_colors&quot;:false}}">
+        <div class="row nkn-resp-pdp-hero" data-model="{&quot;variationPool&quot;:{&quot;4810&quot;:{&quot;product_views&quot;:[{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_front.png&quot;,&quot;altText&quot;:&quot;&quot;},{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_right.png&quot;,&quot;altText&quot;:&quot;&quot;},{&quot;url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/4810_SB-300_back.png&quot;,&quot;altText&quot;:&quot;&quot;}],&quot;flags&quot;:{&quot;available&quot;:true,&quot;active&quot;:true,&quot;active_individual_sale&quot;:true,&quot;backorderable&quot;:false,&quot;preorderable&quot;:false,&quot;refurbished&quot;:false,&quot;archived&quot;:false,&quot;has_variants&quot;:false,&quot;has_colors&quot;:false,&quot;has_custom_variants&quot;:false,&quot;has_classes&quot;:false,&quot;has_configurations&quot;:false,&quot;is_regular&quot;:true,&quot;is_bundle&quot;:false,&quot;is_kit&quot;:false,&quot;is_class&quot;:false,&quot;is_color&quot;:false,&quot;is_custom_variant&quot;:false,&quot;is_accessory&quot;:false,&quot;wtb_enabled&quot;:true,&quot;discounted&quot;:false,&quot;is_body_only&quot;:true,&quot;has_body_only_image&quot;:false,&quot;body_only_suffix&quot;:&quot;ProductDetail.FLSH.standalone&quot;},&quot;product_call_to_action_buttons&quot;:[],&quot;price&quot;:{&quot;has_starting_at_price&quot;:false,&quot;has_installments&quot;:false,&quot;price_suffix&quot;:&quot;NONE&quot;,&quot;full_price&quot;:&quot;$149.95&quot;,&quot;discounted_price&quot;:&quot;$149.95&quot;,&quot;installment_price_details&quot;:{&quot;installment_amount&quot;:&quot;&quot;,&quot;number_of_installments&quot;:0}},&quot;includes&quot;:[{&quot;code&quot;:&quot;4810&quot;,&quot;name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;has_quick_view&quot;:true,&quot;body_only&quot;:true,&quot;cat_code&quot;:&quot;FLSH&quot;}],&quot;code&quot;:&quot;4810&quot;,&quot;upc&quot;:&quot;4810&quot;,&quot;bullets&quot;:&quot;\u003cul\u003e\n\u003cli\u003eCompact, versatile i-TTL Speedlight for D-SLRs and accessory-shoe equipped COOLPIX Cameras\u003c/li\u003e\n\u003cli\u003eThe brightness of each flash is tailored to your shot; get exactly the right lighting for your situation\u003c/li\u003e\n\u003cli\u003e120\u0026deg; tilting head lets you project light exactly where you want it\u0026mdash;bounce your flash off the ceiling or nearby walls (bounce technique) or directly at your subject to eliminate unwanted shadows (fill-flash)\u003c/li\u003e\n\u003cli\u003ePowered by readily available AAA batteries\u003c/li\u003e\n\u003c/ul\u003e&quot;,&quot;where_to_buy_URL&quot;:&quot;/en/nikon-products/wheretobuy.page?pnbr\u003d4810&quot;,&quot;product_category_code&quot;:&quot;FLSH&quot;,&quot;url&quot;:&quot;/flashes/4810/sb-300-af-speedlight.html&quot;,&quot;compare_image_url&quot;:&quot;/e/Q5NM96RZZo-aQIVEfvQ997L3sELoYqWI-hPGdRlbrW5H26Pe2KfsiuDsT26QcJap/Views/87_4810_SB-300_front.png&quot;,&quot;name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;supplied_accessories&quot;:&quot;\u003cul\u003e\n\u003cli\u003eSS-DC1 Polyester Soft Case\u003c/li\u003e\n\u003c/ul\u003e&quot;}},&quot;details&quot;:{&quot;curr_variant&quot;:&quot;4810&quot;,&quot;curr_variation&quot;:&quot;4810&quot;,&quot;has_colors&quot;:false,&quot;has_variants&quot;:false,&quot;has_custom_variants&quot;:false,&quot;has_classes&quot;:false,&quot;has_variations&quot;:false,&quot;active&quot;:false,&quot;available&quot;:true,&quot;compare_enabled&quot;:true,&quot;default_name&quot;:&quot;SB-300 AF Speedlight&quot;,&quot;default_code&quot;:&quot;4810&quot;,&quot;ratings_sku&quot;:&quot;4810&quot;,&quot;default&quot;:false,&quot;has_variations_with_colors&quot;:false}}">
          <div class="bg-xs pdp-bg">
           <div class="col-xs-12 col-sm-7 carousel-col pdp-hero-col">
            <div class="nkn-resp-mist-zoom">
@@ -861,6 +868,9 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
              <div class="out-of-stock notification hidden">
               <span>Temporarily out of inventory</span>
              </div>
+             <div class="not-active notification hidden">
+              <span>This product is currently unavailable for individual sale.</span>
+             </div>
              <div class="no-individual-sale notification hidden">
               <span>This product is currently unavailable for individual sale.</span>
              </div>
@@ -870,7 +880,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
             </div>
            </section>
            <fieldset class="nkn-resp-hero-primary-cta-area nkn-resp-price-to-cta">
-            <samp style="display: none">default (defaultOption): false<br>active(available for sale)): true<br>available(inStock/inventory): true <br>commerce_enabled: true<br>whereToBuyEnabled (wtb.enabled): true<br>backorder: false<br>comingSoon: false<br>preorderable: false<br>refurbished: false<br>archived: false<br>secondaryCtas: <br>show_add_to_cart: true<br>(show_add_to_cart = true &amp;&amp; (true || false) )<br>show_where_to_buy: false<br>(show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true)</samp>
+            <samp style="display: none">default (defaultOption): false<br>active (available for sale): true<br>activeForIndividualSale (available for individual sale): true<br>available(in stock/has available inventory): true<br>commerceEnabled: true<br>whereToBuyEnabled (wtb.enabled): true<br>backorder: false<br>comingSoon: false<br>preorderable: false<br>refurbished: false<br>archived: false<br>aRegularProduct (a product with no variants): true<br>secondaryCtas: <br>show_add_to_cart: true<br>(show_add_to_cart = true &amp;&amp; ((true &amp;&amp; true) || false) )<br>show_where_to_buy: false<br>(show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true)<br>set_button_state: false<br>unavailable: false<br>(unavailable = true &amp;&amp; true &amp;&amp; !true)</samp>
             <a class="btn primary-cta   evt-shopping-add" href="javascript:void(0);" rel="nofollow" data-is-accessory="false" data-shopping-pid="4810" data-btn-type="atc" data-role="button"><span class="btn-label ss-cart">Add to Cart</span><span class="sr-only"><span class="base-name"> </span><span class="option-name">SB-300 AF Speedlight </span><span class="variant-name hidden"></span></span></a>
            </fieldset>
            <section class="hero-notifications">
@@ -1218,7 +1228,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                 </div> 
                </div> 
                <section class="cta"> 
-                <samp style="display: none"> default (defaultOption): false<br> active(available for sale)): true<br> available(inStock/inventory): false <br> commerce_enabled: true<br> whereToBuyEnabled (wtb.enabled): true<br> backorder: false<br> comingSoon: false<br> preorderable: false<br> refurbished: false<br> archived: false<br> secondaryCtas: <br> show_add_to_cart: true<br> (show_add_to_cart = true &amp;&amp; (true || false) )<br> show_where_to_buy: false<br> (show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true) </samp> 
+                <samp style="display: none"> default (defaultOption): false<br> active (available for sale): true<br> activeForIndividualSale (available for individual sale): true<br> available(in stock/has available inventory): false<br> commerceEnabled: true<br> whereToBuyEnabled (wtb.enabled): true<br> backorder: false<br> comingSoon: false<br> preorderable: false<br> refurbished: false<br> archived: false<br> aRegularProduct (a product with no variants): true<br> secondaryCtas: <br> show_add_to_cart: true<br> (show_add_to_cart = true &amp;&amp; ((true &amp;&amp; true) || false) )<br> show_where_to_buy: false<br> (show_where_to_buy = !true &amp;&amp; !false &amp;&amp; true)<br> set_button_state: true<br> unavailable: true<br> (unavailable = true &amp;&amp; true &amp;&amp; !false) </samp> 
                 <a class="btn primary-cta disabled  evt-shopping-add" href="javascript:void(0);" rel="nofollow" tabindex="-1" data-is-accessory="true" data-shopping-pid="3713" data-btn-type="atc" data-role="button"> <span class="btn-label ss-cart">Add to Cart</span> <span class="sr-only"> <span class="base-name"> </span> <span class="option-name"> SS-DC1 Polyester Soft Case </span> <span class="variant-name hidden"> </span> </span> </a> 
                </section> 
                <div class="secondary-notifications notifications "> 
@@ -1245,6 +1255,10 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                 <div class="out-of-stock notification
 "> 
                  <span>Temporarily out of inventory</span> 
+                </div> 
+                <div class="not-active notification
+ hidden"> 
+                 <span>This product is currently unavailable for individual sale.</span> 
                 </div> 
                 <div class="no-individual-sale notification
  hidden"> 
@@ -1298,39 +1312,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1356,39 +1337,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                    <span class="price-value">$599.95</span> 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -1422,39 +1370,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1480,39 +1395,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                    <span class="price-value">$449.95</span> 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -1546,39 +1428,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
-"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1601,46 +1450,13 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  <div class="price"> 
                   <div class="curr-price"> 
                    <span class="price-prefix reduced">Now </span> 
-                   <span class="price-value">$2,799.95</span> 
+                   <span class="price-value">$2,499.95</span> 
                   </div> 
                   <div class="orig-price"> 
                    <span class="price-prefix orig">Reg. </span> 
                    <span class="price-value">$2,999.95</span> 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -1670,39 +1486,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1729,39 +1512,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1786,39 +1536,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -1852,39 +1569,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1911,39 +1595,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -1968,39 +1619,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2030,39 +1648,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2087,39 +1672,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2148,39 +1700,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2205,39 +1724,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2266,39 +1752,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2323,39 +1776,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2384,39 +1804,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2441,39 +1828,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2502,39 +1856,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2559,39 +1880,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2620,39 +1908,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2677,39 +1932,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2738,39 +1960,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2795,39 +1984,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2856,39 +2012,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -2913,39 +2036,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -2974,39 +2064,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3031,39 +2088,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3092,39 +2116,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3149,39 +2140,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3210,39 +2168,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3267,39 +2192,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3328,39 +2220,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3385,39 +2244,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3446,39 +2272,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3503,39 +2296,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3564,39 +2324,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
             <li class="nkn-resp-tab-tile col-xs-12 col-sm-3 col-md-2"> 
@@ -3621,39 +2348,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                     Archived 
                   </div> 
                  </div> 
-                </div> 
-               </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
                 </div> 
                </div> 
               </div> 
@@ -3682,39 +2376,6 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
                  </div> 
                 </div> 
                </div> 
-               <div class="secondary-notifications notifications "> 
-                <div class="make-selection notification
- hidden" data-available-options=""> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available in different configurations. Select your option in order to see how it is available for purchase." data-original-title="" title=""> <span class="ss-help">Please make a selection</span> </a> 
-                </div> 
-                <div class="preordable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="This product is available for preorder. When stock is available and ready to ship you will be alerted. We do not accept PayPal as a method of payment for any preordered items." data-original-title="" title=""> <span class="ss-help">This product can be preordered.</span> </a> 
-                </div> 
-                <div class="backorderable notification alert-notification
- hidden"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="Backorders will not be charged until inventory becomes available. We will notify you when it is in stock. We do not accept PayPal as a method of payment for any backordered items." data-original-title="" title=""> <span class="ss-help">This product is backordered</span> </a> 
-                </div> 
-                <div class="archived notification
-"> 
-                 <a href="javascript:void(0);" role="button" class="wcag-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="manual" data-content="A discontinued product that is no longer available for new retail sales." data-original-title="" title=""> <span class="ss-help">This product has been archived</span> </a> 
-                </div> 
-                <div class="unavailable-class notification
- hidden"> 
-                 <span>You must email nikonschool@nikon.net to register</span> 
-                </div> 
-                <div class="out-of-stock notification
- hidden"> 
-                 <span>Temporarily out of inventory</span> 
-                </div> 
-                <div class="no-individual-sale notification
- hidden"> 
-                 <span>This product is currently unavailable for individual sale.</span> 
-                </div> 
-                <div class="ecom-error notification hidden"> 
-                 <span>Our apologies. We just ran out of this item.</span> 
-                </div> 
-               </div> 
               </div> 
              </article> </li> 
            </ol> 
@@ -3728,6 +2389,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
         </div> 
         <div role="tabpanel" id="tab-ProductDetail-ProductTabs-RatingsReviews" aria-labelledby="heading-tab-ProductDetail-ProductTabs-RatingsReviews" class="panel-collapse collapse"> 
          <div class="nkn-resp-container-standard nkn-resp-pdp-section"> 
+          <div class="nkn-resp-pdp-custom-message" data-product-code="4810"></div> 
           <div id="BVRRSubmissionContainer"> 
           </div> 
           <div id="BVRRContainer"> 
@@ -3754,6 +2416,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
         </div> 
         <div role="tabpanel" id="tab-ProductDetail-ProductTabs-Forum" aria-labelledby="heading-tab-ProductDetail-ProductTabs-Forum" class="panel-collapse collapse"> 
          <div class="nkn-resp-container-standard nkn-resp-pdp-section"> 
+          <div class="nkn-resp-pdp-custom-message" data-product-code="4810"></div> 
           <div id="BVQASubmissionContainer"> 
           </div> 
           <div id="BVQAContainer"> 
@@ -3824,7 +2487,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
     <!-- BEGIN CSS --> 
     <!-- END CSS -->
     <!-- BEGIN JS -->
-    <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script> 
+    <script type="text/javascript"> var cdn_config={"cdn-1":{"cdn":"cdn-1","host":"nikon-cdn.com","scheme":"//","regex":"^/(?:static|iwov-resources)/.*?\\.css$"},"cdn-2":{"cdn":"cdn-2","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.js$"},"cdn-3":{"cdn":"cdn-3","host":"nikon-cdn.com","scheme":"//","regex":"^/static/.*?\\.(?:png|jpg|jpeg|gif|bmp)$"},"cdn-4":{"cdn":"cdn-4","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:(?:PARTS/)?Assets|o|e)/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|pdf|doc|docx|xlsx|zip|js|css)(?:\\?.*)?$"},"cdn-5":{"cdn":"cdn-5","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?(?:Assets|o|e)/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov|html)(?:\\?.*)?$"},"cdn-6":{"cdn":"cdn-6","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:mp3|oog|m4a)(?:\\?.*)?$"},"cdn-7":{"cdn":"cdn-7","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/Images/.*?\\.(?:png|jpg|JPG|jpeg|gif|bmp|css|js)$"},"cdn-8":{"cdn":"cdn-8","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:IMG/|SRO/|PARTS/)?Images/.*?\\.(?:flv|swf|mp4|m4v|ogv|avi|webm|mov)$"},"cdn-9":{"cdn":"cdn-9","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2})?/Images/.*?\\.(?:mp3|oog|m4a)$"},"cdn-10":{"cdn":"cdn-10","host":"nikon-cdn.com","scheme":"//","regex":"^(?:/\\w{2}_\\w{2,3})?/(?:Assets|o|e)/.*?\\.(?:pdf|doc|docx|xlsx|zip)(?:\\?.*)?$"}} </script> 
     <!-- END JS -->
     <!--ls:begin[fragment]-->
     <div data-layout="base-container" class="iw_component header-component full-width" id="1425943450527">
@@ -3968,7 +2631,7 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
   <!--ls:end[body]-->
   <script src="//admin.brightcove.com/js/BrightcoveExperiences.js" type="text/javascript"></script>
   <script src="//admin.brightcove.com/js/api/SmartPlayerAPI.js" type="text/javascript"></script> 
-  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationID":"2152865,11061955","applicationTime":102,"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"942c8fd6a1","transactionName":"bgABY0UCX0YABkxeVldKJV5bF1RHTgNRW01cF01fQw5ddg4LTlJLTQARcV4PRVAT","agent":"","errorBeacon":"bam.nr-data.net"}</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationID":"2196955,9401515","applicationTime":40,"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"942c8fd6a1","transactionName":"bgABY0UCX0YABkxeVldKJV5bF1RHTgNRW01cF01fQw5ddg4LTlJLTQARcV4PRVAT","agent":"","errorBeacon":"bam.nr-data.net"}</script>
   <!-- BEGIN FOOTER CSS --> 
   <!--start resources: static/bundle-css.config.js/product-compare--> 
   <!--[if IE]><![endif]-->
@@ -4025,10 +2688,10 @@ var dataLayer = {"language":"en","siteName":"IMG","pageType":"product detail","s
   <!--[if IE]>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-hero-model.v2932619730.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-hero.v576536950.js"></script>
-<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-hero-info.v1884454840.js"></script>
+<script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-hero-info.v532523558.js"></script>
 <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/responsive/pdp/pdp-hero-carousel.v2213004454.js"></script><![endif]-->
   <!--[if !IE]><!--> 
-  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/product-details.v636940263.js"></script>
+  <script type="text/javascript" src="//cdn-2.nikon-cdn.com/static/js/compressed/responsive/product-details.v3775030708.js"></script>
   <!--<![endif]--> 
   <!--end resources: static/bundle-js.config.js/product-details--> 
   <!--start resources: static/bundle-js.config.js/pdp-tabs--> 
