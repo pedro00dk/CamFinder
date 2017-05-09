@@ -1,3 +1,5 @@
+package classifier;
+
 import classifier.PageAttributeExtractor;
 import classifier.PageDocumentLoader;
 import javafx.util.Pair;
