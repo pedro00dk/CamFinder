@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         CameraDomainExtractor extractor = new SonyExtractor();
         System.out.println("Extracting page content from " + extractor.domain());
-        URL url = new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6300-body-kit/specifications");
+        URL url = new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx1rm2/specifications");
         Map<String, String> content = extractor.extractWebSiteContent(Jsoup.parse(url, 0), url);
         content.entrySet()
                 .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
