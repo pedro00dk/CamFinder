@@ -9,34 +9,34 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class VisionsExtractor implements CameraDomainExtractor{
+public class SigmaPhotoExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
 
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
-        mappedAttributeNames.put("# of Megapixels", "Megapixels");
-        mappedAttributeNames.put("Optical Zoom (Cameras)", "Zoom");
-        mappedAttributeNames.put("Memory Card Type (Cameras)", "Storage Mode");
-        mappedAttributeNames.put("ISO Ratings / Sensitivity (Cameras)", "Sensitivity");
-        mappedAttributeNames.put("Shutter Speed (Cameras)", "Shutter Speed");
-
+    //    mappedAttributeNames.put("Total Pixels", "Megapixels");
+        mappedAttributeNames.put("Storage Media", "Storage Mode");
+        mappedAttributeNames.put("ISO Sensitivity", "Sensitivity");
+        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
+        mappedAttributeNames.put("Sensor Size", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
         attributeTypeActions.put("Storage Mode", Function.identity());
         attributeTypeActions.put("Sensitivity", Function.identity());
         attributeTypeActions.put("Shutter Speed", Function.identity());
+        attributeTypeActions.put("Sensor Size", Function.identity());
 
         ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
     }
@@ -44,11 +44,16 @@ public class VisionsExtractor implements CameraDomainExtractor{
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
         //get camera name
-        String name = document.getElementById("ctl00_ContentPlaceHolder1_ctrlProdDetailUC_lblProdTitle").text();
+        String name = document.getElementsByTag("h1").select(".product-title").text();
         // get price
-        String price = document.getElementById("ctl00_ContentPlaceHolder1_ctrlProdDetailUC_lblSaleprice").text();
+        String price = document.getElementsByTag("span").select(".regular-price").first().text();
+                //document.getElementById("product-price-29921").text();
 
-        // get all attributes
+
+         List<Element> a = document.getElementsByTag("tr").stream()
+                .filter(data -> data.children().size()>=2).collect(Collectors.toList());
+        //document.getElementsByTag("div").select(".std.tech-specs");
+        /* // get price
         Elements tableData = document.getElementById("productdetail-features").child(0).children();
 
         Map<String, String> attributes = IntStream.range(0, tableData.size())
@@ -61,7 +66,7 @@ public class VisionsExtractor implements CameraDomainExtractor{
                 .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
         attributes.put("name", name);
-        attributes.put("price", price);
-        return attributes;
+        attributes.put("price", price);*/
+        return null;
     }
 }
