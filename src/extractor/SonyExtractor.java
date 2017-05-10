@@ -23,9 +23,12 @@ public class SonyExtractor implements CameraDomainExtractor{
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Number of Pixels (total)", "Megapixels");
-        mappedAttributeNames.put("Digital Zoom (Still Image)", "Zoom");
+        mappedAttributeNames.put("Clear Image Zoom (Still Image)", "Zoom");
+        mappedAttributeNames.put("Clear Image Zoom", "Zoom");
+        mappedAttributeNames.put("Media", "Storage Mode");
         mappedAttributeNames.put("Compatible Recording Media", "Storage Mode");
-        mappedAttributeNames.put("ISO Sensitivity (Movie)", "Sensitivity");
+        mappedAttributeNames.put("ISO Sensitivity (Still Image)(Recommended Exposure Index)", "Sensitivity");
+        mappedAttributeNames.put("ISO Sensitivity (Recommended Exposure Index)", "Sensitivity");
         mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
         mappedAttributeNames.put("Sensor Type","Sensor Size");
 
@@ -60,7 +63,7 @@ public class SonyExtractor implements CameraDomainExtractor{
         IntStream.range(0, keys.size())
         .forEach(index -> {
             if(MAPPED_ATTRIBUTE_NAMES.containsKey(keys.get(index).text())){
-                attributes.put(keys.get(index).text(), values.get(index).text());
+                attributes.put( MAPPED_ATTRIBUTE_NAMES.get(keys.get(index).text()), values.get(index).text());
             }
         });
         
