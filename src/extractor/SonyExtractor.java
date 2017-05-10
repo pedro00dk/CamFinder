@@ -64,22 +64,26 @@ public class SonyExtractor implements CameraDomainExtractor {
         Map<String, String> attributes = IntStream.range(0, keys1.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys1.get(index).text()))
                 .mapToObj(index -> new Pair<>(keys1.get(index).text(), values1.get(index).text()))
-                .collect(Collectors.toMap(pair-> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
+                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
 
         //set attributes type 2
-        Elements keys2 = document.getElementsByTag("p").select(".l3");
-        Elements values2 = document.getElementsByTag("li").select(".p3");
+        Elements elements2 = document.select(".spec-cell-inner");
 
-        String s = keys2.get(30).text();
-        String a = values2.get(30).text();
+        Map<String, String> attributes2 = IntStream.range(0, elements2.size())
+                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(elements2.get(index).child(0).text()))
+                .mapToObj(index -> new Pair<>(elements2.get(index).child(0).text(), elements2.get(index).child(1).text()))
+                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue,(v1, v2) -> v1));
 
+        Map<String, String> finalAttributes = new HashMap<>();
+        finalAttributes.putAll(attributes);
+        finalAttributes.putAll(attributes2);
 
-        attributes.entrySet()
+        finalAttributes.entrySet()
                 .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        attributes.put("name", name);
-        attributes.put("price", price);
+        finalAttributes.put("name", name);
+        finalAttributes.put("price", price);
 
-        return attributes;
+        return finalAttributes;
     }
 }
