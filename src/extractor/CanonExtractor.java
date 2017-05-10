@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class CanonExtractorCamera implements CameraDomainExtractor {
+public class CanonExtractor implements CameraDomainExtractor {
 
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
@@ -21,17 +21,23 @@ public class CanonExtractorCamera implements CameraDomainExtractor {
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Total Pixels", "Megapixels");
-        mappedAttributeNames.put("Aspect Ratio", "Aspect Ratio");
         mappedAttributeNames.put("Digital Zoom", "Zoom");
-        mappedAttributeNames.put("Zoom Magnification", "Zoom");
+        //TODO recording media isnt working with link (eos-5ds-body-refurbished)
+        mappedAttributeNames.put("Recording Media", "Storage Mode");
+        mappedAttributeNames.put("Storage Media", "Storage Mode");
+        mappedAttributeNames.put("Sensitivity", "Sensitivity");
+        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
-        //
+
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Aspect Ratio", Function.identity());
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
-        ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
+        attributeTypeActions.put("Storage Mode", Function.identity());
+        attributeTypeActions.put("Sensitivity", Function.identity());
+        attributeTypeActions.put("Shutter Speed", Function.identity());
 
+        ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
     }
 
     @Override
@@ -58,14 +64,5 @@ public class CanonExtractorCamera implements CameraDomainExtractor {
         attributes.put("name", name);
         attributes.put("price", price);
         return attributes;
-    }
-
-    private static String canonAttributeExtractor(Element attr) {
-        return attr.childNodes().stream()
-                .filter(node -> node instanceof TextNode)
-                .map(TextNode.class::cast)
-                .map(node -> node.text().trim())
-                .filter(node -> node.length() > 0)
-                .collect(Collectors.joining());
     }
 }

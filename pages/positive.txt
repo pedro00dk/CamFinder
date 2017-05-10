@@ -42,6 +42,7 @@ https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished
 https://shop.usa.canon.com/shop/en/catalog/eos-5ds-body-refurbished
 
 #sony
+#por /specifications no fim dos links que não tem
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-5100-body-kit/specifications
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6300-body-kit/specifications
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6500-body-kit/specifications

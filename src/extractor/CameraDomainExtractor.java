@@ -28,4 +28,8 @@ public interface CameraDomainExtractor {
                 .collect(Collectors.joining(" - "));
 
     }
+
+  /*  static String formatStorage(String unformatted){
+        return unformatted.split(",")[0];
+    }*/
 }
