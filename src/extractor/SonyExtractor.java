@@ -1,7 +1,9 @@
 package extractor;
 
+import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Collector;
 import org.jsoup.select.Elements;
 
 import java.net.MalformedURLException;
@@ -15,7 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class SonyExtractor implements CameraDomainExtractor{
+public class SonyExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -30,7 +32,7 @@ public class SonyExtractor implements CameraDomainExtractor{
         mappedAttributeNames.put("ISO Sensitivity (Still Image)(Recommended Exposure Index)", "Sensitivity");
         mappedAttributeNames.put("ISO Sensitivity (Recommended Exposure Index)", "Sensitivity");
         mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
-        mappedAttributeNames.put("Sensor Type","Sensor Size");
+        mappedAttributeNames.put("Sensor Type", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
@@ -48,7 +50,6 @@ public class SonyExtractor implements CameraDomainExtractor{
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
-        // get camera name
 
         // get camera name
         String name = document.select(".primary-link.l3.breadcrumb-link").text();
@@ -56,17 +57,26 @@ public class SonyExtractor implements CameraDomainExtractor{
         String price = document.select(".price.p1").get(0).child(0).text();
 
         // get all attributes
-        Elements keys = document.getElementsByTag("dt").select(".l3");
-        Elements values = document.getElementsByTag("dd").select(".p3");
-        //set attributes
-        Map<String, String> attributes  = new HashMap<>();
-        IntStream.range(0, keys.size())
-        .forEach(index -> {
-            if(MAPPED_ATTRIBUTE_NAMES.containsKey(keys.get(index).text())){
-                attributes.put( MAPPED_ATTRIBUTE_NAMES.get(keys.get(index).text()), values.get(index).text());
-            }
-        });
-        
+        Elements keys1 = document.getElementsByTag("dt").select(".l3");
+        Elements values1 = document.getElementsByTag("dd").select(".p3");
+
+        //set attributes type 1
+        Map<String, String> attributes = IntStream.range(0, keys1.size())
+                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys1.get(index).text()))
+                .mapToObj(index -> new Pair<>(keys1.get(index).text(), values1.get(index).text()))
+                .collect(Collectors.toMap(pair-> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
+
+        //set attributes type 2
+        Elements keys2 = document.getElementsByTag("p").select(".l3");
+        Elements values2 = document.getElementsByTag("li").select(".p3");
+
+        String s = keys2.get(30).text();
+        String a = values2.get(30).text();
+
+
+        attributes.entrySet()
+                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+
         attributes.put("name", name);
         attributes.put("price", price);
 

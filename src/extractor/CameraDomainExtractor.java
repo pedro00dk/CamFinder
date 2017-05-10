@@ -18,11 +18,11 @@ public interface CameraDomainExtractor {
     Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException;
 
     static String formatMegapixel(String unformatted) {
-        return unformatted.replaceAll("( \\.|\\. |[A-Za-z ])*", "") + " megapixels";
+        return unformatted.replaceAll("( \\.|\\. |:|[A-Za-z ])*", "") + " megapixels";
     }
 
     static String formatZoom(String unformatted) {
-        String zooms = unformatted.replaceAll("( \\.|\\. |[A-Za-z ])*", "") + " ";
+        String zooms = unformatted.replaceAll("( \\.|\\. |:|[A-Za-z ])*", "") + " ";
         return Stream.of(zooms.split(" "))
                 .map(zoom -> zoom + "x")
                 .collect(Collectors.joining(" - "));

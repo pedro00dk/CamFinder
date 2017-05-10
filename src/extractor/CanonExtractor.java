@@ -22,7 +22,6 @@ public class CanonExtractor implements CameraDomainExtractor {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Total Pixels", "Megapixels");
         mappedAttributeNames.put("Digital Zoom", "Zoom");
-        //TODO recording media isnt working with link (eos-5ds-body-refurbished)
         mappedAttributeNames.put("Recording Media", "Storage Mode");
         mappedAttributeNames.put("Storage Media", "Storage Mode");
         mappedAttributeNames.put("Sensitivity", "Sensitivity");
@@ -58,6 +57,8 @@ public class CanonExtractor implements CameraDomainExtractor {
                 .filter(paragraph -> paragraph.children().size() > 1)
                 .filter(paragraph -> MAPPED_ATTRIBUTE_NAMES.containsKey(paragraph.child(0).text()))
                 .collect(Collectors.toMap(paragraph -> MAPPED_ATTRIBUTE_NAMES.get(paragraph.child(0).text()), Element::text, (v1, v2) -> v1));
+
+        //processing values
         attributes.entrySet()
                 .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
