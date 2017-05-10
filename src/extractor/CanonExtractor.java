@@ -30,7 +30,6 @@ public class CanonExtractor implements CameraDomainExtractor {
 
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
-        attributeTypeActions.put("Aspect Ratio", Function.identity());
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
         attributeTypeActions.put("Storage Mode", Function.identity());
         attributeTypeActions.put("Sensitivity", Function.identity());
