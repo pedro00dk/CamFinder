@@ -1,9 +1,9 @@
 # Positive instances
 
-# samsung
-http://www.samsung.com/uk/cameras/nx500-16-50mm-power-zoom-lens/
-http://www.samsung.com/uk/cameras/nx1-16-50mm-premium-s-lens/
-http://www.samsung.com/uk/cameras/nx-mini-9mm-lens/EV-NXF1ZZB1IGB/
+# CURRYSCO UK
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-80d-dslr-camera-black-body-only-10145630-pdt.html
+
 
 # nikon
 http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs
