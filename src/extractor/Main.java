@@ -32,9 +32,9 @@ public class Main {
         //testExtractor(new SigmaPhotoExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
 
         //RICOH
-        //testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
-        //testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
-       // testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
+        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
+        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
+        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
 
         //DPPREVIEW
        // testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xa3/specifications"));
@@ -42,7 +42,10 @@ public class Main {
        // testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/sony/compacts/sony_dscrx100m5/specifications"));
         //testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/canon/slrs/canon_eos77d/specifications"));
 
-
+        //NEW EGG
+       // testExtractor(new NewEggExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX58W3053"));
+       // testExtractor(new NewEggExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G5515538"));
+       // testExtractor(new NewEggExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB925C69394"));
 
     }
 
@@ -52,5 +55,6 @@ public class Main {
         Map<String, String> content = extractor.extractWebSiteContent(Jsoup.parse(url, 0), url);
         content.entrySet()
                 .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+        System.out.println();
     }
 }

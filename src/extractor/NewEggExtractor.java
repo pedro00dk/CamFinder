@@ -15,7 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class RicohExtractor implements  CameraDomainExtractor {
+public class NewEggExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -23,21 +23,14 @@ public class RicohExtractor implements  CameraDomainExtractor {
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Effective Pixels", "Megapixels");
-        mappedAttributeNames.put("Storage Media", "Storage Mode");
-        mappedAttributeNames.put("Removable memory","Storage Mode");
-        mappedAttributeNames.put("Sensitivity", "Sensitivity");
-        mappedAttributeNames.put("Shutter", "Shutter Speed");
-        mappedAttributeNames.put("Shutter speed", "Shutter Speed");
-        mappedAttributeNames.put("Sensor", "Sensor Size");
+        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
+        mappedAttributeNames.put("Image Sensor Size", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
         //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
-        attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
-        attributeTypeActions.put("Storage Mode", Function.identity());
-        attributeTypeActions.put("Sensitivity", Function.identity());
         attributeTypeActions.put("Shutter Speed", Function.identity());
         attributeTypeActions.put("Sensor Size", Function.identity());
 
@@ -47,14 +40,14 @@ public class RicohExtractor implements  CameraDomainExtractor {
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
         //get camera name
-        String name =   document.getElementsByAttributeValue("name","keywords").get(0).attr("content");
+        String name = document.getElementById("grpDescrip_h").text();
 
         // get price
-        String price = document.select(".mt15.pull-left.mr30").get(0).text();
+        String price = document.getElementsByAttributeValue("itemprop", "price").attr("content");
 
         // get all attributes
-        List<Element> tableData = document.getElementsByTag("tr").stream()
-                .filter(data -> data.children().size() >= 2).collect(Collectors.toList());
+        List<Element> tableData = document.getElementsByTag("dl").stream()
+                .filter(data -> data.children().size() == 2).collect(Collectors.toList());
 
         Map<String, String> attributes = IntStream.range(0, tableData.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
@@ -67,6 +60,8 @@ public class RicohExtractor implements  CameraDomainExtractor {
 
         attributes.put("name", name);
         attributes.put("price", price);
+
         return attributes;
+
     }
 }
