@@ -1,6 +1,7 @@
 package classifier;
 
 import org.jsoup.nodes.Document;
+import util.SerializationUtils;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.RandomForest;
@@ -65,15 +66,11 @@ public class Main {
 
         PageClassifier pageClassifier = new PageClassifier(Stream.of(new IBk(1), new NaiveBayes(), new RandomForest()).collect(Collectors.toList()), new ArrayList<>(negativePages.values()), new ArrayList<>(positivePages.values()), 0.65f);
 
-        System.out.println("Checking negatives");
-        for (Document negativePage : negativePages.values()) {
-            System.out.println(pageClassifier.classifyPage(negativePage, 2)); // RandomForest
-        }
-        System.out.println();
-        System.out.println("Checking positives");
-        for (Document positivePage : positivePages.values()) {
-            System.out.println(pageClassifier.classifyPage(positivePage, 2)); // RandomForest
-        }
+        Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
+        SerializationUtils.serialize(pageClassifier, pageClassifierPath);
+
+        pageClassifier = SerializationUtils.deserialize(pageClassifierPath);
+        pageClassifier.printSummary();
     }
 
     /**
