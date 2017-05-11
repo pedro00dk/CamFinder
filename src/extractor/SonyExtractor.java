@@ -72,7 +72,7 @@ public class SonyExtractor implements CameraDomainExtractor {
         Map<String, String> attributes2 = IntStream.range(0, elements2.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(elements2.get(index).child(0).text()))
                 .mapToObj(index -> new Pair<>(elements2.get(index).child(0).text(), elements2.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue,(v1, v2) -> v1));
+                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
 
         Map<String, String> finalAttributes = new HashMap<>();
         finalAttributes.putAll(attributes);

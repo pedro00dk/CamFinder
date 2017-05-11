@@ -22,14 +22,16 @@ public class SigmaPhotoExtractor implements CameraDomainExtractor {
 
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
-    //    mappedAttributeNames.put("Total Pixels", "Megapixels");
+        mappedAttributeNames.put("Number of Pixels", "Megapixels");
         mappedAttributeNames.put("Storage Media", "Storage Mode");
         mappedAttributeNames.put("ISO Sensitivity", "Sensitivity");
         mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
-        mappedAttributeNames.put("Sensor Size", "Sensor Size");
+        mappedAttributeNames.put("Shutter speed", "Shutter Speed");
+        mappedAttributeNames.put("Image Sensor Size", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
+        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
@@ -47,26 +49,22 @@ public class SigmaPhotoExtractor implements CameraDomainExtractor {
         String name = document.getElementsByTag("h1").select(".product-title").text();
         // get price
         String price = document.getElementsByTag("span").select(".regular-price").first().text();
-                //document.getElementById("product-price-29921").text();
 
-
-         List<Element> a = document.getElementsByTag("tr").stream()
-                .filter(data -> data.children().size()>=2).collect(Collectors.toList());
-        //document.getElementsByTag("div").select(".std.tech-specs");
-        /* // get price
-        Elements tableData = document.getElementById("productdetail-features").child(0).children();
+        // get all attributes
+        List<Element> tableData = document.getElementsByTag("tr").stream()
+                .filter(data -> data.children().size() >= 2).collect(Collectors.toList());
 
         Map<String, String> attributes = IntStream.range(0, tableData.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
                 .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
+                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
 
         //processing values
         attributes.entrySet()
                 .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
         attributes.put("name", name);
-        attributes.put("price", price);*/
-        return null;
+        attributes.put("price", price);
+        return attributes;
     }
 }
