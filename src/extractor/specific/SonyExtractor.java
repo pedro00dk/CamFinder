@@ -1,5 +1,6 @@
-package extractor;
+package extractor.specific;
 
+import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,8 +26,8 @@ public class SonyExtractor implements CameraDomainExtractor {
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Number of Pixels (total)", "Megapixels");
-        mappedAttributeNames.put("Clear Image Zoom (Still Image)", "Zoom");
-        mappedAttributeNames.put("Clear Image Zoom", "Zoom");
+        mappedAttributeNames.put("Optical Zoom", "Zoom");
+        mappedAttributeNames.put("Digital Zoom (Still Image)", "Zoom");
         mappedAttributeNames.put("Media", "Storage Mode");
         mappedAttributeNames.put("Compatible Recording Media", "Storage Mode");
         mappedAttributeNames.put("ISO Sensitivity (Still Image)(Recommended Exposure Index)", "Sensitivity");
@@ -49,7 +50,7 @@ public class SonyExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
+    public Map<String, String> extractWebSiteContent(Document document, URL link) {
 
         // get camera name
         String name = document.select(".primary-link.l3.breadcrumb-link").text();
@@ -64,7 +65,7 @@ public class SonyExtractor implements CameraDomainExtractor {
         Map<String, String> attributes = IntStream.range(0, keys1.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys1.get(index).text()))
                 .mapToObj(index -> new Pair<>(keys1.get(index).text(), values1.get(index).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
+                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
 
         //set attributes type 2
         Elements elements2 = document.select(".spec-cell-inner");

@@ -1,65 +1,63 @@
-package extractor;
+package extractor.specific;
 
-import javafx.util.Pair;
+import extractor.CameraDomainExtractor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.jsoup.nodes.TextNode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class RicohExtractor implements  CameraDomainExtractor {
+public class CanonExtractor implements CameraDomainExtractor {
+
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
 
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
-        mappedAttributeNames.put("Effective Pixels", "Megapixels");
+        mappedAttributeNames.put("Total Pixels", "Megapixels");
+        mappedAttributeNames.put("Digital Zoom", "Zoom");
+        mappedAttributeNames.put("Recording Media", "Storage Mode");
         mappedAttributeNames.put("Storage Media", "Storage Mode");
-        mappedAttributeNames.put("Removable memory","Storage Mode");
         mappedAttributeNames.put("Sensitivity", "Sensitivity");
-        mappedAttributeNames.put("Shutter", "Shutter Speed");
-        mappedAttributeNames.put("Shutter speed", "Shutter Speed");
-        mappedAttributeNames.put("Sensor", "Sensor Size");
-
+        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
+        mappedAttributeNames.put("Shutter Speeds", "Shutter Speed");
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
         attributeTypeActions.put("Storage Mode", Function.identity());
         attributeTypeActions.put("Sensitivity", Function.identity());
         attributeTypeActions.put("Shutter Speed", Function.identity());
-        attributeTypeActions.put("Sensor Size", Function.identity());
 
         ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
-        //get camera name
-        String name =   document.getElementsByAttributeValue("name","keywords").get(0).attr("content");
+    public Map<String, String> extractWebSiteContent(Document document, URL link) {
+
+        // get camera name
+        String name = document.getElementsByAttributeValueContaining("itemprop", "name").stream()
+                .filter(element -> element.tag().getName().equals("span"))
+                .findFirst()
+                .orElse(null)
+                .text();
 
         // get price
-        String price = document.select(".mt15.pull-left.mr30").get(0).text();
+        String price = document.select(".price.final_price").text();
 
         // get all attributes
-        List<Element> tableData = document.getElementsByTag("tr").stream()
-                .filter(data -> data.children().size() >= 2).collect(Collectors.toList());
-
-        Map<String, String> attributes = IntStream.range(0, tableData.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
-                .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
+        Map<String, String> attributes = document.select(".content_container.service_and_support p").stream()
+                .filter(paragraph -> paragraph.children().size() > 1)
+                .filter(paragraph -> MAPPED_ATTRIBUTE_NAMES.containsKey(paragraph.child(0).text()))
+                .collect(Collectors.toMap(paragraph -> MAPPED_ATTRIBUTE_NAMES.get(paragraph.child(0).text()), Element::text, (v1, v2) -> v1));
 
         //processing values
         attributes.entrySet()

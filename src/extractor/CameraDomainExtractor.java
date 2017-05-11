@@ -15,7 +15,7 @@ public interface CameraDomainExtractor {
         return getClass().getSimpleName().replace("Extractor", "");
     }
 
-    Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException;
+    Map<String, String> extractWebSiteContent(Document document, URL link);
 
     static String formatMegapixel(String unformatted) {
         return unformatted.replaceAll("( \\.|\\. |:|[A-Za-z ])*", "") + " megapixels";

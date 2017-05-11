@@ -1,5 +1,6 @@
-package extractor;
+package extractor.specific;
 
+import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,7 +16,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class NewEggExtractor implements CameraDomainExtractor {
+public class RicohExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -23,14 +24,21 @@ public class NewEggExtractor implements CameraDomainExtractor {
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
         mappedAttributeNames.put("Effective Pixels", "Megapixels");
-        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
-        mappedAttributeNames.put("Image Sensor Size", "Sensor Size");
+        mappedAttributeNames.put("Storage Media", "Storage Mode");
+        mappedAttributeNames.put("Removable memory", "Storage Mode");
+        mappedAttributeNames.put("Sensitivity", "Sensitivity");
+        mappedAttributeNames.put("Shutter", "Shutter Speed");
+        mappedAttributeNames.put("Shutter speed", "Shutter Speed");
+        mappedAttributeNames.put("Sensor", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
         //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
+        attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
+        attributeTypeActions.put("Storage Mode", Function.identity());
+        attributeTypeActions.put("Sensitivity", Function.identity());
         attributeTypeActions.put("Shutter Speed", Function.identity());
         attributeTypeActions.put("Sensor Size", Function.identity());
 
@@ -38,16 +46,16 @@ public class NewEggExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
+    public Map<String, String> extractWebSiteContent(Document document, URL link) {
         //get camera name
-        String name = document.getElementById("grpDescrip_h").text();
+        String name = document.getElementsByAttributeValue("name", "keywords").get(0).attr("content");
 
         // get price
-        String price = document.getElementsByAttributeValue("itemprop", "price").attr("content");
+        String price = document.select(".mt15.pull-left.mr30").get(0).text();
 
         // get all attributes
-        List<Element> tableData = document.getElementsByTag("dl").stream()
-                .filter(data -> data.children().size() == 2).collect(Collectors.toList());
+        List<Element> tableData = document.getElementsByTag("tr").stream()
+                .filter(data -> data.children().size() >= 2).collect(Collectors.toList());
 
         Map<String, String> attributes = IntStream.range(0, tableData.size())
                 .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
@@ -60,8 +68,6 @@ public class NewEggExtractor implements CameraDomainExtractor {
 
         attributes.put("name", name);
         attributes.put("price", price);
-
         return attributes;
-
     }
 }

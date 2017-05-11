@@ -1,5 +1,6 @@
-package extractor;
+package extractor.specific;
 
+import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,7 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class VisionsExtractor implements CameraDomainExtractor{
+public class VisionsExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -42,7 +43,7 @@ public class VisionsExtractor implements CameraDomainExtractor{
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
+    public Map<String, String> extractWebSiteContent(Document document, URL link) {
         //get camera name
         String name = document.getElementById("ctl00_ContentPlaceHolder1_ctrlProdDetailUC_lblProdTitle").text();
         // get price

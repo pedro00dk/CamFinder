@@ -1,5 +1,6 @@
 package extractor;
 
+import extractor.specific.*;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -11,10 +12,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
 //        //CANON
 //        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
+//        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-80d-body-refurbished"));
+//        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished"));
 //
 //        //SONY
 //        testExtractor(new SonyExtractor(), new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-5100-body-kit/specifications"));
 //        testExtractor(new SonyExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500/specifications"));
+//        testExtractor(new SonyExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx1rm2/specifications"));
 //
 //        //NIKON
 //        testExtractor(new NikonExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5500.html#tab-ProductDetail-ProductTabs-TechSpecs"));
@@ -51,7 +55,7 @@ public class Main {
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html"));
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-80d-dslr-camera-black-body-only-10145630-pdt.html"));
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d7200-dslr-camera-black-body-only-10124382-pdt.html"));
-
+//          testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
     }
 
 
