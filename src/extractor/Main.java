@@ -36,6 +36,14 @@ public class Main {
         //testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
        // testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
 
+        //DPPREVIEW
+       // testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xa3/specifications"));
+        //testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/canon/slrs/canon_eosm6/specifications"));
+       // testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/sony/compacts/sony_dscrx100m5/specifications"));
+        //testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/canon/slrs/canon_eos77d/specifications"));
+
+
+
     }
 
 
