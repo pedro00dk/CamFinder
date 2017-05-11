@@ -31,6 +31,11 @@ public class Main {
         //testExtractor(new SigmaPhotoExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp1-quattro-compact-digital-camera"));
         //testExtractor(new SigmaPhotoExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
 
+        //RICOH
+        //testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
+        //testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
+       // testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
+
     }
 
 
@@ -41,18 +46,3 @@ public class Main {
                 .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

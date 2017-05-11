@@ -15,19 +15,20 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class SigmaPhotoExtractor implements CameraDomainExtractor {
+public class RicohExtractor implements  CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
 
     static {
         Map<String, String> mappedAttributeNames = new HashMap<>();
-        mappedAttributeNames.put("Number of Pixels", "Megapixels");
+        mappedAttributeNames.put("Effective Pixels", "Megapixels");
         mappedAttributeNames.put("Storage Media", "Storage Mode");
-        mappedAttributeNames.put("ISO Sensitivity", "Sensitivity");
-        mappedAttributeNames.put("Shutter Speed", "Shutter Speed");
+        mappedAttributeNames.put("Removable memory","Storage Mode");
+        mappedAttributeNames.put("Sensitivity", "Sensitivity");
+        mappedAttributeNames.put("Shutter", "Shutter Speed");
         mappedAttributeNames.put("Shutter speed", "Shutter Speed");
-        mappedAttributeNames.put("Image Sensor Size", "Sensor Size");
+        mappedAttributeNames.put("Sensor", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
@@ -46,9 +47,10 @@ public class SigmaPhotoExtractor implements CameraDomainExtractor {
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) throws MalformedURLException {
         //get camera name
-        String name = document.getElementsByTag("h1").select(".product-title").text();
+        String name =   document.getElementsByAttributeValue("name","keywords").get(0).attr("content");
+
         // get price
-        String price = document.getElementsByTag("span").select(".regular-price").first().text();
+        String price = document.select(".mt15.pull-left.mr30").get(0).text();//.first().text();
 
         // get all attributes
         List<Element> tableData = document.getElementsByTag("tr").stream()
