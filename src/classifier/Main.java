@@ -64,8 +64,16 @@ public class Main {
         }
 
         PageClassifier pageClassifier = new PageClassifier(Stream.of(new IBk(1), new NaiveBayes(), new RandomForest()).collect(Collectors.toList()), new ArrayList<>(negativePages.values()), new ArrayList<>(positivePages.values()), 0.65f);
-        pageClassifier.trainClassifiers(true);
-        pageClassifier.printSummary();
+
+        System.out.println("Checking negatives");
+        for (Document negativePage : negativePages.values()) {
+            System.out.println(pageClassifier.classifyPage(negativePage, 2)); // RandomForest
+        }
+        System.out.println();
+        System.out.println("Checking positives");
+        for (Document positivePage : positivePages.values()) {
+            System.out.println(pageClassifier.classifyPage(positivePage, 2)); // RandomForest
+        }
     }
 
     /**

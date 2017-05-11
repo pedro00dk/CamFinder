@@ -8,8 +8,10 @@ import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -17,17 +19,12 @@ import java.util.stream.Stream;
  *
  * @author Pedro Henrique
  */
-public class PageClassifier {
+public class PageClassifier implements Serializable {
 
     /**
      * The classifiers to train.
      */
     private List<Classifier> classifiers;
-
-    /**
-     * Indicates if the machines was trained.
-     */
-    private boolean trained;
 
     /**
      * The built attribute list based on the received pages
@@ -60,6 +57,11 @@ public class PageClassifier {
     public static final String POSITIVE = "p";
 
     /**
+     * The list of classes.
+     */
+    public static final List<String> CLASSES = Collections.unmodifiableList(Stream.of(NEGATIVE, POSITIVE).collect(Collectors.toList()));
+
+    /**
      * Initializes the page classifier with the received parameters.
      *
      * @param classifiers   the classifiers to train
@@ -70,7 +72,6 @@ public class PageClassifier {
     public PageClassifier(List<Classifier> classifiers, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
 
         this.classifiers = classifiers;
-        trained = false;
 
         List<Map<String, Integer>> negativePagesStem = negativePages.stream()
                 .map(page -> PageUtils.collectDocumentWordsFrequency(page, true))
@@ -96,6 +97,9 @@ public class PageClassifier {
         instances.randomize(new Random());
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
+
+        trainClassifiers(true);
+        printSummary();
     }
 
     /**
@@ -117,7 +121,7 @@ public class PageClassifier {
                 .collect(Collectors.toList());
 
         // Adding class attribute
-        Attribute classAttribute = new Attribute("--CLASS--", Stream.of(PageClassifier.POSITIVE, PageClassifier.NEGATIVE).collect(Collectors.toList()));
+        Attribute classAttribute = new Attribute("--CLASS--", CLASSES);
         attributes.add(classAttribute);
 
         return attributes;
@@ -148,7 +152,12 @@ public class PageClassifier {
                         .mapToDouble(attribute -> pageStem.getOrDefault(attribute.name(), 0))
                         .toArray()
         );
-        instance.setValue(instances.classAttribute(), clazz);
+        instance.setDataset(instances);
+        if (clazz != null) {
+            instance.setClassValue(clazz);
+        } else {
+            instance.setClassMissing();
+        }
         return instance;
     }
 
@@ -157,36 +166,49 @@ public class PageClassifier {
      *
      * @param parallel if should train in parallel
      */
-    public void trainClassifiers(boolean parallel) {
+    private void trainClassifiers(boolean parallel) {
         (parallel ? classifiers.stream().sequential() : classifiers.stream().parallel())
                 .forEach(classifier -> {
                     try {
+                        System.out.println("Training classifier " + classifier.getClass().getSimpleName());
                         classifier.buildClassifier(trainInstances);
+                        System.out.println("Classifier " + classifier.getClass().getSimpleName() + " finished");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 });
-        trained = true;
+        System.out.println();
     }
 
     /**
-     * Print the summary of all trained machines. If the classifiers was not trained throws a
-     * {@link IllegalStateException}.
+     * Print the summary of all trained machines.
      */
     public void printSummary() {
-        if (!trained) {
-            throw new IllegalStateException("The machines was not trained.");
-        }
-        classifiers.stream()
-                .forEach(classifier -> {
+        IntStream.range(0, classifiers.size())
+                .forEach(index -> {
                     try {
                         Evaluation evaluation = new Evaluation(trainInstances);
-                        evaluation.evaluateModel(classifier, testInstances);
-                        System.out.println(evaluation.toSummaryString(classifier.getClass().getSimpleName(), true));
+                        evaluation.evaluateModel(classifiers.get(index), testInstances);
+                        System.out.println("Classifier index -> " + index);
+                        System.out.println(evaluation.toSummaryString(classifiers.get(index).getClass().getSimpleName(), true));
                         System.out.println();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 });
+    }
+
+    /**
+     * Classifies the received page and returns the class. This method can not be run by multiple
+     * threads because it can remove instances being classified by other threads.
+     *
+     * @param page            the page to classify
+     * @param classifierIndex the classifier to be used
+     * @return the page class
+     * @throws Exception if some error happens with the classifier.
+     */
+    public String classifyPage(Document page, int classifierIndex) throws Exception {
+        Instance pageInstance = buildInstanceFromPage(page, null);
+        return CLASSES.get((int) Math.round(classifiers.get(classifierIndex).classifyInstance(pageInstance)));
     }
 }
