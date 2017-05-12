@@ -56,6 +56,13 @@ public class Main {
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-80d-dslr-camera-black-body-only-10145630-pdt.html"));
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d7200-dslr-camera-black-body-only-10124382-pdt.html"));
 
+//        //WEB PHOTO GRAPHIC
+//        testExtractor(new WebPhotoGraphicExtractor(), new URL("http://www.wexphotographic.com/nikon-d5-digital-slr-camera-body-dual-xqd-1589610/"));
+//        testExtractor(new WebPhotoGraphicExtractor(), new URL("http://www.wexphotographic.com/canon-eos-7d-mark-ii-digital-slr-camera-body-1560196/"));
+//        testExtractor(new WebPhotoGraphicExtractor(), new URL("http://www.wexphotographic.com/pentax-k-1-digital-slr-camera-body-1592180/"));
+//        testExtractor(new WebPhotoGraphicExtractor(), new URL("http://www.wexphotographic.com/canon-eos-5d-mark-iii-digital-slr-camera-body-1530010/"));
+//
+
         //GENERAL EXTRACTOR
 //        testExtractor(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs"));
 //        testExtractor(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
