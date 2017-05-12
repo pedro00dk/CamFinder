@@ -64,17 +64,26 @@ public class Main {
 //
 
         //GENERAL EXTRACTOR
-//        testExtractor(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs"));
-//        testExtractor(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
-//        testExtractor(new GeneralExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html"));
-//        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx60-hs"));
-//        testExtractor(new GeneralExtractor(), new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilca-99m2/specifications"));
-//        testExtractor(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=21085&sku=DMCTS5A"));
-//       testExtractor(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
-//        testExtractor(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
-//        testExtractor(new GeneralExtractor(), new URL("https://www.dpreview.com/products/pentax/slrs/pentax_kp/specifications"));
-//        //there's one left
-//        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
+        System.out.println("NIKON");
+        testExtractor(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs"));
+        System.out.println("NEW EGG");
+        testExtractor(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
+        System.out.println("CURRYS");
+        testExtractor(new GeneralExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html"));
+        System.out.println("CANON");
+        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx60-hs"));
+        System.out.println("SONY");
+        testExtractor(new GeneralExtractor(), new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilca-99m2/specifications"));
+        System.out.println("VISIONS");
+        testExtractor(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=21085&sku=DMCTS5A"));
+        System.out.println("SIGMAPHOTO");
+        testExtractor(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
+        System.out.println("RICOH");
+        testExtractor(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
+        System.out.println("DP PREVIEW");
+        testExtractor(new GeneralExtractor(), new URL("https://www.dpreview.com/products/pentax/slrs/pentax_kp/specifications"));
+        System.out.println("WEB PHOTOGRAPHIC");
+        testExtractor(new GeneralExtractor(), new URL("http://www.wexphotographic.com/nikon-d5-digital-slr-camera-body-dual-xqd-1589610/"));
 
     }
 
