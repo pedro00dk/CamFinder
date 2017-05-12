@@ -14,37 +14,38 @@ public class GeneralExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) {
-        DocumentEntropyTree d = new DocumentEntropyTree(document);
+
+        //CURRYS, VISIONS, SIGMAPHOTO, RICOH, DPPREVIEW
+        List<Element> e2 = document.getElementsByTag("tr").stream()
+                .filter(ch -> ch.children().size() == 2).collect(Collectors.toList());
+
+        //NEWEGG, SONY
+        List<Element> e1 = document.getElementsByTag("dl").stream()
+                .filter(ch -> ch.children().size() == 2).collect(Collectors.toList());
+
+        //NIKON
+        List<Element> e3 = document.getElementsByTag("li").stream()
+                .filter(ch -> ch.children().size() == 2).collect(Collectors.toList());
+        //CANON
+        List<Element> e4 = document.getElementsByTag("p").stream()
+                .filter(ch -> ch.children().size() == 2).collect(Collectors.toList());
+
+
+        /*List<Element> e5 = document.children().stream()
+                .filter(ch -> ch.children().size() == 2).collect(Collectors.toList());*/
+
         return null;
     }
 
-    private static class DocumentEntropyTree {
-        ElementEntropyNode root;
+    /*
+          Implementar uma busca em largura e adicionar os nós que possuem dois filhos.
+          Isso pega alguma informação errada, mas certamente pega os atributos em uma página de camera que contém tabelas.
+          Então filtrar pelo mapa.
 
-        private DocumentEntropyTree(Document document) {
-            root = new ElementEntropyNode(document);
-        }
+       */
+    public List<Element> bsf(Document document){
 
-        private static class ElementEntropyNode {
-            Element element;
-            List<ElementEntropyNode> children;
-            int allChildrenCount;
-            double entropy;
-
-            public ElementEntropyNode(Element element) {
-                this.element = element;
-                children = element.children().stream()
-                        .map(ElementEntropyNode::new)
-                        .collect(Collectors.toList());
-                    children.stream().mapToDouble(node -> node.entropy);
-                allChildrenCount = children.stream().mapToInt(children -> children.allChildrenCount).sum() + 1;
-                if (allChildrenCount == 1) {
-                    entropy = 0;
-                } else {
-                    entropy = -children.stream().mapToDouble(children -> children.allChildrenCount * Math.log(children.allChildrenCount)).sum();
-                }
-            }
-        }
-
+        return null;
     }
+
 }

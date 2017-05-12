@@ -55,7 +55,20 @@ public class Main {
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html"));
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-80d-dslr-camera-black-body-only-10145630-pdt.html"));
 //        testExtractor(new CurrysExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d7200-dslr-camera-black-body-only-10124382-pdt.html"));
-//          testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
+
+        //GENERAL EXTRACTOR
+//        testExtractor(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs"));
+//        testExtractor(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
+//        testExtractor(new GeneralExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html"));
+//        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx60-hs"));
+//        testExtractor(new GeneralExtractor(), new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilca-99m2/specifications"));
+//        testExtractor(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=21085&sku=DMCTS5A"));
+//       testExtractor(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
+//        testExtractor(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
+//        testExtractor(new GeneralExtractor(), new URL("https://www.dpreview.com/products/pentax/slrs/pentax_kp/specifications"));
+//        //there's one left
+//        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
+
     }
 
 
