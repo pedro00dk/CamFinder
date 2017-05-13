@@ -95,6 +95,99 @@ public class Main {
         PageClassifier simplePageClassifier = new PageClassifier(
                 simplePageClassifierInternalClassifiers,
                 null,
+                Integer.MAX_VALUE,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        System.out.println("Simple classifier with attribute count limit set to 10");
+        List<Classifier> simpleAttributeLimited10PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        PageClassifier simpleAttributeLimited10PageClassifier = new PageClassifier(
+                simplePageClassifierInternalClassifiers,
+                null,
+                Integer.MAX_VALUE,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        System.out.println("Simple classifier with attribute count limit set to 50");
+        List<Classifier> simpleAttributeLimited50PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        PageClassifier simpleAttributeLimited50PageClassifier = new PageClassifier(
+                simplePageClassifierInternalClassifiers,
+                null,
+                Integer.MAX_VALUE,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        System.out.println("Simple classifier with attribute count limit set to 100");
+        List<Classifier> simpleAttributeLimited100PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        PageClassifier simpleAttributeLimited100PageClassifier = new PageClassifier(
+                simplePageClassifierInternalClassifiers,
+                null,
+                Integer.MAX_VALUE,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        System.out.println("Simple classifier with attribute count limit set to 200");
+        List<Classifier> simpleAttributeLimited200PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        PageClassifier simpleAttributeLimited200PageClassifier = new PageClassifier(
+                simplePageClassifierInternalClassifiers,
+                null,
+                Integer.MAX_VALUE,
                 new ArrayList<>(negativePages.values()),
                 new ArrayList<>(positivePages.values()),
                 0.75f
@@ -124,6 +217,7 @@ public class Main {
         PageClassifier infoGainRanker10PageClassifier = new PageClassifier(
                 infoGainRanker10PageClassifierInternalClassifiers,
                 infoGainRanker10PageClassifierInternalClassifiersFilter,
+                Integer.MAX_VALUE,
                 new ArrayList<>(negativePages.values()),
                 new ArrayList<>(positivePages.values()),
                 0.75f
@@ -153,6 +247,7 @@ public class Main {
         PageClassifier infoGainRanker50PageClassifier = new PageClassifier(
                 infoGainRanker50PageClassifierInternalClassifiers,
                 infoGainRanker50PageClassifierInternalClassifiersFilter,
+                Integer.MAX_VALUE,
                 new ArrayList<>(negativePages.values()),
                 new ArrayList<>(positivePages.values()),
                 0.75f
@@ -182,6 +277,7 @@ public class Main {
         PageClassifier infoGainRanker100PageClassifier = new PageClassifier(
                 infoGainRanker100PageClassifierInternalClassifiers,
                 infoGainRanker100PageClassifierInternalClassifiersFilter,
+                Integer.MAX_VALUE,
                 new ArrayList<>(negativePages.values()),
                 new ArrayList<>(positivePages.values()),
                 0.75f
@@ -211,6 +307,7 @@ public class Main {
         PageClassifier infoGainRanker200PageClassifier = new PageClassifier(
                 infoGainRanker200PageClassifierInternalClassifiers,
                 infoGainRanker200PageClassifierInternalClassifiersFilter,
+                Integer.MAX_VALUE,
                 new ArrayList<>(negativePages.values()),
                 new ArrayList<>(positivePages.values()),
                 0.75f

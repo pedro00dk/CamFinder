@@ -33,6 +33,11 @@ public class PageClassifier implements Serializable {
     private Filter filter;
 
     /**
+     * Limits the number of attributes based on they total frequency.
+     */
+    private int maxAttributeCount;
+
+    /**
      * The built attribute list based on the received pages
      */
     private List<Attribute> attributes;
@@ -75,10 +80,11 @@ public class PageClassifier implements Serializable {
      * @param positivePages the positive pages
      * @param trainRatio    the number of instances to the train data set ratio
      */
-    public PageClassifier(List<Classifier> classifiers, Filter filter, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+    public PageClassifier(List<Classifier> classifiers, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
 
         this.classifiers = classifiers;
         this.filter = filter;
+        this.maxAttributeCount = maxAttributeCount;
 
         List<Map<String, Integer>> negativePagesStem = negativePages.stream()
                 .map(page -> PageUtils.collectDocumentWordsFrequency(page, true))
@@ -124,6 +130,7 @@ public class PageClassifier implements Serializable {
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum)).entrySet().stream()
                 .sorted(Comparator.comparing(Map.Entry::getValue, (v1, v2) -> v2 - v1))
+                .limit(maxAttributeCount)
                 .map(Map.Entry::getKey)
                 .map(Attribute::new)
                 .collect(Collectors.toList());
