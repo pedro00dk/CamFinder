@@ -2,9 +2,12 @@ package classifier;
 
 import org.jsoup.nodes.Document;
 import util.SerializationUtils;
+import weka.attributeSelection.InfoGainAttributeEval;
+import weka.attributeSelection.Ranker;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.RandomForest;
+import weka.filters.supervised.attribute.AttributeSelection;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -64,7 +67,14 @@ public class Main {
             PageUtils.saveInto(new ArrayList<>(positivePages.values()), POSITIVE_PAGES_PATH, "Page");
         }
 
-        PageClassifier pageClassifier = new PageClassifier(Stream.of(new IBk(1), new NaiveBayes(), new RandomForest()).collect(Collectors.toList()), new ArrayList<>(negativePages.values()), new ArrayList<>(positivePages.values()), 0.65f);
+        AttributeSelection filter = new AttributeSelection();
+        InfoGainAttributeEval eval = new InfoGainAttributeEval();
+        Ranker search = new Ranker();
+        search.setNumToSelect(100);
+        filter.setEvaluator(eval);
+        filter.setSearch(search);
+
+        PageClassifier pageClassifier = new PageClassifier(Stream.of(new IBk(1), new NaiveBayes(), new RandomForest()).collect(Collectors.toList()), filter, new ArrayList<>(negativePages.values()), new ArrayList<>(positivePages.values()), 0.65f);
 
         Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
         SerializationUtils.serialize(pageClassifier, pageClassifierPath);

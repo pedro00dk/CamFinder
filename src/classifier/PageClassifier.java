@@ -7,6 +7,7 @@ import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.filters.Filter;
 
 import java.io.Serializable;
 import java.util.*;
@@ -25,6 +26,11 @@ public class PageClassifier implements Serializable {
      * The classifiers to train.
      */
     private List<Classifier> classifiers;
+
+    /**
+     * The instances filter.
+     */
+    private Filter filter;
 
     /**
      * The built attribute list based on the received pages
@@ -69,9 +75,10 @@ public class PageClassifier implements Serializable {
      * @param positivePages the positive pages
      * @param trainRatio    the number of instances to the train data set ratio
      */
-    public PageClassifier(List<Classifier> classifiers, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+    public PageClassifier(List<Classifier> classifiers, Filter filter, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
 
         this.classifiers = classifiers;
+        this.filter = filter;
 
         List<Map<String, Integer>> negativePagesStem = negativePages.stream()
                 .map(page -> PageUtils.collectDocumentWordsFrequency(page, true))
@@ -91,6 +98,7 @@ public class PageClassifier implements Serializable {
                 .map(stem -> buildInstanceFromStem(stem, POSITIVE))
                 .forEach(instances::add);
 
+        filterInstances();
 
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
@@ -159,6 +167,21 @@ public class PageClassifier implements Serializable {
             instance.setClassMissing();
         }
         return instance;
+    }
+
+    /**
+     * Filter the received instances.
+     */
+    private void filterInstances() {
+        if (filter == null) {
+            return;
+        }
+        try {
+            filter.setInputFormat(instances);
+            instances = Filter.useFilter(instances, filter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
