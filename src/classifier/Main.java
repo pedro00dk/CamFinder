@@ -1,11 +1,15 @@
 package classifier;
 
 import org.jsoup.nodes.Document;
-import util.SerializationUtils;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
+import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.Logistic;
+import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.functions.SMO;
 import weka.classifiers.lazy.IBk;
+import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
 import weka.filters.supervised.attribute.AttributeSelection;
 
@@ -44,6 +48,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
+
+        // Loading the Page URLs (local or web)
         List<URL> negativeUrls = loadUrls(LOCALLY,
                 Files.list(NEGATIVE_PAGES_PATH)
                         .collect(Collectors.toList()),
@@ -59,28 +65,160 @@ public class Main {
                         .collect(Collectors.toList())
         );
 
+        // Loading pages
         Map<URL, Document> negativePages = PageUtils.loadFrom(negativeUrls, true);
         Map<URL, Document> positivePages = PageUtils.loadFrom(positiveUrls, true);
 
+        // Saving pages locally if they are in the web
         if (!LOCALLY) {
             PageUtils.saveInto(new ArrayList<>(negativePages.values()), NEGATIVE_PAGES_PATH, "Page");
             PageUtils.saveInto(new ArrayList<>(positivePages.values()), POSITIVE_PAGES_PATH, "Page");
         }
 
-        AttributeSelection filter = new AttributeSelection();
-        InfoGainAttributeEval eval = new InfoGainAttributeEval();
-        Ranker search = new Ranker();
-        search.setNumToSelect(100);
-        filter.setEvaluator(eval);
-        filter.setSearch(search);
+        // Training classifiers
 
-        PageClassifier pageClassifier = new PageClassifier(Stream.of(new IBk(1), new NaiveBayes(), new RandomForest()).collect(Collectors.toList()), filter, new ArrayList<>(negativePages.values()), new ArrayList<>(positivePages.values()), 0.65f);
+        // Simple classifier, has no attribute filter
+        System.out.println("Simple classifier - no filters");
+        List<Classifier> simplePageClassifierInternalClassifiers = Stream.of(
 
-        Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
-        SerializationUtils.serialize(pageClassifier, pageClassifierPath);
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                //new Logistic(), // Uses so much memory (OutOfMemoryError: Java heap space)
+                //new MultilayerPerceptron(), // Really slow due the number of instances
 
-        pageClassifier = SerializationUtils.deserialize(pageClassifierPath);
-        pageClassifier.printSummary();
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        PageClassifier simplePageClassifier = new PageClassifier(
+                simplePageClassifierInternalClassifiers,
+                null,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        // Classifier with info gain filter (filtering 10 best attributes)
+        System.out.println("InfoGain 10 classifier");
+        List<Classifier> infoGainRanker10PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        AttributeSelection infoGainRanker10PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
+        InfoGainAttributeEval infoGainRanker10PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
+        Ranker infoGainRanker10PageClassifierInternalClassifiersFilterRanker = new Ranker();
+        infoGainRanker10PageClassifierInternalClassifiersFilterRanker.setNumToSelect(10);
+        infoGainRanker10PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker10PageClassifierInternalClassifiersFilterEval);
+        infoGainRanker10PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker10PageClassifierInternalClassifiersFilterRanker);
+        PageClassifier infoGainRanker10PageClassifier = new PageClassifier(
+                infoGainRanker10PageClassifierInternalClassifiers,
+                infoGainRanker10PageClassifierInternalClassifiersFilter,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        // Classifier with info gain filter (filtering 50 best attributes)
+        System.out.println("InfoGain 50 classifier");
+        List<Classifier> infoGainRanker50PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        AttributeSelection infoGainRanker50PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
+        InfoGainAttributeEval infoGainRanker50PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
+        Ranker infoGainRanker50PageClassifierInternalClassifiersFilterRanker = new Ranker();
+        infoGainRanker50PageClassifierInternalClassifiersFilterRanker.setNumToSelect(50);
+        infoGainRanker50PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker50PageClassifierInternalClassifiersFilterEval);
+        infoGainRanker50PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker50PageClassifierInternalClassifiersFilterRanker);
+        PageClassifier infoGainRanker50PageClassifier = new PageClassifier(
+                infoGainRanker50PageClassifierInternalClassifiers,
+                infoGainRanker50PageClassifierInternalClassifiersFilter,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        // Classifier with info gain filter (filtering 100 best attributes)
+        System.out.println("InfoGain 100 classifier");
+        List<Classifier> infoGainRanker100PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        AttributeSelection infoGainRanker100PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
+        InfoGainAttributeEval infoGainRanker100PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
+        Ranker infoGainRanker100PageClassifierInternalClassifiersFilterRanker = new Ranker();
+        infoGainRanker100PageClassifierInternalClassifiersFilterRanker.setNumToSelect(100);
+        infoGainRanker100PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker100PageClassifierInternalClassifiersFilterEval);
+        infoGainRanker100PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker100PageClassifierInternalClassifiersFilterRanker);
+        PageClassifier infoGainRanker100PageClassifier = new PageClassifier(
+                infoGainRanker100PageClassifierInternalClassifiers,
+                infoGainRanker100PageClassifierInternalClassifiersFilter,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+        // Classifier with info gain filter (filtering 50 best attributes)
+        System.out.println("InfoGain 200 classifier");
+        List<Classifier> infoGainRanker200PageClassifierInternalClassifiers = Stream.of(
+
+                // Base classifiers
+                new NaiveBayes(),
+                new J48(),
+                new SMO(),
+                new Logistic(),
+                new MultilayerPerceptron(),
+
+                // Extra classifiers
+                new IBk(3),
+                new RandomForest()
+        ).collect(Collectors.toList());
+        AttributeSelection infoGainRanker200PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
+        InfoGainAttributeEval infoGainRanker200PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
+        Ranker infoGainRanker200PageClassifierInternalClassifiersFilterRanker = new Ranker();
+        infoGainRanker200PageClassifierInternalClassifiersFilterRanker.setNumToSelect(200);
+        infoGainRanker200PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker200PageClassifierInternalClassifiersFilterEval);
+        infoGainRanker200PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker200PageClassifierInternalClassifiersFilterRanker);
+        PageClassifier infoGainRanker200PageClassifier = new PageClassifier(
+                infoGainRanker200PageClassifierInternalClassifiers,
+                infoGainRanker200PageClassifierInternalClassifiersFilter,
+                new ArrayList<>(negativePages.values()),
+                new ArrayList<>(positivePages.values()),
+                0.75f
+        );
+
+//        Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
+//        SerializationUtils.serialize(pageClassifier, pageClassifierPath);
+//        pageClassifier = SerializationUtils.deserialize(pageClassifierPath);
     }
 
     /**
