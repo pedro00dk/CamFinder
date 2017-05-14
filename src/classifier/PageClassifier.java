@@ -33,6 +33,10 @@ public class PageClassifier implements Serializable {
     private List<Classifier> classifiers;
 
     /**
+     * The default classifier index.
+     */
+    private int defaultClassifierIndex;
+    /**
      * The instances filter.
      */
     private Filter filter;
@@ -80,15 +84,16 @@ public class PageClassifier implements Serializable {
     /**
      * Creates and trains the page classifier. The classifiers and filter are cloned, null classifiers are accepted.
      *
-     * @param label             the page classifier label
-     * @param classifiers       the classifiers to test
-     * @param filter            the filter to be used
-     * @param maxAttributeCount the max allowed attributes (filtered by frequency)
-     * @param negativePages     the list of negative pages
-     * @param positivePages     the list of positive pages
-     * @param trainRatio        the ratio of instances to be used in training
+     * @param label                  the page classifier label
+     * @param classifiers            the classifiers to test
+     * @param defaultClassifierIndex the default classifier index
+     * @param filter                 the filter to be used
+     * @param maxAttributeCount      the max allowed attributes (filtered by frequency)
+     * @param negativePages          the list of negative pages
+     * @param positivePages          the list of positive pages
+     * @param trainRatio             the ratio of instances to be used in training
      */
-    public PageClassifier(String label, List<Classifier> classifiers, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+    public PageClassifier(String label, List<Classifier> classifiers, int defaultClassifierIndex, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
         this.label = label != null ? label : getClass().getSimpleName();
 
         Objects.requireNonNull(classifiers, "The classifiers list can not be null.");
@@ -331,6 +336,24 @@ public class PageClassifier implements Serializable {
     }
 
     /**
+     * Gets the default classifier index.
+     *
+     * @return the default classifier index
+     */
+    public int getDefaultClassifierIndex() {
+        return defaultClassifierIndex;
+    }
+
+    /**
+     * Sets the default classifier index.
+     *
+     * @param defaultClassifierIndex the new classifier index
+     */
+    public void setDefaultClassifierIndex(int defaultClassifierIndex) {
+        this.defaultClassifierIndex = defaultClassifierIndex;
+    }
+
+    /**
      * Returns a copy of the page classifier filter.
      *
      * @return a copy of the filter or null if has no filter
@@ -349,14 +372,25 @@ public class PageClassifier implements Serializable {
     }
 
     /**
-     * Classifies the received page and returns the class.
+     * Classifies the received page and returns the class, the default classifier is used to classify.
      *
-     * @param page            the page to classify
-     * @param classifierIndex the classifier to be used
+     * @param page the page to classify
      * @return the page class
      * @throws Exception if some error happens with the classifier or if the selected classifier is null.
      */
-    public String classifyPage(Document page, int classifierIndex) throws Exception {
+    public String classify(Document page) throws Exception {
+        return classify(page, defaultClassifierIndex);
+    }
+
+    /**
+     * Classifies the received page and returns the class.
+     *
+     * @param page            the page to classify
+     * @param classifierIndex the index of the classifier to be used
+     * @return the page class
+     * @throws Exception if some error happens with the classifier or if the selected classifier is null.
+     */
+    public String classify(Document page, int classifierIndex) throws Exception {
         Instance pageInstance = buildInstanceFromPage(page, null);
         return CLASSES.get((int) Math.round(classifiers.get(classifierIndex).classifyInstance(pageInstance)));
     }

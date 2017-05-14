@@ -125,6 +125,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("No Filters",
                         simpleInternalClassifiers,
+                        0,
                         null,
                         Integer.MAX_VALUE,
                         new ArrayList<>(negativePages.values()),
@@ -136,6 +137,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("10 High freq",
                         internalClassifiers,
+                        0,
                         null,
                         10,
                         new ArrayList<>(negativePages.values()),
@@ -147,6 +149,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("50 High freq",
                         internalClassifiers,
+                        0,
                         null,
                         50,
                         new ArrayList<>(negativePages.values()),
@@ -158,6 +161,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("100 High freq",
                         internalClassifiers,
+                        0,
                         null,
                         100,
                         new ArrayList<>(negativePages.values()),
@@ -170,6 +174,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("10 Info gain",
                         internalClassifiers,
+                        0,
                         filter,
                         Integer.MAX_VALUE,
                         new ArrayList<>(negativePages.values()),
@@ -182,6 +187,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("50 Info gain",
                         internalClassifiers,
+                        0,
                         filter,
                         Integer.MAX_VALUE,
                         new ArrayList<>(negativePages.values()),
@@ -194,6 +200,7 @@ public class Main {
         pageClassifiers.add(
                 new PageClassifier("100 Info gain",
                         internalClassifiers,
+                        0,
                         filter,
                         Integer.MAX_VALUE,
                         new ArrayList<>(negativePages.values()),

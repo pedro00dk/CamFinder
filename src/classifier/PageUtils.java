@@ -24,7 +24,7 @@ import java.util.stream.Stream;
  *
  * @author Pedro Henrique
  */
-public class PageUtils {
+public final class PageUtils {
 
     /**
      * Prevents instantiation.

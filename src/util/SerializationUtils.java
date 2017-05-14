@@ -9,6 +9,8 @@ import java.nio.file.Path;
 
 /**
  * Class that helps classifiers serialization.
+ *
+ * @author Pedro Henrique
  */
 public final class SerializationUtils {
 
