@@ -3,10 +3,7 @@ package crawler;
 import weka.classifiers.Classifier;
 import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.trees.RandomForest;
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instance;
-import weka.core.Instances;
+import weka.core.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -89,6 +86,8 @@ public class LinkClassifier {
             attributes.add(new Attribute(stringAttribute));
         }
         List<String> classValues = new ArrayList<>();
+        List<Double> classValues2 = new ArrayList<>();
+
 
         classValues.add("p");
         classValues.add("n2");
