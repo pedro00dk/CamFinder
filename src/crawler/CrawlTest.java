@@ -13,9 +13,8 @@ public class CrawlTest {
 		spider[1] = new Crawl("http://www.nikonusa.com/en/index.page", "nikon");
 		spider[2] = new Crawl("https://www.dpreview.com/products/cameras/all", "dpreview");
 		spider[3] = new Crawl("https://shop.usa.canon.com/shop/en/catalog", "canon");
-		spider[4] = new Crawl("http://www.samsung.com/uk/cameras/finder/?cameras", "samsung");
-		spider[5] = new Crawl("http://www.letsgodigital.org/"
-				+ "en/camera/products/HP.html", "letsgodigital");
+		spider[4] = new Crawl("http://www.currys.co.uk/gbuk/cameras-and-camcorders-38-u.html", "currys");
+		spider[5] = new Crawl("http://www.wexphotographic.com/cameras/", "wexphotographic");
 		spider[6] = new Crawl("http://www.visions.ca/Catalogue/Catego"
 				+ "ry/ProductResults.aspx?categoryId=223&menu=205", "visions");
 		spider[7] = new Crawl("https://www.sigmaphoto.com/cameras", "sigmaphoto");
