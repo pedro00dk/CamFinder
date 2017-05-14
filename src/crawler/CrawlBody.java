@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
 public class CrawlBody
 
 {
-	// Com esse fake USER o servidor vai pensar que nossa aplica��o � um
+	// Com esse fake USER o servidor vai pensar que nossa aplicacaoo e um
 	// navegador normal
 	private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
 
@@ -37,9 +37,9 @@ public class CrawlBody
     	if(notEmpty(url)==true){
     		try
             {
-            	//Faz a conex�o com o servidor de determinado link usando nosso fake agent
+            	//Faz a conexao com o servidor de determinado link usando nosso fake agent
                 Connection connection = Jsoup.connect(url).userAgent(USER_AGENT);
-                //Pega o HTML da p�gina
+                //Pega o HTML da pagina
                 Document htmlDocument = connection.get();
                 this.htmlDocument = htmlDocument;
                 //content type
@@ -48,7 +48,7 @@ public class CrawlBody
                 
                 /*Aqui eu vou salvar os HTML em formato html* "("+i+")"+".html"*/
                 try {
-                documento = new FileWriter(new File("pages\\downloaded\\crawler", dominio+"("+i+")"+".html"));
+                documento = new FileWriter(new File("C:\\Users\\bjcc\\Documents\\Pages Crawler", dominio+"("+i+")"+".html"));
                 documento.write(htmlDocument.html());
                 documento.close();
                 
@@ -59,7 +59,7 @@ public class CrawlBody
         		}
                 
                 
-                /*Aqui exibe se eu consegui visitar ou n�o a p�gina*/
+                /*Aqui exibe se eu consegui visitar ou nao a pagina*/
                 if(connection.response().statusCode() == 200)  //200 significa OK, sem erros
                 {
                     System.out.println("\n**Visitando**  " + url);
@@ -70,9 +70,9 @@ public class CrawlBody
                     return false;
                 }
                 
-                /*Pega os links da p�gina*/
+                /*Pega os links da pagina*/
                 Elements linksOnPage = htmlDocument.select("a[href]"); //"a[href] � uma tag para linkar outras p�ginas no HTML
-                System.out.println("Essa p�gina tem (" + linksOnPage.size() + ") links");
+                System.out.println("Essa pagina tem (" + linksOnPage.size() + ") links");
                 for(Element link : linksOnPage)
                 {
                     this.links.add(link.absUrl("href"));
@@ -88,18 +88,6 @@ public class CrawlBody
     		return false;
     		
     }
-
-
-	private void pause() {
-		try {
-			Thread.sleep(10000);
-			System.out.println("pausoouu");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 
 
 	public static boolean notEmpty(String string) {

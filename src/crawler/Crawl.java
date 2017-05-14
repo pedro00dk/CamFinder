@@ -38,7 +38,7 @@ public class Crawl implements Runnable{
 	
 	
 	public void run(){
-		/* Aqui que � mandado a URL para o m�todo de crawler da classe SpiderLEG */
+		/* Aqui que eh mandado a URL para o metodo de crawler da classe SpiderLEG */
 			System.out.println(url);
 			robots.robotstxt(dominio, PaginasVisitadas);
 			
@@ -51,7 +51,16 @@ public class Crawl implements Runnable{
 				} else {
 					currentUrl = this.ProximaURL();
 				}
-				leg.crawl(currentUrl, i, dominio); // aqui que a m�gica acontece
+				leg.crawl(currentUrl, i, dominio); // aqui que a magica acontece
+				if (dominio.equals("nikon")) {
+					try {
+						Thread.sleep(10000);
+						System.out.println("pausoouu");
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+						System.out.println("acordou");
+					}
+				}
 				i = i + 1;
 				// Adiciona os links daquela �p�gina a nosssa lista
 				this.PaginasParaVisitar.addAll(leg.getLinks());
