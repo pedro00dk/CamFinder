@@ -53,6 +53,7 @@ public class Main {
         //-- Load pages content
 
         // Loading the Page URLs (local or web)
+        System.out.println("Loading negative URLs");
         List<URL> negativeUrls = loadUrls(LOCALLY,
                 Files.list(NEGATIVE_PAGES_PATH)
                         .collect(Collectors.toList()),
@@ -60,6 +61,7 @@ public class Main {
                         .filter(line -> line.length() != 0 && !line.startsWith("#"))
                         .collect(Collectors.toList())
         );
+        System.out.println("Loading positive URLs");
         List<URL> positiveUrls = loadUrls(LOCALLY,
                 StreamSupport.stream(Files.newDirectoryStream(POSITIVE_PAGES_PATH).spliterator(), false)
                         .collect(Collectors.toList()),
@@ -69,17 +71,20 @@ public class Main {
         );
 
         // Loading pages
-        Map<URL, Document> negativePages = PageUtils.loadFrom(negativeUrls, true);
-        Map<URL, Document> positivePages = PageUtils.loadFrom(positiveUrls, true);
+        System.out.println("Loading negative pages");
+        Map<URL, Document> negativePages = PageUtils.loadFrom(negativeUrls, true, true);
+        System.out.println("Loading positive pages");
+        Map<URL, Document> positivePages = PageUtils.loadFrom(positiveUrls, true, true);
 
         // Saving pages locally if they are in the web
         if (!LOCALLY) {
+            System.out.println("Saving pages locally");
             PageUtils.saveInto(new ArrayList<>(negativePages.values()), NEGATIVE_PAGES_PATH, "Page");
             PageUtils.saveInto(new ArrayList<>(positivePages.values()), POSITIVE_PAGES_PATH, "Page");
         }
 
         //-- Create internal classifiers and filters
-
+        System.out.println("Creating internal classifiers and filters");
         // List without some classifiers
         List<Classifier> simpleInternalClassifiers = Stream.of(
 
@@ -120,6 +125,7 @@ public class Main {
         filter.setSearch(infoGainSearch);
 
         // Create page classifiers to test
+        System.out.println("Creating page classifiers");
         List<PageClassifier> pageClassifiers = new ArrayList<>();
 
         pageClassifiers.add(
@@ -209,6 +215,7 @@ public class Main {
                 )
         );
 
+        System.out.println("Evaluating page classifiers");
         pageClassifiers.forEach(
                 pageClassifier -> {
                     System.out.println(pageClassifier.getLabel());

@@ -1,26 +1,5 @@
 # Positive instances
 
-# samsung
-http://www.samsung.com/uk/cameras/nx500-16-50mm-power-zoom-lens/
-http://www.samsung.com/uk/cameras/nx1-16-50mm-premium-s-lens/
-http://www.samsung.com/uk/cameras/nx-mini-9mm-lens/EV-NXF1ZZB1IGB/
-
-# nikon
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5500.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d7200.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d610.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d500.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d750.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d810.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/nikon-df.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d810.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-v3.html#tab-ProductDetail-ProductTabs-TechSpecs
-http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-j5.html#tab-ProductDetail-ProductTabs-TechSpecs
-
 # canon
 https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs
 https://shop.usa.canon.com/shop/en/catalog/powershot-sx60-hs
@@ -41,6 +20,22 @@ https://shop.usa.canon.com/shop/en/catalog/eos-rebel-sl1-ef-s-18-55mm-is-stm-kit
 https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished
 https://shop.usa.canon.com/shop/en/catalog/eos-5ds-body-refurbished
 
+# nikon
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d3400.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5500.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d7200.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d610.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d500.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d750.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d810.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/nikon-df.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d810.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/dslr-cameras/d5.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-v3.html#tab-ProductDetail-ProductTabs-TechSpecs
+http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-j5.html#tab-ProductDetail-ProductTabs-TechSpecs
+
 #sony
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-5100-body-kit/specifications
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6300-body-kit/specifications
@@ -49,26 +44,11 @@ http://www.sony.com/electronics/interchangeable-lens-cameras/ilca-99m2/specifica
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-7rm2/specifications
 http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-7m2-body-kit/specifications
 http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx100m5/specifications
-http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m3
-http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx1rm2
-http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-hx90v
-http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500
-http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m2
-
-# letsgo digital
-http://www.letsgodigital.org/en/camera/specification/2484/show.html
-http://www.letsgodigital.org/en/camera/specification/2485/show.html
-http://www.letsgodigital.org/en/camera/specification/2486/show.html
-http://www.letsgodigital.org/en/camera/specification/2487/show.html
-http://www.letsgodigital.org/en/camera/specification/2516/show.html
-http://www.letsgodigital.org/en/camera/specification/1163/show.html
-http://www.letsgodigital.org/en/camera/specification/1606/show.html
-http://www.letsgodigital.org/en/camera/specification/1282/show.html
-http://www.letsgodigital.org/en/camera/specification/1281/show.html
-http://www.letsgodigital.org/en/camera/specification/1607/show.html
-http://www.letsgodigital.org/en/camera/specification/968/show.html
-http://www.letsgodigital.org/en/camera/specification/1280/show.html
-http://www.letsgodigital.org/en/camera/specification/1160/show.html
+http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m3/specifications
+http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx1rm2/specifications
+http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-hx90v/specifications
+http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500/specifications
+http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m2/specifications
 
 # visions
 http://www.visions.ca/catalogue/category/Details.aspx?categoryId=686&productId=28317&sku=P530BREFURB
@@ -85,7 +65,7 @@ http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=2
 http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30973&sku=SX720HSBLACK
 http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30395&sku=SX420IS
 
-#sigmaphoto
+# sigmaphoto
 https://www.sigmaphoto.com/cameras/mirrorless/sd-quattro-camera
 https://www.sigmaphoto.com/cameras/mirrorless/sd-quattro-h-camera
 https://www.sigmaphoto.com/cameras/dslr/sd1-merrill-digital-slr-camera-0
@@ -94,9 +74,9 @@ https://www.sigmaphoto.com/cameras/compact/dp1-quattro-compact-digital-camera
 https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera
 https://www.sigmaphoto.com/cameras/compact/dp3-merrill-compact-digital-camera-0
 https://www.sigmaphoto.com/cameras/compact/dp2-quattro-compact-digital-camera
-https://www.sigmaphoto.com/cameras/compact/dp3-quattro-compact-digital-camera
+https://www.sigmaphoto.com/cameras/compact/dp3-quattro-compact-digital-camera ( sem spec )
 
-# pentax
+# ricoh
 http://us.ricoh-imaging.com/index.php/cameras/pentax-645z
 http://us.ricoh-imaging.com/index.php/cameras/pentax-k-1
 http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii
@@ -147,3 +127,29 @@ https://www.newegg.com/Product/Product.aspx?Item=9SIABKX4GJ3904
 https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G4781189
 https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819
 https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678
+
+# currys
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10135135-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-80d-dslr-camera-black-body-only-10145630-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d7200-dslr-camera-black-body-only-10124382-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-1300d-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10144243-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3400-dslr-camera-with-18-55-mm-f-3-5-5-6-lens-black-10152821-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/nikon-d3300-dslr-camera-with-18-55-mm-f-3-5-5-6-vr-lens-black-21942035-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-1300d-dslr-camera-black-body-only-10144242-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-m10-mirrorless-camera-with-15-45-mm-f-3-5-6-3-lens-black-10139949-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/sony-a6000-mirrorless-camera-with-16-50-mm-f-3-5-5-6-lens-black-22095702-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/sony-a7-mirrorless-camera-with-28-70-mm-f-3-5-5-6-zoom-lens-21837723-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/canon-eos-m10-mirrorless-camera-with-15-45-mm-f-3-5-6-3-lens-white-10139950-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/dslr-and-compact-system-cameras/panasonic-lumix-dmc-g7eb-k-mirrorless-camera-with-14-42-mm-f-3-5-5-6-lens-black-10132843-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/canon-ixus-180-compact-camera-black-10142577-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/sony-cyber-shot-dsc-wx350b-superzoom-compact-camera-black-22074691-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/polaroid-ie826-compact-camera-grey-10126999-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/canon-powershot-g7-x-mark-ii-high-performance-compact-camera-black-10145306-pdt.html
+
+# wex photographic
+http://www.wexphotographic.com/nikon-d5-digital-slr-camera-body-dual-xqd-1589610/
+http://www.wexphotographic.com/canon-eos-6d-digital-slr-camera-body-1532845/
+http://www.wexphotographic.com/fuji-x-t2-digital-camera-body-1602117/
+http://www.wexphotographic.com/sony-alpha-a7r-mark-ii-digital-camera-body-1575237/
+http://www.wexphotographic.com/canon-eos-7d-mark-ii-digital-slr-camera-body-1560196/
+http://www.wexphotographic.com/canon-eos-5d-mark-iii-digital-slr-camera-body-1530010/

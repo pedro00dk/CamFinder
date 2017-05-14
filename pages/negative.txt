@@ -1,7 +1,40 @@
 # Negative instances
 
-http://www.samsung.com/uk/cameras/all-cameras/
+# canon
+https://shop.usa.canon.com/shop/en/catalog
+https://shop.usa.canon.com/shop/en/catalog/cameras
+https://shop.usa.canon.com/shop/en/catalog/lenses-flashes
+https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones
+https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/ultra-wide-zoom-lenses
+https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/telephoto-zoom-lenses
+https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/standard-medium-telephoto-lenses
+https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones/photo-all-in-one-inkjet-printers
+https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones/megatank-inkjet-printers
+https://shop.usa.canon.com/shop/en/catalog/pixma-g4200-wireless-wireless-megatank-all-in-one-inkjet-printer
+https://shop.usa.canon.com/shop/en/catalog/pixma-g3200-wireless-wireless-megatank-all-in-one-inkjet-printer
+https://shop.usa.canon.com/shop/en/catalog/ef-s-10-18mm-f-45-56-is-stm
+https://shop.usa.canon.com/shop/en/catalog/advanced-two-lens-kit
+https://shop.usa.canon.com/shop/en/catalog/portrait-and-travel-two-lens-kit
+https://shop.usa.canon.com/shop/en/catalog/ef-8-15mm-f-4l-fisheye-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-16-35mm-f-28l-ii-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-70-300mm-f-4-5-6-is-ii-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-28-300mm-f-35-56l-is-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-s-55-250mm-f4-5-6-is-stm-telephoto-zoom-lens
+https://shop.usa.canon.com/shop/en/catalog/ef-70-200mm-f-28l-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-70-300mm-f-45-56-do-is-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-75-300mm-f-4-56-iii-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-12l-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-14-usm
+https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-18-stm
+https://shop.usa.canon.com/shop/en/catalog/ef-85mm-f-18-usm
+https://shop.usa.canon.com/shop/en/catalog/pixma-ts9020-white-wireless-printer
+https://shop.usa.canon.com/shop/en/catalog/pixma-ts8020-red-wireless
+https://shop.usa.canon.com/shop/en/catalog/pixma-ts6020-black-wireless-printer
+https://shop.usa.canon.com/shop/en/catalog/pixma-mg7720-white-wireless-printer
+https://shop.usa.canon.com/shop/en/catalog/pixma-mg7720-black-wireless-printer
+https://shop.usa.canon.com/shop/en/catalog/pixma-mg6822-white-silver-wireless-printer
 
+# nikon
 http://www.nikonusa.com/en/nikon-products/dslr-cameras/index.page
 http://www.nikonusa.com/en/nikon-products/compact-digital-cameras/index.page
 http://www.nikonusa.com/en/index.page
@@ -42,39 +75,7 @@ http://www.nikonusa.com/en/nikon-products/flashes/index.page
 http://www.nikonusa.com/en/nikon-products/nikon-1-flashes/index.page
 http://www.nikonusa.com/en/nikon-products/photography-accessories/speedlight-flash-accessories.page
 
-https://shop.usa.canon.com/shop/en/catalog
-https://shop.usa.canon.com/shop/en/catalog/cameras
-https://shop.usa.canon.com/shop/en/catalog/lenses-flashes
-https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones
-https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/ultra-wide-zoom-lenses
-https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/telephoto-zoom-lenses
-https://shop.usa.canon.com/shop/en/catalog/lenses-flashes/standard-medium-telephoto-lenses
-https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones/photo-all-in-one-inkjet-printers
-https://shop.usa.canon.com/shop/en/catalog/printers-all-in-ones/megatank-inkjet-printers
-https://shop.usa.canon.com/shop/en/catalog/pixma-g4200-wireless-wireless-megatank-all-in-one-inkjet-printer
-https://shop.usa.canon.com/shop/en/catalog/pixma-g3200-wireless-wireless-megatank-all-in-one-inkjet-printer
-https://shop.usa.canon.com/shop/en/catalog/ef-s-10-18mm-f-45-56-is-stm
-https://shop.usa.canon.com/shop/en/catalog/advanced-two-lens-kit
-https://shop.usa.canon.com/shop/en/catalog/portrait-and-travel-two-lens-kit
-https://shop.usa.canon.com/shop/en/catalog/ef-8-15mm-f-4l-fisheye-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-16-35mm-f-28l-ii-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-70-300mm-f-4-5-6-is-ii-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-28-300mm-f-35-56l-is-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-s-55-250mm-f4-5-6-is-stm-telephoto-zoom-lens
-https://shop.usa.canon.com/shop/en/catalog/ef-70-200mm-f-28l-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-70-300mm-f-45-56-do-is-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-75-300mm-f-4-56-iii-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-12l-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-14-usm
-https://shop.usa.canon.com/shop/en/catalog/ef-50mm-f-18-stm
-https://shop.usa.canon.com/shop/en/catalog/ef-85mm-f-18-usm
-https://shop.usa.canon.com/shop/en/catalog/pixma-ts9020-white-wireless-printer
-https://shop.usa.canon.com/shop/en/catalog/pixma-ts8020-red-wireless
-https://shop.usa.canon.com/shop/en/catalog/pixma-ts6020-black-wireless-printer
-https://shop.usa.canon.com/shop/en/catalog/pixma-mg7720-white-wireless-printer
-https://shop.usa.canon.com/shop/en/catalog/pixma-mg7720-black-wireless-printer
-https://shop.usa.canon.com/shop/en/catalog/pixma-mg6822-white-silver-wireless-printer
-
+# sony
 http://www.sony.com/
 http://www.sony.com/electronics/compact-cameras/t/cyber-shot-digital-cameras
 http://www.sony.com/electronics/televisions-home-theater
@@ -82,13 +83,7 @@ http://www.sony.com/electronics/playstation
 http://www.sony.com/#navtrayEntertainment
 http://www.sony.com/#navtraySupport
 
-http://www.letsgodigital.org/en/camera/products/HP.html
-http://www.letsgodigital.org/en/index.html
-http://www.letsgodigital.org/en/camera/products.html
-http://www.letsgodigital.org/en/digital_camera/review.html
-http://www.letsgodigital.org/en/olympus/digital_camera/review.html
-http://www.letsgodigital.org/en/canon/digital_camera/review.html
-
+# visions
 http://www.visions.ca/Default.aspx
 http://www.visions.ca/catalogue/category/ProductResults.aspx?categoryId=223&view=grid&gclid=CjwKEAjwz9HHBRDbopLGh-afzB4SJABY52oFO6W7pU9o4fMyL5-A0d52NTZzJwIhbTWVIU_XdREeqxoCOKPw_wcB
 http://www.visions.ca/Catalogue/Category/Default.aspx?categoryId=2&menu=2
@@ -102,18 +97,7 @@ http://www.visions.ca/Catalogue/Category/Details.aspx?categoryId=173&productId=3
 http://www.visions.ca/Catalogue/Category/Details.aspx?categoryId=173&productId=33435&sku=AJAY5ANDRBK
 http://www.visions.ca/Catalogue/Category/Details.aspx?categoryId=174&productId=26610&sku=MDRXB950AP
 
-http://www.zamax.com.br/
-http://www.zamax.com.br/filmadora-digital/gopro-hero4-silver-edition
-http://www.zamax.com.br/camera-digital/gopro-hero4-black-edition
-http://www.zamax.com.br/lente/af-s-dx-vr-zoom-nikkor-55-200mm-f4-5-6g-if-ed-lente-nikon-original-objetiva
-http://www.zamax.com.br/lente/af-s-dx-nikkor-55-300mm-f4-5-5-6g-ed-vr-lente-nikon-original-objetiva
-http://www.zamax.com.br/lente/af-s-dx-nikkor-35mm-f1-8g-lente-nikon-original-objetiva
-http://www.zamax.com.br/lente/af-nikkor-50mm-f1-8d-lente-nikon-objetiva-normal
-http://www.zamax.com.br/lente/ef-75-300mm-f4-5-6-iii-lente-canon-original-objetiva
-http://www.zamax.com.br/lente/af-s-nikkor-50mm-f1-8g-nikon-objetiva
-http://www.zamax.com.br/lente/af-16-28mm-f2-8-at-x-16-28-f2-8-pro-fx-lente-objetiva-tokina-para-canon
-http://www.zamax.com.br/lente/ef-50mm-f1-8-stm-lente-objetiva-canon-origina
-
+# sigmaphoto
 https://www.sigmaphoto.com/cameras
 https://www.sigmaphoto.com/cameras/mirrorless
 https://www.sigmaphoto.com/cameras/dslr
@@ -136,6 +120,7 @@ https://www.sigmaphoto.com/lenses/telephoto-lenses/60mm-f28-dn-a-350966
 https://www.sigmaphoto.com/lenses/multi-purpose-lenses/18-200mm-f35-63-dc-macro-os-hsm-c
 https://www.sigmaphoto.com/lenses/multi-purpose-lenses/18-250mm-f35-63-dc-os-macro-hsm
 
+# ricoh
 http://us.ricoh-imaging.com/index.php/shop/cameras
 http://us.ricoh-imaging.com/index.php/shop/lenses
 http://us.ricoh-imaging.com/index.php/lenses/k-mount-lenses
@@ -146,9 +131,31 @@ http://us.ricoh-imaging.com/index.php/lenses/645z-mount-lenses/macro-lenses/hd-p
 http://us.ricoh-imaging.com/index.php/lenses/645z-mount-lenses/wide-angle-lenses/smc-pentax-fa645-35-55mm-f4-5-al
 http://us.ricoh-imaging.com/index.php/lenses/645z-mount-lenses/standard-lenses/smc-pentax-fa645-75mm-f2-8
 
+# dpreview
 https://www.dpreview.com/
 https://www.dpreview.com/products/cameras/all
 https://www.dpreview.com/interviews/9469672992/cp-2017-sony-interview-we-need-to-offer-new-imaging-experiences
 https://www.dpreview.com/products/lenses
 
+# newegg
 https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&IsNodeId=1&bop=And&PMSub=784%2012%2056756&PMSubCP=0cm_sp=Cat_Digital-Cameras_1-_-VisNav-_-Cameras_1
+
+# currys
+http://www.currys.co.uk/gbuk/dslr-cameras/digital-cameras/dslr-and-compact-system-cameras/344_3757_31522_xx_ba00010675-bv00308606/xx-criteria.html
+http://www.currys.co.uk/gbuk/mirrorless-cameras/digital-cameras/dslr-and-compact-system-cameras/344_3757_31522_xx_ba00010675-bv00310543/xx-criteria.html
+http://www.currys.co.uk/gbuk/compact-cameras/digital-cameras/compact-and-bridge-cameras/344_3199_30301_xx_ba00010674-bv00308601/xx-criteria.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/346_3209_30311_xx_xx/xx-criteria.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/346_3209_30311_xx_xx/xx-criteria.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/sigma-70-300-mm-f-4-5-6-dg-macro-telephoto-zoom-lens-for-nikon-01565856-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/canon-ef-50-mm-f-1-8-stm-standard-prime-lens-10132951-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/sigma-10-20-mm-f-3-5-ex-dc-hsm-wide-angle-zoom-lens-for-nikon-10124664-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/nikon-af-s-dx-nikkor-55-300-mm-f-4-5-5-6g-swm-ed-vr-telephoto-zoom-lens-07908141-pdt.html
+http://www.currys.co.uk/gbuk/cameras-and-camcorders/photography-accessories/lenses/nikon-af-s-nikkor-55-200-mm-f-4-5-6-swm-ed-vr-ii-zoom-lens-10118295-pdt.html
+
+# wex photographic
+http://www.wexphotographic.com/
+http://www.wexphotographic.com/benro-adventure-tad37c-carbon-fibre-tripod-1574213/
+http://www.wexphotographic.com/lowepro-highline-rl-x400-aw-1621413/
+http://www.wexphotographic.com/sony-pxw-fs7-camcorder-body-only-1583918/
+http://www.wexphotographic.com/bowens-gemini-classic-500-twin-head-traveller-kit-1608985/
+http://www.wexphotographic.com/vanguard-endeavor-ed-8x42-binoculars-1537705/

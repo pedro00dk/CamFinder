@@ -40,8 +40,9 @@ public final class PageUtils {
      * @param parallel if should download in parallel
      * @return a map with the URLs and pages
      */
-    public static Map<URL, Document> loadFrom(List<URL> urls, boolean parallel) {
+    public static Map<URL, Document> loadFrom(List<URL> urls, boolean parallel, boolean showState) {
         return (parallel ? urls.stream().sequential() : urls.stream().parallel())
+                .peek(url -> System.out.print(showState ? "Started " + url.toString() + "\n" : ""))
                 .map(url -> {
                     try {
                         return new Pair<>(url, Jsoup.parse(url.openStream(), "UTF-8", ""));
@@ -50,7 +51,8 @@ public final class PageUtils {
                     }
                 })
                 .filter(Objects::nonNull)
-                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+                .peek(pair -> System.out.println(showState ? "Started " + pair.getKey().toString() + "\n" : ""))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue, (d1, d2) -> d2));
     }
 
     /**
