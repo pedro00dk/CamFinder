@@ -92,7 +92,7 @@ public class Main {
                 new IBk(3),
                 new RandomForest()
         ).collect(Collectors.toList());
-        PageClassifier simplePageClassifier = new PageClassifier(
+        PageClassifier simplePageClassifier = new PageClassifier("",
                 simplePageClassifierInternalClassifiers,
                 null,
                 Integer.MAX_VALUE,
@@ -115,7 +115,7 @@ public class Main {
                 new IBk(3),
                 new RandomForest()
         ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited10PageClassifier = new PageClassifier(
+        PageClassifier simpleAttributeLimited10PageClassifier = new PageClassifier("",
                 simplePageClassifierInternalClassifiers,
                 null,
                 Integer.MAX_VALUE,
@@ -138,7 +138,7 @@ public class Main {
                 new IBk(3),
                 new RandomForest()
         ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited50PageClassifier = new PageClassifier(
+        PageClassifier simpleAttributeLimited50PageClassifier = new PageClassifier("",
                 simplePageClassifierInternalClassifiers,
                 null,
                 Integer.MAX_VALUE,
@@ -161,7 +161,7 @@ public class Main {
                 new IBk(3),
                 new RandomForest()
         ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited100PageClassifier = new PageClassifier(
+        PageClassifier simpleAttributeLimited100PageClassifier = new PageClassifier("",
                 simplePageClassifierInternalClassifiers,
                 null,
                 Integer.MAX_VALUE,
@@ -184,7 +184,7 @@ public class Main {
                 new IBk(3),
                 new RandomForest()
         ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited200PageClassifier = new PageClassifier(
+        PageClassifier simpleAttributeLimited200PageClassifier = new PageClassifier("",
                 simplePageClassifierInternalClassifiers,
                 null,
                 Integer.MAX_VALUE,
@@ -214,7 +214,7 @@ public class Main {
         infoGainRanker10PageClassifierInternalClassifiersFilterRanker.setNumToSelect(10);
         infoGainRanker10PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker10PageClassifierInternalClassifiersFilterEval);
         infoGainRanker10PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker10PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker10PageClassifier = new PageClassifier(
+        PageClassifier infoGainRanker10PageClassifier = new PageClassifier("",
                 infoGainRanker10PageClassifierInternalClassifiers,
                 infoGainRanker10PageClassifierInternalClassifiersFilter,
                 Integer.MAX_VALUE,
@@ -244,7 +244,7 @@ public class Main {
         infoGainRanker50PageClassifierInternalClassifiersFilterRanker.setNumToSelect(50);
         infoGainRanker50PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker50PageClassifierInternalClassifiersFilterEval);
         infoGainRanker50PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker50PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker50PageClassifier = new PageClassifier(
+        PageClassifier infoGainRanker50PageClassifier = new PageClassifier("",
                 infoGainRanker50PageClassifierInternalClassifiers,
                 infoGainRanker50PageClassifierInternalClassifiersFilter,
                 Integer.MAX_VALUE,
@@ -274,7 +274,7 @@ public class Main {
         infoGainRanker100PageClassifierInternalClassifiersFilterRanker.setNumToSelect(100);
         infoGainRanker100PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker100PageClassifierInternalClassifiersFilterEval);
         infoGainRanker100PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker100PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker100PageClassifier = new PageClassifier(
+        PageClassifier infoGainRanker100PageClassifier = new PageClassifier("",
                 infoGainRanker100PageClassifierInternalClassifiers,
                 infoGainRanker100PageClassifierInternalClassifiersFilter,
                 Integer.MAX_VALUE,
@@ -304,7 +304,7 @@ public class Main {
         infoGainRanker200PageClassifierInternalClassifiersFilterRanker.setNumToSelect(200);
         infoGainRanker200PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker200PageClassifierInternalClassifiersFilterEval);
         infoGainRanker200PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker200PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker200PageClassifier = new PageClassifier(
+        PageClassifier infoGainRanker200PageClassifier = new PageClassifier("",
                 infoGainRanker200PageClassifierInternalClassifiers,
                 infoGainRanker200PageClassifierInternalClassifiersFilter,
                 Integer.MAX_VALUE,

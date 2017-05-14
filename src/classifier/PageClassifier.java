@@ -1,6 +1,7 @@
 package classifier;
 
 import org.jsoup.nodes.Document;
+import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Attribute;
@@ -12,7 +13,6 @@ import weka.filters.Filter;
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -21,6 +21,11 @@ import java.util.stream.Stream;
  * @author Pedro Henrique
  */
 public class PageClassifier implements Serializable {
+
+    /**
+     * The label  of this classifier.
+     */
+    private String label;
 
     /**
      * The classifiers to train.
@@ -38,12 +43,12 @@ public class PageClassifier implements Serializable {
     private int maxAttributeCount;
 
     /**
-     * The built attribute list based on the received pages
+     * The built attribute list based on the received pages.
      */
     private List<Attribute> attributes;
 
     /**
-     * All instances created using the attributes and pages
+     * All instances created using the attributes and pages.
      */
     private Instances instances;
 
@@ -73,19 +78,45 @@ public class PageClassifier implements Serializable {
     public static final List<String> CLASSES = Collections.unmodifiableList(Stream.of(NEGATIVE, POSITIVE).collect(Collectors.toList()));
 
     /**
-     * Initializes the page classifier with the received parameters.
+     * Creates and trains the page classifier.
      *
-     * @param classifiers   the classifiers to train
-     * @param negativePages the negative pages
-     * @param positivePages the positive pages
-     * @param trainRatio    the number of instances to the train data set ratio
+     * @param label             the page classifier label
+     * @param classifiers       the classifiers to test
+     * @param filter            the filter to be used
+     * @param maxAttributeCount the max allowed attributes (filtered by frequency)
+     * @param negativePages     the list of negative pages
+     * @param positivePages     the list of positive pages
+     * @param trainRatio        the ratio of instances to be used in training
      */
-    public PageClassifier(List<Classifier> classifiers, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+    public PageClassifier(String label, List<Classifier> classifiers, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+        this.label = label != null ? label : getClass().getSimpleName();
 
-        this.classifiers = classifiers;
+        Objects.requireNonNull(classifiers, "The classifiers list can not be null.");
+        if (classifiers.stream().anyMatch(Objects::isNull)) {
+            throw new IllegalArgumentException("The classifiers list contains null elements");
+        }
+        this.classifiers = Collections.unmodifiableList(
+                classifiers.stream()
+                        .map(AbstractClassifier.class::cast)
+                        .map(model -> {
+                            try {
+                                return AbstractClassifier.makeCopy(model);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                return null;
+                            }
+                        })
+                        .collect(Collectors.toList())
+        );
+
         this.filter = filter;
+
+        if (maxAttributeCount <= 0) {
+            throw new IllegalArgumentException("The maxAttributeCount should be greater than 0.");
+        }
         this.maxAttributeCount = maxAttributeCount;
 
+        // Stemming pages
         List<Map<String, Integer>> negativePagesStem = negativePages.stream()
                 .map(page -> PageUtils.collectDocumentWordsFrequency(page, true))
                 .collect(Collectors.toList());
@@ -93,10 +124,11 @@ public class PageClassifier implements Serializable {
                 .map(page -> PageUtils.collectDocumentWordsFrequency(page, true))
                 .collect(Collectors.toList());
 
-        attributes = collectAttributes(Stream.concat(negativePagesStem.stream(), positivePagesStem.stream()).collect(Collectors.toList()));
+        this.attributes = collectAttributes(Stream.concat(negativePagesStem.stream(), positivePagesStem.stream()).collect(Collectors.toList()), this.maxAttributeCount);
+        attributes.add(new Attribute("--CLASS--", CLASSES)); // Adding class attribute
+
         instances = new Instances("Instances", (ArrayList<Attribute>) attributes, negativePages.size() + positivePages.size());
         instances.setClassIndex(instances.numAttributes() - 1);
-
         negativePagesStem.stream()
                 .map(stem -> buildInstanceFromStem(stem, NEGATIVE))
                 .forEach(instances::add);
@@ -104,7 +136,7 @@ public class PageClassifier implements Serializable {
                 .map(stem -> buildInstanceFromStem(stem, POSITIVE))
                 .forEach(instances::add);
 
-        filterInstances();
+        instances = filterInstances(instances, filter);
 
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
@@ -112,20 +144,25 @@ public class PageClassifier implements Serializable {
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 
-        trainClassifiers(true);
-        printSummary();
+        this.classifiers.stream()
+                .forEach(classifier -> {
+                    try {
+                        classifier.buildClassifier(trainInstances);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
     /**
      * Collect the attributes from the stemmed pages.
      *
-     * @param pagesStem the stemmed pages to collect attributes
+     * @param pagesStem         the stemmed pages to collect attributes
+     * @param maxAttributeCount the max number of attributes (high frequency attributes are selected)
      * @return a list of attributes ordered (descending) by their frequency
      */
-    private List<Attribute> collectAttributes(List<Map<String, Integer>> pagesStem) {
-
-        // Distinguishing and ordering words by frequency
-        List<Attribute> attributes = pagesStem.stream()
+    private List<Attribute> collectAttributes(List<Map<String, Integer>> pagesStem, int maxAttributeCount) {
+        return pagesStem.stream()
                 .map(Map::entrySet)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::sum)).entrySet().stream()
@@ -134,12 +171,27 @@ public class PageClassifier implements Serializable {
                 .map(Map.Entry::getKey)
                 .map(Attribute::new)
                 .collect(Collectors.toList());
+    }
 
-        // Adding class attribute
-        Attribute classAttribute = new Attribute("--CLASS--", CLASSES);
-        attributes.add(classAttribute);
-
-        return attributes;
+    /**
+     * Filter the received instances. If fail to filter the instances, the original is returned and the stack trace is
+     * print.
+     *
+     * @param instances the instances to filter the attributes
+     * @param filter    the filter to be used (null  filters nothing)
+     * @return the instances with filtered attributes
+     */
+    private Instances filterInstances(Instances instances, Filter filter) {
+        if (filter == null) {
+            return instances;
+        }
+        try {
+            filter.setInputFormat(instances);
+            return Filter.useFilter(instances, filter);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return instances;
+        }
     }
 
     /**
@@ -176,56 +228,81 @@ public class PageClassifier implements Serializable {
         return instance;
     }
 
+    //
+
     /**
-     * Filter the received instances.
+     * Returns the page classifier label.
+     *
+     * @return the label
      */
-    private void filterInstances() {
-        if (filter == null) {
-            return;
-        }
+    public String getLabel() {
+        return label;
+    }
+
+    /**
+     * Returns the number of internal classifiers in this page classifier.
+     *
+     * @return the classifier count
+     */
+    public int classifierCount() {
+        return classifiers.size();
+    }
+
+    /**
+     * Returns a copy of the classifier in the received index. Null is returned if fails to copy the classifier.
+     *
+     * @param index the classifier index
+     * @return a classifier copy (already trained)
+     */
+    public Classifier getClassifier(int index) {
         try {
-            filter.setInputFormat(instances);
-            instances = Filter.useFilter(instances, filter);
+            return AbstractClassifier.makeCopy(classifiers.get(0));
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 
     /**
-     * Train all classifiers.
+     * Returns the evaluation of the classifier in the received index. Null is returned if fails to create the
+     * evaluation.
      *
-     * @param parallel if should train in parallel
+     * @param index the classifier index
+     * @return the evaluation of the classifier ({@link Evaluation#evaluateModel(Classifier, Instances, Object...)}
+     * already called with the training and test instances)
      */
-    private void trainClassifiers(boolean parallel) {
-        (parallel ? classifiers.stream().sequential() : classifiers.stream().parallel())
-                .forEach(classifier -> {
-                    try {
-                        System.out.println("Training classifier " + classifier.getClass().getSimpleName());
-                        classifier.buildClassifier(trainInstances);
-                        System.out.println("Classifier " + classifier.getClass().getSimpleName() + " finished");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        System.out.println();
+    public Evaluation getClassifierEvaluation(int index) {
+        try {
+            Evaluation evaluation = new Evaluation(trainInstances);
+            evaluation.evaluateModel(classifiers.get(index), testInstances);
+            return evaluation;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
-     * Print the summary of all trained machines.
+     * Returns a copy of the page classifier filter.Null is returned if fails to copy to filter.
+     *
+     * @return a copy of the filter
      */
-    public void printSummary() {
-        IntStream.range(0, classifiers.size())
-                .forEach(index -> {
-                    try {
-                        Evaluation evaluation = new Evaluation(trainInstances);
-                        evaluation.evaluateModel(classifiers.get(index), testInstances);
-                        System.out.println("Classifier index -> " + index);
-                        System.out.println(evaluation.toSummaryString(classifiers.get(index).getClass().getSimpleName(), true));
-                        System.out.println();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+    public Filter getFilter() {
+        try {
+            return Filter.makeCopy(filter);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Returns the max attribute count.
+     *
+     * @return the max attribute count
+     */
+    public int getMaxAttributeCount() {
+        return maxAttributeCount;
     }
 
     /**
