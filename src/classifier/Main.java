@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -48,6 +49,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
+
+        //-- Load pages content
 
         // Loading the Page URLs (local or web)
         List<URL> negativeUrls = loadUrls(LOCALLY,
@@ -75,34 +78,26 @@ public class Main {
             PageUtils.saveInto(new ArrayList<>(positivePages.values()), POSITIVE_PAGES_PATH, "Page");
         }
 
-        // Training classifiers
+        //-- Create internal classifiers and filters
 
-        // Simple classifier, has no attribute filter
-        System.out.println("Simple classifier - no filters");
-        List<Classifier> simplePageClassifierInternalClassifiers = Stream.of(
+        // List without some classifiers
+        List<Classifier> simpleInternalClassifiers = Stream.of(
 
                 // Base classifiers
                 new NaiveBayes(),
                 new J48(),
                 new SMO(),
-                //new Logistic(), // Uses so much memory (OutOfMemoryError: Java heap space)
-                //new MultilayerPerceptron(), // Really slow due the number of instances
+                null, //new Logistic(), // Uses so much memory (OutOfMemoryError: Java heap space)
+                null, //new MultilayerPerceptron(), // Really slow due the number of instances
 
                 // Extra classifiers
                 new IBk(3),
                 new RandomForest()
-        ).collect(Collectors.toList());
-        PageClassifier simplePageClassifier = new PageClassifier("",
-                simplePageClassifierInternalClassifiers,
-                null,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
-        );
 
-        System.out.println("Simple classifier with attribute count limit set to 10");
-        List<Classifier> simpleAttributeLimited10PageClassifierInternalClassifiers = Stream.of(
+        ).collect(Collectors.toList());
+
+        // List with all classifiers
+        List<Classifier> internalClassifiers = Stream.of(
 
                 // Base classifiers
                 new NaiveBayes(),
@@ -114,205 +109,120 @@ public class Main {
                 // Extra classifiers
                 new IBk(3),
                 new RandomForest()
+
         ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited10PageClassifier = new PageClassifier("",
-                simplePageClassifierInternalClassifiers,
-                null,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+
+        // Attribute selection info gain filter
+        AttributeSelection filter = new AttributeSelection();
+        InfoGainAttributeEval infoGainEval = new InfoGainAttributeEval();
+        Ranker infoGainSearch = new Ranker();
+        filter.setEvaluator(infoGainEval);
+        filter.setSearch(infoGainSearch);
+
+        // Create page classifiers to test
+        List<PageClassifier> pageClassifiers = new ArrayList<>();
+
+        pageClassifiers.add(
+                new PageClassifier("No Filters",
+                        simpleInternalClassifiers,
+                        null,
+                        Integer.MAX_VALUE,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        System.out.println("Simple classifier with attribute count limit set to 50");
-        List<Classifier> simpleAttributeLimited50PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited50PageClassifier = new PageClassifier("",
-                simplePageClassifierInternalClassifiers,
-                null,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        pageClassifiers.add(
+                new PageClassifier("10 High freq",
+                        internalClassifiers,
+                        null,
+                        10,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        System.out.println("Simple classifier with attribute count limit set to 100");
-        List<Classifier> simpleAttributeLimited100PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited100PageClassifier = new PageClassifier("",
-                simplePageClassifierInternalClassifiers,
-                null,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        pageClassifiers.add(
+                new PageClassifier("50 High freq",
+                        internalClassifiers,
+                        null,
+                        50,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        System.out.println("Simple classifier with attribute count limit set to 200");
-        List<Classifier> simpleAttributeLimited200PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        PageClassifier simpleAttributeLimited200PageClassifier = new PageClassifier("",
-                simplePageClassifierInternalClassifiers,
-                null,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        pageClassifiers.add(
+                new PageClassifier("100 High freq",
+                        internalClassifiers,
+                        null,
+                        100,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        // Classifier with info gain filter (filtering 10 best attributes)
-        System.out.println("InfoGain 10 classifier");
-        List<Classifier> infoGainRanker10PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        AttributeSelection infoGainRanker10PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
-        InfoGainAttributeEval infoGainRanker10PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
-        Ranker infoGainRanker10PageClassifierInternalClassifiersFilterRanker = new Ranker();
-        infoGainRanker10PageClassifierInternalClassifiersFilterRanker.setNumToSelect(10);
-        infoGainRanker10PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker10PageClassifierInternalClassifiersFilterEval);
-        infoGainRanker10PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker10PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker10PageClassifier = new PageClassifier("",
-                infoGainRanker10PageClassifierInternalClassifiers,
-                infoGainRanker10PageClassifierInternalClassifiersFilter,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        infoGainSearch.setNumToSelect(10);
+        pageClassifiers.add(
+                new PageClassifier("10 Info gain",
+                        internalClassifiers,
+                        filter,
+                        Integer.MAX_VALUE,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        // Classifier with info gain filter (filtering 50 best attributes)
-        System.out.println("InfoGain 50 classifier");
-        List<Classifier> infoGainRanker50PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        AttributeSelection infoGainRanker50PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
-        InfoGainAttributeEval infoGainRanker50PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
-        Ranker infoGainRanker50PageClassifierInternalClassifiersFilterRanker = new Ranker();
-        infoGainRanker50PageClassifierInternalClassifiersFilterRanker.setNumToSelect(50);
-        infoGainRanker50PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker50PageClassifierInternalClassifiersFilterEval);
-        infoGainRanker50PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker50PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker50PageClassifier = new PageClassifier("",
-                infoGainRanker50PageClassifierInternalClassifiers,
-                infoGainRanker50PageClassifierInternalClassifiersFilter,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        infoGainSearch.setNumToSelect(50);
+        pageClassifiers.add(
+                new PageClassifier("50 Info gain",
+                        internalClassifiers,
+                        filter,
+                        Integer.MAX_VALUE,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        // Classifier with info gain filter (filtering 100 best attributes)
-        System.out.println("InfoGain 100 classifier");
-        List<Classifier> infoGainRanker100PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        AttributeSelection infoGainRanker100PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
-        InfoGainAttributeEval infoGainRanker100PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
-        Ranker infoGainRanker100PageClassifierInternalClassifiersFilterRanker = new Ranker();
-        infoGainRanker100PageClassifierInternalClassifiersFilterRanker.setNumToSelect(100);
-        infoGainRanker100PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker100PageClassifierInternalClassifiersFilterEval);
-        infoGainRanker100PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker100PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker100PageClassifier = new PageClassifier("",
-                infoGainRanker100PageClassifierInternalClassifiers,
-                infoGainRanker100PageClassifierInternalClassifiersFilter,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        infoGainSearch.setNumToSelect(100);
+        pageClassifiers.add(
+                new PageClassifier("100 Info gain",
+                        internalClassifiers,
+                        filter,
+                        Integer.MAX_VALUE,
+                        new ArrayList<>(negativePages.values()),
+                        new ArrayList<>(positivePages.values()),
+                        0.75f
+                )
         );
 
-        // Classifier with info gain filter (filtering 50 best attributes)
-        System.out.println("InfoGain 200 classifier");
-        List<Classifier> infoGainRanker200PageClassifierInternalClassifiers = Stream.of(
-
-                // Base classifiers
-                new NaiveBayes(),
-                new J48(),
-                new SMO(),
-                new Logistic(),
-                new MultilayerPerceptron(),
-
-                // Extra classifiers
-                new IBk(3),
-                new RandomForest()
-        ).collect(Collectors.toList());
-        AttributeSelection infoGainRanker200PageClassifierInternalClassifiersFilter = new AttributeSelection(); // It's a filter
-        InfoGainAttributeEval infoGainRanker200PageClassifierInternalClassifiersFilterEval = new InfoGainAttributeEval();
-        Ranker infoGainRanker200PageClassifierInternalClassifiersFilterRanker = new Ranker();
-        infoGainRanker200PageClassifierInternalClassifiersFilterRanker.setNumToSelect(200);
-        infoGainRanker200PageClassifierInternalClassifiersFilter.setEvaluator(infoGainRanker200PageClassifierInternalClassifiersFilterEval);
-        infoGainRanker200PageClassifierInternalClassifiersFilter.setSearch(infoGainRanker200PageClassifierInternalClassifiersFilterRanker);
-        PageClassifier infoGainRanker200PageClassifier = new PageClassifier("",
-                infoGainRanker200PageClassifierInternalClassifiers,
-                infoGainRanker200PageClassifierInternalClassifiersFilter,
-                Integer.MAX_VALUE,
-                new ArrayList<>(negativePages.values()),
-                new ArrayList<>(positivePages.values()),
-                0.75f
+        pageClassifiers.forEach(
+                pageClassifier -> {
+                    System.out.println(pageClassifier.getLabel());
+                    IntStream.range(0, pageClassifier.classifierCount())
+                            .forEach(index -> {
+                                try {
+                                    Classifier classifier = pageClassifier.getClassifier(index);
+                                    if (classifier == null) {
+                                        System.out.println("Classifier " + index + " -> null");
+                                        System.out.println();
+                                        return;
+                                    }
+                                    System.out.println("Classifier " + index + " -> " + classifier.getClass().getSimpleName());
+                                    System.out.println(pageClassifier.getClassifierEvaluation(index).toSummaryString());
+                                    System.out.println();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                }
         );
-
 //        Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
 //        SerializationUtils.serialize(pageClassifier, pageClassifierPath);
 //        pageClassifier = SerializationUtils.deserialize(pageClassifierPath);

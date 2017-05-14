@@ -78,7 +78,7 @@ public class PageClassifier implements Serializable {
     public static final List<String> CLASSES = Collections.unmodifiableList(Stream.of(NEGATIVE, POSITIVE).collect(Collectors.toList()));
 
     /**
-     * Creates and trains the page classifier.
+     * Creates and trains the page classifier. The classifiers and filter are cloned, null classifiers are accepted.
      *
      * @param label             the page classifier label
      * @param classifiers       the classifiers to test
@@ -92,15 +92,15 @@ public class PageClassifier implements Serializable {
         this.label = label != null ? label : getClass().getSimpleName();
 
         Objects.requireNonNull(classifiers, "The classifiers list can not be null.");
-        if (classifiers.stream().anyMatch(Objects::isNull)) {
-            throw new IllegalArgumentException("The classifiers list contains null elements");
-        }
         this.classifiers = Collections.unmodifiableList(
                 classifiers.stream()
                         .map(AbstractClassifier.class::cast)
-                        .map(model -> {
+                        .map(classifier -> {
+                            if (classifier == null) {
+                                return null;
+                            }
                             try {
-                                return AbstractClassifier.makeCopy(model);
+                                return AbstractClassifier.makeCopy(classifier);
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 return null;
@@ -109,7 +109,13 @@ public class PageClassifier implements Serializable {
                         .collect(Collectors.toList())
         );
 
-        this.filter = filter;
+        if (filter != null) {
+            try {
+                this.filter = Filter.makeCopy(filter);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         if (maxAttributeCount <= 0) {
             throw new IllegalArgumentException("The maxAttributeCount should be greater than 0.");
@@ -144,8 +150,11 @@ public class PageClassifier implements Serializable {
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 
-        this.classifiers.stream()
+        this.classifiers
                 .forEach(classifier -> {
+                    if (classifier == null) {
+                        return;
+                    }
                     try {
                         classifier.buildClassifier(trainInstances);
                     } catch (Exception e) {
@@ -240,7 +249,7 @@ public class PageClassifier implements Serializable {
     }
 
     /**
-     * Returns the number of internal classifiers in this page classifier.
+     * Returns the number of internal classifiers in this page classifier. Null classifiers are count too.
      *
      * @return the classifier count
      */
@@ -249,51 +258,85 @@ public class PageClassifier implements Serializable {
     }
 
     /**
-     * Returns a copy of the classifier in the received index. Null is returned if fails to copy the classifier.
+     * Returns a copy of the classifier in the received index.
      *
      * @param index the classifier index
-     * @return a classifier copy (already trained)
+     * @return a classifier copy (already trained) or null if is a null classifier
      */
-    public Classifier getClassifier(int index) {
-        try {
-            return AbstractClassifier.makeCopy(classifiers.get(0));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Classifier getClassifier(int index) throws Exception {
+        return classifiers.get(index) != null ? AbstractClassifier.makeCopy(classifiers.get(index)) : null;
     }
 
     /**
-     * Returns the evaluation of the classifier in the received index. Null is returned if fails to create the
-     * evaluation.
+     * Returns a copy of each classifier in this page classifier.
+     *
+     * @return the classifiers
+     */
+    public List<Classifier> getClassifiers() {
+        return classifiers.stream()
+                .map(AbstractClassifier.class::cast)
+                .map(classifier -> {
+                    if (classifier == null) {
+                        return null;
+                    }
+                    try {
+                        return AbstractClassifier.makeCopy(classifier);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns the evaluation of the classifier in the received index.
      *
      * @param index the classifier index
      * @return the evaluation of the classifier ({@link Evaluation#evaluateModel(Classifier, Instances, Object...)}
-     * already called with the training and test instances)
+     * already called with the training and test instances) or null if the classifier is null.
      */
-    public Evaluation getClassifierEvaluation(int index) {
-        try {
-            Evaluation evaluation = new Evaluation(trainInstances);
-            evaluation.evaluateModel(classifiers.get(index), testInstances);
-            return evaluation;
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Evaluation getClassifierEvaluation(int index) throws Exception {
+        Classifier classifier = classifiers.get(index);
+        if (classifier == null) {
             return null;
         }
+        Evaluation evaluation = new Evaluation(trainInstances);
+        evaluation.evaluateModel(classifier, testInstances);
+        return evaluation;
     }
 
     /**
-     * Returns a copy of the page classifier filter.Null is returned if fails to copy to filter.
+     * Returns the evaluation of each classifier.
      *
-     * @return a copy of the filter
+     * @return the evaluation of each classifier ({@link Evaluation#evaluateModel(Classifier, Instances, Object...)}
+     * already called with the training and test instances) or null if the classifier is null.
      */
-    public Filter getFilter() {
-        try {
-            return Filter.makeCopy(filter);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    public List<Evaluation> getClassifierEvaluations() {
+        return classifiers.stream()
+                .map(classifier -> {
+                    if (classifier == null) {
+                        return null;
+                    }
+                    try {
+                        Evaluation evaluation = new Evaluation(trainInstances);
+                        evaluation.evaluateModel(classifier, testInstances);
+                        return evaluation;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a copy of the page classifier filter.
+     *
+     * @return a copy of the filter or null if has no filter
+     */
+    public Filter getFilter() throws Exception {
+        return filter != null ? Filter.makeCopy(filter) : null;
     }
 
     /**
@@ -306,13 +349,12 @@ public class PageClassifier implements Serializable {
     }
 
     /**
-     * Classifies the received page and returns the class. This method can not be run by multiple
-     * threads because it can remove instances being classified by other threads.
+     * Classifies the received page and returns the class.
      *
      * @param page            the page to classify
      * @param classifierIndex the classifier to be used
      * @return the page class
-     * @throws Exception if some error happens with the classifier.
+     * @throws Exception if some error happens with the classifier or if the selected classifier is null.
      */
     public String classifyPage(Document page, int classifierIndex) throws Exception {
         Instance pageInstance = buildInstanceFromPage(page, null);
