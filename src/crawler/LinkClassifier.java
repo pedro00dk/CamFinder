@@ -142,28 +142,28 @@ public class LinkClassifier {
 
     private void loadLists() throws IOException {
 
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\bjcc\\IdeaProjects\\CamFinder\\pages\\next0.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("pages\\next0.txt"));
         while(br.ready()){
             String linha = br.readLine();
             next0.add(linha);
         }
         br.close();
 
-        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\bjcc\\IdeaProjects\\CamFinder\\pages\\next1.txt"));
+        BufferedReader br1 = new BufferedReader(new FileReader("pages\\next1.txt"));
         while(br1.ready()){
             String linha = br1.readLine();
             next1.add(linha);
         }
         br1.close();
 
-        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\bjcc\\IdeaProjects\\CamFinder\\pages\\next2.txt"));
+        BufferedReader br2 = new BufferedReader(new FileReader("pages\\next2.txt"));
         while(br2.ready()){
             String linha = br2.readLine();
             next2.add(linha);
         }
         br2.close();
 
-        BufferedReader br3 = new BufferedReader(new FileReader("C:\\Users\\bjcc\\IdeaProjects\\CamFinder\\pages\\positive.txt"));
+        BufferedReader br3 = new BufferedReader(new FileReader("pages\\positive.txt"));
         while(br3.ready()){
             String linha = br3.readLine();
             positives.add(linha);
