@@ -77,7 +77,7 @@ public class Main {
         System.out.println("VISIONS");
         testExtractor(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=21085&sku=DMCTS5A"));
         System.out.println("SIGMAPHOTO");
-        testExtractor(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera"));
+        testExtractor(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/mirrorless/sd-quattro-camera"));
         System.out.println("RICOH");
         testExtractor(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
         System.out.println("DP PREVIEW");
