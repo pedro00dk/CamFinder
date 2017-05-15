@@ -48,7 +48,7 @@ public class CrawlBody
                 
                 /*Aqui eu vou salvar os HTML em formato html* "("+i+")"+".html"*/
                 try {
-                documento = new FileWriter(new File("C:\\Users\\bjcc\\Documents\\Pages Crawler", dominio+"("+i+")"+".html"));
+                documento = new FileWriter(new File("C:\\Users\\bjcc\\Documents\\HTML", dominio+"("+i+")"+".html"));
                 documento.write(htmlDocument.html());
                 documento.close();
                 

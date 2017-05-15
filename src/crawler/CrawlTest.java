@@ -22,7 +22,7 @@ public class CrawlTest {
 		
 	}
 
-		public static void crawler1(){
+		public static void crawler1() throws Exception {
 
 			spider[0] = new CrawlBFS("http://www.sony.com/electronics/cameras", "sony");
 			spider[1] = new CrawlBFS("http://www.nikonusa.com/en/index.page", "nikon");
@@ -47,7 +47,9 @@ public class CrawlTest {
 	 }
 
 	 public static void crawler2() throws Exception {
-		 	spider2[0] = new CrawlClassifier("http://www.nikonusa.com/en/index.page", "nikon");
+		 	classifier = new LinkClassifier(0.65f);
+            classifier.classify("http://www.nikonusa.com/en/index.page");
+		 	//spider2[0] = new CrawlClassifier("http://www.nikonusa.com/en/index.page", "nikon");
 		 	t[0] = new Thread(spider2[0]);
 		 	t[0].start();
 

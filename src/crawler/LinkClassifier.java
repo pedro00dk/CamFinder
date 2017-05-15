@@ -40,19 +40,19 @@ public class LinkClassifier {
         instances.setClassIndex(attributes.size() - 1);
 
         for (int i = 0; i < positives.size(); i++) {
-            instances.add(createLinkInstance(positives.get(i), 1));
+            instances.add(createLinkInstance(positives.get(i), "p"));
         }
 
         for (int i = 0; i < next0.size(); i++) {
-            instances.add(createLinkInstance(next0.get(i), 0.8));
+            instances.add(createLinkInstance(next0.get(i), "next0"));
         }
 
         for (int i = 0; i < next1.size(); i++) {
-            instances.add(createLinkInstance(next1.get(i), 0.6));
+            instances.add(createLinkInstance(next1.get(i), "next1"));
         }
 
         for (int i = 0; i < next2.size(); i++) {
-            instances.add(createLinkInstance(next2.get(i), 0.2));
+            instances.add(createLinkInstance(next2.get(i), "next2"));
         }
 
         int trainingSize = Math.round(instances.size() * trainRatio);
@@ -70,7 +70,7 @@ public class LinkClassifier {
     }
 
     public double classify(String link) throws Exception {
-        return classifier.classifyInstance(createLinkInstance(link, 0));
+        return classifier.classifyInstance(createLinkInstance(link, ""));
     }
 
     private List<Attribute> getAllAttributes(List<String> links) {
@@ -86,8 +86,6 @@ public class LinkClassifier {
             attributes.add(new Attribute(stringAttribute));
         }
         List<String> classValues = new ArrayList<>();
-        List<Double> classValues2 = new ArrayList<>();
-
 
         classValues.add("p");
         classValues.add("n2");
@@ -122,7 +120,7 @@ public class LinkClassifier {
         return parts;
     }
 
-    private Instance createLinkInstance(String link, double clazz) {
+    private Instance createLinkInstance(String link, String clazz) {
         Instance linkInstance = new DenseInstance(attributes.size());
         for (int i = 0; i < attributes.size() - 1; i++) {
             boolean attributeContained = false;
@@ -135,7 +133,8 @@ public class LinkClassifier {
             }
             linkInstance.setValue(i, attributeContained ? 1 : 0);
         }
-        linkInstance.setValue(attributes.size() - 1, clazz);
+    //    linkInstance.setDataset((Instances) linkInstance);
+        linkInstance.setValue(attributes.size() - 1, 1);
         return linkInstance;
     }
 

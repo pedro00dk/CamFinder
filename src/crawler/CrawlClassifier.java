@@ -1,7 +1,5 @@
 package crawler;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.util.*;
 
 /**
@@ -11,67 +9,67 @@ public class CrawlClassifier implements Runnable {
 
     private static final int MAXIMO_PAGINAS = 80;
     /* Eh set pq o conjunto deve ter valores unicos*/
-    public Set<String> PaginasVisitadas = new HashSet<String>();
-    List<String> paginasParaVisitar = new LinkedList<>();
+    public Set<String> pagesVisited = new HashSet<String>();
+    List<String> pagesForView = new LinkedList<>();
     List<String> positive = new LinkedList<>();
     List<String> next0 = new LinkedList<>();
     List<String> next1 = new LinkedList<>();
     List<String> next2 = new LinkedList<>();
     public String url;
-    public String dominio;
+    public String domain;
     public CrawlRobots robots = new CrawlRobots();
-    LinkClassifier classifier = new LinkClassifier(0.65f);
+    LinkClassifier classifier;
     int i = 0;
 
 
-    public CrawlClassifier(String url, String dominio) throws Exception {
+    public CrawlClassifier(String url, String domain) throws Exception {
+        classifier = new LinkClassifier(0.65f);
         this.url = url;
-        this.dominio = dominio;
+        this.domain = domain;
     }
 
-    private String ProximaURL() throws Exception {
-        String ProximaURL;
-        if (positive.size()>0){
-            ProximaURL = positive.remove(0);
-            return ProximaURL;
+
+    private String nextURL() throws Exception {
+        String nextURL;
+        if (positive.size() > 0) {
+            nextURL = positive.remove(0);
+            return nextURL;
         }
-        if (next0.size()>0){
-            ProximaURL = next0.remove(0);
-            return ProximaURL;
+        if (next0.size() > 0) {
+            nextURL = next0.remove(0);
+            return nextURL;
         }
-        if (next1.size()>0){
-            ProximaURL = next1.remove(0);
-            return ProximaURL;
-        }
-        if (next2.size()>0){
-            ProximaURL = next2.remove(0);
-            return ProximaURL;
+        if (next1.size() > 0) {
+            nextURL = next1.remove(0);
+            return nextURL;
+        } else {
+            nextURL = pagesForView.remove(0);
+            return nextURL;
         }
 
-        ProximaURL = paginasParaVisitar.remove(0);
-        return ProximaURL;
     }
 
     public void run() {
         /* Aqui que eh mandado a URL para o metodo de crawler da classe SpiderLEG */
         System.out.println(url);
-        robots.robotstxt(dominio, PaginasVisitadas);
+        robots.robotstxt(domain, pagesVisited);
 
-        while (this.PaginasVisitadas.size() < MAXIMO_PAGINAS) {
+        while (this.pagesVisited.size() < MAXIMO_PAGINAS) {
             String currentUrl = null;
             CrawlBody leg = new CrawlBody();
-            if (this.paginasParaVisitar.isEmpty()) {
+            if (this.pagesForView.isEmpty()) {
                 currentUrl = url;
-                this.PaginasVisitadas.add(url);
+                this.pagesVisited.add(url);
             } else {
                 try {
-                    currentUrl = this.ProximaURL();
+                    currentUrl = this.nextURL();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            leg.crawl(currentUrl, i, dominio); // aqui que a magica acontece
-            if (dominio.equals("nikon")) {
+            leg.crawl(currentUrl, i, domain); // aqui que a magica acontece
+
+            if (domain.equals("nikon")) {
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {
@@ -79,47 +77,32 @@ public class CrawlClassifier implements Runnable {
                 }
             }
             i = i + 1;
-            // Adiciona os links daquela �p�gina a nosssa lista
+            //Adiciona os links daquela pagina a nosssa lista
 
             for (int j = 0; j < leg.getLinks().size(); j++) {
+                double x = 0;
+                String y = leg.getLinks().get(j);
                 try {
-                    if (classifier.classify(leg.getLinks().get(j)) == 0.2) {
-                        next2.add(leg.getLinks().get(j));
-                    }
+                    x = classifier.classify(leg.getLinks().get(j));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                try {
-                    if (classifier.classify(leg.getLinks().get(j)) == 0.6) {
-                        next1.add(leg.getLinks().get(j));
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    if (classifier.classify(leg.getLinks().get(j)) == 0.8) {
-                        next0.add(leg.getLinks().get(j));
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    if (classifier.classify(leg.getLinks().get(j)) == 1) {
-                        positive.add(leg.getLinks().get(j));
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                if (x == 0.2) next2.add(y);
+                if (x == 0.6) next1.add(y);
+                if (x == 0.8) next0.add(y);
+                if (x == 1) positive.add(y);
+
+
 
             }
 
-            paginasParaVisitar.addAll(next0);
-            paginasParaVisitar.addAll(next1);
-            paginasParaVisitar.addAll(next2);
-            paginasParaVisitar.addAll(positive);
+            pagesForView.addAll(next0);
+            pagesForView.addAll(next1);
+            pagesForView.addAll(next2);
+            pagesForView.addAll(positive);
 
         }
-        System.out.println(String.format("**Pronto!!** Foi visitado %s paginas na web", this.PaginasVisitadas.size()));
+        System.out.println(String.format("**Pronto!!** Foi visitado %s paginas na web", this.pagesVisited.size()));
 
     }
 
