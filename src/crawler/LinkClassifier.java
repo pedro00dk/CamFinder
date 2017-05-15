@@ -56,7 +56,7 @@ public class LinkClassifier {
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
         instances.randomize(new Random());
-        System.out.println(instances.size());
+       // System.out.println(instances.size());
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 

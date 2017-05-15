@@ -33,17 +33,21 @@ public class CrawlClassifier implements Runnable {
         String nextURL;
         if (positive.size() > 0) {
             nextURL = positive.remove(0);
+            pagesVisited.add(nextURL);
             return nextURL;
         }
         if (next0.size() > 0) {
             nextURL = next0.remove(0);
+            pagesVisited.add(nextURL);
             return nextURL;
         }
         if (next1.size() > 0) {
             nextURL = next1.remove(0);
+            pagesVisited.add(nextURL);
             return nextURL;
         } else {
             nextURL = pagesForView.remove(0);
+            pagesVisited.add(nextURL);
             return nextURL;
         }
 
@@ -87,10 +91,10 @@ public class CrawlClassifier implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (x == 3.0) next2.add(y);
-                if (x == 2.0) next1.add(y);
-                if (x == 1.0) next0.add(y);
-                if (x == 0.0) positive.add(y);
+                if (x == 3.0 && !next2.contains(y)) next2.add(y);
+                if (x == 2.0 && !next1.contains(y)) next1.add(y);
+                if (x == 1.0 && !next0.contains(y)) next0.add(y);
+                if (x == 0.0 && !positive.contains(y)) positive.add(y);
 
 
 
