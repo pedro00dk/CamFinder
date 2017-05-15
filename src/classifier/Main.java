@@ -1,9 +1,11 @@
 package classifier;
 
+import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
 import weka.classifiers.Classifier;
+import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
 import weka.classifiers.functions.MultilayerPerceptron;
@@ -237,9 +239,22 @@ public class Main {
                             });
                 }
         );
-//        Path pageClassifierPath = Paths.get("src", "classifier", "serialized", "PageClassifier.model");
-//        SerializationUtils.serialize(pageClassifier, pageClassifierPath);
-//        pageClassifier = SerializationUtils.deserialize(pageClassifierPath);
+
+        Pair<PageClassifier, Integer> bestPageClassifierByRecall = PageClassifier.select(
+                pageClassifiers,
+                evaluation -> evaluation.recall(PageClassifier.CLASSES.indexOf(PageClassifier.POSITIVE))
+        );
+        System.out.println("Best page classifier (recall positive): " + bestPageClassifierByRecall.getKey().getLabel() +
+                "\n\t" + "Best internal classifier index: " + bestPageClassifierByRecall.getValue()
+        );
+
+        Pair<PageClassifier, Integer> bestPageClassifierByCorrectlyClassified = PageClassifier.select(
+                pageClassifiers,
+                Evaluation::pctCorrect
+        );
+        System.out.println("Best page classifier (% correct): " + bestPageClassifierByCorrectlyClassified.getKey().getLabel() +
+                "\n\t" + "Best internal classifier index: " + bestPageClassifierByCorrectlyClassified.getValue()
+        );
     }
 
     /**

@@ -1,5 +1,6 @@
 package classifier;
 
+import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
@@ -12,7 +13,9 @@ import weka.filters.Filter;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -393,5 +396,40 @@ public class PageClassifier implements Serializable {
     public String classify(Document page, int classifierIndex) throws Exception {
         Instance pageInstance = buildInstanceFromPage(page, null);
         return CLASSES.get((int) Math.round(classifiers.get(classifierIndex).classifyInstance(pageInstance)));
+    }
+
+    //
+
+    /**
+     * Returns the best page classifier of the received list based on the result of the extractor method over all
+     * classifiers in each page classifier.
+     *
+     * @param pageClassifiers the list  of page classifiers
+     * @param extractor       the evaluation extraction function
+     * @return the best classifier
+     */
+    public static Pair<PageClassifier, Integer> select(List<PageClassifier> pageClassifiers, Function<Evaluation, Double> extractor) {
+        return pageClassifiers.stream()
+                .map(pageClassifier ->
+                        new Pair<>(pageClassifier, IntStream.range(0, pageClassifier.classifierCount())
+                                .mapToObj(index -> {
+                                    try {
+                                        return new Pair<>(index, extractor.apply(pageClassifier.getClassifierEvaluation(index)));
+                                    } catch (Exception e) {
+                                        return new Pair<>(index, 0.0);
+                                    }
+                                })
+                                .max((pair1, pair2) -> (int) Math.signum(pair1.getValue() - pair2.getValue()))
+                                .orElseGet(null)
+                        )
+                )
+                .filter(pageClassifierBestClassifier -> pageClassifierBestClassifier.getValue() != null)
+                .max((pageClassifierBestClassifier1, pageClassifierBestClassifier2) ->
+                        (int) Math.signum(
+                                pageClassifierBestClassifier1.getValue().getValue() - pageClassifierBestClassifier2.getValue().getValue()
+                        )
+                )
+                .map(pageClassifierBestClassifier -> new Pair<>(pageClassifierBestClassifier.getKey(), pageClassifierBestClassifier.getValue().getKey()))
+                .orElse(null);
     }
 }

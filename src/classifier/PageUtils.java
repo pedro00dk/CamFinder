@@ -51,7 +51,7 @@ public final class PageUtils {
                     }
                 })
                 .filter(Objects::nonNull)
-                .peek(pair -> System.out.println(showState ? "Started " + pair.getKey().toString() + "\n" : ""))
+                .peek(pair -> System.out.print(showState ? "Finished " + pair.getKey().toString() + "\n" : ""))
                 .collect(Collectors.toMap(Pair::getKey, Pair::getValue, (d1, d2) -> d2));
     }
 
