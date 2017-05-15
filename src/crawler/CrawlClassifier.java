@@ -87,10 +87,10 @@ public class CrawlClassifier implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (x == 0.2) next2.add(y);
-                if (x == 0.6) next1.add(y);
-                if (x == 0.8) next0.add(y);
-                if (x == 1) positive.add(y);
+                if (x == 3.0) next2.add(y);
+                if (x == 2.0) next1.add(y);
+                if (x == 1.0) next0.add(y);
+                if (x == 0.0) positive.add(y);
 
 
 

@@ -48,7 +48,9 @@ public class CrawlTest {
 
 	 public static void crawler2() throws Exception {
 		 	classifier = new LinkClassifier(0.65f);
-            classifier.classify("http://www.nikonusa.com/en/index.page");
+         double i;
+            i= classifier.classify("http://www.nikonusa.com/en/index.page");
+         System.out.println(i);
 		 	//spider2[0] = new CrawlClassifier("http://www.nikonusa.com/en/index.page", "nikon");
 		 	t[0] = new Thread(spider2[0]);
 		 	t[0].start();

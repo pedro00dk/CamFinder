@@ -6,11 +6,9 @@ import weka.classifiers.trees.RandomForest;
 import weka.core.*;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class LinkClassifier {
 
@@ -44,20 +42,21 @@ public class LinkClassifier {
         }
 
         for (int i = 0; i < next0.size(); i++) {
-            instances.add(createLinkInstance(next0.get(i), "next0"));
+            instances.add(createLinkInstance(next0.get(i), "n0"));
         }
 
         for (int i = 0; i < next1.size(); i++) {
-            instances.add(createLinkInstance(next1.get(i), "next1"));
+            instances.add(createLinkInstance(next1.get(i), "n1"));
         }
 
         for (int i = 0; i < next2.size(); i++) {
-            instances.add(createLinkInstance(next2.get(i), "next2"));
+            instances.add(createLinkInstance(next2.get(i), "n2"));
         }
 
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
         instances.randomize(new Random());
+        System.out.println(instances.size());
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 
@@ -70,7 +69,7 @@ public class LinkClassifier {
     }
 
     public double classify(String link) throws Exception {
-        return classifier.classifyInstance(createLinkInstance(link, ""));
+        return classifier.classifyInstance(createLinkInstance(link, null));
     }
 
     private List<Attribute> getAllAttributes(List<String> links) {
@@ -121,7 +120,10 @@ public class LinkClassifier {
     }
 
     private Instance createLinkInstance(String link, String clazz) {
+
         Instance linkInstance = new DenseInstance(attributes.size());
+        linkInstance.setDataset(instances);
+
         for (int i = 0; i < attributes.size() - 1; i++) {
             boolean attributeContained = false;
             String[] linkAttributes = getLinkAttributes(link);
@@ -133,36 +135,40 @@ public class LinkClassifier {
             }
             linkInstance.setValue(i, attributeContained ? 1 : 0);
         }
-    //    linkInstance.setDataset((Instances) linkInstance);
-        linkInstance.setValue(attributes.size() - 1, 1);
+        if (clazz != null) {
+            linkInstance.setClassValue(clazz);
+        } else {
+            linkInstance.setClassMissing();
+        }
+
         return linkInstance;
     }
 
     private void loadLists() throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader("pages\\next0.txt"));
-        while(br.ready()){
+        while (br.ready()) {
             String linha = br.readLine();
             next0.add(linha);
         }
         br.close();
 
         BufferedReader br1 = new BufferedReader(new FileReader("pages\\next1.txt"));
-        while(br1.ready()){
+        while (br1.ready()) {
             String linha = br1.readLine();
             next1.add(linha);
         }
         br1.close();
 
         BufferedReader br2 = new BufferedReader(new FileReader("pages\\next2.txt"));
-        while(br2.ready()){
+        while (br2.ready()) {
             String linha = br2.readLine();
             next2.add(linha);
         }
         br2.close();
 
         BufferedReader br3 = new BufferedReader(new FileReader("pages\\positive.txt"));
-        while(br3.ready()){
+        while (br3.ready()) {
             String linha = br3.readLine();
             positives.add(linha);
         }
