@@ -17,7 +17,6 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/Find-Your-Nikon/WhereToBuy.page");
 			PaginasVisitadas.add(url + "/en/Find-Your-Nikon/WhereToBuy.page");
 			PaginasVisitadas.add(url + "/en/Nikon-Store/AddToCartConfirmation.page");
-			PaginasVisitadas.add(url + "/*Hunting-TV/");
 			PaginasVisitadas.add(url + "/Press-Room/");
 			PaginasVisitadas.add(url + "/en/nikon-store/terms-and-conditions.page");
 			PaginasVisitadas.add(url + "/en/about-nikon/terms-of-use.page");
@@ -175,4 +174,15 @@ public class CrawlRobots {
 
 	}
 
+	public boolean verifyURL(String url, String dominio){
+		int verify;
+		if(dominio.equals("nikon")){
+			verify = url.indexOf("Hunting-TV/");
+			if (verify>=0){
+				System.out.println("EU AQUI");
+				return true;
+			}
+		}
+		return false;
+	}
 }

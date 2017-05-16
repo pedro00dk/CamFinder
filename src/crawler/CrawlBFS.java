@@ -8,51 +8,60 @@ import java.util.Set;
 public class CrawlBFS implements Runnable {
 
     private static final int MAXIMO_PAGINAS = 80;
-    /* � set pq o conjunto deve ter valores �nicos*/
-    public Set<String> PaginasVisitadas = new HashSet<String>();
-    public List<String> PaginasParaVisitar = new LinkedList<String>();
+    /* Eh set pq o conjunto deve ter valores unicos*/
+    public Set<String> visited = new HashSet<String>();
+    public List<String> pagesToVisit = new LinkedList<String>();
     public String url;
-    public String dominio;
+    public String domain;
     public CrawlRobots robots = new CrawlRobots();
     int i = 0;
 
 
-    public CrawlBFS(String url, String dominio) {
+    public CrawlBFS(String url, String domain) {
         this.url = url;
-        this.dominio = dominio;
+        this.domain = domain;
     }
 
 
     /*
-     * Escolhe o proximo link que ser� visitado. Caso esse link j� tenha sido
-     * visitado, outro link ser� escolhido
+     * Escolhe o proximo link que sera visitado. Caso esse link ja tenha sido
+     * visitado, outro link sera escolhido
      */
     private String ProximaURL() {
         String ProximaURL;
-        do {
-            ProximaURL = this.PaginasParaVisitar.remove(0);
-        } while (this.PaginasVisitadas.contains(ProximaURL));
-        this.PaginasVisitadas.add(ProximaURL);
-        return ProximaURL;
+        if(domain.equals("nikon")){
+            do {
+                ProximaURL = this.pagesToVisit.remove(0);
+            } while (this.visited.contains(ProximaURL) && robots.verifyURL(ProximaURL, domain));
+            this.visited.add(ProximaURL);
+            return ProximaURL;
+        }
+        else{
+            do {
+                ProximaURL = this.pagesToVisit.remove(0);
+            } while (this.visited.contains(ProximaURL));
+            this.visited.add(ProximaURL);
+            return ProximaURL;
+        }
     }
 
 
     public void run() {
         /* Aqui que eh mandado a URL para o metodo de crawler da classe SpiderLEG */
         System.out.println(url);
-        robots.robotstxt(dominio, PaginasVisitadas);
+        robots.robotstxt(domain, visited);
 
-        while (this.PaginasVisitadas.size() < MAXIMO_PAGINAS) {
+        while (this.visited.size() < MAXIMO_PAGINAS) {
             String currentUrl;
             CrawlBody leg = new CrawlBody();
-            if (this.PaginasParaVisitar.isEmpty()) {
+            if (this.pagesToVisit.isEmpty()) {
                 currentUrl = url;
-                this.PaginasVisitadas.add(url);
+                this.visited.add(url);
             } else {
                 currentUrl = this.ProximaURL();
             }
-            leg.crawl(currentUrl, i, dominio); // aqui que a magica acontece
-            if (dominio.equals("nikon")) {
+            leg.crawl(currentUrl, i, domain); // aqui que a magica acontece
+            if (domain.equals("nikon")) {
                 try {
                     Thread.sleep(10000);
                     System.out.println("pausoouu");
@@ -62,10 +71,10 @@ public class CrawlBFS implements Runnable {
                 }
             }
             i = i + 1;
-            // Adiciona os links daquela �p�gina a nosssa lista
-            this.PaginasParaVisitar.addAll(leg.getLinks());
+            // Adiciona os links daquela pagina a nosssa lista
+            this.pagesToVisit.addAll(leg.getLinks());
         }
-        System.out.println(String.format("**Pronto!!** Foi visitado %s paginas na web", this.PaginasVisitadas.size()));
+        System.out.println(String.format("**Pronto!!** Foi visitado %s paginas na web", this.visited.size()));
 
     }
 
