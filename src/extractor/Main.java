@@ -1,6 +1,5 @@
 package extractor;
 
-import extractor.specific.*;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -90,7 +89,7 @@ public class Main {
 
     static void testExtractor(CameraDomainExtractor extractor, URL url) throws IOException {
         System.out.println("Extracting page content from " + extractor.domain());
-        Map<String, String> content = extractor.extractWebSiteContent(Jsoup.parse(url, 0), url);
+        Map<String, String> content = extractor.extractWebSiteContent(Jsoup.parse(url, 0));
         content.entrySet()
                 .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
         System.out.println();

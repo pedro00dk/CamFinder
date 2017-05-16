@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +43,7 @@ public class SonyExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) {
+    public Map<String, String> extractWebSiteContent(Document document) {
 
         // get camera name
         String name = document.select(".primary-link.l3.breadcrumb-link").text();

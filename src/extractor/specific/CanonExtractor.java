@@ -4,7 +4,6 @@ import extractor.CameraDomainExtractor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +38,7 @@ public class CanonExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) {
+    public Map<String, String> extractWebSiteContent(Document document) {
 
         // get camera name
         String name = document.getElementsByAttributeValueContaining("itemprop", "name").stream()

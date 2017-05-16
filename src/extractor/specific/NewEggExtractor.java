@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +36,7 @@ public class NewEggExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) {
+    public Map<String, String> extractWebSiteContent(Document document) {
         //get camera name
         String name = document.getElementById("grpDescrip_h").text();
 

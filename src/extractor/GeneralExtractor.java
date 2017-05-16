@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.net.URL;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -46,7 +45,7 @@ public class GeneralExtractor implements CameraDomainExtractor {
     }
 
     @Override
-    public Map<String, String> extractWebSiteContent(Document document, URL link) {
+    public Map<String, String> extractWebSiteContent(Document document) {
         List<Element> data = search(document);
 
         Map<String, String> attributes = IntStream.range(0, data.size())
@@ -106,11 +105,8 @@ public class GeneralExtractor implements CameraDomainExtractor {
         Element current;
         while ((current = queue.poll()) != null) {
             queue.addAll(current.children());
-            if (current.children().size() == 2) {
-                if (MAPPED_ATTRIBUTE_NAMES.containsKey(current.child(0).text())) {
-                    selected.add(current);
-
-                }
+            if (current.children().size() == 2 && MAPPED_ATTRIBUTE_NAMES.containsKey(current.child(0).text())) {
+                selected.add(current);
             }
         }
 
