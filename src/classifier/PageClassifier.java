@@ -116,6 +116,7 @@ public class PageClassifier implements Serializable {
                         })
                         .collect(Collectors.toList())
         );
+        this.defaultClassifierIndex = defaultClassifierIndex;
 
         if (filter != null) {
             try {
@@ -154,7 +155,7 @@ public class PageClassifier implements Serializable {
 
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
-        instances.randomize(new Random());
+        instances.randomize(new Random(2983742));
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 
