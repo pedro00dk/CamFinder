@@ -74,7 +74,7 @@ https://www.sigmaphoto.com/cameras/compact/dp1-quattro-compact-digital-camera
 https://www.sigmaphoto.com/cameras/compact/dp2-merrill-compact-digital-camera
 https://www.sigmaphoto.com/cameras/compact/dp3-merrill-compact-digital-camera-0
 https://www.sigmaphoto.com/cameras/compact/dp2-quattro-compact-digital-camera
-https://www.sigmaphoto.com/cameras/compact/dp3-quattro-compact-digital-camera ( sem spec )
+https://www.sigmaphoto.com/cameras/compact/dp3-quattro-compact-digital-camera
 
 # ricoh
 http://us.ricoh-imaging.com/index.php/cameras/pentax-645z
@@ -97,7 +97,7 @@ https://www.dpreview.com/products/pentax/slrs/pentax_kp/specifications
 https://www.dpreview.com/products/fujifilm/compacts/fujifilm_x100f/specifications
 https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xt20/specifications
 https://www.dpreview.com/products/fujifilm/compacts/fujifilm_xp120/specifications
-https://www.dpreview.com/products/canon/compacts/canon_g9xii/specifications/specifications
+https://www.dpreview.com/products/canon/compacts/canon_g9xii/specifications
 https://www.dpreview.com/products/sony/compacts/sony_dschx350/specifications
 https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xa10/specifications
 https://www.dpreview.com/products/nikon/slrs/nikon_d5600/specifications
