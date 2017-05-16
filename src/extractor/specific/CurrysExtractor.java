@@ -6,7 +6,6 @@ import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,6 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CurrysExtractor implements CameraDomainExtractor {
+
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -32,7 +32,6 @@ public class CurrysExtractor implements CameraDomainExtractor {
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);

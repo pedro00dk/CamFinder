@@ -4,9 +4,7 @@ import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
@@ -32,7 +30,6 @@ public class SigmaPhotoExtractor implements CameraDomainExtractor {
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
@@ -46,6 +43,7 @@ public class SigmaPhotoExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document, URL link) {
+
         //get camera name
         String name = document.getElementsByTag("h1").select(".product-title").text();
         // get price

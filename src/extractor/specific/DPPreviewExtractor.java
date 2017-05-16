@@ -4,9 +4,7 @@ import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class DPPreviewExtractor implements CameraDomainExtractor {
+
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -35,7 +34,6 @@ public class DPPreviewExtractor implements CameraDomainExtractor {
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
@@ -53,6 +51,7 @@ public class DPPreviewExtractor implements CameraDomainExtractor {
 
         //get camera name
         String name = document.getElementsByTag("h1").attr("itemprop", "name").text();
+
         // get all attributes ( including price )
         List<Element> tableData = document.getElementsByTag("tr").stream()
                 .filter(data -> data.children().get(0).className().equals("label")).collect(Collectors.toList());

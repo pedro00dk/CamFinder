@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class WebPhotoGraphicExtractor implements CameraDomainExtractor{
+public class WebPhotoGraphicExtractor implements CameraDomainExtractor {
     public static final Map<String, String> MAPPED_ATTRIBUTE_NAMES;
 
     public static final Map<String, Function<String, String>> ATTRIBUTE_TYPE_ACTIONS;
@@ -30,7 +30,6 @@ public class WebPhotoGraphicExtractor implements CameraDomainExtractor{
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
-        //TODO funções específicas ou função geral
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
         attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
         attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
@@ -43,6 +42,7 @@ public class WebPhotoGraphicExtractor implements CameraDomainExtractor{
     }
 
     public Map<String, String> extractWebSiteContent(Document document, URL link) {
+
         //get camera name
         String name = document.getElementsByTag("h1").select(".h1").text();
         // get price
