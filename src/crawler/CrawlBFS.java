@@ -53,14 +53,14 @@ public class CrawlBFS implements Runnable {
 
         while (this.visited.size() < MAXIMO_PAGINAS) {
             String currentUrl;
-            CrawlBody leg = new CrawlBody();
+            Downloader leg = new Downloader();
             if (this.pagesToVisit.isEmpty()) {
                 currentUrl = url;
                 this.visited.add(url);
             } else {
                 currentUrl = this.ProximaURL();
             }
-            leg.crawl(currentUrl, i, domain); // aqui que a magica acontece
+            leg.download(currentUrl, i, domain); // aqui que a magica acontece
             if (domain.equals("nikon")) {
                 try {
                     Thread.sleep(10000);

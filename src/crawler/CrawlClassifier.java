@@ -1,5 +1,7 @@
 package crawler;
 
+import weka.classifiers.Classifier;
+
 import java.util.*;
 
 /**
@@ -22,7 +24,8 @@ public class CrawlClassifier implements Runnable {
     int i = 0;
 
 
-    public CrawlClassifier(String url, String domain) throws Exception {
+    public CrawlClassifier(String url, String domain, Classifier classifier) throws Exception {
+
         classifier = new LinkClassifier(0.65f);
         this.url = url;
         this.domain = domain;
@@ -60,7 +63,7 @@ public class CrawlClassifier implements Runnable {
 
         while (this.pagesVisited.size() < MAXIMO_PAGINAS) {
             String currentUrl = null;
-            CrawlBody leg = new CrawlBody();
+            Downloader leg = new Downloader();
             if (this.pagesForView.isEmpty()) {
                 currentUrl = url;
                 this.pagesVisited.add(url);
@@ -71,7 +74,7 @@ public class CrawlClassifier implements Runnable {
                     e.printStackTrace();
                 }
             }
-            leg.crawl(currentUrl, i, domain); // aqui que a magica acontece
+            leg.download(currentUrl, i, domain); // aqui que a magica acontece
 
             if (domain.equals("nikon")) {
                 try {
