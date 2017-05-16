@@ -27,7 +27,7 @@ public class GeneralExtractor implements CameraDomainExtractor {
         mappedAttributeNames.putAll(SigmaPhotoExtractor.MAPPED_ATTRIBUTE_NAMES);
         mappedAttributeNames.putAll(SonyExtractor.MAPPED_ATTRIBUTE_NAMES);
         mappedAttributeNames.putAll(VisionsExtractor.MAPPED_ATTRIBUTE_NAMES);
-        mappedAttributeNames.putAll(WebPhotoGraphicExtractor.MAPPED_ATTRIBUTE_NAMES);
+        mappedAttributeNames.putAll(WexPhotoGraphicExtractor.MAPPED_ATTRIBUTE_NAMES);
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
