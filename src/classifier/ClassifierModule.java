@@ -33,6 +33,16 @@ public class ClassifierModule {
     private BlockingQueue<Pair<URL, Document>> classifiedQueue;
 
     /**
+     * Saves the total classified pages.
+     */
+    private volatile float totalClassifiedPages;
+
+    /**
+     * Saves the positive classified pages.
+     */
+    private volatile float positiveClassifiedPages;
+
+    /**
      * If the module was started.
      */
     private AtomicBoolean started;
@@ -54,17 +64,21 @@ public class ClassifierModule {
     /**
      * Starts the classifier module.
      */
-    private void start() {
+    public void start() {
         if (started.get()) {
             throw new IllegalStateException("Classifier module already started.");
         }
         started.set(true);
         new Thread(() -> {
+            totalClassifiedPages = 0;
+            positiveClassifiedPages = 0;
             while (started.get()) {
                 try {
                     Pair<URL, Document> toClassify = inputQueue.poll(100, TimeUnit.MILLISECONDS);
+                    totalClassifiedPages += 1;
                     if (pageClassifier.classify(toClassify.getValue()).equals(PageClassifier.POSITIVE)) {
                         classifiedQueue.add(toClassify);
+                        positiveClassifiedPages += 1;
                     }
                 } catch (InterruptedException ignored) {
                 } catch (Exception e) {
@@ -77,7 +91,18 @@ public class ClassifierModule {
     /**
      * Stops the classifier module
      */
-    private void stop() {
+    public void stop() {
         started.set(false);
+    }
+
+    /**
+     * Returns the current harvest ratio. The harvest ratio is the number of positive classified pages divided by the
+     * total number of pages. If the module has not started or no pages are classified, NaN is returned. If the module
+     * is stopped and started again, harvest ratio is reset.
+     *
+     * @return the current harvest ratio
+     */
+    public float getHarvestRatio() {
+        return positiveClassifiedPages / totalClassifiedPages;
     }
 }
