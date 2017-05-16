@@ -29,7 +29,7 @@ public class CrawlBFS implements Runnable {
      */
     private String ProximaURL() {
         String ProximaURL;
-        if(domain.equals("nikon")){
+        if(domain.equals("nikon") || domain.equals("currys") || domain.equals("wexphotographic")){
             do {
                 ProximaURL = this.pagesToVisit.remove(0);
             } while (this.visited.contains(ProximaURL) && robots.verifyURL(ProximaURL, domain));

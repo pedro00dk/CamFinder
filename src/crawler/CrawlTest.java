@@ -38,12 +38,13 @@ public class CrawlTest {
 					+ "ENE&IsNodeId=1&bop=And&PMSub=784%2012%2056756&PMSubCP=0cm_sp=Cat_Digita"
 					+ "l-Cameras_1-_-VisNav-_-Cameras_1", "newegg");
 
-		for (int i = 0; i < 10 ; i++) {
+	 /*	for (int i = 0; i < 10 ; i++) {
 			t[i] = new Thread(spider[i]);
 			t[i].start();
-		}
-		//	t[1] = new Thread(spider[1]);
-		//	t[1].start();
+		} */
+
+	 		t[1] = new Thread(spider[4]);
+			t[1].start();
 	 }
 
 	 public static void crawler2() throws Exception {

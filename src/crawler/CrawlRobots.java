@@ -1,12 +1,13 @@
 package crawler;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class CrawlRobots {
 	public String url;
 
-	public void robotstxt(String dominio, Set<String> PaginasVisitadas) {
-		if (dominio == "nikon") {
+	void robotstxt(String dominio, Set<String> PaginasVisitadas) {
+		if (Objects.equals(dominio, "nikon")) {
 			url = "http://www.nikon.com";
 			PaginasVisitadas.add(url + "/mobile/");
 			PaginasVisitadas.add(url + "/Ajax/");
@@ -22,13 +23,13 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/en/about-nikon/terms-of-use.page");
 		}
 
-		if (dominio == "sony") {
+		if (Objects.equals(dominio, "sony")) {
 			url = "http://www.sony.com";
 			PaginasVisitadas.add(url + "/buy/");
 			PaginasVisitadas.add(url + "/my-favorites");
 		}
 
-		if (dominio == "dpreview") {
+		if (Objects.equals(dominio, "dpreview")) {
 			url = "https://www.dpreview.com";
 			PaginasVisitadas.add(url + "/ad");
 			PaginasVisitadas.add(url + "/api");
@@ -37,7 +38,7 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/search");
 		}
 
-		if (dominio == "canon") {
+		if (Objects.equals(dominio, "canon")) {
 			url = "https://shop.usa.canon.com";
 			PaginasVisitadas.add(url + "/eStore/checkout/");
 			PaginasVisitadas.add(url + "/shop/AjaxOrderChangeServiceItemAdd");
@@ -45,7 +46,7 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/webapp/wcs/stores/servlet/OrderItemAdd");
 		}
 
-		if (dominio == "visions") {
+		if (Objects.equals(dominio, "visions")) {
 			url = "http://www.visions.ca";
 			PaginasVisitadas.add(url + "/catalogue/category/productresults.aspx?categoryid=661");
 			PaginasVisitadas.add(url + "/catalogue/category/productresults.aspx?categoryid=662");
@@ -72,7 +73,7 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/Images/Catalogue/Product/Manuals/");
 		}
 
-		if (dominio == "newegg") {
+		if (Objects.equals(dominio, "newegg")) {
 			url = "https://www.newegg.com";
 			PaginasVisitadas.add(url + "/Common/BML/");
 			PaginasVisitadas.add(url + "/Common/ThirdParty/");
@@ -132,7 +133,7 @@ public class CrawlRobots {
 			PaginasVisitadas.add("https://www.newegg.com/neweggpremier");
 		}
 
-		if (dominio == "ricoh") {
+		if (Objects.equals(dominio, "ricoh")) {
 			url = "http://us.ricoh-imaging.com";
 			PaginasVisitadas.add(url + "/administrator/");
 			PaginasVisitadas.add(url + "/bin/");
@@ -151,7 +152,7 @@ public class CrawlRobots {
 
 		}
 
-		if (dominio == "sigmaphoto") {
+		if (Objects.equals(dominio, "sigmaphoto")) {
 			url = "https://www.sigmaphoto.com";
 			PaginasVisitadas.add(url + "/404/");
 			PaginasVisitadas.add(url + "/app/");
@@ -172,17 +173,48 @@ public class CrawlRobots {
 			PaginasVisitadas.add(url + "/var/");
 		}
 
+        if (Objects.equals(dominio, "currys")) {
+            url = "www.currys.co.uk/";
+            PaginasVisitadas.add(url + "/send-a-friend");
+            PaginasVisitadas.add(url + "/compare/");
+        }
+
+        if (Objects.equals(dominio, "wexphotographic")) {
+            url = "www.wexphotographic.com/";
+            PaginasVisitadas.add(url + "/search");
+            PaginasVisitadas.add(url + "/WexAdmin/CMS/");
+            PaginasVisitadas.add(url + "/util/");
+        }
+
 	}
 
-	public boolean verifyURL(String url, String dominio){
-		int verify;
-		if(dominio.equals("nikon")){
+	public boolean verifyURL(String url, String domain){
+
+	        int verify;
+		    System.out.println("ENTROU");
+
+		if(domain.equals("nikon")){
 			verify = url.indexOf("Hunting-TV/");
 			if (verify>=0){
-				System.out.println("EU AQUI");
 				return true;
 			}
 		}
-		return false;
+
+        if(domain.equals("currys")){
+            verify = url.indexOf("?intcmp") + url.indexOf("price-asc/") + url.indexOf("price-desc/")
+                    + url.indexOf("search-keywords/");
+            if (verify>=0){
+                return true;
+            }
+        }
+
+        if(domain.equals("wexphotographic")){
+            verify = url.indexOf("pr_page_id=") + url.indexOf("returnUrl=") + url.indexOf("requestUrl=");
+            if (verify>=0){
+                return true;
+            }
+        }
+
+        return false;
 	}
 }
