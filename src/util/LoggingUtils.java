@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  *
  * @author Pedro Henrique
  */
-public class LoggingUtils {
+public final class LoggingUtils {
 
     /*
      * Setting global console handler.
