@@ -28,7 +28,7 @@ public class ExtractorModule {
     /**
      * Starts the extractor module.
      */
-    private void start() {
+    public void start() {
         if (started.get()) {
             throw new IllegalStateException("Extractor module already started.");
         }
@@ -37,6 +37,9 @@ public class ExtractorModule {
             while (started.get()) {
                 try {
                     Pair<URL, Document> toExtract = classifiedQueue.poll(100, TimeUnit.MILLISECONDS);
+                    if (toExtract == null || toExtract.getKey() == null || toExtract.getValue() == null) {
+                        continue;
+                    }
                     Map<String, String> contentExtracted = extractor.extractWebSiteContent(toExtract.getValue());
                     if (contentExtracted.size() > 1) {
                         extractedAttributesQueue.put(new Pair<>(toExtract.getKey(), contentExtracted));
@@ -52,7 +55,7 @@ public class ExtractorModule {
     /**
      * Stops the extractor module
      */
-    private void stop() {
+    public void stop() {
         started.set(false);
     }
 }

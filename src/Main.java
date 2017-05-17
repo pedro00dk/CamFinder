@@ -3,6 +3,8 @@ import classifier.PageClassifier;
 import crawler.Crawler;
 import crawler.CrawlerModule;
 import crawler.LinkClassifier;
+import extractor.ExtractorModule;
+import extractor.GeneralExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import util.SerializationUtils;
@@ -14,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -25,22 +28,38 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BlockingQueue<Pair<URL, Document>> crawlersOutput = new LinkedBlockingQueue<>();
         BlockingQueue<Pair<URL, Document>> classifierOutput = new LinkedBlockingQueue<>();
+        BlockingQueue<Pair<URL, Map<String, String>>> extractorOutput = new LinkedBlockingQueue<>();
 
         CrawlerModule crawlerModule = createCrawlerModule(crawlersOutput);
         ClassifierModule classifierModule = createClassifierModule(crawlersOutput, classifierOutput);
+        ExtractorModule extractorModule = createExtractorModule(classifierOutput, extractorOutput);
+
+
+        new Thread(() -> {
+            while (true) {
+                System.out.println("Craw out: " + crawlersOutput.size());
+                System.out.println("Class out: " + classifierOutput.size());
+                System.out.println("Total positive classified pages " + classifierModule.getPositiveClassifiedPages());
+                System.out.println("Total classified pages " + classifierModule.getTotalClassifiedPages());
+                System.out.println("Harvest ratio: " + classifierModule.getHarvestRatio());
+                System.out.println("Extr out: " + extractorOutput.size());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
         crawlerModule.start();
         classifierModule.start();
+        extractorModule.start();
 
         Thread.sleep(300000);
 
         crawlerModule.stop();
         classifierModule.stop();
-
-        System.out.println("Harvest ratio: " + classifierModule.getHarvestRatio());
-        System.out.println("Total positive classified pages " + classifierModule.getPositiveClassifiedPages());
-        System.out.println("Total classified pages " + classifierModule.getTotalClassifiedPages());
-        System.out.println("Total invalid pages " + classifierModule.getInvalidPages());
+        extractorModule.stop();
     }
 
     private static CrawlerModule createCrawlerModule(BlockingQueue<Pair<URL, Document>> crawlersOutput) throws Exception {
@@ -74,7 +93,7 @@ public class Main {
             return 5;
         };
 
-        // Function<URL, Integer> bsfRank = url -> 1;
+        // se for BFS Function<URL, Integer> bsfRank = url -> 1;
 
         List<Crawler> crawlers = new ArrayList<>();
         crawlers.add(new Crawler(new URL("http://www.sony.com/electronics/cameras"), classRank, crawlersOutput));
@@ -86,7 +105,7 @@ public class Main {
         crawlers.add(new Crawler(new URL("http://www.visions.ca/Catalogue/Category/ProductResults.aspx?categoryId=223&menu=205"), classRank, crawlersOutput));
         crawlers.add(new Crawler(new URL("https://www.sigmaphoto.com/cameras"), classRank, crawlersOutput));
         crawlers.add(new Crawler(new URL("http://us.ricoh-imaging.com/index.php/shop/cameras"), classRank, crawlersOutput));
-        crawlers.add(new Crawler(new URL("https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&IsNodeId=1&bop=And&PMSub=784%2012%2056756&PMSubCP=0cm_sp=Cat_Digital-Cameras_1-_-VisNav-_-Cameras_1"), classRank, null));
+        crawlers.add(new Crawler(new URL("https://www.newegg.com/Product/ProductList.aspx?Submit=ENE&IsNodeId=1&bop=And&PMSub=784%2012%2056756&PMSubCP=0cm_sp=Cat_Digital-Cameras_1-_-VisNav-_-Cameras_1"), classRank, crawlersOutput));
         return new CrawlerModule(crawlers, crawlersOutput);
     }
 
@@ -95,5 +114,9 @@ public class Main {
         PageClassifier selectedPageClassifier = pageClassifiers.get(0);
         selectedPageClassifier.setDefaultClassifierIndex(6);
         return new ClassifierModule(selectedPageClassifier, crawlersOutput, classifierOutput);
+    }
+
+    private static ExtractorModule createExtractorModule(BlockingQueue<Pair<URL, Document>> classifierOutput, BlockingQueue<Pair<URL, Map<String, String>>> extractorOutput) {
+        return new ExtractorModule(new GeneralExtractor(), classifierOutput, extractorOutput);
     }
 }

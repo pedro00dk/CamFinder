@@ -397,9 +397,7 @@ public class PageClassifier implements Serializable {
      */
     public String classify(Document page, int classifierIndex) throws Exception {
         Instance pageInstance = buildInstanceFromPage(page, null);
-        String clazz = CLASSES.get((int) Math.round(classifiers.get(classifierIndex).classifyInstance(pageInstance)));
-        //LoggingUtils.global().finer("Classified page (" + clazz + ")");
-        return clazz;
+        return CLASSES.get((int) Math.round(classifiers.get(classifierIndex).classifyInstance(pageInstance)));
     }
 
     //
