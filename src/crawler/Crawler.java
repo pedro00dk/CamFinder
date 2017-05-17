@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import util.LoggingUtils;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -86,6 +87,7 @@ public class Crawler {
                     }
                     visitedPages.add(currentURL.getKey());
                     downloadedPages.add(page);
+                    //LoggingUtils.global().finer("Visited page (" + currentURL.getValue() + ")" + currentURL.getKey());
                     Elements pageInternalLinks = page.getValue().select("a[href]");
                     for (Element pageInternalLink : pageInternalLinks) {
                         URL pageInternalUrl = null;

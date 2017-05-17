@@ -43,6 +43,11 @@ public class ClassifierModule {
     private volatile float positiveClassifiedPages;
 
     /**
+     * Saves the invalid pages.
+     */
+    private volatile float invalidPages;
+
+    /**
      * If the module was started.
      */
     private AtomicBoolean started;
@@ -72,10 +77,15 @@ public class ClassifierModule {
         new Thread(() -> {
             totalClassifiedPages = 0;
             positiveClassifiedPages = 0;
+            invalidPages = 0;
             while (started.get()) {
                 try {
                     Pair<URL, Document> toClassify = inputQueue.poll(100, TimeUnit.MILLISECONDS);
                     totalClassifiedPages += 1;
+                    if (toClassify == null || toClassify.getKey() == null || toClassify.getValue() == null) {
+                        invalidPages += 1;
+                        continue;
+                    }
                     if (pageClassifier.classify(toClassify.getValue()).equals(PageClassifier.POSITIVE)) {
                         classifiedQueue.add(toClassify);
                         positiveClassifiedPages += 1;
@@ -104,5 +114,17 @@ public class ClassifierModule {
      */
     public float getHarvestRatio() {
         return positiveClassifiedPages / totalClassifiedPages;
+    }
+
+    public float getTotalClassifiedPages() {
+        return totalClassifiedPages;
+    }
+
+    public float getPositiveClassifiedPages() {
+        return positiveClassifiedPages;
+    }
+
+    public float getInvalidPages() {
+        return invalidPages;
     }
 }

@@ -2,6 +2,7 @@ package classifier;
 
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
+import util.SerializationUtils;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
 import weka.classifiers.Classifier;
@@ -255,6 +256,8 @@ public class Main {
         System.out.println("Best page classifier (% correct): " + bestPageClassifierByCorrectlyClassified.getKey().getLabel() +
                 "\n\t" + "Best internal classifier index: " + bestPageClassifierByCorrectlyClassified.getValue()
         );
+
+        SerializationUtils.serialize((ArrayList<PageClassifier>) pageClassifiers, Paths.get("classifiers", "serialized.model"));
     }
 
     /**
