@@ -37,29 +37,33 @@ public class NewEggExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
-        //get camera name
-        String name = document.getElementById("grpDescrip_h").text();
+        try {
+            //get camera name
+            String name = document.getElementById("grpDescrip_h").text();
 
-        // get price
-        String price = document.getElementsByAttributeValue("itemprop", "price").attr("content");
+            // get price
+            String price = document.getElementsByAttributeValue("itemprop", "price").attr("content");
 
-        // get all attributes
-        List<Element> tableData = document.getElementsByTag("dl").stream()
-                .filter(data -> data.children().size() == 2).collect(Collectors.toList());
+            // get all attributes
+            List<Element> tableData = document.getElementsByTag("dl").stream()
+                    .filter(data -> data.children().size() == 2).collect(Collectors.toList());
 
-        Map<String, String> attributes = IntStream.range(0, tableData.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
-                .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
+            Map<String, String> attributes = IntStream.range(0, tableData.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
+                    .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
 
-        //processing values
-        attributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+            //processing values
+            attributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        attributes.put("name", name);
-        attributes.put("price", price);
+            attributes.put("name", name);
+            attributes.put("price", price);
 
-        return attributes;
+            return attributes;
+        } catch (NullPointerException e) {
+            return new HashMap<>();
+        }
 
     }
 }

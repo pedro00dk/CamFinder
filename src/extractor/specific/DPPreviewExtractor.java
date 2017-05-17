@@ -4,6 +4,7 @@ import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import weka.core.stopwords.Null;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -47,25 +48,28 @@ public class DPPreviewExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
+        try {
+            //get camera name
+            String name = document.getElementsByTag("h1").attr("itemprop", "name").text();
 
-        //get camera name
-        String name = document.getElementsByTag("h1").attr("itemprop", "name").text();
+            // get all attributes ( including price )
+            List<Element> tableData = document.getElementsByTag("tr").stream()
+                    .filter(data -> data.children().get(0).className().equals("label")).collect(Collectors.toList());
 
-        // get all attributes ( including price )
-        List<Element> tableData = document.getElementsByTag("tr").stream()
-                .filter(data -> data.children().get(0).className().equals("label")).collect(Collectors.toList());
+            Map<String, String> attributes = IntStream.range(0, tableData.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
+                    .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
 
-        Map<String, String> attributes = IntStream.range(0, tableData.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
-                .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
+            //processing values
+            attributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        //processing values
-        attributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+            attributes.put("name", name);
 
-        attributes.put("name", name);
-
-        return attributes;
+            return attributes;
+        }catch (NullPointerException e ){
+            return new HashMap<>();
+        }
     }
 }

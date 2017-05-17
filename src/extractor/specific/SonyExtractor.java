@@ -46,40 +46,43 @@ public class SonyExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
+        try {
+            // get camera name
+            String name = document.select(".primary-link.l3.breadcrumb-link").text();
+            // get price
+            String price = document.select(".price.p1").get(0).child(0).text();
 
-        // get camera name
-        String name = document.select(".primary-link.l3.breadcrumb-link").text();
-        // get price
-        String price = document.select(".price.p1").get(0).child(0).text();
+            // get all attributes
+            Elements keys1 = document.getElementsByTag("dt").select(".l3");
+            Elements values1 = document.getElementsByTag("dd").select(".p3");
 
-        // get all attributes
-        Elements keys1 = document.getElementsByTag("dt").select(".l3");
-        Elements values1 = document.getElementsByTag("dd").select(".p3");
+            //set attributes type 1
+            Map<String, String> attributes = IntStream.range(0, keys1.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys1.get(index).text()))
+                    .mapToObj(index -> new Pair<>(keys1.get(index).text(), values1.get(index).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
 
-        //set attributes type 1
-        Map<String, String> attributes = IntStream.range(0, keys1.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys1.get(index).text()))
-                .mapToObj(index -> new Pair<>(keys1.get(index).text(), values1.get(index).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
+            //set attributes type 2
+            Elements elements2 = document.select(".spec-cell-inner");
 
-        //set attributes type 2
-        Elements elements2 = document.select(".spec-cell-inner");
+            Map<String, String> attributes2 = IntStream.range(0, elements2.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(elements2.get(index).child(0).text()))
+                    .mapToObj(index -> new Pair<>(elements2.get(index).child(0).text(), elements2.get(index).child(1).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
 
-        Map<String, String> attributes2 = IntStream.range(0, elements2.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(elements2.get(index).child(0).text()))
-                .mapToObj(index -> new Pair<>(elements2.get(index).child(0).text(), elements2.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> v1));
+            Map<String, String> finalAttributes = new HashMap<>();
+            finalAttributes.putAll(attributes);
+            finalAttributes.putAll(attributes2);
 
-        Map<String, String> finalAttributes = new HashMap<>();
-        finalAttributes.putAll(attributes);
-        finalAttributes.putAll(attributes2);
+            finalAttributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        finalAttributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+            finalAttributes.put("name", name);
+            finalAttributes.put("price", price);
 
-        finalAttributes.put("name", name);
-        finalAttributes.put("price", price);
-
-        return finalAttributes;
+            return finalAttributes;
+        } catch (NullPointerException e) {
+            return new HashMap<>();
+        }
     }
 }

@@ -45,28 +45,32 @@ public class CurrysExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
-        //get camera name
-        String name = document.getElementsByTag("h1").select(".page-title.nosp").text();
+        try {
+            //get camera name
+            String name = document.getElementsByTag("h1").select(".page-title.nosp").text();
 
-        // get price
-        String price = document.getElementsByTag("div").select(".prd-amounts").get(0).text();
+            // get price
+            String price = document.getElementsByTag("div").select(".prd-amounts").get(0).text();
 
-        // get all attributes
-        List<Element> tableData = document.getElementsByTag("tr").stream()
-                .filter(data -> data.children().size() == 2).collect(Collectors.toList());
+            // get all attributes
+            List<Element> tableData = document.getElementsByTag("tr").stream()
+                    .filter(data -> data.children().size() == 2).collect(Collectors.toList());
 
-        Map<String, String> attributes = IntStream.range(0, tableData.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
-                .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
+            Map<String, String> attributes = IntStream.range(0, tableData.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(tableData.get(index).child(0).text()))
+                    .mapToObj(index -> new Pair<>(tableData.get(index).child(0).text(), tableData.get(index).child(1).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue, (v1, v2) -> (v1)));
 
-        //processing values
-        attributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+            //processing values
+            attributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        attributes.put("name", name);
-        attributes.put("price", price);
-        return attributes;
+            attributes.put("name", name);
+            attributes.put("price", price);
+            return attributes;
+        } catch (NullPointerException e) {
+            return new HashMap<>();
+        }
     }
 
 }

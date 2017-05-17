@@ -39,29 +39,32 @@ public class CanonExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
+        try {
+            // get camera name
+            String name = document.getElementsByAttributeValueContaining("itemprop", "name").stream()
+                    .filter(element -> element.tag().getName().equals("span"))
+                    .findFirst()
+                    .orElse(null)
+                    .text();
 
-        // get camera name
-        String name = document.getElementsByAttributeValueContaining("itemprop", "name").stream()
-                .filter(element -> element.tag().getName().equals("span"))
-                .findFirst()
-                .orElse(null)
-                .text();
+            // get price
+            String price = document.select(".price.final_price").text();
 
-        // get price
-        String price = document.select(".price.final_price").text();
+            // get all attributes
+            Map<String, String> attributes = document.select(".content_container.service_and_support p").stream()
+                    .filter(paragraph -> paragraph.children().size() > 1)
+                    .filter(paragraph -> MAPPED_ATTRIBUTE_NAMES.containsKey(paragraph.child(0).text()))
+                    .collect(Collectors.toMap(paragraph -> MAPPED_ATTRIBUTE_NAMES.get(paragraph.child(0).text()), Element::text, (v1, v2) -> v1));
 
-        // get all attributes
-        Map<String, String> attributes = document.select(".content_container.service_and_support p").stream()
-                .filter(paragraph -> paragraph.children().size() > 1)
-                .filter(paragraph -> MAPPED_ATTRIBUTE_NAMES.containsKey(paragraph.child(0).text()))
-                .collect(Collectors.toMap(paragraph -> MAPPED_ATTRIBUTE_NAMES.get(paragraph.child(0).text()), Element::text, (v1, v2) -> v1));
+            //processing values
+            attributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        //processing values
-        attributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
-
-        attributes.put("name", name);
-        attributes.put("price", price);
-        return attributes;
+            attributes.put("name", name);
+            attributes.put("price", price);
+            return attributes;
+        }catch (NullPointerException e ){
+            return new HashMap<>();
+        }
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //CANON
+//        //CANON
 //        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
 //        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-80d-body-refurbished"));
 //        testExtractor(new CanonExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished"));
@@ -41,7 +41,7 @@ public class Main {
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/gr-2"));
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-1"));
-//
+
 //        //DPPREVIEW
 //        testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xa3/specifications"));
 //        testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/canon/slrs/canon_eosm6/specifications"));
@@ -70,7 +70,7 @@ public class Main {
 //        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/powershot-sx540-hs"));
 //        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-80d-body-refurbished"));
 //        testExtractor(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished"));
-
+//
 //        //SONY
 //        testExtractor(new GeneralExtractor(), new URL("http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-5100-body-kit/specifications"));
 //        testExtractor(new GeneralExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500/specifications"));

@@ -41,27 +41,31 @@ public class NikonExtractor implements CameraDomainExtractor {
 
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
-        //get camera name
-        String name = document.select(".breadcrumb.current").text();
-        // get price
-        String price = document.getElementsByTag("span").select(".current-price").get(0).text();
+        try {
+            //get camera name
+            String name = document.select(".breadcrumb.current").text();
+            // get price
+            String price = document.getElementsByTag("span").select(".current-price").get(0).text();
 
-        // get all attributes
-        Elements keys = document.getElementsByTag("h4").select(".spec-title.col-sm-6");
-        Elements values = document.getElementsByTag("div").select(".specs.col-sm-6");
+            // get all attributes
+            Elements keys = document.getElementsByTag("h4").select(".spec-title.col-sm-6");
+            Elements values = document.getElementsByTag("div").select(".specs.col-sm-6");
 
-        Map<String, String> attributes = IntStream.range(0, keys.size())
-                .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys.get(index).text()))
-                .mapToObj(index -> new Pair<>(keys.get(index).text(), values.get(index).text()))
-                .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
+            Map<String, String> attributes = IntStream.range(0, keys.size())
+                    .filter(index -> MAPPED_ATTRIBUTE_NAMES.containsKey(keys.get(index).text()))
+                    .mapToObj(index -> new Pair<>(keys.get(index).text(), values.get(index).text()))
+                    .collect(Collectors.toMap(pair -> MAPPED_ATTRIBUTE_NAMES.get(pair.getKey()), Pair::getValue));
 
-        //processing values
-        attributes.entrySet()
-                .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
+            //processing values
+            attributes.entrySet()
+                    .forEach(entry -> entry.setValue(ATTRIBUTE_TYPE_ACTIONS.get(entry.getKey()).apply(entry.getValue())));
 
-        attributes.put("name", name);
-        attributes.put("price", price);
+            attributes.put("name", name);
+            attributes.put("price", price);
 
-        return attributes;
+            return attributes;
+        }catch (NullPointerException e ){
+            return new HashMap<>();
+        }
     }
 }

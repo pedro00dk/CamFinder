@@ -32,10 +32,7 @@ public class EvaluateGeneralExtractor {
         canonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished"));
         canonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-body-refurbished"));
 
-        //PEGA TODOS OS 7 ATTRIBUTOS, CORRETOS -> PRECISION = 1
-        double canonRecall = canonAttributesCount / ((CanonExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * canonPagesCount);
-        double canonFMeasure = 2*(canonRecall)/(canonRecall+1);
-        System.out.println("Canon:\n Recall:" + canonRecall + "\nF-measure: " + canonFMeasure );
+        printMetrics(canonAttributesCount, canonPagesCount, "Canon");
 
         //SONY
         int sonyAttributesCount = 0;
@@ -53,10 +50,7 @@ public class EvaluateGeneralExtractor {
         sonyAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500/specifications"));
         sonyAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m2/specifications"));
 
-        //PEGA OS DOIS ATRIBUTOS, CORRETOS -> PRECISION = 1
-        double sonyRecall = sonyAttributesCount / ((SonyExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * sonyPagesCount);
-        double sonyFMeasure = 2*(sonyRecall)/(sonyRecall+1);
-        System.out.println("Sony:\nRecall: " + sonyRecall + "\nF-measure: " + sonyFMeasure );
+        printMetrics(sonyAttributesCount, sonyPagesCount, "Sony");
 
         // NIKON
         int nikonAttributesCount = 0;
@@ -77,10 +71,7 @@ public class EvaluateGeneralExtractor {
         nikonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-v3.html#tab-ProductDetail-ProductTabs-TechSpecs"));
         nikonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-j5.html#tab-ProductDetail-ProductTabs-TechSpecs"));
 
-        //PEGA OS 7 ATRIBUTOS CORRETAMENTE -> PRECISION = 1
-        double nikonRecall = nikonAttributesCount / ((NikonExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * nikonPagesCount);
-        double nikonFMeasure = 2*(nikonRecall)/(nikonRecall+1);
-        System.out.println("Nikon:\nRecall: " + nikonRecall + "\nF-measure: " + nikonFMeasure );
+        printMetrics(nikonAttributesCount, nikonPagesCount, "Nikon");
 
         //VISIONS
         int visionsAttributesCount = 0;
@@ -100,12 +91,8 @@ public class EvaluateGeneralExtractor {
         visionsAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30973&sku=SX720HSBLACK"));
         visionsAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30395&sku=SX420IS"));
 
-        //PEGA OS 7 ATRIBUTOS CORRETAMENTE -> PRECISION = 1
-        double visionsRecall = visionsAttributesCount / ((VisionsExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * visionsPagesCount);
-        double visionsFMeasure = 2*(visionsRecall)/(visionsRecall+1);
-        System.out.println("Visions:\nRecall: " + visionsRecall + "\nF-measure: " + visionsFMeasure );
+        printMetrics(visionsAttributesCount, visionsPagesCount, "Visions");
 
-        //ESTOU NO SIGMA PHOTO
         //SIGMAPHOTO
         int sigmaPhotoAttributesCount = 0;
         double sigmaPhotoPagesCount = 9.0;
@@ -120,31 +107,25 @@ public class EvaluateGeneralExtractor {
         sigmaPhotoAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp2-quattro-compact-digital-camera"));
         sigmaPhotoAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.sigmaphoto.com/cameras/compact/dp3-quattro-compact-digital-camera"));
 
-        double sigmaPhotoRecall = sigmaPhotoAttributesCount / ((SigmaPhotoExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * sigmaPhotoPagesCount);
-        double sigmaPhotoFMeasure = 2*(sigmaPhotoRecall)/(sigmaPhotoRecall+1);
-        System.out.println("Sigma Photo:\nRecall: " + sigmaPhotoRecall + "\nF-measure: " + sigmaPhotoFMeasure );
-
+        printMetrics(sigmaPhotoAttributesCount, sigmaPhotoPagesCount, "Sigma Photo");
 
         //RICOH
-//        int ricohAttributesCount = 0;
-//        double ricohPagesCount = 11.0;
-//
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-1"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-70"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/theta-s"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/gr-2"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/theta-sc"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-50"));
-//        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-kp"));
-//
-//        double ricohPhotoRecall = ricohAttributesCount / ((RicohExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * ricohPagesCount);
-//        double ricohPhotoFMeasure = 2*(ricohPhotoRecall)/(ricohPhotoRecall+1);
-//
-//        System.out.println("Ricoh:\nRecall: " + ricohPhotoRecall + "\nF-measure: " + ricohPhotoFMeasure );
+        int ricohAttributesCount = 0;
+        double ricohPagesCount = 11.0;
+
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-1"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-3-ii"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-70"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/theta-s"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/gr-2"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/theta-sc"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-50"));
+        ricohAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-kp"));
+
+        printMetrics(ricohAttributesCount, ricohPagesCount, "Ricoh");
 
         //DPPREVIEW
         int dpPreviewAttributesCount = 0;
@@ -175,30 +156,24 @@ public class EvaluateGeneralExtractor {
         dpPreviewAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xt2/specifications"));
         dpPreviewAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.dpreview.com/products/pentax/slrs/pentax_k70/specifications"));
 
-        double dpPreviewPhotoRecall = dpPreviewAttributesCount / ((DPPreviewExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 1) * dpPreviewPagesCount);
-        double dpPreviewPhotoFMeasure = 2*(dpPreviewPhotoRecall)/(dpPreviewPhotoRecall+1);
-        System.out.println("DP Preview:\nRecall: " + dpPreviewPhotoRecall + "\nF-measure: " + dpPreviewPhotoFMeasure );
-
+        printMetrics(dpPreviewAttributesCount, dpPreviewPagesCount, "DP Preview");
 
         //NEWEGG
-        int newEggAttributesCount = 0;
-        double newEggPagesCount = 11.0;
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120844"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G5515538"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB925C69394"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABMT5DF2426"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX58W3053"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX4GJ3904"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G4781189"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819"));
-        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678"));
-
-        //TODO perguntando se eu sou um robo... ajustar em casa.
-        double newEggPhotoRecall = newEggAttributesCount / ((NewEggExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * newEggPagesCount);
-        double newEggPhotoFMeasure = 2*(newEggPhotoRecall)/(newEggPhotoRecall+1);
-        System.out.println("New Egg:\nRecall: " + newEggPhotoRecall + "\nF-measure: " + newEggPhotoFMeasure );
-
+//        int newEggAttributesCount = 0;
+//        double newEggPagesCount = 11.0;
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120844"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G5515538"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB925C69394"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABMT5DF2426"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX58W3053"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX4GJ3904"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G4781189"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819"));
+//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678"));
+//
+//        printMetrics(newEggAttributesCount, newEggPagesCount, "New Egg");
+//
         //CURRYS
         int currysAttributesCount = 0;
         double currysPagesCount = 16.0;
@@ -219,9 +194,7 @@ public class EvaluateGeneralExtractor {
         currysAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/polaroid-ie826-compact-camera-grey-10126999-pdt.html"));
         currysAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.currys.co.uk/gbuk/cameras-and-camcorders/digital-cameras/compact-and-bridge-cameras/canon-powershot-g7-x-mark-ii-high-performance-compact-camera-black-10145306-pdt.html"));
 
-        double currysPhotoRecall = currysAttributesCount / ((CurrysExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * currysPagesCount);
-        double currysPhotoFMeasure = 2*(currysPhotoRecall)/(currysPhotoRecall+1);
-        System.out.println("Currys:\nRecall:" + currysPhotoRecall + "\nF-measure: " + currysPhotoFMeasure );
+        printMetrics(currysAttributesCount, currysPagesCount, "Currys");
 
         //WEXPHOTOGRAPHIC
         int wexPhotographicAttributesCount = 0;
@@ -233,13 +206,16 @@ public class EvaluateGeneralExtractor {
         wexPhotographicAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.wexphotographic.com/canon-eos-7d-mark-ii-digital-slr-camera-body-1560196/"));
         wexPhotographicAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.wexphotographic.com/canon-eos-5d-mark-iii-digital-slr-camera-body-1530010/"));
 
-        double wexPhotographicRecall = wexPhotographicAttributesCount / ((WexPhotoGraphicExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * wexPhotographicPagesCount);
-        double wexPhotographicPhotoFMeasure = 2*(wexPhotographicRecall)/(wexPhotographicRecall+1);
-        System.out.println("Wex Photographic:\nRecall:" + wexPhotographicRecall + "\nF-measure: " + wexPhotographicPhotoFMeasure );
-
+        printMetrics(wexPhotographicAttributesCount, wexPhotographicPagesCount, "Wex Photographic");
     }
 
     static int getExtractedAttributesSize(CameraDomainExtractor extractor, URL url) throws IOException {
         return extractor.extractWebSiteContent(Jsoup.parse(url, 0)).size();
+    }
+
+    static void printMetrics(int attributesCount, double pagesCount, String extractorName) {
+        double recall = attributesCount / ((8) * pagesCount);
+        double fMeasure = 2 * (recall) / (recall + 1);
+        System.out.println(extractorName + ":\nRecall:" + recall + "\nF-measure: " + fMeasure);
     }
 }
