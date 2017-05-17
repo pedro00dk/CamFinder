@@ -39,6 +39,8 @@ public class Main {
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-645z"));
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/wg-m2"));
 //        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-s2"));
+//        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/gr-2"));
+//        testExtractor(new RicohExtractor(), new URL("http://us.ricoh-imaging.com/index.php/cameras/pentax-k-1"));
 //
 //        //DPPREVIEW
 //        testExtractor(new DPPreviewExtractor(), new URL("https://www.dpreview.com/products/fujifilm/slrs/fujifilm_xa3/specifications"));

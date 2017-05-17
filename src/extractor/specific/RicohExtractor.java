@@ -4,6 +4,7 @@ import extractor.CameraDomainExtractor;
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,10 +46,16 @@ public class RicohExtractor implements CameraDomainExtractor {
     @Override
     public Map<String, String> extractWebSiteContent(Document document) {
         //get camera name
-        String name = document.getElementsByAttributeValue("name", "keywords").get(0).attr("content");
+        String name = document.getElementsByTag("title").text().replaceAll("Medium Format DSLR - ", "");;
 
         // get price
-        String price = document.select(".mt15.pull-left.mr30").get(0).text();
+        Elements priceElement = document.select(".mt15.pull-left.mr30");
+
+        if(priceElement.size() == 0){
+            priceElement = document.select(".mt10.pull-left.mr30");
+        }
+
+        String price = priceElement.get(0).text();
 
         // get all attributes
         List<Element> tableData = document.getElementsByTag("tr").stream()
