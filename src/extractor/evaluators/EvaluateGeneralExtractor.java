@@ -32,6 +32,7 @@ public class EvaluateGeneralExtractor {
         canonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-r-body-refurbished"));
         canonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://shop.usa.canon.com/shop/en/catalog/eos-5ds-body-refurbished"));
 
+        //PEGA TODOS OS 7 ATTRIBUTOS, CORRETOS -> PRECISION = 1
         double canonRecall = canonAttributesCount / ((CanonExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * canonPagesCount);
         double canonFMeasure = 2*(canonRecall)/(canonRecall+1);
         System.out.println("Canon:\n Recall:" + canonRecall + "\nF-measure: " + canonFMeasure );
@@ -52,6 +53,7 @@ public class EvaluateGeneralExtractor {
         sonyAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-wx500/specifications"));
         sonyAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.sony.com/electronics/cyber-shot-compact-cameras/dsc-rx10m2/specifications"));
 
+        //PEGA OS DOIS ATRIBUTOS, CORRETOS -> PRECISION = 1
         double sonyRecall = sonyAttributesCount / ((SonyExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * sonyPagesCount);
         double sonyFMeasure = 2*(sonyRecall)/(sonyRecall+1);
         System.out.println("Sony:\nRecall: " + sonyRecall + "\nF-measure: " + sonyFMeasure );
@@ -75,6 +77,7 @@ public class EvaluateGeneralExtractor {
         nikonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-v3.html#tab-ProductDetail-ProductTabs-TechSpecs"));
         nikonAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.nikonusa.com/en/nikon-products/product/nikon1/nikon-1-j5.html#tab-ProductDetail-ProductTabs-TechSpecs"));
 
+        //PEGA OS 7 ATRIBUTOS CORRETAMENTE -> PRECISION = 1
         double nikonRecall = nikonAttributesCount / ((NikonExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * nikonPagesCount);
         double nikonFMeasure = 2*(nikonRecall)/(nikonRecall+1);
         System.out.println("Nikon:\nRecall: " + nikonRecall + "\nF-measure: " + nikonFMeasure );
@@ -97,11 +100,12 @@ public class EvaluateGeneralExtractor {
         visionsAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30973&sku=SX720HSBLACK"));
         visionsAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("http://www.visions.ca/catalogue/category/Details.aspx?categoryId=223&productId=30395&sku=SX420IS"));
 
+        //PEGA OS 7 ATRIBUTOS CORRETAMENTE -> PRECISION = 1
         double visionsRecall = visionsAttributesCount / ((VisionsExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * visionsPagesCount);
         double visionsFMeasure = 2*(visionsRecall)/(visionsRecall+1);
         System.out.println("Visions:\nRecall: " + visionsRecall + "\nF-measure: " + visionsFMeasure );
 
-
+        //ESTOU NO SIGMA PHOTO
         //SIGMAPHOTO
         int sigmaPhotoAttributesCount = 0;
         double sigmaPhotoPagesCount = 9.0;
@@ -190,6 +194,7 @@ public class EvaluateGeneralExtractor {
         newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819"));
         newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678"));
 
+        //TODO perguntando se eu sou um robo... ajustar em casa.
         double newEggPhotoRecall = newEggAttributesCount / ((NewEggExtractor.ATTRIBUTE_TYPE_ACTIONS.size() + 2) * newEggPagesCount);
         double newEggPhotoFMeasure = 2*(newEggPhotoRecall)/(newEggPhotoRecall+1);
         System.out.println("New Egg:\nRecall: " + newEggPhotoRecall + "\nF-measure: " + newEggPhotoFMeasure );

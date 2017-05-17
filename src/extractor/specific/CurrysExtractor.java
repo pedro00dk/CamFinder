@@ -27,6 +27,7 @@ public class CurrysExtractor implements CameraDomainExtractor {
         mappedAttributeNames.put("Optical zoom", "Zoom");
         mappedAttributeNames.put("ISO sensitivity", "Sensitivity");
         mappedAttributeNames.put("Shutter", "Shutter Speed");
+        mappedAttributeNames.put("Shutter speed", "Shutter Speed");
         mappedAttributeNames.put("Size", "Sensor Size");
 
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
