@@ -1,12 +1,13 @@
-package extractor;
+package extractor.evaluators;
 
+import extractor.CameraDomainExtractor;
 import extractor.specific.*;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class EvaluateExtractor {
+public class EvaluateSpecificExtractor {
 
     public static void main(String[] args) throws IOException {
         //CANON
