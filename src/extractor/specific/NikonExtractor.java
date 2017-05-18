@@ -40,6 +40,11 @@ public class NikonExtractor implements CameraDomainExtractor {
     }
 
     @Override
+    public Map<String, Function<String, String>> getAtrributeTypeActions() {
+        return ATTRIBUTE_TYPE_ACTIONS;
+    }
+
+    @Override
     public Map<String, String> extractWebSiteContent(Document document) {
         try {
             //get camera name
@@ -64,7 +69,7 @@ public class NikonExtractor implements CameraDomainExtractor {
             attributes.put("price", price);
 
             return attributes;
-        }catch (NullPointerException e ){
+        } catch (NullPointerException e) {
             return new HashMap<>();
         }
     }

@@ -3,10 +3,13 @@ package extractor;
 import org.jsoup.nodes.Document;
 
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public interface CameraDomainExtractor {
+
+    Map<String, Function<String, String>> getAtrributeTypeActions();
 
     default String domain() {
         return getClass().getSimpleName().replace("Extractor", "");
@@ -25,8 +28,4 @@ public interface CameraDomainExtractor {
                 .collect(Collectors.joining(" - "));
 
     }
-
-  /*  static String formatStorage(String unformatted){
-        return unformatted.split(",")[0];
-    }*/
 }

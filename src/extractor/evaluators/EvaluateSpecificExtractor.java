@@ -212,7 +212,7 @@ public class EvaluateSpecificExtractor {
     }
 
     static void printMetrics(int attributesCount, double pagesCount, CameraDomainExtractor extractor) {
-        double recall = attributesCount / ((8) * pagesCount);
+        double recall = attributesCount / ((extractor.getAtrributeTypeActions().size() + (extractor.domain().equals("DPPreview") ? 1 : 2) ) * pagesCount);
         double fMeasure = 2 * (recall) / (recall + 1);
         System.out.println(extractor.domain() + ":\nRecall:" + recall + "\nF-measure: " + fMeasure);
     }

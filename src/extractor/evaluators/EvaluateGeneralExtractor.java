@@ -159,21 +159,21 @@ public class EvaluateGeneralExtractor {
         printMetrics(dpPreviewAttributesCount, dpPreviewPagesCount, "DP Preview");
 
         //NEWEGG
-//        int newEggAttributesCount = 0;
-//        double newEggPagesCount = 11.0;
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120844"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G5515538"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB925C69394"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABMT5DF2426"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX58W3053"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX4GJ3904"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G4781189"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819"));
-//        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678"));
-//
-//        printMetrics(newEggAttributesCount, newEggPagesCount, "New Egg");
-//
+        int newEggAttributesCount = 0;
+        double newEggPagesCount = 11.0;
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120835"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120844"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G5515538"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB925C69394"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABMT5DF2426"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX58W3053"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIABKX4GJ3904"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=9SIAB2G4781189"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120819"));
+        newEggAttributesCount += getExtractedAttributesSize(new GeneralExtractor(), new URL("https://www.newegg.com/Product/Product.aspx?Item=N82E16830120678"));
+
+        printMetrics(newEggAttributesCount, newEggPagesCount, "New Egg");
+
         //CURRYS
         int currysAttributesCount = 0;
         double currysPagesCount = 16.0;

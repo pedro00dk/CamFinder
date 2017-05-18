@@ -41,7 +41,11 @@ public class GeneralExtractor implements CameraDomainExtractor {
         attributeTypeActions.put("price", Function.identity());
 
         ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
+    }
 
+    @Override
+    public Map<String, Function<String, String>> getAtrributeTypeActions() {
+        return ATTRIBUTE_TYPE_ACTIONS;
     }
 
     @Override

@@ -40,6 +40,11 @@ public class WexPhotoGraphicExtractor implements CameraDomainExtractor {
         ATTRIBUTE_TYPE_ACTIONS = Collections.unmodifiableMap(attributeTypeActions);
     }
 
+    @Override
+    public Map<String, Function<String, String>> getAtrributeTypeActions() {
+        return ATTRIBUTE_TYPE_ACTIONS;
+    }
+
     public Map<String, String> extractWebSiteContent(Document document) {
         try {
             //get camera name
@@ -63,7 +68,7 @@ public class WexPhotoGraphicExtractor implements CameraDomainExtractor {
             attributes.put("name", name);
             attributes.put("price", price);
             return attributes;
-        }catch (NullPointerException e ){
+        } catch (NullPointerException e) {
             return new HashMap<>();
         }
     }

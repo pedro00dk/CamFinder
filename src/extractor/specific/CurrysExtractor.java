@@ -44,6 +44,11 @@ public class CurrysExtractor implements CameraDomainExtractor {
     }
 
     @Override
+    public Map<String, Function<String, String>> getAtrributeTypeActions() {
+        return ATTRIBUTE_TYPE_ACTIONS;
+    }
+
+    @Override
     public Map<String, String> extractWebSiteContent(Document document) {
         try {
             //get camera name
