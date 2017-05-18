@@ -2,7 +2,6 @@ package classifier;
 
 import javafx.util.Pair;
 import org.jsoup.nodes.Document;
-import util.LoggingUtils;
 import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
@@ -96,8 +95,9 @@ public class PageClassifier implements Serializable {
      * @param negativePages          the list of negative pages
      * @param positivePages          the list of positive pages
      * @param trainRatio             the ratio of instances to be used in training
+     * @param seed                   the seed to rand the instances
      */
-    public PageClassifier(String label, List<Classifier> classifiers, int defaultClassifierIndex, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio) {
+    public PageClassifier(String label, List<Classifier> classifiers, int defaultClassifierIndex, Filter filter, int maxAttributeCount, List<Document> negativePages, List<Document> positivePages, float trainRatio, int seed) {
         this.label = label != null ? label : getClass().getSimpleName();
 
         Objects.requireNonNull(classifiers, "The classifiers list can not be null.");
@@ -156,7 +156,7 @@ public class PageClassifier implements Serializable {
 
         int trainingSize = Math.round(instances.size() * trainRatio);
         int testSize = instances.size() - trainingSize;
-        instances.randomize(new Random(2983742));
+        instances.randomize(new Random(seed));
         trainInstances = new Instances(instances, 0, trainingSize);
         testInstances = new Instances(instances, trainingSize, testSize);
 

@@ -41,6 +41,8 @@ public class Main {
     private static final Path POSITIVE_PAGES_PATH = Paths.get("pages", "downloaded", "positive");
     private static final Path POSITIVE_PAGE_LINKS = Paths.get("pages", "positive.txt");
 
+    private static final Path SERIALIZED_CLASSIFIERS = Paths.get("classifiers", "serialized.model");
+
     static {
         boolean locally;
         try {
@@ -140,8 +142,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         pageClassifiers.add(
                 new PageClassifier("10 High freq",
@@ -152,8 +156,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         pageClassifiers.add(
                 new PageClassifier("50 High freq",
@@ -164,8 +170,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         pageClassifiers.add(
                 new PageClassifier("100 High freq",
@@ -176,8 +184,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         infoGainSearch.setNumToSelect(10);
         pageClassifiers.add(
@@ -189,8 +199,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         infoGainSearch.setNumToSelect(50);
         pageClassifiers.add(
@@ -202,8 +214,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         infoGainSearch.setNumToSelect(100);
         pageClassifiers.add(
@@ -215,8 +229,10 @@ public class Main {
                         new ArrayList<>(negativePages.values()),
                         new ArrayList<>(positivePages.values()),
                         0.75f
+                        , 1137
                 )
         );
+        System.out.println(pageClassifiers.get(pageClassifiers.size() - 1).getLabel() + " created");
 
         System.out.println("Evaluating page classifiers");
         pageClassifiers.forEach(
@@ -241,6 +257,7 @@ public class Main {
                 }
         );
 
+        // Get best classifiers
         Pair<PageClassifier, Integer> bestPageClassifierByRecall = PageClassifier.select(
                 pageClassifiers,
                 evaluation -> evaluation.recall(PageClassifier.CLASSES.indexOf(PageClassifier.POSITIVE))
@@ -257,7 +274,31 @@ public class Main {
                 "\n\t" + "Best internal classifier index: " + bestPageClassifierByCorrectlyClassified.getValue()
         );
 
-        SerializationUtils.serialize((ArrayList<PageClassifier>) pageClassifiers, Paths.get("classifiers", "serialized.model"));
+        // Print statistics
+        int positiveClassIndex = PageClassifier.CLASSES.indexOf(PageClassifier.POSITIVE);
+        pageClassifiers.forEach(pageClassifier -> {
+            System.out.println(pageClassifier.getLabel() + " statistics");
+            IntStream.range(0, pageClassifier.classifierCount())
+                    .forEach(index -> {
+                        try {
+                            Classifier classifier = pageClassifier.getClassifier(index);
+                            if (classifier == null) {
+                                System.out.println("Null classifier");
+                                return;
+                            }
+                            System.out.println("\t" + classifier.getClass().getSimpleName());
+                            Evaluation evaluation = pageClassifier.getClassifierEvaluation(index);
+                            System.out.println("\t\t(Positive) Precision: " + evaluation.precision(positiveClassIndex));
+                            System.out.println("\t\t(Positive) Recall   : " + evaluation.recall(positiveClassIndex));
+                            System.out.println("\t\t(Positive) F-Measure: " + evaluation.fMeasure(positiveClassIndex));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+        });
+
+        SerializationUtils.serialize((ArrayList<PageClassifier>) pageClassifiers, SERIALIZED_CLASSIFIERS);
+        System.out.println("Serializing classifiers");
     }
 
     /**
