@@ -32,8 +32,8 @@ public class GeneralExtractor implements CameraDomainExtractor {
         MAPPED_ATTRIBUTE_NAMES = Collections.unmodifiableMap(mappedAttributeNames);
 
         Map<String, Function<String, String>> attributeTypeActions = new HashMap<>();
-        attributeTypeActions.put("Megapixels", CameraDomainExtractor::formatMegapixel);
-        attributeTypeActions.put("Zoom", CameraDomainExtractor::formatZoom);
+        attributeTypeActions.put("Megapixels", Function.identity());
+        attributeTypeActions.put("Zoom", Function.identity());
         attributeTypeActions.put("Storage Mode", Function.identity());
         attributeTypeActions.put("Sensitivity", Function.identity());
         attributeTypeActions.put("Shutter Speed", Function.identity());
@@ -91,7 +91,7 @@ public class GeneralExtractor implements CameraDomainExtractor {
         }
 
         if (price != null) {
-            attributes.put("price", price);
+            attributes.put("price", ATTRIBUTE_TYPE_ACTIONS.get("price").apply(price));
         }
 
         return attributes;
