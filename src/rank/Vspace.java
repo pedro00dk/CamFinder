@@ -1,22 +1,62 @@
 package rank;
 
 
-public class Vspace {
+import javafx.util.Pair;
 
-    private double tf;
-    private double idf;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class Vspace {
+    private List<String> querys;
+    private Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice;
+    private int documentCount;
+    List<Pair<String, List<Pair<URL, Double>>>> tfidfLists = new ArrayList<>();
+
 
     /*
-        Calcular o TFIDF para cada palavra
-     */
-    double tfidf(int total, int appears, int appearsD) {
-        if (appearsD != 0) tf = 1 + Math.log10(appearsD);
-        else tf = 0;
-        double x = (double) total / (double) appears;
-        idf = Math.log10(x);
+        Calculo o tfidf para cada termo do meu conjunto de termos
 
-        return tf * idf;
+    */
+    void calculateTfIdf(){
+        for (String query:querys) {
+            tfidfLists.add(getTfidfList(query));
+        }
     }
+
+    /*
+        Calcular o espaço vetorial para cada documento
+     */
+
+    void vectorSpace(URL url){
+        List<Pair<URL, List<Double>>> documents = new ArrayList<>();
+        for (int i = 0; i < documentCount ; i++) {
+            for (int j = 0; j < tfidfLists.size(); j++) {
+                documents.add(new Pair<URL, List<Double>>(url, null));
+            }
+        }
+    }
+
+    /*
+        Faço meu cálculo de tfIdf para o determinado termo da minha base de documentos
+        ex.: zoom.10 --> 5, 6,7,8....
+     */
+    Pair<String, List<Pair<URL, Double>>> getTfidfList(String query){
+        Pair<Integer, List<Pair<URL, Integer>>> queryPages = indice.get(query);
+        if(queryPages == null){
+            return null;
+        }
+        List<Pair<URL, Double>> tfidfList = new ArrayList<>();
+        for (Pair<URL, Integer> pageInfo : queryPages.getValue()) {
+            double tf = 1+Math.log10(pageInfo.getValue());
+            double idf = Math.log10(documentCount/queryPages.getKey());
+            double tfidf = tf*idf;
+            tfidfList.add(new Pair<>(pageInfo.getKey(), tfidf));
+        }
+        return new Pair<>(query, tfidfList);
+    }
+
 
 
     double similar(double document[], double query[]) {
@@ -35,31 +75,6 @@ public class Vspace {
         return denominador / numerador;
     }
 
-    void vetorialSpace(int words, int totalDocuments) {
-        double tfidf[][] = new double[words][totalDocuments];
-
-        for (int i = 0; i < words; i++) {
-            for (int j = 0; j < totalDocuments; j++) {
-                tfidf[i][j] = tfidf(totalDocuments, appear(i), appearD(i, j));
-            }
-        }
-    }
-
-    /*
-    Consultar no Indice Invertido quantas vezes aquela palavra ocorre na base de documentos
-    */
-    int appear(int i) {
-
-        return 0;
-    }
-
-    /*
-    Consultar no indice invertido quantas vezes aquela palavra aparece naquele documento específico
-    */
-    int appearD(int i, int j) {
-
-        return 0;
-    }
 
 
 }
