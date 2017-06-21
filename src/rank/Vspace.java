@@ -5,6 +5,7 @@ import javafx.util.Pair;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ public class Vspace {
     private Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice;
     private int documentCount;
     List<Pair<String, List<Pair<URL, Double>>>> tfidfLists = new ArrayList<>();
+    private String queryG;
 
 
     /*
@@ -22,6 +24,15 @@ public class Vspace {
     void calculateTfIdf(){
         for (String query:querys) {
             tfidfLists.add(getTfidfList(query));
+        }
+    }
+
+    void vectorQuery(){
+        String[] words = queryG.split(" ");
+        Double[] idfQuery = new Double[documentCount];
+        for (int i = 0; i < words.length ; i++) {
+            Pair<Integer, List<Pair<URL, Integer>>> count = indice.get(words[i]);
+            idfQuery[i] = 1 + Math.log10(documentCount + count.getKey());
         }
     }
 
