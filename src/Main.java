@@ -10,16 +10,16 @@ import org.jsoup.nodes.Document;
 import util.SerializationUtils;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -30,13 +30,16 @@ public class Main {
         BlockingQueue<Pair<URL, Document>> classifierOutput = new LinkedBlockingQueue<>();
         BlockingQueue<Pair<URL, Map<String, String>>> extractorOutput = new LinkedBlockingQueue<>();
 
+        System.out.println("Creating crawler module");
         CrawlerModule crawlerModule = createCrawlerModule(crawlersOutput);
+        System.out.println("Creating classifier module");
         ClassifierModule classifierModule = createClassifierModule(crawlersOutput, classifierOutput);
+        System.out.println("Creating extractor module");
         ExtractorModule extractorModule = createExtractorModule(classifierOutput, extractorOutput);
 
-
-        new Thread(() -> {
-            while (true) {
+        final AtomicBoolean printerRoutineRunning = new AtomicBoolean(true);
+        final Thread printerRoutine = new Thread(() -> {
+            while (printerRoutineRunning.get()) {
                 System.out.println("Craw out: " + crawlersOutput.size());
                 System.out.println("Class out: " + classifierOutput.size());
                 System.out.println("Total positive classified pages " + classifierModule.getPositiveClassifiedPages());
@@ -49,17 +52,33 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        System.out.println("Starting output printer routine");
+        printerRoutine.start();
 
+        System.out.println("Starting modules");
         crawlerModule.start();
         classifierModule.start();
         extractorModule.start();
 
-        Thread.sleep(300000);
+        long startTime = System.currentTimeMillis();
+        new Scanner(System.in).nextLine();
 
+        System.out.println("Stoping modules");
         crawlerModule.stop();
         classifierModule.stop();
         extractorModule.stop();
+
+        System.out.println("Stoping output printer routine");
+        printerRoutineRunning.set(false);
+
+        long stopTime = System.currentTimeMillis();
+        System.out.println("Total time = " + (stopTime - startTime) / 1000.0 + "secs");
+
+        Path extractedContentPath = Paths.get("pages", "extracted", "extracted.data");
+        ObjectOutputStream os = new ObjectOutputStream(Files.newOutputStream(extractedContentPath));
+        os.writeObject(extractorOutput);
+        os.close();
     }
 
     private static CrawlerModule createCrawlerModule(BlockingQueue<Pair<URL, Document>> crawlersOutput) throws Exception {

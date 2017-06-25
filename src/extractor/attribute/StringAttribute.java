@@ -11,4 +11,9 @@ public class StringAttribute implements Attribute<String> {
     public String value() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

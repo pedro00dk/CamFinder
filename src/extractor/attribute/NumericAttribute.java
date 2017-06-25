@@ -11,4 +11,9 @@ public class NumericAttribute implements Attribute<Double> {
     public Double value() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
+    }
 }
