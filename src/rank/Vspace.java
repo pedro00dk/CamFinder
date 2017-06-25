@@ -2,8 +2,6 @@ package rank;
 
 
 import javafx.util.Pair;
-
-import java.lang.reflect.Parameter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
@@ -11,41 +9,29 @@ import java.util.*;
 public class Vspace {
 
     private Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice;
-    private List<String> terms;
+    List<String> terms;
+    List<URL> urls;
     static List<Pair<String, List<Pair<URL, Double>>>> tfidfLists = new ArrayList<>();
     static Map<URL, List<Double>> vectors = new HashMap<>();
     static Map<URL, Double> rank = new HashMap<>();
     private int documentCount;
     private String queryG;
-    Double[] idfQuery = new Double[documentCount];
+    List<Double> idfQuery = new ArrayList<>();
 
-
-
-    /*
-        Calculo o tfidf para cada termo do meu conjunto de termos
-    */
-    void calculateTfIdf() {
-        for (String query : terms) {
-            tfidfLists.add(getTfidfList(query));
-        }
-    }
 
     void vectorQuery() {
         String[] words = queryG.split(" ");
         for (int i = 0; i < words.length; i++) {
             Pair<Integer, List<Pair<URL, Integer>>> count = indice.get(words[i]);
-            idfQuery[i] = 1 + Math.log10(documentCount + count.getKey());
+            idfQuery.set(i, 1 + Math.log10(documentCount + count.getKey()));
         }
     }
 
-    /*
-        Calcular o espaço vetorial para cada documento
-     */
 
+    /*Calcular o espaço vetorial para cada documento*/
     void vectorSpace(URL url) {
         List<Pair<URL, Double>> urlsTfidf;
         List<Double> valor[] = null;
-        URL urlD = null;
 
         for (int i = 0; i < tfidfLists.size(); i++) {
             urlsTfidf = tfidfLists.get(i).getValue();
@@ -55,13 +41,19 @@ public class Vspace {
                 valor[i].clear();
             }
         }
-
     }
 
-    /*
-        Faço meu cálculo de tfIdf para o determinado termo da minha base de documentos
-        ex.: zoom.10 --> 5, 6,7,8....
-     */
+    /*Calculo o tfidf para cada termo do meu conjunto de termos*/
+    void calculateTfIdf() {
+        //Pega todas as querys da consultas, salva numa lista e calcula o tfIDF dela relacionado a todos os documentos
+        for(String query : indice.keySet()){
+            terms.add(query);
+            tfidfLists.add(getTfidfList(query));
+        }
+    }
+
+    /*Faço meu cálculo de tfIdf para o determinado termo da minha base de documentos
+     ex.: zoom.10 --> 5, 6,7,8....*/
     Pair<String, List<Pair<URL, Double>>> getTfidfList(String query) {
         Pair<Integer, List<Pair<URL, Integer>>> queryPages = indice.get(query);
         if (queryPages == null) {
@@ -89,15 +81,14 @@ public class Vspace {
         }
 
         for (int i = 0; i < vectors.size(); i++) {
-            for (int j = 0; j <idfQuery.length ; j++) {
-                denominador = denominador + vectors.get(i).get(j) * idfQuery[j];
+            for (int j = 0; j < idfQuery.size(); j++) {
+                denominador = denominador + vectors.get(i).get(j) * idfQuery.get(j);
                 numeradorD = numeradorD + vectors.get(i).get(j) * vectors.get(i).get(j);
-                numeradorQ = numeradorQ + idfQuery[j] * idfQuery[j];
+                numeradorQ = numeradorQ + idfQuery.get(j) * idfQuery.get(j);
                 numerador = Math.sqrt((numeradorD*numeradorQ));
                 rank.put(urls.get(i), denominador/numerador);
             }
         }
-
     }
 
     public static void main(String[] args) throws MalformedURLException {
@@ -137,8 +128,5 @@ public class Vspace {
         for (URL url:getKey) {
             System.out.println(url);
         }
-
-
-
     }
 }
