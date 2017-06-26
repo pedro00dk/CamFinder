@@ -7,8 +7,6 @@ import java.net.URL;
 import java.util.*;
 
 public class Vspace {
-
-    private Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice;
     static Map<URL, List<Double>> vectors = new HashMap<>();
     static Map<URL, Double> rank = new HashMap<>();
     List<Double> idfQuery = new ArrayList<>();
@@ -16,7 +14,7 @@ public class Vspace {
     /* Vector to queryUser */
     List<Double> vectorQuery(String words[], List<Integer> count, int documentCount) {
         for (int i = 0; i < words.length; i++) {
-            idfQuery.set(i, Math.log10(documentCount/count.get(i)));
+            idfQuery.add(i, Math.log10(documentCount/count.get(i)));
         }
         return idfQuery;
     }
@@ -33,7 +31,7 @@ public class Vspace {
                 valor.clear();
             }
             for (int j = 0; j < urlsTfidf.size(); j++) {
-                valor.set(j, urlsTfidf.get(i).getValue());
+                valor.add(j, urlsTfidf.get(i).getValue());
             }
         }
         return vectors;
@@ -43,6 +41,7 @@ public class Vspace {
     Map<URL, Double> rank (Map<URL, List <Double>> document, List<Double> query) {
         Map<URL, Double> rank = new HashMap<>();
         List<URL> urls = new ArrayList<>();
+        List<Double> valores = new ArrayList<>();
         double denominador = 0;
         double numeradorD = 0;
         double numeradorQ = 0;
@@ -54,18 +53,22 @@ public class Vspace {
         for (int i = 0; i < document.size() ; i++) {
             result = denominador/numerador;
             if(i != 0){
+                System.out.println(result);
                 rank.put(urls.get(i-1), result);
             }
+            rank.put(urls.get(i), result);
             denominador=0;
             numeradorD=0;
             numeradorQ=0;
             numerador=0;
             result=0;
+
             for (int j = 0; j < query.size() ; j++) {
-                denominador = denominador + document.get(i).get(j) * query.get(j);
-                numeradorD = numeradorD + document.get(i).get(j) * document.get(i).get(j);
-                numeradorQ = numeradorQ + query.get(j) * query.get(j);
-                numerador = Math.sqrt(numeradorD*numeradorQ);
+                denominador = denominador + document.get(urls.get(i)).get(j) * query.get(j);
+                //System.out.println(denominador);
+                numeradorD = numeradorD + document.get(urls.get(i)).get(j) * document.get(urls.get(i)).get(j);
+               numeradorQ = numeradorQ + query.get(j) * query.get(j);
+               numerador = Math.sqrt(numeradorD*numeradorQ);
             }
         }
 
