@@ -21,7 +21,7 @@ public class Main {
 
         Function<URL, Integer> bsfRank = url -> 1;
 
-        Function<String, URL> stringToUrl = link -> {
+       Function<String, URL> stringToUrl = link -> {
             try {
                 return new URL(link);
             } catch (MalformedURLException e) {

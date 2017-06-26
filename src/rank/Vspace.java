@@ -34,11 +34,13 @@ public class Vspace {
                 valor.add(j, urlsTfidf.get(i).getValue());
             }
         }
+        System.out.println(vectors);
         return vectors;
     }
 
+
     /*Similarity of Cosseno*/
-    Map<URL, Double> rank (Map<URL, List <Double>> document, List<Double> query) {
+    Map<URL, Double> rank (Map<URL, List <Double>> document, List<Double> query) throws MalformedURLException {
         Map<URL, Double> rank = new HashMap<>();
         List<URL> urls = new ArrayList<>();
         List<Double> valores = new ArrayList<>();
@@ -52,24 +54,19 @@ public class Vspace {
 
         for (int i = 0; i < document.size() ; i++) {
             result = denominador/numerador;
-            if(i != 0){
-                System.out.println(result);
-                rank.put(urls.get(i-1), result);
-            }
-            rank.put(urls.get(i), result);
             denominador=0;
             numeradorD=0;
             numeradorQ=0;
             numerador=0;
             result=0;
-
             for (int j = 0; j < query.size() ; j++) {
                 denominador = denominador + document.get(urls.get(i)).get(j) * query.get(j);
-                //System.out.println(denominador);
                 numeradorD = numeradorD + document.get(urls.get(i)).get(j) * document.get(urls.get(i)).get(j);
                numeradorQ = numeradorQ + query.get(j) * query.get(j);
                numerador = Math.sqrt(numeradorD*numeradorQ);
             }
+            rank.put(urls.get(i), result);
+
         }
 
         return rank;

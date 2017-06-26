@@ -23,7 +23,7 @@ public class Rank {
 
 
 
-    public Rank(Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice, String queryG, boolean tfidf, int documentCount){
+    public Rank(Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice, String queryG, boolean tfidf, int documentCount) throws MalformedURLException {
         this.queryG = queryG;
         this.indice = indice;
         this.documentCount = documentCount;
@@ -53,11 +53,12 @@ public class Rank {
         if (queryPages == null) {
             return null;
         }
+        //System.out.println(queryPages.getValue());
         List<Pair<URL, Double>> tfidfList = new ArrayList<>();
         for (Pair<URL, Integer> pageInfo : queryPages.getValue()) {
             double tf = 1 + Math.log10((double)pageInfo.getValue());
-            System.out.println(pageInfo.getValue());
-            System.out.println(tf);
+            //System.out.println(pageInfo.getValue());
+            //System.out.println("tf "+tf);
             double idf = Math.log10((double)documentCount / (double)queryPages.getKey());
             double tfidf = tf * idf;
             tfidfList.add(new Pair<>(pageInfo.getKey(), tfidf));
@@ -66,7 +67,7 @@ public class Rank {
     }
 
     /*Vector with TfIdf */
-    private void rankVector(){
+    private void rankVector() throws MalformedURLException {
         String words[] = queryG.split(" ");;
         List<Integer> wordsContent = new ArrayList<>();
 
@@ -79,7 +80,7 @@ public class Rank {
         idfQuery = vectors.vectorQuery(words, wordsContent, documentCount);
 
         rank = vectors.rank(TfIdfVector, idfQuery);
-        System.out.println(rank.values());
+        System.out.println(rank);
     }
 
     /*Calculo o tf para cada termo do meu conjunto de termos*/
@@ -92,7 +93,7 @@ public class Rank {
 
 
     /*Vector without TfIdf*/
-    private void simpleVector(){
+    private void simpleVector() throws MalformedURLException {
         String words[] = queryG.split(" ");;
         List<Integer> wordsContent = new ArrayList<>();
 
