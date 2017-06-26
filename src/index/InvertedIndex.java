@@ -172,7 +172,7 @@ public class InvertedIndex {
     private void buildInvertedIndex(Queue<Pair<URL, Map<String, String>>> documents) {
         documents
                 .forEach(document -> document.getValue()
-                        .forEach((key, value) -> Stream.of(value.split(" *"))
+                        .forEach((key, value) -> Stream.of(value.split(" +"))
                                 .forEach(valuePart -> {
                                     String invertedIndexKey = key + "." + valuePart;
 
