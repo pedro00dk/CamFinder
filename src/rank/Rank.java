@@ -149,10 +149,6 @@ public class Rank {
          Rank rank = new Rank(indice, queryG, true, 2);
 
 
-
-
-
-
     }
 
 }
