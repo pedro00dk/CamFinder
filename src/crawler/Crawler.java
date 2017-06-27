@@ -86,7 +86,7 @@ public class Crawler {
                     }
                     visitedPages.add(currentURL.getKey());
                     downloadedPages.add(page);
-                    System.out.println("rank: " + currentURL.getValue() + "  --  " + page.getKey());
+                    //LoggingUtils.global().finer("Visited page (" + currentURL.getValue() + ")" + currentURL.getKey());
                     Elements pageInternalLinks = page.getValue().select("a[href]");
                     for (Element pageInternalLink : pageInternalLinks) {
                         URL pageInternalUrl = null;
