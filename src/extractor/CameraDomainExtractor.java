@@ -9,6 +9,7 @@ import org.jsoup.nodes.Document;
 
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public interface CameraDomainExtractor {
@@ -19,7 +20,7 @@ public interface CameraDomainExtractor {
 
     Map<String, String> extractWebSiteContent(Document document);
 
-    default Map<String, Attribute> extractProcessedWebSiteContent(Document document) {
+    default Map<String, String> extractProcessedWebSiteContent(Document document) {
         Map<String, String> extracted = extractWebSiteContent(document);
 
         //processing values
@@ -28,7 +29,7 @@ public interface CameraDomainExtractor {
                 .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
     }
 
-    static Attribute format(String name, String value) {
+    static String format(String name, String value) {
         switch (name) {
             case "Megapixels":
                 return formatMegapixel(value);
@@ -45,40 +46,49 @@ public interface CameraDomainExtractor {
             case "price":
                 return formatPrice(value);
         }
-        return new StringAttribute(value);
+        return value;
     }
 
-    static Attribute formatMegapixel(String unformatted) {
-        return new NumericAttribute(Double.parseDouble(unformatted.replaceAll("([^\\d. ]| \\.|\\. )+", "").trim().split(" +")[0]));
+    static String formatMegapixel(String unformatted) {
+        double value = Double.parseDouble(unformatted.replaceAll("([^\\d. ]| \\.|\\. )+", "").trim().split(" +")[0]);
+        int multiple = 4;
+        double rest = value % multiple;
+        int min = (int) (value - rest);
+        int max = min + multiple;
+        return Double.toString(min) + "-" + Double.toString(max);
     }
 
-    static Attribute formatZoom(String unformatted) {
-        return new NumericAttribute(Double.parseDouble(unformatted.replaceAll("([^\\d. ]| \\.|\\. )+", "").trim().split(" +")[0]));
+    static String formatZoom(String unformatted) {
+        double value = Double.parseDouble(unformatted.replaceAll("([^\\d. ]| \\.|\\. )+", "").trim().split(" +")[0]);
+        int multiple = 4;
+        double rest = value % multiple;
+        int min = (int) (value - rest);
+        int max = min + multiple;
+        return Double.toString(min) + "-" + Double.toString(max);
     }
 
-    static Attribute formatStorage(String unformatted) {
-        unformatted = unformatted.toUpperCase();
-        return new MultiAttribute(
-                Stream.of("SD", "SDHC", "SDXC", "EYE-FI", "UHS-I", "FLU", "PRO DUO", "PRO-HG DUO", "XC-HG DUO", "XQD", "COMPACTFLASH", "COMPACT FLASH")
-                        .filter(unformatted::contains)
-                        .collect(Collectors.toList())
-        );
+    static String formatStorage(String unformatted) {
+        return unformatted;
     }
 
-    static Attribute formatSensitivity(String unformatted) {
-        String[] values = unformatted.replaceAll("[.,]", "").replaceAll("[^\\d]+", " ").trim().split(" +");
-        return new StringAttribute(values.length == 0 ? "undefined" : values.length == 1 ? values[0] + "-undefined" : values[0] + "-" + values[1]);
+    static String formatSensitivity(String unformatted) {
+        return unformatted;
     }
 
-    static Attribute formatShutterSpeed(String unformatted) {
-        return new StringAttribute(unformatted);
+    static String formatShutterSpeed(String unformatted) {
+        return unformatted;
     }
 
-    static Attribute formatSensorSize(String unformatted) {
-        return new StringAttribute(unformatted);
+    static String formatSensorSize(String unformatted) {
+        return unformatted;
     }
 
-    static NumericAttribute formatPrice(String unformatted) {
-        return new NumericAttribute(Double.parseDouble(unformatted.replaceAll(",", "").replaceAll("([^\\d. ]| \\.|\\. )+", " ").trim().split(" +")[0]));
+    static String formatPrice(String unformatted) {
+        double value = Double.parseDouble(unformatted.replaceAll(",", "").replaceAll("([^\\d. ]| \\.|\\. )+", " ").trim().split(" +")[0]);
+        int multiple = 250;
+        double rest = value % multiple;
+        int min = (int) (value - rest);
+        int max = min + multiple;
+        return Double.toString(min) + "-" + Double.toString(max);
     }
 }
