@@ -60,10 +60,11 @@ public class Vspace {
             numerador=0;
             result=0;
             for (int j = 0; j < query.size() ; j++) {
+
                 denominador = denominador + document.get(urls.get(i)).get(j) * query.get(j);
                 numeradorD = numeradorD + document.get(urls.get(i)).get(j) * document.get(urls.get(i)).get(j);
-               numeradorQ = numeradorQ + query.get(j) * query.get(j);
-               numerador = Math.sqrt(numeradorD*numeradorQ);
+                numeradorQ = numeradorQ + query.get(j) * query.get(j);
+                numerador = Math.sqrt(numeradorD*numeradorQ);
             }
             rank.put(urls.get(i), result);
 
@@ -86,14 +87,7 @@ public class Vspace {
         tested.add(1.2);
 
         List<Pair<URL, Double>> tfidfList = new ArrayList<>();
-//        tfidfLists.add(new Pair<>(query1, x));
-//        tfidfLists.add(new Pair<>(query2, x));
 
-
-//        for (int i = 0; i <tfidfLists.size() ; i++) {
-//            System.out.println(tfidfLists.size());
-//            System.out.println(tfidfLists.get(i).getValue().get(0).getKey());
-//        }
 
         List<Double> tested2 = new ArrayList<>();
         List<Double> all = new ArrayList<>();
