@@ -7,35 +7,33 @@ import java.net.URL;
 import java.util.*;
 
 public class Vspace {
-    static Map<URL, List<Double>> vectors = new HashMap<>();
-    static Map<URL, Double> rank = new HashMap<>();
+
     List<Double> idfQuery = new ArrayList<>();
 
     /* Vector to queryUser */
-    List<Double> vectorQuery(String words[], List<Integer> count, int documentCount) {
-        for (int i = 0; i < words.length; i++) {
-            idfQuery.add(i, Math.log10(documentCount/count.get(i)));
+    List<Double> vectorQuery(int tamanho, List<Integer> count, int documentCount) {
+        for (int i = 0; i < tamanho; i++) {
+            if(count.get(i)!=0){
+                idfQuery.add(i, Math.log10(documentCount/count.get(i)));
+            }
+                idfQuery.add(i, 0.0);
         }
         return idfQuery;
     }
 
     /*Calcular o espaço vetorial para cada documento*/
     Map<URL, List<Double>> buildVectorSpace(List<Pair<String, List<Pair<URL, Double>>>> tfidfLists) {
-        List<Pair<URL, Double>> urlsTfidf;
-        List<Double> valor = new ArrayList<>();
+        Map<URL, List<Double>> urlVectors = new HashMap<>();
 
-        for (int i = 0; i < tfidfLists.size(); i++) {
-            urlsTfidf = tfidfLists.get(i).getValue();
-            if(i!=0){
-                vectors.put(urlsTfidf.get(i-1).getKey(), valor);
-                valor.clear();
-            }
-            for (int j = 0; j < urlsTfidf.size(); j++) {
-                valor.add(j, urlsTfidf.get(i).getValue());
+        for (Pair<String, List<Pair<URL, Double>>> termDocumentsTfIdf : tfidfLists) {
+            for (Pair<URL, Double> urlTtfidf:termDocumentsTfIdf.getValue()) {
+                List<Double> tfidfs = urlVectors.getOrDefault(urlTtfidf.getKey(), new ArrayList<>());
+                tfidfs.add(urlTtfidf.getValue());
+                urlVectors.put(urlTtfidf.getKey(), tfidfs);
             }
         }
-        System.out.println(vectors);
-        return vectors;
+
+        return urlVectors;
     }
 
 
@@ -53,7 +51,6 @@ public class Vspace {
         urls.addAll(document.keySet());
 
         for (int i = 0; i < document.size() ; i++) {
-            result = denominador/numerador;
             denominador=0;
             numeradorD=0;
             numeradorQ=0;
@@ -65,8 +62,10 @@ public class Vspace {
                 numeradorD = numeradorD + document.get(urls.get(i)).get(j) * document.get(urls.get(i)).get(j);
                 numeradorQ = numeradorQ + query.get(j) * query.get(j);
                 numerador = Math.sqrt(numeradorD*numeradorQ);
+                result = denominador/numerador;
+                rank.put(urls.get(i), result);
             }
-            rank.put(urls.get(i), result);
+
 
         }
 

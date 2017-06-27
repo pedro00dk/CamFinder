@@ -1,13 +1,11 @@
 package rank;
 
+import index.InvertedIndex;
 import javafx.util.Pair;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Rank {
 
@@ -16,24 +14,14 @@ public class Rank {
     public static Map<URL, Double> rank;
     public static Map<URL, Double> rank2;
     public Vspace vectors = new Vspace();
-    public int documentCount;
     public String queryG;
     public List<Double> idfQuery = new ArrayList<>();
-    public Map<Integer, URL> indexedDocuments;
-    public Map<URL, Integer> documentIndexes; //documentos indexados
-    public Map<String, Map<Integer, Integer>> termDocuments; //pegar o termo no documento especïfico
-    public Map<String, Integer> termFrequency; //pegar o termo em todos os documentos
+    public InvertedIndex index;
 
 
-    public Rank(Map<URL, Integer> documentIndexes, Map<String, Map<Integer, Integer>> termDocuments,
-                Map<String, Integer> termFrequency, String queryG, boolean tfidf, Map<Integer, URL> indexedDocuments)  {
-
-        this.indexedDocuments = indexedDocuments;
-        this.documentIndexes = documentIndexes;
-        this.termDocuments = termDocuments;
-        this.termFrequency = termFrequency;
+    public Rank(InvertedIndex index, String queryG, boolean tfidf)  {
+        this.index = index;
         this.queryG = queryG;
-        documentCount = documentIndexes.size();
 
         if (tfidf){
             calculateTfIdf();
@@ -45,7 +33,7 @@ public class Rank {
     /*Calculo o tfidf para cada termo do meu conjunto de termos*/
     private void calculateTfIdf() {
         //Pega todas as querys da consultas, salva numa lista e calcula o tfIDF dela relacionado a todos os documentos
-        for(String query : termFrequency.keySet()){
+        for(String query : index.termFrequency.keySet()){
             tfidfLists.add(getTfidfList(query));
         }
     }
@@ -53,26 +41,23 @@ public class Rank {
     /*Faço meu cálculo de tfIdf para o determinado termo da minha base de documentos
     ex.: zoom.10 --> 5, 6,7,8....*/
     private Pair<String, List<Pair<URL, Double>>> getTfidfList(String query) {
-        Map<Integer, Integer> frequencyD = termDocuments.get(query);
-        int generalFrequency = termFrequency.get(query);
-
-        List<Integer> indices = new ArrayList<>();
-        indices.addAll(indexedDocuments.keySet());
+        Map<Integer, Integer> frequencyD = index.termDocuments.get(query);
+        int generalFrequency = index.termFrequency.get(query);
 
         List<URL> url = new ArrayList<>();
-        url.addAll(documentIndexes.keySet());
+        url.addAll(index.documentIndexes.keySet());
 
         if (generalFrequency == 0) {
             return null;
         }
 
         List<Pair<URL, Double>> tfidfList = new ArrayList<>();
-        for (int i = 0; i <frequencyD.size() ; i++) {
-            double tf = 1 + Math.log10((double)frequencyD.get(frequencyD.get(url.get(i))));
-            double idf = Math.log10((double)documentCount/generalFrequency);
+        for (Map.Entry<Integer, Integer> pageFrequency:frequencyD.entrySet()) {
+            double tf = 1 + Math.log10(pageFrequency.getValue());
+            double idf = Math.log10((double)index.indexedDocuments.size()/generalFrequency);
             double tfidf = tf * idf;
 
-            tfidfList.add(new Pair<>(indexedDocuments.get(indices.get(i)), tfidf));
+            tfidfList.add(new Pair<>(index.indexedDocuments.get(pageFrequency.getKey()), tfidf));
         }
 
         return new Pair<>(query, tfidfList);
@@ -80,25 +65,32 @@ public class Rank {
 
     /*Vector with TfIdf */
     private void rankVector() {
-        String words[] = queryG.split(" ");;
+        String words[] = queryG.split("");;
         List<Integer> wordsContent = new ArrayList<>();
 
-        for (int i = 0; i < words.length ; i++) {
-            wordsContent.add(i, termFrequency.get(words[i]));
-        }
+        wordsContent.add(0, index.termFrequency.get(queryG));
+
+//        for (int i = 0; i < words.length ; i++) {
+//            Integer freq = index.termFrequency.get(words[i]);
+//            wordsContent.add(i, freq == null ? 0 :freq);
+//        }
+        //Integer freq = index.termFrequency.get(queryG);
+        //wordsContent.add(0, freq == null ? 0 :freq);
 
         Map<URL, List<Double>> TfIdfVector;
         TfIdfVector = vectors.buildVectorSpace(tfidfLists);
-        idfQuery = vectors.vectorQuery(words, wordsContent, documentCount);
+        idfQuery = vectors.vectorQuery(1, wordsContent, index.indexedDocuments.size());
 
         rank = vectors.rank(TfIdfVector, idfQuery);
-        System.out.println(rank);
+        rank.entrySet().stream()
+                .sorted(Comparator.comparingDouble(entry -> entry.getValue()))
+                .forEach(entry -> System.out.println(entry.getKey() + "  ->  " + entry.getValue()));
     }
 
     /*Calculo o tf para cada termo do meu conjunto de termos*/
     private void calculateTf() {
         //Pega todas as querys da consultas, salva numa lista e calcula o tfIDF dela relacionado a todos os documentos
-        for(String query : termFrequency.keySet()){
+        for(String query : index.termFrequency.keySet()){
             tfLists.add(getTfList(query));
         }
     }
@@ -110,10 +102,11 @@ public class Rank {
         List<Integer> wordsContent = new ArrayList<>();
 
         for (int i = 0; i < words.length ; i++) {
-            wordsContent.add(i, termFrequency.get(words[i]));
+            Integer freq = index.termFrequency.get(words[i]);
+            wordsContent.add(i, freq == null ? 0 :freq);
         }
 
-        idfQuery = vectors.vectorQuery(words, wordsContent, documentCount);
+        idfQuery = vectors.vectorQuery(1, wordsContent, index.indexedDocuments.size());
         Map<URL, List<Double>> simpleVector = new HashMap<>();
         simpleVector = vectors.buildVectorSpace(tfLists);
 
@@ -124,14 +117,14 @@ public class Rank {
     /*Faço meu cálculo APENAS de TF para o determinado termo da minha base de documentos
     ex.: zoom.10 --> 5, 6,7,8....*/
     private Pair<String, List<Pair<URL, Double>>> getTfList(String query){
-        Map<Integer, Integer> frequencyD = termDocuments.get(query);
-        int generalFrequency = termFrequency.get(query);
+        Map<Integer, Integer> frequencyD = index.termDocuments.get(query);
+        int generalFrequency = index.termFrequency.get(query);
 
         List<Integer> indices = new ArrayList<>();
-        indices.addAll(indexedDocuments.keySet());
+        indices.addAll(index.indexedDocuments.keySet());
 
         List<URL> url = new ArrayList<>();
-        url.addAll(documentIndexes.keySet());
+        url.addAll(index.documentIndexes.keySet());
 
         if (generalFrequency == 0) {
             return null;
@@ -141,18 +134,10 @@ public class Rank {
         for (int i = 0; i <frequencyD.size() ; i++) {
             double tf = 1 + Math.log10((double)frequencyD.get(frequencyD.get(url.get(i))));
 
-            tfidfList.add(new Pair<>(indexedDocuments.get(indices.get(i)), tf));
+            tfidfList.add(new Pair<>(index.indexedDocuments.get(indices.get(i)), tf));
         }
 
         return new Pair<>(query, tfidfList);
 
     }
-
-    public static void main(String[] args) throws MalformedURLException {
-
-
-
-
-    }
-
 }
