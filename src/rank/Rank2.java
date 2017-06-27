@@ -19,11 +19,11 @@ public class Rank2 {
     private int documentCount;
     private String queryG;
     private List<Double> idfQuery = new ArrayList<>();
-
-    public Map<URL, Integer> documentIndexes; //documentos indexados
-    public Map<String, Map<Integer, Integer>> termDocuments; //pegar o termo no documento especïfico
-    public Map<String, Integer> termFrequency; //pegar o termo em todos os documentos
-    public List<String> attributes; //lista de attributos
+     Map<Integer, URL> indexedDocuments;
+     Map<URL, Integer> documentIndexes; //documentos indexados
+     Map<String, Map<Integer, Integer>> termDocuments; //pegar o termo no documento especïfico
+     Map<String, Integer> termFrequency; //pegar o termo em todos os documentos
+     List<String> attributes; //lista de attributos
 
 
 
@@ -98,29 +98,6 @@ public class Rank2 {
     }
 
     public static void main(String[] args) throws MalformedURLException {
-
-        URL testeURL1 = new URL("http://www.1d.com");
-        URL testeURL2 = new URL("http://www.2d.com");
-        String zoom = "zoom10";
-        String valor = "valor20";
-
-        String queryG = "zoom10 valor20";
-
-        Map<String, Pair<Integer, List<Pair<URL, Integer>>>> indice = new HashMap<>();
-        List<Pair<URL, Integer>> documentsF = new ArrayList<>();
-        Pair<Integer, List<Pair<URL, Integer>>> teste2;
-
-        documentsF.add(new Pair<URL, Integer>(testeURL1, 1));
-        documentsF.add(new Pair<URL, Integer>(testeURL1, 2));
-
-        documentsF.add(new Pair<>(testeURL2, 2));
-        documentsF.add(new Pair<>(testeURL2, 1));
-
-        indice.put(zoom, new Pair<Integer,List<Pair<URL, Integer>>>(3, documentsF));
-        indice.put(valor, new Pair<Integer,List<Pair<URL, Integer>>>(3, documentsF));
-
-        Rank rank = new Rank(indice, queryG, true, 2);
-
 
     }
 
