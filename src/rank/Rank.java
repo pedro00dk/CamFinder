@@ -20,6 +20,11 @@ public class Rank {
     private int documentCount;
     private String queryG;
     private List<Double> idfQuery = new ArrayList<>();
+    public Map<URL, Integer> documentIndexes; //documentos indexados
+    public Map<String, Map<Integer, Integer>> termDocuments; //pegar o termo no documento especïfico
+    public Map<String, Integer> termFrequency; //pegar o termo em todos os documentos
+    public List<String> attributes; //lista de attributos
+
 
 
 

@@ -40,7 +40,7 @@ public class Vspace {
 
 
     /*Similarity of Cosseno*/
-    Map<URL, Double> rank (Map<URL, List <Double>> document, List<Double> query) throws MalformedURLException {
+    Map<URL, Double> rank (Map<URL, List <Double>> document, List<Double> query) {
         Map<URL, Double> rank = new HashMap<>();
         List<URL> urls = new ArrayList<>();
         List<Double> valores = new ArrayList<>();
