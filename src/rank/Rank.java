@@ -6,135 +6,125 @@ import javafx.util.Pair;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 public class Rank {
+    private InvertedIndex invertedIndex;
+    private Map<String, Integer> termOrder;
 
-    public static List<Pair<String, List<Pair<URL, Double>>>> tfidfLists = new ArrayList<>();
-    public static List<Pair<String, List<Pair<URL, Double>>>> tfLists = new ArrayList<>();
-    public static Map<URL, Double> rank;
-    public static Map<URL, Double> rank2;
-    public Vspace vectors = new Vspace();
-    public List<String> queryG;
-    public List<Double> idfQuery = new ArrayList<>();
-    public Map<String, Integer> attributeIndex = new HashMap<>();
-    public InvertedIndex index;
+    private Map<Integer, double[]> documentTfVectors;
+    private Map<Integer, Double> documentTfVectorMagnitudes;
 
+    private Map<Integer, double[]> documentTfIdfVectors;
+    private Map<Integer, Double> documentTfIdfVectorMagnitudes;
 
-    public Rank(InvertedIndex index, List<String> queryG, boolean tfidf)  {
-        this.index = index;
-        this.queryG = queryG;
+    public Rank(InvertedIndex invertedIndex) {
+        this.invertedIndex = invertedIndex;
+        calculateTermOrder();
+        calculateDocumentVectors();
+        calculateDocumentVectorMagnitudes();
+    }
 
-        if (tfidf){
-            calculateTfIdf();
-            rankVector();
-        }
+    private void calculateTermOrder() {
+        AtomicInteger termIndex = new AtomicInteger(0);
+        termOrder = invertedIndex.termFrequency.entrySet().stream()
+                .map(entry -> new Pair<>(entry.getKey(), termIndex.getAndIncrement()))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+    }
+
+    private void calculateDocumentVectors() {
+        documentTfVectors = invertedIndex.indexedDocuments.keySet().stream()
+                .map(index -> new Pair<>(index, calculateDocumentTfIdfVector(index, true)))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+
+        documentTfIdfVectors = invertedIndex.indexedDocuments.keySet().stream()
+                .map(index -> new Pair<>(index, calculateDocumentTfIdfVector(index, false)))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+    }
+
+    private double[] calculateDocumentTfIdfVector(int documentIndex, boolean tfOnly) {
+        return invertedIndex.termDocuments.entrySet().stream()
+                .map(entry -> {
+                    int termTfIdfArrayIndex = termOrder.get(entry.getKey());
+                    int termFrequencyInDocument = entry.getValue().getOrDefault(documentIndex, 0);
+                    if (termFrequencyInDocument > 0) {
+                        boolean a = false;
+                    }
+                    double tf = tfOnly ? (termFrequencyInDocument > 0 ? 1 : 0) : (termFrequencyInDocument == 0 ? 0 : 1 + Math.log(termFrequencyInDocument));
+                    double idf = tfOnly ? 1 : Math.log(
+                            invertedIndex.indexedDocuments.size()
+                                    / (double) invertedIndex.termFrequency.get(entry.getKey())
+                    );
+                    return new Pair<>(termTfIdfArrayIndex, tf * idf);
+                })
+                .sorted(Comparator.comparingInt(Pair::getKey))
+                .map(Pair::getValue)
+                .mapToDouble(boxedDouble -> boxedDouble)
+                .toArray();
+    }
+
+    private void calculateDocumentVectorMagnitudes() {
+        documentTfIdfVectorMagnitudes = documentTfIdfVectors.entrySet().stream()
+                .map(entry -> new Pair<>(entry.getKey(), calculateDocumentTfIdfVectorMagnitude(entry.getValue())))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+
+        documentTfVectorMagnitudes = documentTfVectors.entrySet().stream()
+                .map(entry -> new Pair<>(entry.getKey(), calculateDocumentTfIdfVectorMagnitude(entry.getValue())))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+    }
+
+    private double calculateDocumentTfIdfVectorMagnitude(double[] value) {
+        return Math.sqrt(DoubleStream.of(value)
+                .map(termTfIdf -> termTfIdf * termTfIdf)
+                .sum()
+        );
 
     }
 
-    /*Calculo o tfidf para cada termo do meu conjunto de termos*/
-    private void calculateTfIdf() {
-        List<String> attributes = new ArrayList<>();
-        attributes.addAll(index.termFrequency.keySet());
-
-        for (int i = 0; i <attributes.size() ; i++) {
-            attributeIndex.put(attributes.get(i), i);
-        }
-        //Pega todas as querys da consultas, salva numa lista e calcula o tfIDF dela relacionado a todos os documentos
-        for(String query : index.termFrequency.keySet()){
-            tfidfLists.add(attributeIndex.get(query) ,getTfidfList(query));
-        }
+    public List<URL> rank(List<String> query, boolean tfOnly) {
+        double[] queryVector = calculateQueryTfIdfVector(query, tfOnly);
+        return invertedIndex.documentIndexes.entrySet().stream()
+                .map(entry -> {
+                    double[] documentVector = tfOnly ? documentTfVectors.get(entry.getValue()) : documentTfIdfVectors.get(entry.getValue());
+                    double documentVectorMagnitude = tfOnly ? documentTfVectorMagnitudes.get(entry.getValue()) : documentTfIdfVectorMagnitudes.get(entry.getValue());
+                    return new Pair<>(entry.getKey(), calculateCossineBetweenVectors(queryVector, 1, documentVector, documentVectorMagnitude));
+                })
+                .sorted(Comparator.comparingDouble(Pair::getValue))
+                .map(Pair::getKey)
+                .collect(Collectors.toList());
     }
 
-    /*Faço meu cálculo de tfIdf para o determinado termo da minha base de documentos
-    ex.: zoom.10 --> 5, 6,7,8....*/
-    private Pair<String, List<Pair<URL, Double>>> getTfidfList(String query) {
-        Map<Integer, Integer> frequencyD = index.termDocuments.get(query);
-        int generalFrequency = index.termFrequency.get(query);
-        double tf =0;
-        if (generalFrequency == 0) {
-            double tfidf=0;
-            return null;
-        }
-
-        List<Pair<URL, Double>> tfidfList = new ArrayList<>();
-
-        for (Map.Entry<Integer, Integer> pageFrequency:frequencyD.entrySet()) {
-            if (pageFrequency.getValue()!=0) tf = 1 + (Math.log(pageFrequency.getValue()))/Math.log(2);
-            else{
-                tf=0;
-            }
-            double idf = ((Math.log((double)index.indexedDocuments.size())/Math.log(2))/(double)generalFrequency);
-            double tfidf = tf * idf;
-
-            tfidfList.add(new Pair<>(index.indexedDocuments.get(pageFrequency.getKey()), tfidf));
-        }
-
-        return new Pair<>(query, tfidfList);
+    private double[] calculateQueryTfIdfVector(List<String> query, boolean tfOnly) {
+        return invertedIndex.termDocuments.entrySet().stream()
+                .map(entry -> {
+                    int termTfIdfArrayIndex = termOrder.get(entry.getKey());
+                    boolean queryContainsTerm = query.stream()
+                            .anyMatch(queryTerm -> queryTerm.toLowerCase().contains(entry.getKey().toLowerCase())
+                                    || entry.getKey().toLowerCase().contains(queryTerm.toLowerCase()));
+                    double idf = !queryContainsTerm
+                            ? 0
+                            : tfOnly
+                            ? 1
+                            : Math.log(invertedIndex.indexedDocuments.size() / (double) invertedIndex.termFrequency.get(entry.getKey()));
+                    return new Pair<>(termTfIdfArrayIndex, idf);
+                })
+                .sorted(Comparator.comparingInt(Pair::getKey))
+                .map(Pair::getValue)
+                .mapToDouble(boxedDouble -> boxedDouble)
+                .toArray();
     }
 
-    /*Vector with TfIdf */
-    private void rankVector() {
-        Map<URL, List<Double>> TfIdfVector;
-        TfIdfVector = vectors.buildVectorSpace(tfidfLists, attributeIndex);
-        idfQuery = vectors.vectorQuery(index.termFrequency, attributeIndex, queryG, index.documentIndexes.size());
-
-        rank = vectors.rank(TfIdfVector, idfQuery);
-        rank.entrySet().stream()
-                .sorted(Comparator.comparingDouble(entry -> entry.getValue()))
-                .forEach(entry -> System.out.println(entry.getKey() + "  ->  " + entry.getValue()));
-       // System.out.println(rank);
+    private double calculateCossineBetweenVectors(double[] vector1, double vector1Magnitude, double[] vector2, double vector2Magnitude) {
+        return dotProduct(vector1, vector2) / vector1Magnitude * vector2Magnitude;
     }
 
-    /*Calculo o tf para cada termo do meu conjunto de termos*/
-    private void calculateTf() {
-        //Pega todas as querys da consultas, salva numa lista e calcula o tfIDF dela relacionado a todos os documentos
-        for(String query : index.termFrequency.keySet()){
-            tfLists.add(getTfList(query));
-        }
-    }
-
-
-    /*Vector without TfIdf*/
-    private void simpleVector() throws MalformedURLException {
-        List<Integer> wordsContent = new ArrayList<>();
-
-        for (int i = 0; i < queryG.size() ; i++) {
-            Integer freq = index.termFrequency.get(queryG.get(i));
-            wordsContent.add(i, freq == null ? 0 :freq);
-        }
-
-        idfQuery = vectors.vectorQuery(index.termFrequency, attributeIndex, queryG, index.documentIndexes.size());
-        Map<URL, List<Double>> simpleVector = new HashMap<>();
-        simpleVector = vectors.buildVectorSpace(tfLists, attributeIndex);
-
-        rank2 = vectors.rank(simpleVector, idfQuery);
-        System.out.println(rank2);
-    }
-
-    /*Faço meu cálculo APENAS de TF para o determinado termo da minha base de documentos
-    ex.: zoom.10 --> 5, 6,7,8....*/
-    private Pair<String, List<Pair<URL, Double>>> getTfList(String query){
-        Map<Integer, Integer> frequencyD = index.termDocuments.get(query);
-        int generalFrequency = index.termFrequency.get(query);
-
-        List<Integer> indices = new ArrayList<>();
-        indices.addAll(index.indexedDocuments.keySet());
-
-        List<URL> url = new ArrayList<>();
-        url.addAll(index.documentIndexes.keySet());
-
-        if (generalFrequency == 0) {
-            return null;
-        }
-
-        List<Pair<URL, Double>> tfidfList = new ArrayList<>();
-        for (int i = 0; i <frequencyD.size() ; i++) {
-            double tf = 1 + Math.log10((double)frequencyD.get(frequencyD.get(url.get(i))));
-
-            tfidfList.add(new Pair<>(index.indexedDocuments.get(indices.get(i)), tf));
-        }
-
-        return new Pair<>(query, tfidfList);
-
+    private double dotProduct(double[] vector1, double[] vector2) {
+        return IntStream.range(0, vector1.length)
+                .mapToDouble(index -> vector1[index] * vector2[index])
+                .sum();
     }
 }

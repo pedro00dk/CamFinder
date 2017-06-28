@@ -14,9 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 
-/**
- * Created by bjcc on 27/06/2017.
- */
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Path extractedContentPath = Paths.get("pages", "extracted", "extracted.data");
@@ -24,10 +21,21 @@ public class Main {
         //noinspection unchecked
         BlockingQueue<Pair<URL, Map<String, String>>> extractorOutput = (BlockingQueue<Pair<URL, Map<String, String>>>) is.readObject();
         InvertedIndex ii = new InvertedIndex(extractorOutput, 5);
-        String query = "name.Nikon";
-        List<String> queryG = new ArrayList<>();
-        queryG.add(query);
-        Rank rank = new Rank(ii, queryG, true);
+        Rank rank = new Rank(ii);
+
+        List<String> query1 = new ArrayList<>();
+        query1.add("name.5DS");
+
+        List<URL> rank1 = rank.rank(query1, false);
+
+        List<String> query2 = new ArrayList<>();
+        query2.add("price.2599");
+
+        List<URL> rank2 = rank.rank(query2, false);
+
+        System.out.println(SpearmanCorrelation.evaluate(rank1, rank2));
+
+
     }
 
 }
