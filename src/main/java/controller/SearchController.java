@@ -1,6 +1,7 @@
 package controller;
 
 import extractor.specific.CanonExtractor;
+import javafx.util.Pair;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,15 +19,27 @@ public class SearchController {
     @RequestMapping(value = "/")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("search");
-        mav.addObject("attributes", Stream.of("Name", "Price", "Megapixels", "Zoom").collect(Collectors.toList()));
+        List<Pair<String, Boolean>> attributes = new ArrayList<>();
+
+        attributes.add(new Pair<>("Name", Boolean.TRUE));
+        attributes.add(new Pair<>("Price", Boolean.TRUE));
+        attributes.add(new Pair<>("Megapixels", Boolean.TRUE));
+        attributes.add(new Pair<>("Zoom", Boolean.FALSE));
+        attributes.add(new Pair<>("Storage Mode", Boolean.FALSE));
+        attributes.add(new Pair<>("Sensitivity", Boolean.TRUE));
+        attributes.add(new Pair<>("Shutter Speed", Boolean.TRUE));
+        attributes.add(new Pair<>("Sensor Size", Boolean.FALSE));
+
+        mav.addObject("attributes", attributes);
         return mav;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView processFormRequest(@RequestParam("name") String name, @RequestParam("price") String price,
-                                           @RequestParam("megapixel") String megapixel, @RequestParam("zoom") String zoom,
-                                           @RequestParam("storage_mode") String storage_mode, @RequestParam("sensitivity") String sensitivity,
-                                           @RequestParam("shutter_speed") String shutter_speed, @RequestParam("sensor_size") String sensor_size) {
+    public ModelAndView processFormRequest(@RequestParam("Name") String name, @RequestParam("Price") String price,
+                                           @RequestParam("Megapixels") String megapixel, @RequestParam("Zoom") String zoom,
+                                           @RequestParam("Storage Mode") String storage_mode, @RequestParam("Sensitivity") String sensitivity,
+                                           @RequestParam("Shutter Speed") String shutter_speed, @RequestParam("Sensor Size") String sensor_size) {
+
         CanonExtractor c = new CanonExtractor();
         //Here goes the calls for Bruno's methods
         ModelAndView mav = new ModelAndView("result");
