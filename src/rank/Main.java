@@ -9,6 +9,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 
@@ -22,8 +24,10 @@ public class Main {
         //noinspection unchecked
         BlockingQueue<Pair<URL, Map<String, String>>> extractorOutput = (BlockingQueue<Pair<URL, Map<String, String>>>) is.readObject();
         InvertedIndex ii = new InvertedIndex(extractorOutput, 5);
-        String query = "name.Compact";
-        Rank rank = new Rank(ii, query, true);
+        String query = "name.Nikon";
+        List<String> queryG = new ArrayList<>();
+        queryG.add(query);
+        Rank rank = new Rank(ii, queryG, true);
     }
 
 }

@@ -8,29 +8,51 @@ import java.util.*;
 
 public class Vspace {
 
-    List<Double> idfQuery = new ArrayList<>();
-
     /* Vector to queryUser */
-    List<Double> vectorQuery(int tamanho, List<Integer> count, int documentCount) {
-        for (int i = 0; i < tamanho; i++) {
-            if(count.get(i)!=0){
-                idfQuery.add(i, Math.log10(documentCount/count.get(i)));
-            }
-                idfQuery.add(i, 0.0);
+    List<Double> vectorQuery(Map<String, Integer> termFrequency, Map<String, Integer> attributeFrequency, List<String> queryG, int documentCount) {
+        List<Double> idfQuery = new ArrayList<>();
+        for (int i = 0; i < attributeFrequency.size(); i++) {
+            idfQuery.add(0.0);
+        }
+        for (int i = 0; i < queryG.size() ; i++) {
+            System.out.println("Termo da consulta:"+termFrequency.get(queryG.get(i)));
+            System.out.println(Math.log10((double)documentCount/(double)termFrequency.get(queryG.get(i))));
+            idfQuery.set(attributeFrequency.get(queryG.get(i)),Math.log10((double)documentCount/(double)termFrequency.get(queryG.get(i))));
         }
         return idfQuery;
     }
 
     /*Calcular o espaço vetorial para cada documento*/
-    Map<URL, List<Double>> buildVectorSpace(List<Pair<String, List<Pair<URL, Double>>>> tfidfLists) {
+    Map<URL, List<Double>> buildVectorSpace(List<Pair<String, List<Pair<URL, Double>>>> tfidfLists,
+                                            Map<String, Integer> attributeIndex) {
+
         Map<URL, List<Double>> urlVectors = new HashMap<>();
+        URL key = null;
+        System.out.println(tfidfLists.size());
+        Map<URL, List<Double>> valores = new HashMap<>();
+        List<Double> zeros = new ArrayList<>();
+        for (int i = 0; i <attributeIndex.size() ; i++) {
+            zeros.add(0.0);
+        }
 
         for (Pair<String, List<Pair<URL, Double>>> termDocumentsTfIdf : tfidfLists) {
             for (Pair<URL, Double> urlTtfidf:termDocumentsTfIdf.getValue()) {
-                List<Double> tfidfs = urlVectors.getOrDefault(urlTtfidf.getKey(), new ArrayList<>());
-                tfidfs.add(urlTtfidf.getValue());
-                urlVectors.put(urlTtfidf.getKey(), tfidfs);
+                valores.put(urlTtfidf.getKey(), zeros);
             }
+        }
+
+
+        for (Pair<String, List<Pair<URL, Double>>> termDocumentsTfIdf : tfidfLists) {
+            List<Double> valor = new ArrayList<>();
+            for (Pair<URL, Double> urlTtfidf:termDocumentsTfIdf.getValue()) {
+                key = urlTtfidf.getKey();
+                if (urlTtfidf.getValue()!=0){
+                    valores.get(urlTtfidf.getKey()).set(attributeIndex.get(termDocumentsTfIdf.getKey()),urlTtfidf.getValue());
+                    urlVectors.put(key, valores.get(key));
+                }
+            }
+
+
         }
 
         return urlVectors;
@@ -57,7 +79,6 @@ public class Vspace {
             numerador=0;
             result=0;
             for (int j = 0; j < query.size() ; j++) {
-
                 denominador = denominador + document.get(urls.get(i)).get(j) * query.get(j);
                 numeradorD = numeradorD + document.get(urls.get(i)).get(j) * document.get(urls.get(i)).get(j);
                 numeradorQ = numeradorQ + query.get(j) * query.get(j);
