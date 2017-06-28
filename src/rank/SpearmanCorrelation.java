@@ -14,7 +14,7 @@ public final class SpearmanCorrelation {
     }
 
     public static double evaluate(List<URL> rank1, List<URL> rank2) {
-        AtomicInteger urlIndex = new AtomicInteger();
+        AtomicInteger urlIndex = new AtomicInteger(0);
         Map<URL, Integer> rank1Map = rank1.stream()
                 .collect(Collectors.toMap(Function.identity(), url -> urlIndex.getAndIncrement()));
         urlIndex.set(0);
@@ -26,6 +26,6 @@ public final class SpearmanCorrelation {
                 .map(difference -> difference * difference)
                 .sum();
 
-        return 1 - ((6 * squareDistancesSum) / (rank1.size() * (rank1.size() * rank1.size() - 1)));
+        return 1 - ((6 * squareDistancesSum) / (double) (rank1.size() * (rank1.size() * rank1.size() - 1)));
     }
 }

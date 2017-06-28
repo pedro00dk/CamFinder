@@ -93,7 +93,7 @@ public class Rank {
                     double documentVectorMagnitude = tfOnly ? documentTfVectorMagnitudes.get(entry.getValue()) : documentTfIdfVectorMagnitudes.get(entry.getValue());
                     return new Pair<>(entry.getKey(), calculateCossineBetweenVectors(queryVector, 1, documentVector, documentVectorMagnitude));
                 })
-                .sorted(Comparator.comparingDouble(Pair::getValue))
+                .sorted((p1, p2) -> (int) Math.signum(p2.getValue() - p1.getValue()))
                 .map(Pair::getKey)
                 .collect(Collectors.toList());
     }
