@@ -12,12 +12,28 @@
 <div class="container">
     <form method="post" action="/">
         <c:forEach var="attribute" items="${attributes}">
-            <div class="form-group">
-                <label for="${attribute}Input">${attribute}</label>
-                <input type="text" class="form-control" id="${attribute}Input" name="${attribute}">
-            </div>
+
+            <c:choose>
+                <c:when test="${attribute.getValue().booleanValue()}">
+                    <div class="form-group">
+                        <label for="${attribute.getKey()}Input">${attribute.getKey()}</label>
+                        <input type="text" class="form-control" id="${attribute.getKey()}Input"
+                               name="${attribute.getKey()}">
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="form-group" hidden="true">
+                        <label for="${attribute.getKey()}Input">${attribute.getKey()}</label>
+                        <input type="text" class="form-control" id="${attribute.getKey()}Input"
+                               name="${attribute.getKey()}">
+                    </div>
+                </c:otherwise>
+            </c:choose>
+
         </c:forEach>
         <button type="submit" class="btn btn-primary">Submit</button>
+
+
     </form>
 </div>
 
