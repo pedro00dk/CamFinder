@@ -172,19 +172,38 @@ public class InvertedIndex {
     private void buildInvertedIndex(Queue<Pair<URL, Map<String, String>>> documents) {
         documents
                 .forEach(document -> document.getValue()
-                        .forEach((key, value) -> Stream.of(value.split(" +"))
-                                .forEach(valuePart -> {
-                                    String invertedIndexKey = key + "." + valuePart;
+                        .forEach((key, value) -> {
+                                    if (key.equals("price")) {
+                                        value = value.replaceAll("\\.(\\d)+", "").replaceAll("[^\\d]", "");
+                                        int integerValue = Integer.parseInt(value);
+                                        if (integerValue <= 500) {
+                                            value = "[1-500]";
+                                        } else if (integerValue <= 1000) {
+                                            value = "[501-1000]";
+                                        } else if (integerValue <= 2000) {
+                                            value = "[1001-2000]";
+                                        } else if (integerValue <= 4000) {
+                                            value = "[2001-4000]";
+                                        } else if (integerValue <= 10000) {
+                                            value = "[4001-10000]";
+                                        } else {
+                                            value = "[10001-+]";
+                                        }
+                                    }
+                                    Stream.of(value.split(" +"))
+                                            .forEach(valuePart -> {
+                                                String invertedIndexKey = key + "." + valuePart;
 
-                                    // Creating or increasing the term frequency
-                                    termFrequency.put(invertedIndexKey, termFrequency.getOrDefault(invertedIndexKey, 0) + 1);
+                                                // Creating or increasing the term frequency
+                                                termFrequency.put(invertedIndexKey, termFrequency.getOrDefault(invertedIndexKey, 0) + 1);
 
-                                    // Creating or adding and increasing the document frequency in the term documents
-                                    Map<Integer, Integer> termDocumentFrequencyMap = termDocuments.getOrDefault(invertedIndexKey, new HashMap<>());
-                                    termDocuments.put(invertedIndexKey, termDocumentFrequencyMap);
-                                    int documentIndex = documentIndexes.get(document.getKey());
-                                    termDocumentFrequencyMap.put(documentIndex, termDocumentFrequencyMap.getOrDefault(documentIndex, 0) + 1);
-                                })
+                                                // Creating or adding and increasing the document frequency in the term documents
+                                                Map<Integer, Integer> termDocumentFrequencyMap = termDocuments.getOrDefault(invertedIndexKey, new HashMap<>());
+                                                termDocuments.put(invertedIndexKey, termDocumentFrequencyMap);
+                                                int documentIndex = documentIndexes.get(document.getKey());
+                                                termDocumentFrequencyMap.put(documentIndex, termDocumentFrequencyMap.getOrDefault(documentIndex, 0) + 1);
+                                            });
+                                }
                         )
                 );
     }
