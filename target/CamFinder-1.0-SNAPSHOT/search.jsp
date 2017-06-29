@@ -18,7 +18,14 @@
                     <div class="form-group">
                         <label for="${attribute.getKey()}Input">${attribute.getKey()}</label>
                         <input type="text" class="form-control" id="${attribute.getKey()}Input"
-                               name="${attribute.getKey()}">
+                               name="${attribute.getKey()}" list="${attribute.getKey()}suggestions">
+                        <datalist id="${attribute.getKey()}suggestions">
+                            <c:forEach var="suggestion" items="${suggestions.get(attribute.getKey())}">
+                                <option value="${suggestion}">
+                            </c:forEach>
+
+                        </datalist>
+
                     </div>
                 </c:when>
                 <c:otherwise>
