@@ -27,6 +27,7 @@ public class SearchController {
     static final InvertedIndex INVERTED_INDEX;
     static final Map<URL, Map<String, String>> URL_ATTRIBUTES;
     static final Map<String, List<String>> RECOMENDATIONS;
+    static final Map<String, List<String>> MI_RECOMENDATIONS;
     static final Rank RANK;
 
     static {
@@ -34,7 +35,8 @@ public class SearchController {
         Map<URL, Map<String, String>> urlAttributes = null;
         Rank rank = null;
         try {
-            Path extractedContentPath = Paths.get("C:\\Users\\pedro\\OneDrive\\Documents\\Projects\\CamFinder\\pages\\extracted", "extracted.data");
+            //CHANGE THE PATH TO YOUR LOCAL pages/extracted
+            Path extractedContentPath = Paths.get("C:\\Users\\ghps\\IdeaProjects\\CamFinder\\pages\\extracted", "extracted.data");
             ObjectInputStream is = new ObjectInputStream(Files.newInputStream(extractedContentPath));
 
             //noinspection unchecked
@@ -50,6 +52,7 @@ public class SearchController {
             RANK = rank;
         }
 
+        //OLD RECOMENDATION
         RECOMENDATIONS = INVERTED_INDEX != null ? INVERTED_INDEX.attributes.stream()
                 .collect(Collectors.toMap(
                         Function.identity(),
@@ -61,6 +64,39 @@ public class SearchController {
                                 .collect(Collectors.toList())
                         )
                 ) : null;
+
+        //MUTUAL INFORMATION CALCULATION
+        Map<String, Double> attributeFrequencies = INVERTED_INDEX.attributes.stream()
+                .collect(Collectors.toMap(Function.identity(),
+                        attribute -> INVERTED_INDEX.termDocuments.entrySet().stream()
+                                .filter(entry -> entry.getKey().split("\\.")[0].equals(attribute))
+                                .mapToInt(entry -> entry.getValue().size())
+                                .sum() / (double) INVERTED_INDEX.indexedDocuments.size()
+                        )
+                );
+
+        Map<String, Double> termProbabilities = INVERTED_INDEX.termDocuments.entrySet().stream()
+                .map(entry -> {
+                    double termProbability = entry.getValue().size() / (double) INVERTED_INDEX.indexedDocuments.size();
+                    String attribute = entry.getKey().split("\\.")[0];
+                    double attributeProbability = attributeFrequencies.get(attribute);
+                    return new Pair<>(entry.getKey(), termProbability / (termProbability * attributeProbability));
+                })
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+
+        MI_RECOMENDATIONS =  INVERTED_INDEX.attributes.stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        attribute -> termProbabilities.entrySet().stream()
+                                .filter(entry -> entry.getKey().split("\\.")[0].equals(attribute))
+                                .sorted((e1, e2) -> (int) Math.signum(e2.getValue() - e1.getValue()))
+                                .limit(3)
+                                .map(entry -> entry.getKey().split("\\.")[1])
+                                .collect(Collectors.toList())
+                        )
+                );
+
+
     }
 
     @RequestMapping(value = "/")
@@ -78,7 +114,7 @@ public class SearchController {
         attributes.add(new Pair<>("Sensor Size", Boolean.FALSE));
 
         mav.addObject("attributes", attributes);
-        mav.addObject("suggestions", RECOMENDATIONS);
+        mav.addObject("suggestions", MI_RECOMENDATIONS);
         return mav;
     }
 
