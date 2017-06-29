@@ -65,29 +65,28 @@ public class SearchController {
     @RequestMapping(value = "/")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("search");
+
         List<Pair<String, Boolean>> attributes = new ArrayList<>();
-        //TODO RECOMENDATIONS
-//        System.out.println(RECOMENDATIONS.toString());
-        attributes.add(new Pair<>("Name", Boolean.TRUE));
-        attributes.add(new Pair<>("Price", Boolean.TRUE));
-        attributes.add(new Pair<>("Megapixels", Boolean.TRUE));
+        attributes.add(new Pair<>("price", Boolean.TRUE));
+        attributes.add(new Pair<>("name", Boolean.TRUE));
+        attributes.add(new Pair<>("Megapixels", Boolean.FALSE));
         attributes.add(new Pair<>("Zoom", Boolean.FALSE));
-        attributes.add(new Pair<>("Storage Mode", Boolean.FALSE));
+        attributes.add(new Pair<>("Storage Mode", Boolean.TRUE));
         attributes.add(new Pair<>("Sensitivity", Boolean.TRUE));
         attributes.add(new Pair<>("Shutter Speed", Boolean.TRUE));
         attributes.add(new Pair<>("Sensor Size", Boolean.FALSE));
 
         mav.addObject("attributes", attributes);
+        mav.addObject("suggestions", RECOMENDATIONS);
         return mav;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView processFormRequest(@RequestParam("Name") String name, @RequestParam("Price") String price,
+    public ModelAndView processFormRequest(@RequestParam("name") String name, @RequestParam("price") String price,
                                            @RequestParam("Megapixels") String megapixel, @RequestParam("Zoom") String zoom,
                                            @RequestParam("Storage Mode") String storage_mode, @RequestParam("Sensitivity") String sensitivity,
                                            @RequestParam("Shutter Speed") String shutter_speed, @RequestParam("Sensor Size") String sensor_size) {
         List query =  new ArrayList();
-        //TODO SHOW ATTRIBUTES
         query.add("name."+name);
         query.add("price."+price);
         query.add("Shutter Speed."+shutter_speed);
@@ -95,10 +94,10 @@ public class SearchController {
         query.add("Sensitivity."+sensitivity);
 
         List<URL> rank = RANK.rank(query, false);
-
-        List<Pair<URL, Map<String, String>>> collect = rank.stream().limit(10).map(url -> new Pair<>(url, URL_ATTRIBUTES.get(url))).collect(Collectors.toList());
+        List<Pair<String, Map<String, String>>> mappedUrls = (ArrayList)rank.stream().limit(10).map(url -> new Pair<>(url.toExternalForm(), URL_ATTRIBUTES.get(url))).collect(Collectors.toList());
 
         ModelAndView mav = new ModelAndView("result");
+        mav.addObject("mappedUrls", mappedUrls);
         mav.addObject("name", name);
         mav.addObject("price", price);
         mav.addObject("megapixel", megapixel);
@@ -107,7 +106,6 @@ public class SearchController {
         mav.addObject("sensitivity", sensitivity);
         mav.addObject("shutter_speed", shutter_speed);
         mav.addObject("sensor_size", sensor_size);
-        //return list of objects here and change template
         return mav;
     }
 }
