@@ -32,7 +32,7 @@ public class SearchController {
         Map<URL, Map<String, String>> urlAttributes = null;
 
         try {
-            Path extractedContentPath = Paths.get("pages", "extracted", "extracted.data");
+            Path extractedContentPath = Paths.get("C:\\Users\\Guilherme\\IdeaProjects\\CamFinder\\pages\\extracted", "extracted.data");
             ObjectInputStream is = new ObjectInputStream(Files.newInputStream(extractedContentPath));
 
             //noinspection unchecked
@@ -47,15 +47,14 @@ public class SearchController {
             URL_ATTRIBUTES = urlAttributes;
         }
 
-
         RECOMENDATIONS = INVERTED_INDEX != null ? INVERTED_INDEX.attributes.stream()
                 .collect(Collectors.toMap(
                         Function.identity(),
                         attribute -> INVERTED_INDEX.termDocuments.entrySet().stream()
-                                .filter(entry -> entry.getKey().split(".")[0].equals(attribute))
+                                .filter(entry -> entry.getKey().split("\\.")[0].equals(attribute))
                                 .sorted((e1, e2) -> e2.getValue().size() - e1.getValue().size())
                                 .limit(3)
-                                .map(entry -> entry.getKey().split(".")[1])
+                                .map(entry -> entry.getKey().split("\\.")[1])
                                 .collect(Collectors.toList())
                         )
                 ) : null;
@@ -66,7 +65,7 @@ public class SearchController {
         ModelAndView mav = new ModelAndView("search");
         List<Pair<String, Boolean>> attributes = new ArrayList<>();
 
-        System.out.println(RECOMENDATIONS.toString());
+//        System.out.println(RECOMENDATIONS.toString());
         attributes.add(new Pair<>("Name", Boolean.TRUE));
         attributes.add(new Pair<>("Price", Boolean.TRUE));
         attributes.add(new Pair<>("Megapixels", Boolean.TRUE));
