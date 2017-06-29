@@ -77,28 +77,28 @@ public class LinkClassifier {
         return attributes;
     }
 
-    private String[] getURLAttributes(URL link) {
-        String[] parts = link.toString().split("/");
-        String[][] partsOfParts = new String[parts.length][];
-        int partsCount = 0;
-        for (int i = 0; i < parts.length; i++) {
-            partsOfParts[i] = parts[i].split("[^A-Za-z]");
-            String[] filteredParts = new String[partsOfParts[i].length];
-            for (int j = 0; j < filteredParts.length; j++) {
-                filteredParts[j] = partsOfParts[i][j];
+            private String[] getURLAttributes(URL link) {
+                String[] parts = link.toString().split("/");
+                String[][] partsOfParts = new String[parts.length][];
+                int partsCount = 0;
+                for (int i = 0; i < parts.length; i++) {
+                    partsOfParts[i] = parts[i].split("[^A-Za-z]");
+                    String[] filteredParts = new String[partsOfParts[i].length];
+                    for (int j = 0; j < filteredParts.length; j++) {
+                        filteredParts[j] = partsOfParts[i][j];
+                    }
+                    partsOfParts[i] = filteredParts;
+                    partsCount += partsOfParts[i].length;
+                }
+                parts = new String[partsCount];
+                partsCount = 0;
+                for (int i = 0; i < partsOfParts.length; i++) {
+                    for (int j = 0; j < partsOfParts[i].length; j++) {
+                        parts[partsCount++] = partsOfParts[i][j];
+                    }
+                }
+                return parts;
             }
-            partsOfParts[i] = filteredParts;
-            partsCount += partsOfParts[i].length;
-        }
-        parts = new String[partsCount];
-        partsCount = 0;
-        for (int i = 0; i < partsOfParts.length; i++) {
-            for (int j = 0; j < partsOfParts[i].length; j++) {
-                parts[partsCount++] = partsOfParts[i][j];
-            }
-        }
-        return parts;
-    }
 
     private Instance createLinkInstance(URL url, String clazz) {
 
@@ -133,9 +133,4 @@ public class LinkClassifier {
         return CLASSES.get(classifyIndex(url));
     }
 
-    public Evaluation getEvaluation() throws Exception {
-        Evaluation evaluation = new Evaluation(trainInstances);
-        evaluation.evaluateModel(classifier, testInstances);
-        return evaluation;
-    }
 }

@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class EvaluateGeneralExtractor {
     public static void main(String[] args) throws IOException {
-        System.out.println("General Evaluate in Progress... ");
+        System.out.println("General SpearmanCorrelation in Progress... ");
         //CANON
         int canonAttributesCount = 0;
         double canonPagesCount = 16.0;
