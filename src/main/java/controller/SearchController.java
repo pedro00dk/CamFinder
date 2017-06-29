@@ -1,6 +1,5 @@
 package controller;
 
-import extractor.specific.CanonExtractor;
 import index.InvertedIndex;
 import javafx.util.Pair;
 import org.springframework.stereotype.Controller;
@@ -10,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import rank.Rank;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -28,12 +28,13 @@ public class SearchController {
     static final Map<URL, Map<String, String>> URL_ATTRIBUTES;
     static final Map<String, List<String>> RECOMENDATIONS;
     static final Rank RANK;
+
     static {
         InvertedIndex invertedIndex = null;
         Map<URL, Map<String, String>> urlAttributes = null;
         Rank rank = null;
         try {
-            Path extractedContentPath = Paths.get("C:\\Users\\Guilherme\\IdeaProjects\\CamFinder\\pages\\extracted", "extracted.data");
+            Path extractedContentPath = Paths.get("C:\\Users\\pedro\\OneDrive\\Documents\\Projects\\CamFinder\\pages\\extracted", "extracted.data");
             ObjectInputStream is = new ObjectInputStream(Files.newInputStream(extractedContentPath));
 
             //noinspection unchecked
@@ -84,28 +85,30 @@ public class SearchController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ModelAndView processFormRequest(@RequestParam("name") String name, @RequestParam("price") String price,
                                            @RequestParam("Megapixels") String megapixel, @RequestParam("Zoom") String zoom,
-                                           @RequestParam("Storage Mode") String storage_mode, @RequestParam("Sensitivity") String sensitivity,
-                                           @RequestParam("Shutter Speed") String shutter_speed, @RequestParam("Sensor Size") String sensor_size) {
-        List query =  new ArrayList();
-        query.add("name."+name);
-        query.add("price."+price);
-        query.add("Shutter Speed."+shutter_speed);
-        query.add("Storage Mode."+storage_mode);
-        query.add("Sensitivity."+sensitivity);
+                                           @RequestParam("Storage Mode") String storageMode, @RequestParam("Sensitivity") String sensitivity,
+                                           @RequestParam("Shutter Speed") String shutterSpeed, @RequestParam("Sensor Size") String sensor_size) {
+        List query = new ArrayList();
+        if (!name.isEmpty()) {
+            Stream.of(name.split(" +")).forEach(part -> query.add("name." + part));
+        }
+        if (!price.isEmpty()) {
+            Stream.of(price.split(" +")).forEach(part -> query.add("price." + part));
+        }
+        if (!shutterSpeed.isEmpty()) {
+            Stream.of(shutterSpeed.split(" +")).forEach(part -> query.add("Shutter Speed." + part));
+        }
+        if (!storageMode.isEmpty()) {
+            Stream.of(storageMode.split(" +")).forEach(part -> query.add("Storage Mode." + part));
+        }
+        if (!sensitivity.isEmpty()) {
+            Stream.of(sensitivity.split(" +")).forEach(part -> query.add("Sensitivity." + part));
+        }
 
         List<URL> rank = RANK.rank(query, false);
-        List<Pair<String, Map<String, String>>> mappedUrls = (ArrayList)rank.stream().limit(10).map(url -> new Pair<>(url.toExternalForm(), URL_ATTRIBUTES.get(url))).collect(Collectors.toList());
+        List<Pair<String, Map<String, String>>> mappedUrls = (ArrayList) rank.stream().limit(25).map(url -> new Pair<>(url.toExternalForm(), URL_ATTRIBUTES.get(url))).collect(Collectors.toList());
 
         ModelAndView mav = new ModelAndView("result");
         mav.addObject("mappedUrls", mappedUrls);
-        mav.addObject("name", name);
-        mav.addObject("price", price);
-        mav.addObject("megapixel", megapixel);
-        mav.addObject("zoom", zoom);
-        mav.addObject("storage_mode", storage_mode);
-        mav.addObject("sensitivity", sensitivity);
-        mav.addObject("shutter_speed", shutter_speed);
-        mav.addObject("sensor_size", sensor_size);
         return mav;
     }
 }
